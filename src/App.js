@@ -895,8 +895,8 @@ export default function RollmateApp() {
 
       {/* TOP BAR */}
       <div style={{background:"rgba(255,255,255,.94)",backdropFilter:"blur(16px)",
-        borderBottom:"1px solid rgba(0,0,0,.07)",padding:"0 16px",position:"sticky",top:0,zIndex:100,overflow:"hidden",maxWidth:"100%"}}>
-        <div style={{maxWidth:820,margin:"0 auto",display:"flex",alignItems:"center",height:52,gap:10}}>
+        borderBottom:"1px solid rgba(0,0,0,.07)",padding:"0 12px",position:"sticky",top:0,zIndex:100,overflow:"hidden",width:"100%",boxSizing:"border-box"}}>
+        <div style={{width:"100%",display:"flex",alignItems:"center",height:52,gap:8}}>
           <div style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontWeight:800,fontSize:18,letterSpacing:2,color:"#1a237e"}}>
@@ -908,7 +908,7 @@ export default function RollmateApp() {
             <span style={{position:"absolute",left:9,top:"50%",transform:"translateY(-50%)",fontSize:11,color:"#bbb"}}>🔍</span>
             <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="볼 검색..."
               style={{background:"#f2f2fa",border:"1.5px solid #e4e4f0",borderRadius:20,color:"#333",
-                padding:"6px 12px 6px 26px",fontSize:11,fontWeight:600,outline:"none",width:128,fontFamily:"inherit"}}/>
+                padding:"6px 12px 6px 26px",fontSize:11,fontWeight:600,outline:"none",width:"min(128px,30vw)",fontFamily:"inherit"}}/>
           </div>
         </div>
       </div>

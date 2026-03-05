@@ -856,8 +856,7 @@ function BallScanner({ balls }) {
         <div style={{textAlign:"center",padding:"40px 20px",background:"#f8f8ff",
           borderRadius:18,border:"1px dashed #dde"}}>
           <div style={{fontSize:48,marginBottom:10}}>🎳</div>
-          <div style={{fontSize:13,color:"#bbb",fontWeight:600}}>볼링공 사진을 업로드하면{"
-"}AI가 제품을 인식해요</div>
+          <div style={{fontSize:13,color:"#bbb",fontWeight:600}}>볼링공 사진을 업로드하면 AI가 제품을 인식해요</div>
         </div>
       )}
     </div>
@@ -1006,10 +1005,9 @@ export default function RollmateApp() {
         animation:"fadeUp .6s .5s both",marginTop:8}}>
         ROLL<span style={{color:"#90caf9"}}>MATE</span>
       </div>
-      <div style={{fontSize:10,color:"rgba(255,255,255,.32)",letterSpacing:4,
-        animation:"fadeUp .6s .75s both",marginTop:5}}>BOWLING BALL DATABASE</div>
-      <div style={{fontSize:10,color:"rgba(144,202,249,.5)",letterSpacing:2,
-        animation:"fadeUp .6s .9s both",marginTop:4}}>powered by bowwwl.com</div>
+      <div style={{fontSize:12,color:"rgba(144,202,249,.7)",letterSpacing:2,
+        fontStyle:"italic",fontWeight:400,
+        animation:"fadeUp .6s .75s both",marginTop:8}}>Know before you throw.</div>
       <div style={{marginTop:26,width:130,height:2,background:"rgba(255,255,255,.1)",borderRadius:2,
         overflow:"hidden",animation:"fadeUp .6s 1s both"}}>
         <div style={{height:"100%",background:"#90caf9",animation:"trackLine 1.1s 1s ease both"}}/>

@@ -645,14 +645,14 @@ function Detail({ ball, onBack, inArsenal, onReg }) {
               {l:"코어 이름",v:ball.coreName},{l:"마감 처리",v:ball.finish},
               {l:"오일 조건",v:ball.condition},{l:"출시일",v:ball.releaseDate}].map(s=>(
               <div key={s.l} style={{background:"#f8f8fc",borderRadius:11,padding:"9px 12px"}}>
-                <div style={{fontSize:7,color:"#ccc",fontWeight:700,letterSpacing:1.3,marginBottom:2}}>{s.l.toUpperCase()}</div>
-                <div style={{fontSize:12,color:"#333",fontWeight:700}}>{s.v}</div>
+                <div style={{fontSize:9,color:"#aaa",fontWeight:700,letterSpacing:1.5,marginBottom:4}}>{s.l.toUpperCase()}</div>
+                <div style={{fontSize:14,color:"#111",fontWeight:800,fontFamily:"'Oswald',sans-serif"}}>{s.v}</div>
               </div>
             ))}
           </div>
           {ball.weightData[16]&&[
-            {l:"RG (16lb)",v:ball.weightData[16].rg,mx:2.80,mn:2.40,d:"낮을수록 빠른 회전 시작"},
-            {l:"Diff (16lb)",v:ball.weightData[16].diff,mx:0.060,mn:0,d:"높을수록 강한 훅 포텐셜"},
+            {l:"RG (15lb)",v:(ball.weightData[15]||ball.weightData[16]).rg,mx:2.80,mn:2.40,d:"낮을수록 빠른 회전 시작"},
+            {l:"Diff (15lb)",v:(ball.weightData[15]||ball.weightData[16]).diff,mx:0.060,mn:0,d:"높을수록 강한 훅 포텐셜"},
           ].map(s=>(
             <div key={s.l} style={{marginBottom:11}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
@@ -674,7 +674,7 @@ function Detail({ ball, onBack, inArsenal, onReg }) {
       {tab==="weights"&&(
         <div style={{background:"#fff",borderRadius:18,padding:"16px",
           boxShadow:"0 2px 12px rgba(0,0,0,0.07)",animation:"fadeUp .22s ease both"}}>
-          <div style={{fontSize:8,color:"#bbb",fontWeight:700,letterSpacing:1.5,marginBottom:12}}>파운드별 코어 데이터</div>
+          <div style={{fontSize:11,color:"#888",fontWeight:700,letterSpacing:2,marginBottom:14,fontFamily:"'Oswald',sans-serif"}}>파운드별 코어 데이터</div>
           <WeightTable ball={ball} sel={selW} onSel={setSelW}/>
         </div>
       )}
@@ -683,7 +683,7 @@ function Detail({ ball, onBack, inArsenal, onReg }) {
       {tab==="core"&&(
         <div style={{background:"#fff",borderRadius:18,padding:"16px",
           boxShadow:"0 2px 12px rgba(0,0,0,0.07)",animation:"fadeUp .22s ease both"}}>
-          <div style={{fontSize:8,color:"#bbb",fontWeight:700,letterSpacing:1.5,marginBottom:12}}>
+          <div style={{fontSize:11,color:"#888",fontWeight:700,letterSpacing:2,marginBottom:12,fontFamily:"'Oswald',sans-serif"}}>
             {ball.coreName.toUpperCase()} CORE
           </div>
           <div style={{display:"flex",justifyContent:"center",marginBottom:14}}>
@@ -697,8 +697,8 @@ function Detail({ ball, onBack, inArsenal, onReg }) {
             {[{l:"코어 타입",v:ball.coreType},{l:"코어 이름",v:ball.coreName}].map(s=>(
               <div key={s.l} style={{background:`${ball.accent}09`,borderRadius:11,padding:"12px",
                 border:`1.5px solid ${ball.accent}18`,textAlign:"center"}}>
-                <div style={{fontSize:7,color:"#bbb",fontWeight:700,letterSpacing:1.3,marginBottom:4}}>{s.l.toUpperCase()}</div>
-                <div style={{fontSize:15,fontWeight:800,color:ball.accent}}>{s.v}</div>
+                <div style={{fontSize:9,color:"#aaa",fontWeight:700,letterSpacing:1.5,marginBottom:6}}>{s.l.toUpperCase()}</div>
+                <div style={{fontSize:18,fontWeight:700,color:ball.accent,fontFamily:"'Oswald',sans-serif",letterSpacing:.5}}>{s.v}</div>
               </div>
             ))}
           </div>
@@ -790,7 +790,7 @@ function BallScanner({ balls }) {
       {img&&(
         <div style={{marginBottom:14,borderRadius:16,overflow:"hidden",
           boxShadow:"0 4px 20px rgba(0,0,0,.1)",position:"relative"}}>
-          <img src={img} alt="scan" style={{width:"100%",maxHeight:280,objectFit:"cover",display:"block"}}/>
+          <img src={img} alt="scan" style={{width:"100%",maxHeight:420,objectFit:"contain",display:"block",background:"#000"}}/>
           <button onClick={analyze} disabled={loading} style={{
             position:"absolute",bottom:12,right:12,
             background:"#1a237e",color:"#fff",border:"none",borderRadius:20,
@@ -1043,7 +1043,7 @@ export default function RollmateApp() {
                   boxShadow:act?`0 3px 10px ${col}44`:"0 1px 4px rgba(0,0,0,.06)"}}>
                   {c!=="All"&&<span style={{width:5,height:5,borderRadius:"50%",display:"inline-block",
                     marginRight:4,verticalAlign:"middle",background:act?"#fff":col}}/>}
-                  {c==="All"?"전체":c}
+                  {c==="All"?"전체":c.replace(" Oil","")}
                 </button>;
               })}
             </div>
@@ -1095,8 +1095,8 @@ export default function RollmateApp() {
 
                     {ball.weightData[16]&&(
                       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5,marginBottom:7}}>
-                        {[{l:"RG",v:ball.weightData[16].rg,mx:2.8,mn:2.4},
-                          {l:"DIFF",v:ball.weightData[16].diff,mx:.06,mn:0}].map(s=>(
+                        {[{l:"RG",v:(ball.weightData[15]||ball.weightData[16]).rg,mx:2.8,mn:2.4},
+                          {l:"DIFF",v:(ball.weightData[15]||ball.weightData[16]).diff,mx:.06,mn:0}].map(s=>(
                           <div key={s.l}>
                             <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}>
                               <span style={{fontSize:9,color:"#aaa",fontWeight:700}}>{s.l}</span>
@@ -1193,8 +1193,8 @@ export default function RollmateApp() {
         {/* SCAN - AI 볼 인식 */}
         {view==="scan"&&(
           <div style={{animation:"fadeUp .3s ease both"}}>
-            <div style={{fontWeight:800,fontSize:22,color:"#111",marginBottom:2}}>📷 AI 볼 스캔</div>
-            <p style={{fontSize:11,color:"#bbb",marginBottom:16}}>볼링공 사진을 찍거나 업로드하면 AI가 제품을 인식해요</p>
+            <div style={{fontWeight:700,fontSize:26,color:"#1a237e",marginBottom:6,fontFamily:"'Oswald',sans-serif",letterSpacing:1}}>📷 AI 볼 스캔</div>
+            <p style={{fontSize:13,color:"#666",marginBottom:16,fontWeight:500,lineHeight:1.5}}>볼링공 사진을 찍거나 업로드하면<br/>AI가 제품명과 스펙을 인식해요</p>
             <BallScanner balls={ALL_BALLS}/>
           </div>
         )}

@@ -863,75 +863,6 @@ function BallScanner({ balls }) {
   );
 }
 
-// ══ GEMINI AI 볼 추천 컴포넌트 ══
-function GeminiAdvisor({ balls }) {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer]     = useState("");
-  const [loading, setLoading]   = useState(false);
-
-  const ask = async () => {
-    if (!question.trim() || loading) return;
-    setLoading(true);
-    setAnswer("");
-    try {
-      const apiKey = process.env.REACT_APP_GEMINI_KEY;
-      if (!apiKey) { setAnswer("⚠️ REACT_APP_GEMINI_KEY 환경변수를 설정해주세요."); setLoading(false); return; }
-
-      const ballList = balls.map(b =>
-        `${b.brand} ${b.name} (커버:${b.cover}, 코어:${b.coreType}, RG:${b.weightData[16]?.rg}, Diff:${b.weightData[16]?.diff}, 조건:${b.condition})`
-      ).join("\n");
-
-      const prompt = `당신은 볼링 전문가입니다. 아래 볼링공 목록을 참고해서 사용자 질문에 한국어로 답해주세요. 간결하게 150자 이내로.\n\n볼 목록:\n${ballList}\n\n질문: ${question}`;
-
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-        }
-      );
-      const data = await res.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      setAnswer(text || "답변을 가져오지 못했어요.");
-    } catch (e) {
-      setAnswer("AI 연결 오류가 발생했어요. API 키를 확인해주세요.");
-    }
-    setLoading(false);
-  };
-
-  return (
-    <div style={{
-      background:"linear-gradient(135deg,#1a237e08,#1976d208)",
-      border:"1.5px solid #1a237e22", borderRadius:18, padding:"14px 16px", marginBottom:14
-    }}>
-      <div style={{fontSize:8,color:"#1a237e",fontWeight:700,letterSpacing:1.5,marginBottom:9}}>
-        ✨ AI 볼 추천 (Gemini)
-      </div>
-      <div style={{display:"flex",gap:6}}>
-        <input
-          value={question}
-          onChange={e=>setQuestion(e.target.value)}
-          onKeyDown={e=>e.key==="Enter"&&ask()}
-          placeholder="예: 헤비 오일에서 쓸 볼 추천해줘"
-          style={{flex:1,background:"#fff",border:"1.5px solid #e4e4f0",borderRadius:10,
-            padding:"8px 12px",fontSize:12,outline:"none",fontFamily:"inherit",color:"#333"}}
-        />
-        <button onClick={ask} disabled={loading} style={{
-          padding:"8px 14px",borderRadius:10,border:"none",cursor:"pointer",fontFamily:"inherit",
-          background:"#1a237e",color:"#fff",fontWeight:800,fontSize:12,
-          opacity:loading?0.6:1,transition:"opacity .15s",whiteSpace:"nowrap"
-        }}>{loading?"⏳":"질문"}</button>
-      </div>
-      {answer&&(
-        <div style={{marginTop:10,padding:"10px 12px",background:"#fff",borderRadius:10,
-          fontSize:12,color:"#444",lineHeight:1.7,border:"1px solid #e8e8f4"}}>
-          {answer}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // ══ MAIN APP ══
 export default function RollmateApp() {
@@ -1001,13 +932,16 @@ export default function RollmateApp() {
       `}</style>
       <div style={{animation:"rollIn .9s cubic-bezier(.34,1.26,.64,1) both",fontSize:80,
         filter:"drop-shadow(0 0 36px rgba(144,202,249,.55))"}}>🎳</div>
-      <div style={{fontFamily:"'Syne',sans-serif",fontWeight:800,fontSize:32,color:"#fff",letterSpacing:3,
+      <div style={{fontFamily:"'Syne',sans-serif",fontWeight:800,fontSize:38,color:"#fff",letterSpacing:3,
         animation:"fadeUp .6s .5s both",marginTop:8}}>
         ROLL<span style={{color:"#90caf9"}}>MATE</span>
       </div>
+      <div style={{fontSize:15,color:"rgba(255,255,255,.9)",letterSpacing:1.5,
+        fontWeight:700,
+        animation:"fadeUp .6s .7s both",marginTop:10}}>Ready to Roll?</div>
       <div style={{fontSize:12,color:"rgba(144,202,249,.7)",letterSpacing:2,
         fontStyle:"italic",fontWeight:400,
-        animation:"fadeUp .6s .75s both",marginTop:8}}>Know before you throw.</div>
+        animation:"fadeUp .6s .9s both",marginTop:6}}>Know before you throw.</div>
       <div style={{marginTop:26,width:130,height:2,background:"rgba(255,255,255,.1)",borderRadius:2,
         overflow:"hidden",animation:"fadeUp .6s 1s both"}}>
         <div style={{height:"100%",background:"#90caf9",animation:"trackLine 1.1s 1s ease both"}}/>

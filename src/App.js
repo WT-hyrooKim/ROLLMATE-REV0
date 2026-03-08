@@ -47,9 +47,9 @@ const ALL_BALLS = [
   },
   {
     id:4, brand:"Brunswick", name:"Crown Victory Pearl",
-    cover:"Pearl", coreType:"Symmetric", coreName:"Crown",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Tiered Hexagon",
     finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#c62828",
-    ballSlug:"brunswick-crown-victory-pearl", coreSlug:"brunswick-crown-victory-core",
+    ballSlug:"brunswick-crown-victory-pearl", coreSlug:"brunswick-tiered-hexagon-core",
     weightData:{
       16:{rg:2.540,diff:0.045}, 15:{rg:2.545,diff:0.043},
       14:{rg:2.555,diff:0.040}, 13:{rg:2.635,diff:0.036}, 12:{rg:2.695,diff:0.030}
@@ -85,9 +85,9 @@ const ALL_BALLS = [
   // Motiv
   {
     id:7, brand:"Motiv", name:"Supra Sport",
-    cover:"Solid", coreType:"Symmetric", coreName:"Predator V2",
+    cover:"Solid", coreType:"Symmetric", coreName:"Quadfire",
     finish:"4000 LSS", condition:"Light-Medium Oil", accent:"#ef6c00",
-    ballSlug:"motiv-supra-sport", coreSlug:"motiv-predator-v2",
+    ballSlug:"motiv-supra-sport", coreSlug:"motiv-quadfire-core",
     weightData:{
       16:{rg:2.550,diff:0.043}, 15:{rg:2.560,diff:0.041},
       14:{rg:2.570,diff:0.038}, 13:{rg:2.650,diff:0.034}, 12:{rg:2.710,diff:0.028}
@@ -97,9 +97,9 @@ const ALL_BALLS = [
   },
   {
     id:8, brand:"Motiv", name:"Evoke Mayhem",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Turbulent V2",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Overload",
     finish:"2000 LSS", condition:"Heavy Oil", accent:"#b71c1c",
-    ballSlug:"motiv-evoke-mayhem", coreSlug:"motiv-turbulent-v2-core",
+    ballSlug:"motiv-evoke-mayhem", coreSlug:"motiv-overload-core",
     weightData:{
       16:{rg:2.480,diff:0.050,moi:0.017}, 15:{rg:2.490,diff:0.048,moi:0.016},
       14:{rg:2.500,diff:0.045}, 13:{rg:2.590,diff:0.040}, 12:{rg:2.650,diff:0.033}

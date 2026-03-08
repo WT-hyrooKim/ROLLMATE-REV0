@@ -49,7 +49,7 @@ const ALL_BALLS = [
     id:4, brand:"Brunswick", name:"Crown Victory Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Tiered Hexagon",
     finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#c62828",
-    ballSlug:"brunswick-crown-victory-pearl", coreSlug:"brunswick-tiered-hexagon-core",
+    ballSlug:"brunswick-crown-victory-pearl", coreSlug:"brunswick-tiered-hexagon",
     weightData:{
       16:{rg:2.540,diff:0.045}, 15:{rg:2.545,diff:0.043},
       14:{rg:2.555,diff:0.040}, 13:{rg:2.635,diff:0.036}, 12:{rg:2.695,diff:0.030}

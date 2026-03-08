@@ -160,12 +160,12 @@ const ALL_BALLS = [
   // DV8
   {
     id:13, brand:"DV8", name:"Dark Side Curse",
-    cover:"Solid", coreType:"Symmetric", coreName:"Misfit",
-    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#4e342e",
-    ballSlug:"dv8-dark-side-curse", coreSlug:"dv8-misfit-core",
+    cover:"Solid", coreType:"Symmetric", coreName:"Duality",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#4e342e",
+    ballSlug:"ev8-dark-side-curse", coreSlug:"dv8-duality-core",
     weightData:{
-      16:{rg:2.480,diff:0.036}, 15:{rg:2.490,diff:0.034},
-      14:{rg:2.500,diff:0.031}, 13:{rg:2.585,diff:0.027}, 12:{rg:2.645,diff:0.022}
+      16:{rg:2.494,diff:0.031}, 15:{rg:2.480,diff:0.036},
+      14:{rg:2.503,diff:0.035}, 13:{rg:2.577,diff:0.043}, 12:{rg:2.599,diff:0.043}
     },
     releaseDate:"Jan 2026",
     description:"Join the dark side — symmetric solid for controlled, predictable medium oil performance."

@@ -554,6 +554,7 @@ function MyCard({ entry, ball, onRemove, onEdit }) {
               ))}
             </div>
           )}
+        </div>
         <div style={{position:"absolute",inset:0,backfaceVisibility:"hidden",
           transform:"rotateY(180deg)",background:`linear-gradient(135deg,#fff,${ball.accent}07)`,
           border:`1.5px solid ${ball.accent}22`,borderRadius:18,padding:13,

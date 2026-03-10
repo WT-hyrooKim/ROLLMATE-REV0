@@ -307,6 +307,308 @@ const ALL_BALLS = [
     releaseDate:"Jan 2026",
     description:"Operate in stealth mode — symmetric hybrid that strikes without warning."
   },
+
+  // ── 2023-2025 신규 추가 ──────────────────────────────────────────
+  // Storm
+  {
+    id:25, brand:"Storm", name:"Ion Pro",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Element Tour A.I.",
+    finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-ion-pro", coreSlug:"storm-element-tour-ai-core",
+    weightData:{
+      16:{rg:2.470,diff:0.035,moi:0.013}, 15:{rg:2.470,diff:0.035,moi:0.014},
+      14:{rg:2.510,diff:0.036,moi:0.010}, 13:{rg:2.560,diff:0.034,moi:0.011}, 12:{rg:2.580,diff:0.031,moi:0.009}
+    },
+    releaseDate:"Jun 2024",
+    description:"Storm's first asymmetric benchmark ball — versatile, forgiving, built for every style."
+  },
+  {
+    id:26, brand:"Storm", name:"Phaze A.I.",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Velocity A.I.",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-phaze-ai", coreSlug:"storm-velocity-ai-core",
+    weightData:{
+      16:{rg:2.470,diff:0.053}, 15:{rg:2.470,diff:0.053},
+      14:{rg:2.520,diff:0.052}, 13:{rg:2.580,diff:0.047}, 12:{rg:2.640,diff:0.037}
+    },
+    releaseDate:"Oct 2024",
+    description:"Think Phaze II, but pearl — A.I. core technology meets TX-16 Pearl for explosive backend."
+  },
+  // Brunswick
+  {
+    id:27, brand:"Brunswick", name:"Ethos",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Ethos",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    ballSlug:"brunswick-ethos", coreSlug:"brunswick-ethos-core",
+    weightData:{
+      16:{rg:2.495,diff:0.046}, 15:{rg:2.481,diff:0.053},
+      14:{rg:2.505,diff:0.053}, 13:{rg:2.510,diff:0.047}, 12:{rg:2.577,diff:0.045}
+    },
+    releaseDate:"Oct 2023",
+    description:"Brunswick's ethos in ball form — HK22 pearl cover with sweeping backend motion."
+  },
+  {
+    id:28, brand:"Brunswick", name:"Mesmerize",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
+    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
+    ballSlug:"brunswick-mesmerize", coreSlug:"brunswick-tri-elliptic-core",
+    weightData:{
+      16:{rg:2.521,diff:0.048,moi:0.014}, 15:{rg:2.510,diff:0.056,moi:0.017},
+      14:{rg:2.533,diff:0.056,moi:0.016}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Aug 2024",
+    description:"HK22C-Evo Solid with the new Tri-Elliptic D.O.T. core — Brunswick's biggest hooking ball ever."
+  },
+  // Roto Grip
+  {
+    id:29, brand:"Roto Grip", name:"Attention Star",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Momentous AV + A.I.",
+    finish:"Reacta Gloss", condition:"Medium-Heavy Oil", accent:"#c62828",
+    ballSlug:"roto-grip-attention-star", coreSlug:"roto-grip-momentous-av-ai-core",
+    weightData:{
+      16:{rg:2.480,diff:0.052,moi:0.017}, 15:{rg:2.480,diff:0.049,moi:0.017},
+      14:{rg:2.530,diff:0.046,moi:0.014}, 13:{rg:2.560,diff:0.034,moi:0.011}, 12:{rg:2.580,diff:0.031,moi:0.009}
+    },
+    releaseDate:"Feb 2024",
+    description:"eTrax PLUS Pearl with the Momentous AV + A.I. core — a ball motion unlike anything on earth."
+  },
+  {
+    id:30, brand:"Roto Grip", name:"Optimum Idol",
+    cover:"Solid", coreType:"Symmetric", coreName:"Ikon + A.I.",
+    finish:"2000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
+    ballSlug:"roto-grip-optimum-idol", coreSlug:"roto-grip-ikon-ai-core",
+    weightData:{
+      16:{rg:2.470,diff:0.054}, 15:{rg:2.470,diff:0.056},
+      14:{rg:2.510,diff:0.054}, 13:{rg:2.580,diff:0.047}, 12:{rg:2.640,diff:0.037}
+    },
+    releaseDate:"Mar 2024",
+    description:"MicroTrax Solid particle cover with the Ikon + A.I. core — a cheat code for any lane condition."
+  },
+  // Motiv
+  {
+    id:31, brand:"Motiv", name:"Jackal Onyx",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Predator V2",
+    finish:"1000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
+    ballSlug:"motiv-jackal-onyx", coreSlug:"motiv-predator-v2-core",
+    weightData:{
+      16:{rg:2.480,diff:0.047,moi:0.013}, 15:{rg:2.480,diff:0.047,moi:0.013},
+      14:{rg:2.510,diff:0.044,moi:0.011}, 13:{rg:2.560,diff:0.040,moi:0.009}, 12:{rg:2.620,diff:0.034,moi:0.008}
+    },
+    releaseDate:"Jan 2025",
+    description:"Leverage HXC Solid with Duramax tech and the Predator V2 core — maximum hook, relentless traction."
+  },
+  {
+    id:32, brand:"Motiv", name:"Nuclear Forge",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Detonator",
+    finish:"1500 LSS", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
+    ballSlug:"motiv-nuclear-forge", coreSlug:"motiv-detonator-core",
+    weightData:{
+      16:{rg:2.470,diff:0.054}, 15:{rg:2.470,diff:0.055},
+      14:{rg:2.500,diff:0.052}, 13:{rg:2.560,diff:0.046}, 12:{rg:2.620,diff:0.039}
+    },
+    releaseDate:"May 2024",
+    description:"Propulsion HVP Pearl with the Detonator symmetric core — electrifying length and explosive backend motion."
+  },
+  // Hammer
+  {
+    id:33, brand:"Hammer", name:"Black Widow 3.0",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Gas Mask",
+    finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#212121",
+    ballSlug:"hammer-black-widow-3-0", coreSlug:"hammer-gas-mask-core",
+    weightData:{
+      16:{rg:2.510,diff:0.048,moi:0.015}, 15:{rg:2.500,diff:0.058,moi:0.016},
+      14:{rg:2.500,diff:0.056,moi:0.016}, 13:{rg:2.589,diff:0.043,moi:0.011}, 12:{rg:2.612,diff:0.043,moi:0.011}
+    },
+    releaseDate:"Jan 2024",
+    description:"HK22 Aggression Solid with the legendary Gas Mask core — the Black Widow line's most powerful solid yet."
+  },
+  {
+    id:34, brand:"Hammer", name:"Effect Tour",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Huntsman Tour",
+    finish:"500/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#212121",
+    ballSlug:"hammer-effect-tour", coreSlug:"hammer-huntsman-tour-core",
+    weightData:{
+      16:{rg:2.472,diff:0.036,moi:0.012}, 15:{rg:2.472,diff:0.036,moi:0.012},
+      14:{rg:2.472,diff:0.036,moi:0.012}, 13:{rg:2.597,diff:0.041,moi:0.011}, 12:{rg:2.612,diff:0.041,moi:0.011}
+    },
+    releaseDate:"Nov 2024",
+    description:"TourV3 Solid with the low-diff Huntsman Tour core — smooth, predictable, precision motion for demanding patterns."
+  },
+  // 900 Global
+  {
+    id:35, brand:"900 Global", name:"Zen 25",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Meditate A.I.",
+    finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-zen-25", coreSlug:"900-global-meditate-ai-core",
+    weightData:{
+      16:{rg:2.470,diff:0.053}, 15:{rg:2.480,diff:0.053},
+      14:{rg:2.490,diff:0.051}, 13:{rg:2.560,diff:0.046}, 12:{rg:2.580,diff:0.039}
+    },
+    releaseDate:"Jan 2025",
+    description:"RB 83 Pearl with the Meditate A.I. symmetric core — Zen's 25th anniversary, pushed to new heights."
+  },
+  {
+    id:36, brand:"900 Global", name:"Eternity Pi",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Epoch",
+    finish:"2000 Abralon", condition:"Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-eternity-pi", coreSlug:"900-global-epoch-core",
+    weightData:{
+      16:{rg:2.470,diff:0.052,moi:0.014}, 15:{rg:2.490,diff:0.052,moi:0.014},
+      14:{rg:2.490,diff:0.052,moi:0.014}, 13:{rg:2.560,diff:0.046,moi:0.011}, 12:{rg:2.580,diff:0.040,moi:0.009}
+    },
+    releaseDate:"Sep 2023",
+    description:"Reserve Blend 901 Solid with the all-new Epoch Asymmetric core — heavy oil power with a cleaner motion."
+  },
+  // DV8
+  {
+    id:37, brand:"DV8", name:"Heckler",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Unholy",
+    finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#4e342e",
+    ballSlug:"dv8-heckler", coreSlug:"dv8-unholy-core",
+    weightData:{
+      16:{rg:2.518,diff:0.043,moi:0.010}, 15:{rg:2.504,diff:0.051,moi:0.010},
+      14:{rg:2.526,diff:0.051,moi:0.010}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Nov 2024",
+    description:"HK22C Maximum Havoc Solid with the asymmetric Unholy core — engineered for no-thumb dominance on heavy oil."
+  },
+  {
+    id:38, brand:"DV8", name:"Hater",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Hater",
+    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#4e342e",
+    ballSlug:"dv8-hater", coreSlug:"dv8-hater-core",
+    weightData:{
+      16:{rg:2.545,diff:0.047,moi:0.021}, 15:{rg:2.539,diff:0.054,moi:0.024},
+      14:{rg:2.556,diff:0.054,moi:0.024}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Mar 2024",
+    description:"HK22 Havoc Hybrid with the brand-new Hater core — a hook monster built for the heaviest conditions."
+  },
+  // Ebonite
+  {
+    id:39, brand:"Ebonite", name:"Emerge",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Emerge",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#1b5e20",
+    ballSlug:"ebonite-emerge", coreSlug:"ebonite-emerge-core",
+    weightData:{
+      16:{rg:2.520,diff:0.046,moi:0.018}, 15:{rg:2.510,diff:0.053,moi:0.021},
+      14:{rg:2.537,diff:0.054,moi:0.019}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Jul 2023",
+    description:"HK22 Optimize Pearl with the new Emerge Asymmetric core — length, flippy backend, and serious continuation."
+  },
+  {
+    id:40, brand:"Ebonite", name:"Emerge Hybrid",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Emerge",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#1b5e20",
+    ballSlug:"ebonite-emerge-hybrid", coreSlug:"ebonite-emerge-core",
+    weightData:{
+      16:{rg:2.520,diff:0.046,moi:0.018}, 15:{rg:2.510,diff:0.053,moi:0.021},
+      14:{rg:2.537,diff:0.054,moi:0.019}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Mar 2024",
+    description:"Emerge Hybrid cover brings more mid-lane read — same powerful Emerge core, stronger overall reaction."
+  },
+  // Columbia 300
+  {
+    id:41, brand:"Columbia 300", name:"Atlas",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Atlas",
+    finish:"500/2000 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#00838f",
+    ballSlug:"columbia-300-atlas", coreSlug:"columbia-300-atlas-core",
+    weightData:{
+      16:{rg:2.530,diff:0.047,moi:0.016}, 15:{rg:2.520,diff:0.054,moi:0.018},
+      14:{rg:2.542,diff:0.054,moi:0.018}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.612,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Jul 2023",
+    description:"Formula 1 Solid with the new asymmetric Atlas core — exceptional backend and pin drive on medium-heavy oil."
+  },
+  {
+    id:42, brand:"Columbia 300", name:"Atlas Hybrid",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Atlas",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#00838f",
+    ballSlug:"columbia-300-atlas-hybrid", coreSlug:"columbia-300-atlas-core",
+    weightData:{
+      16:{rg:2.530,diff:0.047,moi:0.016}, 15:{rg:2.520,diff:0.054,moi:0.018},
+      14:{rg:2.542,diff:0.054,moi:0.018}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.612,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Feb 2024",
+    description:"HK22 Formula 1 Hybrid with the Atlas core — longer, cleaner complement to the Atlas Solid."
+  },
+  // SWAG
+  {
+    id:43, brand:"SWAG", name:"Unreal",
+    cover:"Solid", coreType:"Symmetric", coreName:"Unreal",
+    finish:"1500 Polished", condition:"Medium Oil", accent:"#558b2f",
+    ballSlug:"swag-unreal", coreSlug:"swag-unreal-core",
+    weightData:{
+      16:{rg:2.520,diff:0.034}, 15:{rg:2.510,diff:0.047},
+      14:{rg:2.560,diff:0.040}, 13:{rg:2.550,diff:0.048}, 12:{rg:2.610,diff:0.041}
+    },
+    releaseDate:"Jan 2025",
+    description:"Never Quit coverstock on the symmetric Unreal core — SWAG's benchmark utility performance ball."
+  },
+  {
+    id:44, brand:"SWAG", name:"APEX Solid",
+    cover:"Solid", coreType:"Symmetric", coreName:"APX V1",
+    finish:"3000 Abralon", condition:"Medium-Heavy Oil", accent:"#558b2f",
+    ballSlug:"swag-apex-solid", coreSlug:"swag-apx-v1-core",
+    weightData:{
+      16:{rg:2.500,diff:0.042}, 15:{rg:2.500,diff:0.042},
+      14:{rg:2.530,diff:0.038}, 13:{rg:2.590,diff:0.033}, 12:{rg:2.650,diff:0.028}
+    },
+    releaseDate:"Apr 2025",
+    description:"Apex Solid coverstock on the APX V1 symmetric core — smooth, predictable motion that reads oil early and finishes strong."
+  },
+  // Radical
+  {
+    id:45, brand:"Radical", name:"ZigZag",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"ZigZag",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#bf360c",
+    ballSlug:"radical-zigzag", coreSlug:"radical-zigzag-core",
+    weightData:{
+      16:{rg:2.501,diff:0.045,moi:0.015}, 15:{rg:2.501,diff:0.045,moi:0.015},
+      14:{rg:2.531,diff:0.042,moi:0.013}, 13:{rg:2.601,diff:0.037,moi:0.011}, 12:{rg:2.661,diff:0.030,moi:0.009}
+    },
+    releaseDate:"Dec 2023",
+    description:"HK22 HyperKinetic Pearl with the new ZigZag asymmetric core — extended hook window, powerful continuation."
+  },
+  {
+    id:46, brand:"Radical", name:"Outer Limits Black Hole",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Outer Limits",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#bf360c",
+    ballSlug:"radical-outer-limits-black-hole", coreSlug:"radical-outer-limits-core",
+    weightData:{
+      16:{rg:2.499,diff:0.051,moi:0.014}, 15:{rg:2.499,diff:0.051,moi:0.014},
+      14:{rg:2.531,diff:0.048,moi:0.012}, 13:{rg:2.601,diff:0.043,moi:0.010}, 12:{rg:2.661,diff:0.036,moi:0.008}
+    },
+    releaseDate:"Jan 2026",
+    description:"HK22C Solid with the proven Outer Limits core — big down-lane motion and relentless continuation."
+  },
+  // Track
+  {
+    id:47, brand:"Track", name:"Theorem Pearl",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Theorem",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#37474f",
+    ballSlug:"track-theorem-pearl", coreSlug:"track-theorem-core",
+    weightData:{
+      16:{rg:2.485,diff:0.044,moi:0.017}, 15:{rg:2.473,diff:0.046,moi:0.017},
+      14:{rg:2.487,diff:0.046,moi:0.017}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Nov 2024",
+    description:"HK22 Prime Response Pearl with the Theorem asymmetric core — sharper and more defined breakpoint than the original."
+  },
+  {
+    id:48, brand:"Track", name:"Theorem",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Theorem",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#37474f",
+    ballSlug:"track-theorem", coreSlug:"track-theorem-core",
+    weightData:{
+      16:{rg:2.485,diff:0.044,moi:0.017}, 15:{rg:2.473,diff:0.046,moi:0.017},
+      14:{rg:2.487,diff:0.046,moi:0.017}, 13:{rg:2.597,diff:0.041,moi:0.014}, 12:{rg:2.593,diff:0.041,moi:0.014}
+    },
+    releaseDate:"Feb 2024",
+    description:"Prime Response Hybrid HK22 with the Theorem asymmetric core — big sweeping motion and strong continuation."
+  },
 ];
 
 const COND_COLOR = {

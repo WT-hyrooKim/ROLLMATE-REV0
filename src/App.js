@@ -1159,7 +1159,7 @@ export default function RollmateApp() {
           .rm-arsenal-grid{grid-template-columns:repeat(4,1fr)!important}
           .bcard{padding:18px}
         }
-      \`}</style>
+      `}</style>
 
       {toast&&<div style={{position:"fixed",bottom:84,left:"50%",background:"#ffffff",
         border:`1.5px solid ${toast.color}44`,color:toast.color,padding:"10px 18px",borderRadius:12,

@@ -2221,6 +2221,185 @@ const ALL_BALLS = [
     releaseDate:"Feb 2026",
     description:"SWAG Rage Solid AP26 on Craze symmetric core — solid companion to Craze Tour Pearl with more oil traction."
   },
+
+  // ══════════════════════════════════════════════════════════════
+  // v7.2 누락분 4차 추가 — 전수 재검증 (페이지네이션 포함)
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Storm 추가 누락분 (bowwwl p1~2 대조) ──────────────────────
+  {
+    id:179, brand:"Storm", name:"Hy-Road 40",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Inverted Fe2",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-hy-road-40", coreSlug:"storm-inverted-fe2-core",
+    weightData:{16:{rg:2.570,diff:0.046},15:{rg:2.570,diff:0.046},14:{rg:2.570,diff:0.044},13:{rg:2.630,diff:0.038},12:{rg:2.690,diff:0.031}},
+    releaseDate:"Jun 2025",
+    description:"A1S Pearl on Inverted Fe2 — 40th anniversary HyRoad, clean through the fronts with predictable angular backend."
+  },
+  {
+    id:180, brand:"Storm", name:"!Q Spear",
+    cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal A.I.",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-iq-spear", coreSlug:"storm-c3-centripetal-ai-core",
+    weightData:{16:{rg:2.550,diff:0.045},15:{rg:2.550,diff:0.045},14:{rg:2.550,diff:0.043},13:{rg:2.620,diff:0.037},12:{rg:2.680,diff:0.030}},
+    releaseDate:"Jan 2026",
+    description:"R2S Solid on C3 Centripetal A.I. — ultimate control and workability at the breakpoint, A.I. enhanced energy transfer."
+  },
+  {
+    id:181, brand:"Storm", name:"Motor 30",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Torsion A.I.",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-motor-30", coreSlug:"storm-torsion-ai-core",
+    weightData:{16:{rg:2.490,diff:0.048},15:{rg:2.490,diff:0.048},14:{rg:2.520,diff:0.046},13:{rg:2.590,diff:0.040},12:{rg:2.650,diff:0.033}},
+    releaseDate:"Feb 2026",
+    description:"RX Pro Pearl on Torsion A.I. — Motor line's 30th anniversary limited edition with explosive rev-up motion."
+  },
+  {
+    id:182, brand:"Storm", name:"IDentity B-C-P",
+    cover:"Hybrid", coreType:"Symmetric", coreName:"Ignition A.I.",
+    finish:"3000 Abralon", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-identity-bcp", coreSlug:"storm-ignition-ai-core",
+    weightData:{16:{rg:2.490,diff:0.050},15:{rg:2.490,diff:0.050},14:{rg:2.520,diff:0.048},13:{rg:2.590,diff:0.042},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Jan 2026",
+    description:"Hybrid cover on Ignition A.I. — B-C-P (Blue/Crimson/Purple) colorway IDentity, versatile medium oil performer."
+  },
+  {
+    id:183, brand:"Storm", name:"Grand Gate",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Ignition A.I.",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-grand-gate", coreSlug:"storm-ignition-ai-core",
+    weightData:{16:{rg:2.490,diff:0.050},15:{rg:2.490,diff:0.050},14:{rg:2.520,diff:0.048},13:{rg:2.590,diff:0.042},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Mar 2025",
+    description:"A1S Pearl on Ignition A.I. — Gate series' premium pearl for clean skid with sharp angular backend reaction."
+  },
+  {
+    id:184, brand:"Storm", name:"Star Gate",
+    cover:"Solid", coreType:"Symmetric", coreName:"Ignition A.I.",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-star-gate", coreSlug:"storm-ignition-ai-core",
+    weightData:{16:{rg:2.490,diff:0.050},15:{rg:2.490,diff:0.050},14:{rg:2.520,diff:0.048},13:{rg:2.590,diff:0.042},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Oct 2024",
+    description:"Hybrid cover on Ignition A.I. — Star Gate's blueberry-scented aggressive solid Gate series entry."
+  },
+  {
+    id:185, brand:"Storm", name:"Marvel Flame",
+    cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-marvel-flame", coreSlug:"storm-centripetal-hd-ai-core",
+    weightData:{16:{rg:2.460,diff:0.056},15:{rg:2.460,diff:0.056},14:{rg:2.460,diff:0.056},13:{rg:2.590,diff:0.045},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Feb 2025",
+    description:"EXO Solid on Centripetal HD A.I. — 3rd Marvel A.I. series, stable arc with high scoreability on medium-heavy."
+  },
+  {
+    id:186, brand:"Storm", name:"Code Impact",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"RAD4",
+    finish:"3000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-code-impact", coreSlug:"storm-rad4-core",
+    weightData:{16:{rg:2.470,diff:0.058,moi:0.020},15:{rg:2.470,diff:0.057,moi:0.020},14:{rg:2.510,diff:0.054,moi:0.017},13:{rg:2.580,diff:0.048,moi:0.014},12:{rg:2.640,diff:0.041,moi:0.012}},
+    releaseDate:"Sep 2025",
+    description:"NeX Hybrid on RAD4 — the Code series' heaviest hitter, highest diff in the Premier line for maximum heavy oil."
+  },
+  {
+    id:187, brand:"Storm", name:"Summit World",
+    cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-summit-world", coreSlug:"storm-centripetal-hd-ai-core",
+    weightData:{16:{rg:2.460,diff:0.056},15:{rg:2.460,diff:0.056},14:{rg:2.460,diff:0.056},13:{rg:2.590,diff:0.045},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Jul 2025",
+    description:"R2S Solid on Centripetal HD A.I. — overseas Summit World, strong continuous roll on medium-heavy oil."
+  },
+  {
+    id:188, brand:"Storm", name:"Wild Absolute",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Sentinel",
+    finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-wild-absolute", coreSlug:"storm-sentinel-core",
+    weightData:{16:{rg:2.470,diff:0.053,moi:0.018},15:{rg:2.470,diff:0.052,moi:0.018},14:{rg:2.510,diff:0.049,moi:0.016},13:{rg:2.580,diff:0.043,moi:0.013},12:{rg:2.640,diff:0.036,moi:0.011}},
+    releaseDate:"Dec 2024",
+    description:"NeX Solid on Sentinel — overseas Wild Absolute, stable power axis movement for continuous heavy oil dominance."
+  },
+  {
+    id:189, brand:"Storm", name:"DNA Strand",
+    cover:"Solid", coreType:"Asymmetric", coreName:"G2",
+    finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-dna-strand", coreSlug:"storm-g2-core",
+    weightData:{16:{rg:2.470,diff:0.058,moi:0.019},15:{rg:2.470,diff:0.057,moi:0.019},14:{rg:2.510,diff:0.054,moi:0.017},13:{rg:2.580,diff:0.048,moi:0.014},12:{rg:2.640,diff:0.041,moi:0.012}},
+    releaseDate:"Mar 2025",
+    description:"NeX Solid on G2 asymmetric — stronger midlane read than DNA Coil II, 11% more entry angle vs NRG cover."
+  },
+  {
+    id:190, brand:"Storm", name:"Bite Panic A.I.",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"G2 A.I.",
+    finish:"Power Edge", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-bite-panic-ai", coreSlug:"storm-g2-ai-core",
+    weightData:{16:{rg:2.470,diff:0.058,moi:0.019},15:{rg:2.470,diff:0.057,moi:0.019},14:{rg:2.510,diff:0.054,moi:0.017},13:{rg:2.580,diff:0.048,moi:0.014},12:{rg:2.640,diff:0.041,moi:0.012}},
+    releaseDate:"Jan 2025",
+    description:"EXO Pearl on G2 A.I. — overseas Bite Panic A.I., improved oil-resistance front and boosted backend power."
+  },
+  {
+    id:191, brand:"Storm", name:"Bite Panic X",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"G2",
+    finish:"3000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-bite-panic-x", coreSlug:"storm-g2-core",
+    weightData:{16:{rg:2.470,diff:0.058,moi:0.019},15:{rg:2.470,diff:0.057,moi:0.019},14:{rg:2.510,diff:0.054,moi:0.017},13:{rg:2.580,diff:0.048,moi:0.014},12:{rg:2.640,diff:0.041,moi:0.012}},
+    releaseDate:"Jun 2024",
+    description:"EXO Hybrid on G2 — overseas Bite Panic X, fine flare pattern with astonishing pin action on heavy oil."
+  },
+  {
+    id:192, brand:"Storm", name:"PhysiX Power Elite IV",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
+    finish:"2000 Abralon", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-physix-power-elite-iv", coreSlug:"storm-atomic-ai-core",
+    weightData:{16:{rg:2.470,diff:0.056,moi:0.018},15:{rg:2.470,diff:0.055,moi:0.018},14:{rg:2.520,diff:0.054,moi:0.016},13:{rg:2.580,diff:0.047,moi:0.013},12:{rg:2.640,diff:0.040,moi:0.011}},
+    releaseDate:"Oct 2024",
+    description:"R2S Solid on Atomic A.I. — PhysiX Power Elite IV, overseas limited release for maximum heavy oil performance."
+  },
+  {
+    id:193, brand:"Storm", name:"Blue !Q",
+    cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal A.I.",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-blue-iq", coreSlug:"storm-c3-centripetal-ai-core",
+    weightData:{16:{rg:2.550,diff:0.045},15:{rg:2.550,diff:0.045},14:{rg:2.550,diff:0.043},13:{rg:2.620,diff:0.037},12:{rg:2.680,diff:0.030}},
+    releaseDate:"Jun 2025",
+    description:"R2S Solid on C3 A.I. — Blue !Q celebrating the iconic IQ lineage with A.I. enhanced control motion."
+  },
+  {
+    id:194, brand:"Storm", name:"!Q Super G",
+    cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-iq-super-g", coreSlug:"storm-c3-centripetal-core",
+    weightData:{16:{rg:2.550,diff:0.040},15:{rg:2.550,diff:0.040},14:{rg:2.550,diff:0.038},13:{rg:2.620,diff:0.032},12:{rg:2.680,diff:0.026}},
+    releaseDate:"Aug 2024",
+    description:"R2S Solid on C3 Centripetal — overseas !Q Super G, tuned for smooth mid-lane transition and predictable arc."
+  },
+
+  // ── Brunswick 추가 누락분 ──────────────────────────────────────
+  {
+    id:195, brand:"Brunswick", name:"Danger Zone Purple Ice",
+    cover:"Solid", coreType:"Symmetric", coreName:"Twist",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    ballSlug:"brunswick-danger-zone-purple-ice", coreSlug:"brunswick-twist-core",
+    weightData:{16:{rg:2.510,diff:0.040},15:{rg:2.500,diff:0.042},14:{rg:2.530,diff:0.040},13:{rg:2.600,diff:0.034},12:{rg:2.660,diff:0.028}},
+    releaseDate:"Feb 2026",
+    description:"QR-12 Solid on Twist symmetric — Danger Zone Purple Ice colorway, same spec as the black version."
+  },
+  {
+    id:196, brand:"Brunswick", name:"Melee Jab Void Black",
+    cover:"Solid", coreType:"Symmetric", coreName:"Melee",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#e65100",
+    ballSlug:"brunswick-melee-jab-void-black", coreSlug:"brunswick-melee-core",
+    weightData:{16:{rg:2.560,diff:0.030},15:{rg:2.560,diff:0.032},14:{rg:2.580,diff:0.030},13:{rg:2.640,diff:0.025},12:{rg:2.700,diff:0.020}},
+    releaseDate:"Nov 2025",
+    description:"Reactive Solid on Melee symmetric — Void Black colorway Melee Jab, entry-level medium oil performance."
+  },
+  {
+    id:197, brand:"Brunswick", name:"Vapor Zone Red",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Vapor",
+    finish:"Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    ballSlug:"brunswick-vapor-zone-red", coreSlug:"brunswick-vapor-core",
+    weightData:{16:{rg:2.560,diff:0.032},15:{rg:2.560,diff:0.034},14:{rg:2.580,diff:0.032},13:{rg:2.640,diff:0.027},12:{rg:2.700,diff:0.022}},
+    releaseDate:"Dec 2025",
+    description:"Pearl cover on Vapor symmetric core — Vapor Zone Red, polished entry-level ball for medium oil conditions."
+  },
 ];
 
 const COND_COLOR = {
@@ -3101,7 +3280,7 @@ export default function RollmateApp() {
             <span style={{fontWeight:800,fontSize:28,letterSpacing:1,color:"#ffffff",fontFamily:"'Inter',sans-serif"}}>
               ROLL<span style={{color:"#ff8c00"}}>MATE</span>
             </span>
-            <span style={{fontSize:9,color:"rgba(255,140,0,.6)",fontWeight:700,letterSpacing:1,alignSelf:"flex-end",marginBottom:6}}>v7.1</span>
+            <span style={{fontSize:9,color:"rgba(255,140,0,.6)",fontWeight:700,letterSpacing:1,alignSelf:"flex-end",marginBottom:6}}>v7.2</span>
           </div>
           <div style={{position:"relative"}}>
             <span style={{position:"absolute",left:9,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#ff8c00"}}>🔍</span>

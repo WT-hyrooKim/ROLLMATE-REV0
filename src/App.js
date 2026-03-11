@@ -2085,6 +2085,142 @@ const ALL_BALLS = [
     releaseDate:"Feb 2026",
     description:"QR-12 Solid HK22C on I-Core Gen4 — Track's debut asymmetric Gen4 core for heavy oil tournament play."
   },
+
+  // ══════════════════════════════════════════════════════════════
+  // v7.1 최종 누락분 — 3차 전수 검증
+  // ══════════════════════════════════════════════════════════════
+
+  // ── 900 Global ───────────────────────────────────────────────
+  {
+    id:165, brand:"900 Global", name:"Cove",
+    cover:"Hybrid", coreType:"Symmetric", coreName:"Magna A.I.",
+    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-cove", coreSlug:"900-global-magna-ai-core",
+    weightData:{16:{rg:2.480,diff:0.048},15:{rg:2.480,diff:0.048},14:{rg:2.510,diff:0.046},13:{rg:2.580,diff:0.040},12:{rg:2.640,diff:0.033}},
+    releaseDate:"Aug 2025",
+    description:"RB 85 Hybrid on Magna A.I. dual-hemisphere symmetric core — smooth, continuous motion on medium-heavy."
+  },
+  {
+    id:166, brand:"900 Global", name:"Ember",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Magna A.I.",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"900-global-ember", coreSlug:"900-global-magna-ai-core",
+    weightData:{16:{rg:2.480,diff:0.048},15:{rg:2.480,diff:0.048},14:{rg:2.510,diff:0.046},13:{rg:2.580,diff:0.040},12:{rg:2.640,diff:0.033}},
+    releaseDate:"Aug 2025",
+    description:"RB 82 Pearl on Magna A.I. — stronger backend Cove companion, angular pearl for medium conditions."
+  },
+  {
+    id:167, brand:"900 Global", name:"Mach Cruise",
+    cover:"Solid", coreType:"Symmetric", coreName:"Cruise",
+    finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-mach-cruise", coreSlug:"900-global-cruise-core",
+    weightData:{16:{rg:2.560,diff:0.035},15:{rg:2.560,diff:0.035},14:{rg:2.580,diff:0.033},13:{rg:2.640,diff:0.028},12:{rg:2.700,diff:0.023}},
+    releaseDate:"Jul 2025",
+    description:"Reserve Blend 93 Solid on Cruise symmetric core — overseas Mach Cruise for controlled medium-heavy oil."
+  },
+  {
+    id:168, brand:"900 Global", name:"Honey Badger Black Edition",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Grapnel 2.0",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"900-global-honey-badger-black-edition", coreSlug:"900-global-grapnel-20-core",
+    weightData:{16:{rg:2.540,diff:0.048,moi:0.012},15:{rg:2.540,diff:0.048,moi:0.012},14:{rg:2.560,diff:0.046,moi:0.010},13:{rg:2.620,diff:0.040,moi:0.008},12:{rg:2.680,diff:0.033,moi:0.006}},
+    releaseDate:"Jul 2025",
+    description:"Reserve Blend 70E Hybrid on Grapnel 2.0 asymmetric — Black Edition HB for medium oil skid/flip shape."
+  },
+  {
+    id:169, brand:"900 Global", name:"Reality Incursion",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Disturbance A.I.",
+    finish:"4000 Abralon", condition:"Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-reality-incursion", coreSlug:"900-global-disturbance-ai-core",
+    weightData:{16:{rg:2.470,diff:0.056,moi:0.018},15:{rg:2.470,diff:0.056,moi:0.018},14:{rg:2.500,diff:0.054,moi:0.016},13:{rg:2.560,diff:0.048,moi:0.013},12:{rg:2.620,diff:0.041,moi:0.011}},
+    releaseDate:"Sep 2025",
+    description:"Reserve Blend 901 Solid on Disturbance A.I. — Reality's next chapter; lower RG, higher diff via A.I. outer core."
+  },
+  {
+    id:170, brand:"900 Global", name:"Remaster Honey Badger",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Grapnel 2.0",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-remaster-honey-badger", coreSlug:"900-global-grapnel-20-core",
+    weightData:{16:{rg:2.540,diff:0.048,moi:0.012},15:{rg:2.540,diff:0.048,moi:0.012},14:{rg:2.560,diff:0.046,moi:0.010},13:{rg:2.620,diff:0.040,moi:0.008},12:{rg:2.680,diff:0.033,moi:0.006}},
+    releaseDate:"Jan 2026",
+    description:"Reserve Blend 70D Solid on Grapnel 2.0 — Remaster Honey Badger solid for medium-heavy oil dominance."
+  },
+  {
+    id:171, brand:"900 Global", name:"Origin EX",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Ellipse A.I.",
+    finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"900-global-origin-ex", coreSlug:"900-global-ellipse-ai-core",
+    weightData:{16:{rg:2.470,diff:0.056,moi:0.018},15:{rg:2.480,diff:0.054,moi:0.017},14:{rg:2.510,diff:0.052,moi:0.015},13:{rg:2.570,diff:0.046,moi:0.012},12:{rg:2.630,diff:0.039,moi:0.010}},
+    releaseDate:"Oct 2025",
+    description:"Quantum Pearl on Ellipse A.I. — Origin's pearl companion with angular backend and same dual-precession power."
+  },
+  {
+    id:172, brand:"900 Global", name:"Rev Matrix",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Matrix",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"900-global-rev-matrix", coreSlug:"900-global-matrix-core",
+    weightData:{16:{rg:2.490,diff:0.048,moi:0.014},15:{rg:2.490,diff:0.048,moi:0.014},14:{rg:2.520,diff:0.046,moi:0.012},13:{rg:2.580,diff:0.040,moi:0.009},12:{rg:2.640,diff:0.033,moi:0.007}},
+    releaseDate:"Oct 2025",
+    description:"S86R Pearl on Matrix flip-block asymmetric core — overseas, designed by PWBA pro Daria Payonk for medium oil."
+  },
+  {
+    id:173, brand:"900 Global", name:"Duty Majesty",
+    cover:"Hybrid", coreType:"Symmetric", coreName:"Duty",
+    finish:"1500 Polished", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"900-global-duty-majesty", coreSlug:"900-global-duty-core",
+    weightData:{16:{rg:2.540,diff:0.038},15:{rg:2.540,diff:0.038},14:{rg:2.560,diff:0.036},13:{rg:2.620,diff:0.030},12:{rg:2.680,diff:0.024}},
+    releaseDate:"Feb 2025",
+    description:"Reserve Blend 902 Hybrid on Duty symmetric core — overseas controlled motion for medium lane conditions."
+  },
+  {
+    id:174, brand:"900 Global", name:"Honey Badger Blameless",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Grapnel 2.0",
+    finish:"3000 Abralon", condition:"Light-Medium Oil", accent:"#1565c0",
+    ballSlug:"900-global-honey-badger-blameless", coreSlug:"900-global-grapnel-20-core",
+    weightData:{16:{rg:2.540,diff:0.048,moi:0.012},15:{rg:2.540,diff:0.048,moi:0.012},14:{rg:2.560,diff:0.046,moi:0.010},13:{rg:2.620,diff:0.040,moi:0.008},12:{rg:2.680,diff:0.033,moi:0.006}},
+    releaseDate:"Feb 2025",
+    description:"Reserve Blend 701 Pearl on Grapnel 2.0 — overseas Blameless, angular Honey Badger for light-medium oil."
+  },
+
+  // ── Motiv ─────────────────────────────────────────────────────
+  {
+    id:175, brand:"Motiv", name:"Jackal ExJ",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Predator V2",
+    finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
+    ballSlug:"motiv-jackal-exj", coreSlug:"motiv-predator-v2-core",
+    weightData:{16:{rg:2.570,diff:0.056,moi:0.020},15:{rg:2.570,diff:0.056,moi:0.020},14:{rg:2.600,diff:0.053,moi:0.017},13:{rg:2.660,diff:0.048,moi:0.014},12:{rg:2.720,diff:0.041,moi:0.012}},
+    releaseDate:"Jan 2026",
+    description:"Propulsion HVH Hybrid on Predator V2 — first hybrid Jackal in 3+ years, slots between Jackal Ghost and Crimson Jackal."
+  },
+  {
+    id:176, brand:"Motiv", name:"Subzero Forge",
+    cover:"Solid", coreType:"Symmetric", coreName:"Detonator",
+    finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
+    ballSlug:"motiv-subzero-forge", coreSlug:"motiv-detonator-core",
+    weightData:{16:{rg:2.470,diff:0.052},15:{rg:2.470,diff:0.052},14:{rg:2.500,diff:0.050},13:{rg:2.560,diff:0.044},12:{rg:2.620,diff:0.037}},
+    releaseDate:"Sep 2025",
+    description:"Leverage MXC Solid + Duramax on Detonator symmetric — ice-cold heavy oil force, strong early read with continuous motion."
+  },
+  {
+    id:177, brand:"Motiv", name:"Max Thrill Pearl",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Halogen V2",
+    finish:"5500 LSP", condition:"Light-Medium Oil", accent:"#6a1b9a",
+    ballSlug:"motiv-max-thrill-pearl", coreSlug:"motiv-halogen-v2-core",
+    weightData:{16:{rg:2.600,diff:0.035},15:{rg:2.600,diff:0.035},14:{rg:2.620,diff:0.033},13:{rg:2.680,diff:0.028},12:{rg:2.740,diff:0.022}},
+    releaseDate:"Sep 2025",
+    description:"Turmoil XP3 Pearl on Halogen V2 — more angular and cleaner than Top Thrill Pearl, serious dry-lane explosion."
+  },
+
+  // ── SWAG ──────────────────────────────────────────────────────
+  {
+    id:178, brand:"SWAG", name:"Craze Tour Solid",
+    cover:"Solid", coreType:"Symmetric", coreName:"Craze",
+    finish:"3000 Abralon", condition:"Medium-Heavy Oil", accent:"#1a237e",
+    ballSlug:"swag-craze-tour-solid", coreSlug:"swag-craze-core",
+    weightData:{15:{rg:2.540,diff:0.036},14:{rg:2.560,diff:0.034},13:{rg:2.620,diff:0.028}},
+    releaseDate:"Feb 2026",
+    description:"SWAG Rage Solid AP26 on Craze symmetric core — solid companion to Craze Tour Pearl with more oil traction."
+  },
 ];
 
 const COND_COLOR = {
@@ -2965,7 +3101,7 @@ export default function RollmateApp() {
             <span style={{fontWeight:800,fontSize:28,letterSpacing:1,color:"#ffffff",fontFamily:"'Inter',sans-serif"}}>
               ROLL<span style={{color:"#ff8c00"}}>MATE</span>
             </span>
-            <span style={{fontSize:9,color:"rgba(255,140,0,.6)",fontWeight:700,letterSpacing:1,alignSelf:"flex-end",marginBottom:6}}>v7.0</span>
+            <span style={{fontSize:9,color:"rgba(255,140,0,.6)",fontWeight:700,letterSpacing:1,alignSelf:"flex-end",marginBottom:6}}>v7.1</span>
           </div>
           <div style={{position:"relative"}}>
             <span style={{position:"absolute",left:9,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#ff8c00"}}>🔍</span>

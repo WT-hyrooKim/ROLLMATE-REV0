@@ -573,20 +573,7 @@ const ALL_BALLS = [
     description:"HK22 HyperKinetic Pearl with the new ZigZag asymmetric core — extended hook window, powerful continuation."
   },
   {
-    id:46, brand:"Radical", name:"Outer Limits Black Hole",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Outer Limits",
-    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#bf360c",
-    ballSlug:"radical-outer-limits-black-hole", coreSlug:"radical-outer-limits-core",
-    weightData:{
-      16:{rg:2.499,diff:0.051,moi:0.014}, 15:{rg:2.499,diff:0.051,moi:0.014},
-      14:{rg:2.531,diff:0.048,moi:0.012}, 13:{rg:2.601,diff:0.043,moi:0.010}, 12:{rg:2.661,diff:0.036,moi:0.008}
-    },
-    releaseDate:"Jan 2026",
-    description:"HK22C Solid with the proven Outer Limits core — big down-lane motion and relentless continuation."
-  },
-  // Track
-  {
-    id:47, brand:"Track", name:"Theorem Pearl",
+    id:46, brand:"Track", name:"Theorem Pearl",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Theorem",
     finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#37474f",
     ballSlug:"track-theorem-pearl", coreSlug:"track-theorem-core",
@@ -598,7 +585,7 @@ const ALL_BALLS = [
     description:"HK22 Prime Response Pearl with the Theorem asymmetric core — sharper and more defined breakpoint than the original."
   },
   {
-    id:48, brand:"Track", name:"Theorem",
+    id:47, brand:"Track", name:"Theorem",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Theorem",
     finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#37474f",
     ballSlug:"track-theorem", coreSlug:"track-theorem-core",
@@ -616,7 +603,7 @@ const ALL_BALLS = [
 
   // ── Storm 추가 (bowwwl 검증) ─────────────────────────────────────
   {
-    id:49, brand:"Storm", name:"The Road",
+    id:48, brand:"Storm", name:"The Road",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Inverted Fe2 A.I.",
     finish:"Reacta Gloss", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-the-road", coreSlug:"storm-inverted-fe2-ai-core",
@@ -628,7 +615,7 @@ const ALL_BALLS = [
     description:"The legendary Hy-Road reinvented — ReX Hybrid cover with Inverted Fe2 A.I. core for the modern game."
   },
   {
-    id:50, brand:"Storm", name:"Absolute Power",
+    id:49, brand:"Storm", name:"Absolute Power",
     cover:"Solid", coreType:"Asymmetric", coreName:"Sentinel",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-absolute-power", coreSlug:"storm-sentinel-core",
@@ -640,7 +627,7 @@ const ALL_BALLS = [
     description:"R2S Deep Solid on Storm's first single-density Sentinel core — powerful solid motion for heavy conditions."
   },
   {
-    id:51, brand:"Storm", name:"Summit Peak",
+    id:50, brand:"Storm", name:"Summit Peak",
     cover:"Pearl", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"Reacta Gloss", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-summit-peak", coreSlug:"storm-centripetal-hd-ai-core",
@@ -652,7 +639,7 @@ const ALL_BALLS = [
     description:"TX-23 Pearl with the Centripetal HD A.I. core — unlike anything else in your bag, a clean yet powerful shape."
   },
   {
-    id:52, brand:"Storm", name:"Summit Ascent",
+    id:51, brand:"Storm", name:"Summit Ascent",
     cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-summit-ascent", coreSlug:"storm-centripetal-hd-ai-core",
@@ -664,7 +651,7 @@ const ALL_BALLS = [
     description:"R2S Solid at 4000-grit — uniquely cleaner than typical solids while still commanding medium-heavy oil."
   },
   {
-    id:53, brand:"Storm", name:"Marvel Scale",
+    id:52, brand:"Storm", name:"Marvel Scale",
     cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-marvel-scale", coreSlug:"storm-atomic-ai-core",
@@ -676,7 +663,7 @@ const ALL_BALLS = [
     description:"R2S Solid with the powerful Atomic A.I. core — heavy oil dominance with the signature Storm backend snap."
   },
   {
-    id:54, brand:"Storm", name:"Phaze A.I. Solid",
+    id:53, brand:"Storm", name:"Phaze A.I. Solid",
     cover:"Solid", coreType:"Symmetric", coreName:"Velocity A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-phaze-ai-solid", coreSlug:"storm-velocity-ai-core",
@@ -690,7 +677,7 @@ const ALL_BALLS = [
 
   // ── Brunswick 추가 (bowwwl 검증) ────────────────────────────────
   {
-    id:55, brand:"Brunswick", name:"Hypnotize",
+    id:54, brand:"Brunswick", name:"Hypnotize",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
     finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-hypnotize", coreSlug:"brunswick-tri-elliptic-core",
@@ -702,7 +689,7 @@ const ALL_BALLS = [
     description:"HK22C-Evo Hybrid with the Tri-Elliptic core — the perfect Mesmerize follow-up with controlled backend aggression."
   },
   {
-    id:56, brand:"Brunswick", name:"Ethos Hybrid",
+    id:55, brand:"Brunswick", name:"Ethos Hybrid",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Ethos",
     finish:"500/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-ethos-hybrid", coreSlug:"brunswick-ethos-core",
@@ -714,7 +701,7 @@ const ALL_BALLS = [
     description:"HK22 Ethos Hybrid cover — larger, polished symmetric motion that surpasses previous Ethos models."
   },
   {
-    id:57, brand:"Brunswick", name:"Vaporize",
+    id:56, brand:"Brunswick", name:"Vaporize",
     cover:"Solid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-vaporize", coreSlug:"brunswick-tri-elliptic-core",
@@ -726,21 +713,7 @@ const ALL_BALLS = [
     description:"HK22C-Evo Solid with the Tri-Elliptic core — the strongest option in the Mesmerize family for heavy oil."
   },
   {
-    id:58, brand:"Brunswick", name:"Crown Victory Pearl",
-    cover:"Pearl", coreType:"Asymmetric", coreName:"Crown",
-    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#e65100",
-    ballSlug:"brunswick-crown-victory-pearl", coreSlug:"brunswick-crown-core",
-    weightData:{
-      16:{rg:2.516,diff:0.053,moi:0.019}, 15:{rg:2.506,diff:0.060,moi:0.021},
-      14:{rg:2.531,diff:0.060,moi:0.020}, 13:{rg:2.601,diff:0.044,moi:0.015}, 12:{rg:2.626,diff:0.044,moi:0.015}
-    },
-    releaseDate:"Nov 2025",
-    description:"HK22C Alpha Premier Pearl with the new Crown asymmetric core — sharp, angular response on medium oil."
-  },
-
-  // ── Roto Grip 추가 (bowwwl 검증) ────────────────────────────────
-  {
-    id:59, brand:"Roto Grip", name:"Attention Star S2",
+    id:57, brand:"Roto Grip", name:"Attention Star S2",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Momentous AV + A.I.",
     finish:"2000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
     ballSlug:"roto-grip-attention-star-s2", coreSlug:"roto-grip-momentous-av-ai-core",
@@ -752,7 +725,7 @@ const ALL_BALLS = [
     description:"eTrax PLUS Hybrid with the Momentous AV + A.I. core — S2 brings midlane grip with the same monster backend."
   },
   {
-    id:60, brand:"Roto Grip", name:"Rockstar",
+    id:58, brand:"Roto Grip", name:"Rockstar",
     cover:"Solid", coreType:"Symmetric", coreName:"Rocker A.I.",
     finish:"2000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
     ballSlug:"roto-grip-rockstar", coreSlug:"roto-grip-rocker-ai-core",
@@ -764,7 +737,7 @@ const ALL_BALLS = [
     description:"NanoStar Solid on the brand-new Rocker A.I. core — fills the gap between MicroTrax and eTrax for total versatility."
   },
   {
-    id:61, brand:"Roto Grip", name:"Magic Gem",
+    id:59, brand:"Roto Grip", name:"Magic Gem",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Defiant LRG",
     finish:"2000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
     ballSlug:"roto-grip-magic-gem", coreSlug:"roto-grip-defiant-lrg-core",
@@ -776,7 +749,7 @@ const ALL_BALLS = [
     description:"MicroTrax Hybrid with the Defiant LRG core — enchanting arc motion for medium-heavy conditions."
   },
   {
-    id:62, brand:"Roto Grip", name:"Hustle BRY",
+    id:60, brand:"Roto Grip", name:"Hustle BRY",
     cover:"Hybrid", coreType:"Symmetric", coreName:"HP1 A.I.",
     finish:"Reacta Gloss", condition:"Light-Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-hustle-bry-burgundyredyale-blue", coreSlug:"roto-grip-hp1-ai-core",
@@ -790,7 +763,7 @@ const ALL_BALLS = [
 
   // ── Motiv 추가 (bowwwl 검증) ─────────────────────────────────────
   {
-    id:63, brand:"Motiv", name:"Lethal Venom",
+    id:61, brand:"Motiv", name:"Lethal Venom",
     cover:"Solid", coreType:"Asymmetric", coreName:"Gear APG",
     finish:"3000 LSS", condition:"Medium Oil", accent:"#6a1b9a",
     ballSlug:"motiv-lethal-venom", coreSlug:"motiv-gear-apg-core",
@@ -802,7 +775,7 @@ const ALL_BALLS = [
     description:"Leverage MXC Solid with Duramax tech on the Gear APG core — the benchmark Venom, predictable and deadly."
   },
   {
-    id:64, brand:"Motiv", name:"Pride Empire",
+    id:62, brand:"Motiv", name:"Pride Empire",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Overload",
     finish:"2000 LSS", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-pride-empire", coreSlug:"motiv-overload-core",
@@ -814,7 +787,7 @@ const ALL_BALLS = [
     description:"Propulsion Pearl on the Overload core — new level of backend speed and angular response in the Pride line."
   },
   {
-    id:65, brand:"Motiv", name:"Blue Tank",
+    id:63, brand:"Motiv", name:"Blue Tank",
     cover:"Solid", coreType:"Symmetric", coreName:"Halogen V2",
     finish:"500 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-blue-tank", coreSlug:"motiv-halogen-v2-core",
@@ -826,7 +799,7 @@ const ALL_BALLS = [
     description:"Microcell Polymer cover with the Halogen V2 core — urethane-like control with reactive power for heavy oil."
   },
   {
-    id:66, brand:"Motiv", name:"Hyper Venom",
+    id:64, brand:"Motiv", name:"Hyper Venom",
     cover:"Pearl", coreType:"Symmetric", coreName:"Gear",
     finish:"2000 LSS", condition:"Light-Medium Oil", accent:"#6a1b9a",
     ballSlug:"motiv-hyper-venom", coreSlug:"motiv-gear-core",
@@ -840,7 +813,7 @@ const ALL_BALLS = [
 
   // ── Storm v6.8 신규 ──────────────────────────────────────────────
   {
-    id:67, brand:"Storm", name:"Equinox Solid",
+    id:65, brand:"Storm", name:"Equinox Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Solarion A.I.",
     finish:"2000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-equinox-solid", coreSlug:"storm-solarion-ai-core",
@@ -852,7 +825,7 @@ const ALL_BALLS = [
     description:"A2S Solid with the Solarion A.I. core — sharp, angular solid rare in its kind, stands toe-to-toe with the Ion Max."
   },
   {
-    id:68, brand:"Storm", name:"PhysiX Grandeur",
+    id:66, brand:"Storm", name:"PhysiX Grandeur",
     cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-physix-grandeur", coreSlug:"storm-atomic-ai-core",
@@ -864,7 +837,7 @@ const ALL_BALLS = [
     description:"R2S Solid with the Atomic A.I. core — overseas release bringing the PhysiX pedigree to heavy oil dominance."
   },
   {
-    id:69, brand:"Storm", name:"Code Honor",
+    id:67, brand:"Storm", name:"Code Honor",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Sentinel",
     finish:"2000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-code-honor", coreSlug:"storm-sentinel-core",
@@ -876,7 +849,7 @@ const ALL_BALLS = [
     description:"NeX Pearl (Nano Extreme) — Storm's earliest-reading cover ever, paired with the Sentinel core for big midlane motion."
   },
   {
-    id:70, brand:"Storm", name:"Next Factor",
+    id:68, brand:"Storm", name:"Next Factor",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Ignition A.I.",
     finish:"1500 Polished", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-next-factor", coreSlug:"storm-ignition-ai-core",
@@ -888,33 +861,7 @@ const ALL_BALLS = [
     description:"RX Pro Pearl on Ignition A.I. — the modern revival of the legendary X-Factor skid-flip reaction."
   },
   {
-    id:71, brand:"Storm", name:"Bionic",
-    cover:"Hybrid", coreType:"Symmetric", coreName:"Torsion A.I.",
-    finish:"4000 Abralon", condition:"Medium Oil", accent:"#00897b",
-    ballSlug:"storm-bionic", coreSlug:"storm-torsion-ai-core",
-    weightData:{
-      16:{rg:2.470,diff:0.050}, 15:{rg:2.470,diff:0.050},
-      14:{rg:2.510,diff:0.048}, 13:{rg:2.580,diff:0.042}, 12:{rg:2.640,diff:0.035}
-    },
-    releaseDate:"Feb 2026",
-    description:"NRG Hybrid on the new Torsion A.I. core — the ultimate symmetrical solution for virtually any lane condition."
-  },
-  {
-    id:72, brand:"Storm", name:"Ion Max Pearl",
-    cover:"Pearl", coreType:"Asymmetric", coreName:"Element Max A.I.",
-    finish:"Power Edge", condition:"Heavy Oil", accent:"#00897b",
-    ballSlug:"storm-ion-max-pearl", coreSlug:"storm-element-max-ai-core",
-    weightData:{
-      16:{rg:2.470,diff:0.056,moi:0.018}, 15:{rg:2.470,diff:0.055,moi:0.018},
-      14:{rg:2.510,diff:0.052,moi:0.016}, 13:{rg:2.580,diff:0.047,moi:0.013}, 12:{rg:2.640,diff:0.040,moi:0.011}
-    },
-    releaseDate:"Mar 2026",
-    description:"NRG Pearl on Element Max A.I. — the Ion Max legacy with quicker controlled response at the breakpoint."
-  },
-
-  // ── Brunswick v6.8 신규 ──────────────────────────────────────────
-  {
-    id:73, brand:"Brunswick", name:"Combat Solid",
+    id:69, brand:"Brunswick", name:"Combat Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Rampart",
     finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-combat-solid", coreSlug:"brunswick-rampart-core",
@@ -926,19 +873,7 @@ const ALL_BALLS = [
     description:"QR-12 Solid cover with the Rampart asymmetric core — midlane-dominant heavy oil control."
   },
   {
-    id:74, brand:"Brunswick", name:"Combat Hybrid",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Rampart",
-    finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
-    ballSlug:"brunswick-combat-hybrid", coreSlug:"brunswick-rampart-core",
-    weightData:{
-      16:{rg:2.490,diff:0.052,moi:0.016}, 15:{rg:2.490,diff:0.058,moi:0.018},
-      14:{rg:2.510,diff:0.058,moi:0.018}, 13:{rg:2.590,diff:0.042,moi:0.014}, 12:{rg:2.610,diff:0.042,moi:0.014}
-    },
-    releaseDate:"Feb 2026",
-    description:"Alpha Premier Hybrid on Rampart core — Combat evolution with non-HK22 cover for enhanced midlane traction."
-  },
-  {
-    id:75, brand:"Brunswick", name:"Danger Zone",
+    id:70, brand:"Brunswick", name:"Danger Zone",
     cover:"Solid", coreType:"Symmetric", coreName:"Twist",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-danger-zone", coreSlug:"brunswick-twist-core",
@@ -950,7 +885,7 @@ const ALL_BALLS = [
     description:"A modern tribute to the 1996 classic — QR-12 Solid with the Twist core for today's lanes."
   },
   {
-    id:76, brand:"Brunswick", name:"Crown 78U",
+    id:71, brand:"Brunswick", name:"Crown 78U",
     cover:"Urethane", coreType:"Symmetric", coreName:"Crown",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#e65100",
     ballSlug:"brunswick-crown-78u", coreSlug:"brunswick-crown-core",
@@ -964,19 +899,7 @@ const ALL_BALLS = [
 
   // ── Roto Grip v6.8 신규 ──────────────────────────────────────────
   {
-    id:77, brand:"Roto Grip", name:"Transformer",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Morph-Wing",
-    finish:"4000 Abralon", condition:"Heavy Oil", accent:"#c62828",
-    ballSlug:"roto-grip-transformer", coreSlug:"roto-grip-morph-wing-core",
-    weightData:{
-      16:{rg:2.480,diff:0.055,moi:0.019}, 15:{rg:2.480,diff:0.052,moi:0.019},
-      14:{rg:2.520,diff:0.050,moi:0.016}, 13:{rg:2.580,diff:0.044,moi:0.013}, 12:{rg:2.640,diff:0.037,moi:0.011}
-    },
-    releaseDate:"Jan 2026",
-    description:"V-R1 Solid on the Morph-Wing core — the most tunable ball on the market, changes drastically when drilled."
-  },
-  {
-    id:78, brand:"Roto Grip", name:"Rockstar Amped",
+    id:72, brand:"Roto Grip", name:"Rockstar Amped",
     cover:"Pearl", coreType:"Symmetric", coreName:"Rocker A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-rockstar-amped", coreSlug:"roto-grip-rocker-ai-core",
@@ -988,7 +911,7 @@ const ALL_BALLS = [
     description:"NanoStar Pearl on Rocker A.I. — the Rockstar's angular sibling, delivering a roaring wall of backend sound."
   },
   {
-    id:79, brand:"Roto Grip", name:"Optimum Idol Solid",
+    id:73, brand:"Roto Grip", name:"Optimum Idol Solid",
     cover:"Solid", coreType:"Symmetric", coreName:"Ikon + A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
     ballSlug:"roto-grip-optimum-idol-solid", coreSlug:"roto-grip-ikon-ai-core",
@@ -1000,21 +923,7 @@ const ALL_BALLS = [
     description:"eTrax PLUS Solid on Ikon + A.I. — the Idol Helios reborn with A.I. tech for wider lane versatility."
   },
   {
-    id:80, brand:"Roto Grip", name:"Gremlin Tour-X",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Rondure Tour-X",
-    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#c62828",
-    ballSlug:"roto-grip-gremlin-tour-x", coreSlug:"roto-grip-rondure-tour-x-core",
-    weightData:{
-      16:{rg:2.480,diff:0.052,moi:0.018}, 15:{rg:2.480,diff:0.049,moi:0.018},
-      14:{rg:2.520,diff:0.046,moi:0.015}, 13:{rg:2.580,diff:0.040,moi:0.012}, 12:{rg:2.640,diff:0.033,moi:0.010}
-    },
-    releaseDate:"Mar 2026",
-    description:"V-R1 Hybrid on the Rondure Tour-X core — precision Tour control when the original Gremlin is too wild."
-  },
-
-  // ── Motiv v6.8 신규 ──────────────────────────────────────────────
-  {
-    id:81, brand:"Motiv", name:"Primal Rage Evolution",
+    id:74, brand:"Motiv", name:"Primal Rage Evolution",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Impulse V2",
     finish:"2000 LSS", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-primal-rage-evolution", coreSlug:"motiv-impulse-v2-core",
@@ -1026,7 +935,7 @@ const ALL_BALLS = [
     description:"Propulsion HVP Pearl on Impulse V2 — the legendary #redball reborn, explosive backend return of the Primal Rage."
   },
   {
-    id:82, brand:"Motiv", name:"Apex Jackal",
+    id:75, brand:"Motiv", name:"Apex Jackal",
     cover:"Solid", coreType:"Asymmetric", coreName:"Apex Predator",
     finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-apex-jackal", coreSlug:"motiv-apex-predator-core",
@@ -1038,7 +947,7 @@ const ALL_BALLS = [
     description:"Propulsion MXV Solid on the dual-density Apex Predator core — a new predator for the most demanding heavy oil."
   },
   {
-    id:83, brand:"Motiv", name:"Steel Forge",
+    id:76, brand:"Motiv", name:"Steel Forge",
     cover:"Pearl", coreType:"Symmetric", coreName:"Detonator",
     finish:"2000 LSS", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-steel-forge", coreSlug:"motiv-detonator-core",
@@ -1050,45 +959,7 @@ const ALL_BALLS = [
     description:"Propulsion MXV Pearl on the Detonator core — explosive down-lane reaction with the Evoke Hysteria's proven cover."
   },
   {
-    id:84, brand:"Motiv", name:"Evoke Mayhem",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Overload",
-    finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
-    ballSlug:"motiv-evoke-mayhem", coreSlug:"motiv-overload-core",
-    weightData:{
-      16:{rg:2.480,diff:0.053,moi:0.018}, 15:{rg:2.480,diff:0.053,moi:0.018},
-      14:{rg:2.510,diff:0.050,moi:0.016}, 13:{rg:2.565,diff:0.045,moi:0.013}, 12:{rg:2.625,diff:0.038,moi:0.011}
-    },
-    releaseDate:"Feb 2025",
-    description:"Propulsion MXV Solid on the Overload core — significant departure from standard solids with fierce hook and power."
-  },
-  {
-    id:85, brand:"Motiv", name:"Supra Sport",
-    cover:"Solid", coreType:"Symmetric", coreName:"Quadfire",
-    finish:"4000 LSS", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
-    ballSlug:"motiv-supra-sport", coreSlug:"motiv-quadfire-core",
-    weightData:{
-      16:{rg:2.490,diff:0.040}, 15:{rg:2.490,diff:0.041},
-      14:{rg:2.520,diff:0.039}, 13:{rg:2.580,diff:0.034}, 12:{rg:2.640,diff:0.028}
-    },
-    releaseDate:"Jan 2026",
-    description:"Leverage MFS Solid on the Quadfire core — versatile entry into the Supra line with 4\"+ flare potential."
-  },
-
-  // ── Hammer v6.8 신규 ────────────────────────────────────────────
-  {
-    id:86, brand:"Hammer", name:"Black Widow 3.0 Dynasty",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Gas Mask",
-    finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#b71c1c",
-    ballSlug:"hammer-black-widow-30-dynasty", coreSlug:"hammer-gas-mask-core",
-    weightData:{
-      16:{rg:2.490,diff:0.054,moi:0.017}, 15:{rg:2.490,diff:0.057,moi:0.017},
-      14:{rg:2.530,diff:0.055,moi:0.016}, 13:{rg:2.600,diff:0.047,moi:0.013}, 12:{rg:2.660,diff:0.040,moi:0.011}
-    },
-    releaseDate:"Nov 2024",
-    description:"Cohesion Solid HK22 on the Gas Mask core — the Dynasty colorway of the BW3.0, same beast different look."
-  },
-  {
-    id:87, brand:"Hammer", name:"Maximum Effect",
+    id:77, brand:"Hammer", name:"Maximum Effect",
     cover:"Solid", coreType:"Asymmetric", coreName:"Huntsman Tour",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-maximum-effect", coreSlug:"hammer-huntsman-tour-core",
@@ -1100,21 +971,7 @@ const ALL_BALLS = [
     description:"HK22 Solid on the Huntsman Tour core — the ultimate upgrade to the popular Effect with maximum power."
   },
   {
-    id:88, brand:"Hammer", name:"Hammerhead Pearl",
-    cover:"Pearl", coreType:"Symmetric", coreName:"Spheroid",
-    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium Oil", accent:"#b71c1c",
-    ballSlug:"hammer-hammerhead-pearl", coreSlug:"hammer-spheroid-core",
-    weightData:{
-      16:{rg:2.500,diff:0.038}, 15:{rg:2.500,diff:0.040},
-      14:{rg:2.530,diff:0.038}, 13:{rg:2.600,diff:0.032}, 12:{rg:2.660,diff:0.026}
-    },
-    releaseDate:"Jan 2026",
-    description:"Aggression Pearl HK22 on the Spheroid symmetric core — classic Hammerhead shape updated for today's game."
-  },
-
-  // ── 900 Global v6.8 신규 ─────────────────────────────────────────
-  {
-    id:89, brand:"900 Global", name:"Cruise Sapphire",
+    id:78, brand:"900 Global", name:"Cruise Sapphire",
     cover:"Pearl", coreType:"Symmetric", coreName:"Cruise",
     finish:"Reacta Gloss", condition:"Light-Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-cruise-sapphire", coreSlug:"900-global-cruise-core",
@@ -1126,7 +983,7 @@ const ALL_BALLS = [
     description:"Pearl reactive on the Cruise symmetric core — smooth, predictable arc motion for lighter oil conditions."
   },
   {
-    id:90, brand:"900 Global", name:"Dark Matter",
+    id:79, brand:"900 Global", name:"Dark Matter",
     cover:"Solid", coreType:"Asymmetric", coreName:"Dark Matter",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-dark-matter", coreSlug:"900-global-dark-matter-core",
@@ -1138,7 +995,7 @@ const ALL_BALLS = [
     description:"Quantum Solid on the Dark Matter asymmetric core — heavy oil workhorse with strong midlane continuation."
   },
   {
-    id:91, brand:"900 Global", name:"Zen 25 Pearl",
+    id:80, brand:"900 Global", name:"Zen 25 Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Meditate A.I.",
     finish:"Reacta Gloss", condition:"Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-zen-25-pearl", coreSlug:"900-global-meditate-ai-core",
@@ -1152,7 +1009,7 @@ const ALL_BALLS = [
 
   // ── DV8 v6.8 신규 ───────────────────────────────────────────────
   {
-    id:92, brand:"DV8", name:"Mantra Solid",
+    id:81, brand:"DV8", name:"Mantra Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Mantra",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#bf360c",
     ballSlug:"dv8-mantra-solid", coreSlug:"dv8-mantra-core",
@@ -1164,21 +1021,7 @@ const ALL_BALLS = [
     description:"Strong solid cover on the Mantra asymmetric core — consistent hook and reliable control for heavy conditions."
   },
   {
-    id:93, brand:"DV8", name:"Heckler Hybrid",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Unholy",
-    finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#bf360c",
-    ballSlug:"dv8-heckler-hybrid", coreSlug:"dv8-unholy-core",
-    weightData:{
-      16:{rg:2.490,diff:0.052,moi:0.017}, 15:{rg:2.490,diff:0.055,moi:0.017},
-      14:{rg:2.520,diff:0.053,moi:0.016}, 13:{rg:2.590,diff:0.046,moi:0.013}, 12:{rg:2.650,diff:0.039,moi:0.011}
-    },
-    releaseDate:"May 2025",
-    description:"Hybrid cover on the Unholy core — the Heckler line's cleaner option with strong backend continuation."
-  },
-
-  // ── Ebonite v6.8 신규 ───────────────────────────────────────────
-  {
-    id:94, brand:"Ebonite", name:"Envision",
+    id:82, brand:"Ebonite", name:"Envision",
     cover:"Pearl", coreType:"Symmetric", coreName:"Envision",
     finish:"Reacta Gloss", condition:"Medium Oil", accent:"#4527a0",
     ballSlug:"ebonite-envision", coreSlug:"ebonite-envision-core",
@@ -1190,7 +1033,7 @@ const ALL_BALLS = [
     description:"Pearl reactive on the Envision symmetric core — clean, angular backend response for medium conditions."
   },
   {
-    id:95, brand:"Ebonite", name:"Choice Solid",
+    id:83, brand:"Ebonite", name:"Choice Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Choice",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#4527a0",
     ballSlug:"ebonite-choice-solid", coreSlug:"ebonite-choice-core",
@@ -1204,57 +1047,7 @@ const ALL_BALLS = [
 
   // ── Columbia 300 v6.8 신규 ───────────────────────────────────────
   {
-    id:96, brand:"Columbia 300", name:"Piranha Solid",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Piranha",
-    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#00695c",
-    ballSlug:"columbia-300-piranha-solid", coreSlug:"columbia-300-piranha-core",
-    weightData:{
-      16:{rg:2.490,diff:0.052,moi:0.017}, 15:{rg:2.480,diff:0.054,moi:0.017},
-      14:{rg:2.520,diff:0.052,moi:0.015}, 13:{rg:2.590,diff:0.046,moi:0.012}, 12:{rg:2.650,diff:0.039,moi:0.010}
-    },
-    releaseDate:"Jan 2026",
-    description:"Hyperflex Solid on the Piranha asymmetric core — ferocious bite on heavy oil with high flare potential."
-  },
-  {
-    id:97, brand:"Columbia 300", name:"Street Rally",
-    cover:"Pearl", coreType:"Symmetric", coreName:"Street",
-    finish:"Factory Compound", condition:"Medium Oil", accent:"#00695c",
-    ballSlug:"columbia-300-street-rally", coreSlug:"columbia-300-street-core",
-    weightData:{
-      16:{rg:2.520,diff:0.040}, 15:{rg:2.520,diff:0.042},
-      14:{rg:2.550,diff:0.040}, 13:{rg:2.620,diff:0.033}, 12:{rg:2.680,diff:0.027}
-    },
-    releaseDate:"Oct 2025",
-    description:"HK22C² Formula 1 Pearl on the Street core — polished arc motion that elevates the shiny ball lineup."
-  },
-
-  // ── SWAG v6.8 신규 ──────────────────────────────────────────────
-  {
-    id:98, brand:"SWAG", name:"Assassin Pearl",
-    cover:"Pearl", coreType:"Asymmetric", coreName:"Assassin",
-    finish:"1500 Grit Sanded", condition:"Medium-Heavy Oil", accent:"#558b2f",
-    ballSlug:"swag-assassin-pearl", coreSlug:"swag-assassin-core",
-    weightData:{
-      16:{rg:2.500,diff:0.048,moi:0.017}, 15:{rg:2.490,diff:0.050,moi:0.017},
-      14:{rg:2.520,diff:0.048,moi:0.015}, 13:{rg:2.590,diff:0.042,moi:0.012}
-    },
-    releaseDate:"Aug 2024",
-    description:"SWAG Dagger Pearl with AP26 on the Assassin asymmetric core — 4-5\" flare, angular backend execution."
-  },
-  {
-    id:99, brand:"SWAG", name:"Serpent Hybrid",
-    cover:"Hybrid", coreType:"Symmetric", coreName:"Serpent",
-    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#558b2f",
-    ballSlug:"swag-serpent-hybrid", coreSlug:"swag-serpent-core",
-    weightData:{
-      16:{rg:2.500,diff:0.042}, 15:{rg:2.490,diff:0.044},
-      14:{rg:2.520,diff:0.042}, 13:{rg:2.590,diff:0.036}
-    },
-    releaseDate:"Jan 2026",
-    description:"SWAG Seram AP26 Hybrid on the Serpent symmetric core — 4-5\" flare, slithering motion through the front."
-  },
-  {
-    id:100, brand:"SWAG", name:"Craze Tour Pearl",
+    id:84, brand:"SWAG", name:"Craze Tour Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Craze",
     finish:"500 Polished", condition:"Medium Oil", accent:"#558b2f",
     ballSlug:"swag-craze-tour-pearl", coreSlug:"swag-craze-core",
@@ -1268,7 +1061,7 @@ const ALL_BALLS = [
 
   // ── Radical v6.8 신규 ───────────────────────────────────────────
   {
-    id:101, brand:"Radical", name:"Zig Zag Solid",
+    id:85, brand:"Radical", name:"Zig Zag Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"ZigZag",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"radical-zig-zag-solid", coreSlug:"radical-zigzag-core",
@@ -1280,7 +1073,7 @@ const ALL_BALLS = [
     description:"Solid reactive on the ZigZag asymmetric core — powerful solid motion companion to the original ZigZag Pearl."
   },
   {
-    id:102, brand:"Radical", name:"Ridiculous Pearl",
+    id:86, brand:"Radical", name:"Ridiculous Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ridiculous",
     finish:"Factory Compound", condition:"Medium Oil", accent:"#e65100",
     ballSlug:"radical-ridiculous-pearl", coreSlug:"radical-ridiculous-core",
@@ -1294,37 +1087,7 @@ const ALL_BALLS = [
 
   // ── Track v6.8 신규 ─────────────────────────────────────────────
   {
-    id:103, brand:"Track", name:"Stealth Mode Hybrid",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Stealth",
-    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Heavy Oil", accent:"#37474f",
-    ballSlug:"track-stealth-mode-hybrid", coreSlug:"track-stealth-core",
-    weightData:{
-      16:{rg:2.490,diff:0.053,moi:0.018}, 15:{rg:2.490,diff:0.055,moi:0.018},
-      14:{rg:2.520,diff:0.053,moi:0.016}, 13:{rg:2.590,diff:0.046,moi:0.013}
-    },
-    releaseDate:"Jan 2026",
-    description:"Sure Response Hybrid HK22C on the Stealth asymmetric core — high flare, precise heavy oil control."
-  },
-  {
-    id:104, brand:"Track", name:"Synthesis",
-    cover:"Solid", coreType:"Symmetric", coreName:"II-Core Gen4",
-    finish:"500/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#37474f",
-    ballSlug:"track-synthesis", coreSlug:"track-ii-core-gen4-core",
-    weightData:{
-      16:{rg:2.493,diff:0.048}, 15:{rg:2.480,diff:0.050},
-      14:{rg:2.510,diff:0.048}, 13:{rg:2.580,diff:0.042}
-    },
-    releaseDate:"Feb 2026",
-    description:"QR-12 Solid HK22C on the II-Core Gen4 — the latest evolution of Track's proven symmetric platform."
-  },
-
-  // ══════════════════════════════════════════════════════════════
-  // v6.8 누락분 추가 — bowwwl 전수 검증
-  // ══════════════════════════════════════════════════════════════
-
-  // ── Storm 누락분 ─────────────────────────────────────────────
-  {
-    id:105, brand:"Storm", name:"Ion Max",
+    id:87, brand:"Storm", name:"Ion Max",
     cover:"Solid", coreType:"Asymmetric", coreName:"Element Max A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-ion-max", coreSlug:"storm-element-max-ai-core",
@@ -1336,7 +1099,7 @@ const ALL_BALLS = [
     description:"TX-16 Solid on Element Max A.I. — the benchmark heavy-oil asymmetric for the modern game, top-tier midlane."
   },
   {
-    id:106, brand:"Storm", name:"Ion Pro Solid",
+    id:88, brand:"Storm", name:"Ion Pro Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Element Tour A.I.",
     finish:"Power Edge", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-ion-pro-solid", coreSlug:"storm-element-tour-ai-core",
@@ -1348,7 +1111,7 @@ const ALL_BALLS = [
     description:"TX-16 Solid on Element Tour A.I. — the Ion Pro's solid sibling, stronger midlane with the same benchmark shape."
   },
   {
-    id:107, brand:"Storm", name:"Marvel Pearl A.I.",
+    id:89, brand:"Storm", name:"Marvel Pearl A.I.",
     cover:"Pearl", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-marvel-pearl-ai", coreSlug:"storm-centripetal-hd-ai-core",
@@ -1360,7 +1123,7 @@ const ALL_BALLS = [
     description:"NRG Pearl on Centripetal HD A.I. — the Marvel series upgraded with A.I. tech for a straighter, smoother arc."
   },
   {
-    id:108, brand:"Storm", name:"PhysiX Solid",
+    id:90, brand:"Storm", name:"PhysiX Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"2000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-physix-solid", coreSlug:"storm-atomic-ai-core",
@@ -1372,7 +1135,7 @@ const ALL_BALLS = [
     description:"EXO Solid on Atomic A.I. — overseas release bringing PhysiX solid power to heavy oil."
   },
   {
-    id:109, brand:"Storm", name:"EquinoX",
+    id:91, brand:"Storm", name:"EquinoX",
     cover:"Pearl", coreType:"Symmetric", coreName:"Solarion A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-equinox", coreSlug:"storm-solarion-ai-core",
@@ -1384,7 +1147,7 @@ const ALL_BALLS = [
     description:"A1S Pearl on Solarion A.I. — purpose-built for 39-44ft league patterns with signature Storm backend motion."
   },
   {
-    id:110, brand:"Storm", name:"!Q Tour A.I.",
+    id:92, brand:"Storm", name:"!Q Tour A.I.",
     cover:"Solid", coreType:"Symmetric", coreName:"Inverted Fe2 A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-iq-tour-ai", coreSlug:"storm-inverted-fe2-ai-core",
@@ -1396,7 +1159,7 @@ const ALL_BALLS = [
     description:"R2S Solid on Inverted Fe2 A.I. — the legendary !Q Tour elevated with A.I. Core Technology for wider strike window."
   },
   {
-    id:111, brand:"Storm", name:"Hyper Motor",
+    id:93, brand:"Storm", name:"Hyper Motor",
     cover:"Pearl", coreType:"Symmetric", coreName:"Torque A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-hyper-motor", coreSlug:"storm-torque-ai-core",
@@ -1408,7 +1171,7 @@ const ALL_BALLS = [
     description:"RX Pro Pearl on Torque A.I. — the next evolution of the Motor line with explosive backend rev-up."
   },
   {
-    id:112, brand:"Storm", name:"The Road X",
+    id:94, brand:"Storm", name:"The Road X",
     cover:"Solid", coreType:"Symmetric", coreName:"Inverted Fe2 A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-the-road-x", coreSlug:"storm-inverted-fe2-ai-core",
@@ -1420,7 +1183,7 @@ const ALL_BALLS = [
     description:"ReX Solid on Inverted Fe2 A.I. — overseas The Road companion, stronger midlane read on tougher conditions."
   },
   {
-    id:113, brand:"Storm", name:"Typhoon",
+    id:95, brand:"Storm", name:"Typhoon",
     cover:"Pearl", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"Power Edge", condition:"Light-Medium Oil", accent:"#00897b",
     ballSlug:"storm-typhoon", coreSlug:"storm-centripetal-hd-ai-core",
@@ -1432,7 +1195,7 @@ const ALL_BALLS = [
     description:"NRG Pearl on Centripetal HD A.I. — powerful precision for light-medium oil, builds momentum every rotation."
   },
   {
-    id:114, brand:"Storm", name:"PhysiX Era",
+    id:96, brand:"Storm", name:"PhysiX Era",
     cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-physix-era", coreSlug:"storm-atomic-ai-core",
@@ -1444,7 +1207,7 @@ const ALL_BALLS = [
     description:"R2S Solid on Atomic A.I. — overseas PhysiX continuation, combining running and sharpness on heavy oil."
   },
   {
-    id:115, brand:"Storm", name:"Motor Rev",
+    id:97, brand:"Storm", name:"Motor Rev",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Torque A.I.",
     finish:"1500 Polished", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-motor-rev", coreSlug:"storm-torque-ai-core",
@@ -1458,7 +1221,7 @@ const ALL_BALLS = [
 
   // ── Brunswick 누락분 ──────────────────────────────────────────
   {
-    id:116, brand:"Brunswick", name:"Combat",
+    id:98, brand:"Brunswick", name:"Combat",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Rampart",
     finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-combat", coreSlug:"brunswick-rampart-core",
@@ -1470,7 +1233,7 @@ const ALL_BALLS = [
     description:"HK22C Alpha Premier Pearl on Rampart — angular backend response with asymmetric midlane control."
   },
   {
-    id:117, brand:"Brunswick", name:"Alert",
+    id:99, brand:"Brunswick", name:"Alert",
     cover:"Solid", coreType:"Symmetric", coreName:"Alert",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-alert", coreSlug:"brunswick-alert-core",
@@ -1482,7 +1245,7 @@ const ALL_BALLS = [
     description:"Low RG/low diff new series — Alert is your early warning system, first-release in the all-new Alert line."
   },
   {
-    id:118, brand:"Brunswick", name:"Energize",
+    id:100, brand:"Brunswick", name:"Energize",
     cover:"Pearl", coreType:"Symmetric", coreName:"Energize",
     finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium Oil", accent:"#e65100",
     ballSlug:"brunswick-energize", coreSlug:"brunswick-energize-core",
@@ -1496,7 +1259,7 @@ const ALL_BALLS = [
 
   // ── Motiv 누락분 ──────────────────────────────────────────────
   {
-    id:119, brand:"Motiv", name:"Nebula",
+    id:101, brand:"Motiv", name:"Nebula",
     cover:"Pearl", coreType:"Symmetric", coreName:"Hadron",
     finish:"5500 Grit LSP", condition:"Medium Oil", accent:"#6a1b9a",
     ballSlug:"motiv-nebula", coreSlug:"motiv-hadron-core",
@@ -1508,7 +1271,7 @@ const ALL_BALLS = [
     description:"Dark Matter Propulsion Pearl on Hadron dual-density core — Motiv's most angular coverstock ever, cosmic backend."
   },
   {
-    id:120, brand:"Motiv", name:"Raptor Reign",
+    id:102, brand:"Motiv", name:"Raptor Reign",
     cover:"Solid", coreType:"Asymmetric", coreName:"Impulse V2",
     finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-raptor-reign", coreSlug:"motiv-impulse-v2-core",
@@ -1522,7 +1285,7 @@ const ALL_BALLS = [
 
   // ── Hammer 누락분 ────────────────────────────────────────────
   {
-    id:121, brand:"Hammer", name:"Black Widow 2.0 Hybrid",
+    id:103, brand:"Hammer", name:"Black Widow 2.0 Hybrid",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Gas Mask",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-black-widow-20-hybrid", coreSlug:"hammer-gas-mask-core",
@@ -1534,7 +1297,7 @@ const ALL_BALLS = [
     description:"HK22 Hybrid cover on the Gas Mask core — more midlane read than the pearl BW2.0, built for heavy oil."
   },
   {
-    id:122, brand:"Hammer", name:"NU Blue Hammer",
+    id:104, brand:"Hammer", name:"NU Blue Hammer",
     cover:"Solid", coreType:"Symmetric", coreName:"Spheroid",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-nu-blue-hammer", coreSlug:"hammer-spheroid-core",
@@ -1548,7 +1311,7 @@ const ALL_BALLS = [
 
   // ── Roto Grip 누락분 ─────────────────────────────────────────
   {
-    id:123, brand:"Roto Grip", name:"Attention Sign",
+    id:105, brand:"Roto Grip", name:"Attention Sign",
     cover:"Solid", coreType:"Asymmetric", coreName:"Momentous AV + A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#c62828",
     ballSlug:"roto-grip-attention-sign", coreSlug:"roto-grip-momentous-av-ai-core",
@@ -1560,7 +1323,7 @@ const ALL_BALLS = [
     description:"eTrax PLUS Solid on Momentous AV + A.I. — the Attention Star's solid big brother for heavier conditions."
   },
   {
-    id:124, brand:"Roto Grip", name:"RST Hyperdrive Pearl",
+    id:106, brand:"Roto Grip", name:"RST Hyperdrive Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"HP1 A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-rst-hyperdrive-pearl", coreSlug:"roto-grip-hp1-ai-core",
@@ -1574,7 +1337,7 @@ const ALL_BALLS = [
 
   // ── 900 Global 누락분 ────────────────────────────────────────
   {
-    id:125, brand:"900 Global", name:"Wolverine Night",
+    id:107, brand:"900 Global", name:"Wolverine Night",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Wolverine",
     finish:"Reacta Gloss", condition:"Medium-Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-wolverine-night", coreSlug:"900-global-wolverine-core",
@@ -1588,7 +1351,7 @@ const ALL_BALLS = [
 
   // ── DV8 누락분 ───────────────────────────────────────────────
   {
-    id:126, brand:"DV8", name:"Intimidator",
+    id:108, brand:"DV8", name:"Intimidator",
     cover:"Solid", coreType:"Asymmetric", coreName:"Intimidator",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#bf360c",
     ballSlug:"dv8-intimidator", coreSlug:"dv8-intimidator-core",
@@ -1602,7 +1365,7 @@ const ALL_BALLS = [
 
   // ── Radical 누락분 ───────────────────────────────────────────
   {
-    id:127, brand:"Radical", name:"Xtra Bonus",
+    id:109, brand:"Radical", name:"Xtra Bonus",
     cover:"Solid", coreType:"Symmetric", coreName:"Xtra Bonus",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"radical-xtra-bonus", coreSlug:"radical-xtra-bonus-core",
@@ -1616,7 +1379,7 @@ const ALL_BALLS = [
 
   // ── Track 누락분 ─────────────────────────────────────────────
   {
-    id:128, brand:"Track", name:"Rhyno",
+    id:110, brand:"Track", name:"Rhyno",
     cover:"Solid", coreType:"Symmetric", coreName:"II-Core Gen4",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#37474f",
     ballSlug:"track-rhyno", coreSlug:"track-ii-core-gen4-core",
@@ -1634,7 +1397,7 @@ const ALL_BALLS = [
 
   // ── Storm 추가 누락분 ─────────────────────────────────────────
   {
-    id:129, brand:"Storm", name:"Concept",
+    id:111, brand:"Storm", name:"Concept",
     cover:"Pearl", coreType:"Symmetric", coreName:"Radius",
     finish:"Power Edge", condition:"Light-Medium Oil", accent:"#00897b",
     ballSlug:"storm-concept", coreSlug:"storm-radius-core",
@@ -1646,7 +1409,7 @@ const ALL_BALLS = [
     description:"ARC Pearl on Radius weight block — urethane-alternative motion for short patterns and demanding conditions."
   },
   {
-    id:130, brand:"Storm", name:"Absolute Reign",
+    id:112, brand:"Storm", name:"Absolute Reign",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Sentinel",
     finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-absolute-reign", coreSlug:"storm-sentinel-core",
@@ -1658,7 +1421,7 @@ const ALL_BALLS = [
     description:"NeX Pearl on Sentinel — overseas Absolute series' most angular entry, sharp backend on medium-heavy oil."
   },
   {
-    id:131, brand:"Storm", name:"Virtual Gravity Destino",
+    id:113, brand:"Storm", name:"Virtual Gravity Destino",
     cover:"Solid", coreType:"Asymmetric", coreName:"Rock HD A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-virtual-gravity-destino", coreSlug:"storm-rock-hd-ai-core",
@@ -1670,7 +1433,7 @@ const ALL_BALLS = [
     description:"Overseas VG Destino — legendary Rock HD A.I. core with excellent rolling for heavy oil dominance."
   },
   {
-    id:132, brand:"Storm", name:"Phaze II Pearl",
+    id:114, brand:"Storm", name:"Phaze II Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Inverted Fe2 A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-phaze-ii-pearl", coreSlug:"storm-inverted-fe2-ai-core",
@@ -1682,7 +1445,7 @@ const ALL_BALLS = [
     description:"R2S Pearl on Inverted Fe2 A.I. — the Phaze II Pearl bowlers worldwide asked for, classic shape perfected."
   },
   {
-    id:133, brand:"Storm", name:"Prime Gate",
+    id:115, brand:"Storm", name:"Prime Gate",
     cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-prime-gate", coreSlug:"storm-c3-centripetal-core",
@@ -1694,7 +1457,7 @@ const ALL_BALLS = [
     description:"ReX Solid on C3 Centripetal — overseas Gate series Prime entry for medium-heavy oil control."
   },
   {
-    id:134, brand:"Storm", name:"Star Road",
+    id:116, brand:"Storm", name:"Star Road",
     cover:"Solid", coreType:"Symmetric", coreName:"Inverted Fe2",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-star-road", coreSlug:"storm-inverted-fe2-core",
@@ -1706,7 +1469,7 @@ const ALL_BALLS = [
     description:"Overseas Star Road — enhanced High Road series with improved track stability for medium-heavy oil."
   },
   {
-    id:135, brand:"Storm", name:"Summit Tune",
+    id:117, brand:"Storm", name:"Summit Tune",
     cover:"Pearl", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-summit-tune", coreSlug:"storm-centripetal-hd-ai-core",
@@ -1718,7 +1481,7 @@ const ALL_BALLS = [
     description:"R2S Pearl on Centripetal HD A.I. — overseas Summit continuation, stable arc with strong large hook."
   },
   {
-    id:136, brand:"Storm", name:"Marvel Maxx Silver",
+    id:118, brand:"Storm", name:"Marvel Maxx Silver",
     cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-marvel-maxx-silver", coreSlug:"storm-centripetal-hd-ai-core",
@@ -1730,7 +1493,7 @@ const ALL_BALLS = [
     description:"Overseas Marvel Maxx Silver — stable arc motion, high adaptability across lane conditions."
   },
   {
-    id:137, brand:"Storm", name:"PhysiX Raze",
+    id:119, brand:"Storm", name:"PhysiX Raze",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"3000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-physix-raze", coreSlug:"storm-atomic-ai-core",
@@ -1742,7 +1505,7 @@ const ALL_BALLS = [
     description:"EXO Hybrid on Atomic A.I. — PhysiX Raze blends cover versatility with the powerful Atomic asymmetric engine."
   },
   {
-    id:138, brand:"Storm", name:"Lock-On",
+    id:120, brand:"Storm", name:"Lock-On",
     cover:"Pearl", coreType:"Symmetric", coreName:"RAD-X",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-lock-on", coreSlug:"storm-rad-x-core",
@@ -1754,7 +1517,7 @@ const ALL_BALLS = [
     description:"RX Pearl on RAD-X — overseas Lock-On, smooth skid with powerful hooking response from breakpoint."
   },
   {
-    id:139, brand:"Storm", name:"Blaze DNA",
+    id:121, brand:"Storm", name:"Blaze DNA",
     cover:"Pearl", coreType:"Symmetric", coreName:"Torsion A.I.",
     finish:"Power Edge", condition:"Light-Medium Oil", accent:"#00897b",
     ballSlug:"storm-blaze-dna", coreSlug:"storm-torsion-ai-core",
@@ -1768,7 +1531,7 @@ const ALL_BALLS = [
 
   // ── Roto Grip 추가 누락분 ─────────────────────────────────────
   {
-    id:140, brand:"Roto Grip", name:"Vintage Gem",
+    id:122, brand:"Roto Grip", name:"Vintage Gem",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ikon + A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-vintage-gem", coreSlug:"roto-grip-ikon-ai-core",
@@ -1780,7 +1543,7 @@ const ALL_BALLS = [
     description:"eTrax PLUS Pearl on Ikon + A.I. — a nostalgic gem design with modern A.I. core performance."
   },
   {
-    id:141, brand:"Roto Grip", name:"Hustle ETF",
+    id:123, brand:"Roto Grip", name:"Hustle ETF",
     cover:"Solid", coreType:"Symmetric", coreName:"Hustle",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-hustle-etf", coreSlug:"roto-grip-hustle-core",
@@ -1792,7 +1555,7 @@ const ALL_BALLS = [
     description:"Solid cover on Hustle core — ETF (Electric Teal Fuchsia) colorway, reliable entry-level performance."
   },
   {
-    id:142, brand:"Roto Grip", name:"Gem Blue Sapphire",
+    id:124, brand:"Roto Grip", name:"Gem Blue Sapphire",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ikon + A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-gem-blue-sapphire", coreSlug:"roto-grip-ikon-ai-core",
@@ -1804,7 +1567,7 @@ const ALL_BALLS = [
     description:"eTrax PLUS Pearl on Ikon + A.I. — sapphire blue gem series with polished backend arc."
   },
   {
-    id:143, brand:"Roto Grip", name:"Hustle BP",
+    id:125, brand:"Roto Grip", name:"Hustle BP",
     cover:"Pearl", coreType:"Symmetric", coreName:"Hustle",
     finish:"Power Edge", condition:"Light-Medium Oil", accent:"#c62828",
     ballSlug:"roto-grip-hustle-bp", coreSlug:"roto-grip-hustle-core",
@@ -1818,7 +1581,7 @@ const ALL_BALLS = [
 
   // ── Hammer 추가 누락분 ────────────────────────────────────────
   {
-    id:144, brand:"Hammer", name:"Black Widow Tour V1",
+    id:126, brand:"Hammer", name:"Black Widow Tour V1",
     cover:"Solid", coreType:"Asymmetric", coreName:"Gas Mask Tour V1",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-black-widow-tour-v1", coreSlug:"hammer-gas-mask-tour-v1-core",
@@ -1830,7 +1593,7 @@ const ALL_BALLS = [
     description:"HK22 Solid on Gas Mask Tour V1 — flip block removed, 20+ point lower diff for smoother controlled motion."
   },
   {
-    id:145, brand:"Hammer", name:"Anger",
+    id:127, brand:"Hammer", name:"Anger",
     cover:"Solid", coreType:"Asymmetric", coreName:"Gas Mask",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-anger", coreSlug:"hammer-gas-mask-core",
@@ -1842,7 +1605,7 @@ const ALL_BALLS = [
     description:"HK22 Cohesion Solid on Gas Mask — bold upgrade to the Hammer line with attitude and heavy-oil character."
   },
   {
-    id:146, brand:"Hammer", name:"Hammerhead",
+    id:128, brand:"Hammer", name:"Hammerhead",
     cover:"Solid", coreType:"Symmetric", coreName:"Spheroid",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-hammerhead", coreSlug:"hammer-spheroid-core",
@@ -1854,7 +1617,7 @@ const ALL_BALLS = [
     description:"Aggression Solid HK22 on Spheroid — the original Hammerhead Solid released spring 2025."
   },
   {
-    id:147, brand:"Hammer", name:"Zero Mercy Solid",
+    id:129, brand:"Hammer", name:"Zero Mercy Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Super Offset",
     finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-zero-mercy-solid", coreSlug:"hammer-super-offset-core",
@@ -1866,7 +1629,7 @@ const ALL_BALLS = [
     description:"HK22 Solid on Super Offset asymmetric core — Zero Mercy solid entry for maximum heavy oil dominance."
   },
   {
-    id:148, brand:"Hammer", name:"Zero Mercy Pearl",
+    id:130, brand:"Hammer", name:"Zero Mercy Pearl",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Super Offset",
     finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#b71c1c",
     ballSlug:"hammer-zero-mercy-pearl", coreSlug:"hammer-super-offset-core",
@@ -1878,7 +1641,7 @@ const ALL_BALLS = [
     description:"HK22 Pearl on Super Offset asymmetric core — the angularly sharp Zero Mercy companion."
   },
   {
-    id:149, brand:"Hammer", name:"NU 2.0",
+    id:131, brand:"Hammer", name:"NU 2.0",
     cover:"Urethane", coreType:"Symmetric", coreName:"Spheroid",
     finish:"500/2000 SiaAir", condition:"Medium Oil", accent:"#b71c1c",
     ballSlug:"hammer-nu-20", coreSlug:"hammer-spheroid-core",
@@ -1892,7 +1655,7 @@ const ALL_BALLS = [
 
   // ── Motiv 추가 누락분 ─────────────────────────────────────────
   {
-    id:150, brand:"Motiv", name:"Shadow Tank",
+    id:132, brand:"Motiv", name:"Shadow Tank",
     cover:"Pearl", coreType:"Symmetric", coreName:"Halogen V2",
     finish:"5500 LSP", condition:"Medium-Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-shadow-tank", coreSlug:"motiv-halogen-v2-core",
@@ -1904,21 +1667,7 @@ const ALL_BALLS = [
     description:"Frixion M7 Pearl MCP on Halogen V2 — smoothest, most controllable Tank with urethane-like predictability."
   },
   {
-    id:151, brand:"Motiv", name:"Jackal Onyx",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Apex Predator",
-    finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
-    ballSlug:"motiv-jackal-onyx", coreSlug:"motiv-apex-predator-core",
-    weightData:{
-      16:{rg:2.570,diff:0.050,moi:0.018}, 15:{rg:2.570,diff:0.050,moi:0.018},
-      14:{rg:2.600,diff:0.047,moi:0.016}, 13:{rg:2.660,diff:0.042,moi:0.013}, 12:{rg:2.720,diff:0.035,moi:0.011}
-    },
-    releaseDate:"Jan 2026",
-    description:"Propulsion HVP Solid with Duramax on Apex Predator — the definitive Jackal Onyx for heavy oil control."
-  },
-
-  // ── 900 Global 추가 누락분 ────────────────────────────────────
-  {
-    id:152, brand:"900 Global", name:"Origin",
+    id:133, brand:"900 Global", name:"Origin",
     cover:"Solid", coreType:"Asymmetric", coreName:"Ellipse A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-origin", coreSlug:"900-global-ellipse-ai-core",
@@ -1930,7 +1679,7 @@ const ALL_BALLS = [
     description:"Quantum Solid on Ellipse A.I. — dual precession weight block design for unparalleled hook and turbulence."
   },
   {
-    id:153, brand:"900 Global", name:"Viking",
+    id:134, brand:"900 Global", name:"Viking",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Viking",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-viking", coreSlug:"900-global-viking-core",
@@ -1944,33 +1693,7 @@ const ALL_BALLS = [
 
   // ── DV8 추가 누락분 ──────────────────────────────────────────
   {
-    id:154, brand:"DV8", name:"Heckler",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Unholy",
-    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Heavy Oil", accent:"#bf360c",
-    ballSlug:"dv8-heckler", coreSlug:"dv8-unholy-core",
-    weightData:{
-      16:{rg:2.485,diff:0.055,moi:0.018}, 15:{rg:2.480,diff:0.057,moi:0.018},
-      14:{rg:2.515,diff:0.055,moi:0.017}, 13:{rg:2.585,diff:0.048,moi:0.014}, 12:{rg:2.645,diff:0.041,moi:0.012}
-    },
-    releaseDate:"Nov 2024",
-    description:"HK22C Hybrid on Unholy asymmetric core — two-hand/no-thumb friendly design for heavy oil."
-  },
-  {
-    id:155, brand:"DV8", name:"Dark Side Curse",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Duality",
-    finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#bf360c",
-    ballSlug:"dv8-dark-side-curse", coreSlug:"dv8-duality-core",
-    weightData:{
-      16:{rg:2.480,diff:0.056,moi:0.019}, 15:{rg:2.480,diff:0.055,moi:0.019},
-      14:{rg:2.515,diff:0.052,moi:0.017}, 13:{rg:2.585,diff:0.046,moi:0.014}, 12:{rg:2.645,diff:0.039,moi:0.012}
-    },
-    releaseDate:"Jan 2026",
-    description:"Solid cover on patent-pending Duality core — adapts to finger hole placement for all grip styles."
-  },
-
-  // ── Columbia 300 추가 누락분 ──────────────────────────────────
-  {
-    id:156, brand:"Columbia 300", name:"Ricochet Pearl",
+    id:135, brand:"Columbia 300", name:"Ricochet Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ricochet",
     finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium Oil", accent:"#0277bd",
     ballSlug:"columbia-300-ricochet-pearl", coreSlug:"columbia-300-ricochet-core",
@@ -1982,7 +1705,7 @@ const ALL_BALLS = [
     description:"Pearl cover on Ricochet + Dynamicore — more explosive backend, sharp breakpoint for medium oil."
   },
   {
-    id:157, brand:"Columbia 300", name:"Super Cuda PowerCOR Pearl",
+    id:136, brand:"Columbia 300", name:"Super Cuda PowerCOR Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Super Cuda PowerCOR",
     finish:"Factory Compound", condition:"Medium Oil", accent:"#0277bd",
     ballSlug:"columbia-300-super-cuda-powercor-pearl", coreSlug:"columbia-300-super-cuda-powercor-core",
@@ -1996,19 +1719,7 @@ const ALL_BALLS = [
 
   // ── Ebonite 추가 누락분 ───────────────────────────────────────
   {
-    id:158, brand:"Ebonite", name:"Spartan",
-    cover:"Solid", coreType:"Asymmetric", coreName:"Spartan",
-    finish:"500/1000/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#4e342e",
-    ballSlug:"ebonite-spartan", coreSlug:"ebonite-spartan-core",
-    weightData:{
-      16:{rg:2.485,diff:0.055,moi:0.018}, 15:{rg:2.480,diff:0.057,moi:0.018},
-      14:{rg:2.515,diff:0.055,moi:0.017}, 13:{rg:2.585,diff:0.048,moi:0.014}, 12:{rg:2.645,diff:0.041,moi:0.012}
-    },
-    releaseDate:"Jan 2026",
-    description:"Strong solid cover on Spartan asymmetric core — Ebonite's new flagship warrior for heavy oil conditions."
-  },
-  {
-    id:159, brand:"Ebonite", name:"Real Time",
+    id:137, brand:"Ebonite", name:"Real Time",
     cover:"Solid", coreType:"Symmetric", coreName:"Big Time",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#4e342e",
     ballSlug:"ebonite-real-time", coreSlug:"ebonite-big-time-core",
@@ -2022,21 +1733,7 @@ const ALL_BALLS = [
 
   // ── Radical 추가 누락분 ───────────────────────────────────────
   {
-    id:160, brand:"Radical", name:"Deep Impact",
-    cover:"Hybrid", coreType:"Asymmetric", coreName:"Torpedo",
-    finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
-    ballSlug:"radical-deep-impact", coreSlug:"radical-torpedo-core",
-    weightData:{
-      16:{rg:2.480,diff:0.052,moi:0.017}, 15:{rg:2.480,diff:0.054,moi:0.017},
-      14:{rg:2.515,diff:0.052,moi:0.015}, 13:{rg:2.585,diff:0.046,moi:0.012}, 12:{rg:2.645,diff:0.039,moi:0.010}
-    },
-    releaseDate:"Feb 2026",
-    description:"HK22C+ Hybrid on Torpedo asymmetric — nano micellular hybrid reactive blend for versatile heavy oil."
-  },
-
-  // ── SWAG 추가 누락분 ──────────────────────────────────────────
-  {
-    id:161, brand:"SWAG", name:"Judgement Hybrid",
+    id:138, brand:"SWAG", name:"Judgement Hybrid",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Judgement",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#1a237e",
     ballSlug:"swag-judgement-hybrid", coreSlug:"swag-judgement-core",
@@ -2048,7 +1745,7 @@ const ALL_BALLS = [
     description:"SWAG Slayer AP26 Hybrid on Judgement asymmetric — one of six new AP26 launch balls for Feb 2026."
   },
   {
-    id:162, brand:"SWAG", name:"Unreal Solid",
+    id:139, brand:"SWAG", name:"Unreal Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Unreal",
     finish:"3000 Abralon", condition:"Heavy Oil", accent:"#1a237e",
     ballSlug:"swag-unreal-solid", coreSlug:"swag-unreal-core",
@@ -2060,7 +1757,7 @@ const ALL_BALLS = [
     description:"SWAG Never Quit AP26 Solid on Unreal asymmetric core — maximum heavy oil performance with AP26 tech."
   },
   {
-    id:163, brand:"SWAG", name:"Fusion Hybrid",
+    id:140, brand:"SWAG", name:"Fusion Hybrid",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Fusion",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#1a237e",
     ballSlug:"swag-fusion-hybrid", coreSlug:"swag-fusion-core",
@@ -2074,7 +1771,7 @@ const ALL_BALLS = [
 
   // ── Track 추가 누락분 ─────────────────────────────────────────
   {
-    id:164, brand:"Track", name:"I-Core Gen4",
+    id:141, brand:"Track", name:"I-Core Gen4",
     cover:"Solid", coreType:"Asymmetric", coreName:"I-Core Gen4",
     finish:"500/1000/1500 Siaair / Factory Compound", condition:"Heavy Oil", accent:"#37474f",
     ballSlug:"track-i-core-gen4", coreSlug:"track-i-core-gen4-asym",
@@ -2092,7 +1789,7 @@ const ALL_BALLS = [
 
   // ── 900 Global ───────────────────────────────────────────────
   {
-    id:165, brand:"900 Global", name:"Cove",
+    id:142, brand:"900 Global", name:"Cove",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Magna A.I.",
     finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium-Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-cove", coreSlug:"900-global-magna-ai-core",
@@ -2101,7 +1798,7 @@ const ALL_BALLS = [
     description:"RB 85 Hybrid on Magna A.I. dual-hemisphere symmetric core — smooth, continuous motion on medium-heavy."
   },
   {
-    id:166, brand:"900 Global", name:"Ember",
+    id:143, brand:"900 Global", name:"Ember",
     cover:"Pearl", coreType:"Symmetric", coreName:"Magna A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-ember", coreSlug:"900-global-magna-ai-core",
@@ -2110,7 +1807,7 @@ const ALL_BALLS = [
     description:"RB 82 Pearl on Magna A.I. — stronger backend Cove companion, angular pearl for medium conditions."
   },
   {
-    id:167, brand:"900 Global", name:"Mach Cruise",
+    id:144, brand:"900 Global", name:"Mach Cruise",
     cover:"Solid", coreType:"Symmetric", coreName:"Cruise",
     finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-mach-cruise", coreSlug:"900-global-cruise-core",
@@ -2119,7 +1816,7 @@ const ALL_BALLS = [
     description:"Reserve Blend 93 Solid on Cruise symmetric core — overseas Mach Cruise for controlled medium-heavy oil."
   },
   {
-    id:168, brand:"900 Global", name:"Honey Badger Black Edition",
+    id:145, brand:"900 Global", name:"Honey Badger Black Edition",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Grapnel 2.0",
     finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-honey-badger-black-edition", coreSlug:"900-global-grapnel-20-core",
@@ -2128,7 +1825,7 @@ const ALL_BALLS = [
     description:"Reserve Blend 70E Hybrid on Grapnel 2.0 asymmetric — Black Edition HB for medium oil skid/flip shape."
   },
   {
-    id:169, brand:"900 Global", name:"Reality Incursion",
+    id:146, brand:"900 Global", name:"Reality Incursion",
     cover:"Solid", coreType:"Asymmetric", coreName:"Disturbance A.I.",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-reality-incursion", coreSlug:"900-global-disturbance-ai-core",
@@ -2137,7 +1834,7 @@ const ALL_BALLS = [
     description:"Reserve Blend 901 Solid on Disturbance A.I. — Reality's next chapter; lower RG, higher diff via A.I. outer core."
   },
   {
-    id:170, brand:"900 Global", name:"Remaster Honey Badger",
+    id:147, brand:"900 Global", name:"Remaster Honey Badger",
     cover:"Solid", coreType:"Asymmetric", coreName:"Grapnel 2.0",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-remaster-honey-badger", coreSlug:"900-global-grapnel-20-core",
@@ -2146,7 +1843,7 @@ const ALL_BALLS = [
     description:"Reserve Blend 70D Solid on Grapnel 2.0 — Remaster Honey Badger solid for medium-heavy oil dominance."
   },
   {
-    id:171, brand:"900 Global", name:"Origin EX",
+    id:148, brand:"900 Global", name:"Origin EX",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Ellipse A.I.",
     finish:"Power Edge", condition:"Medium-Heavy Oil", accent:"#1565c0",
     ballSlug:"900-global-origin-ex", coreSlug:"900-global-ellipse-ai-core",
@@ -2155,7 +1852,7 @@ const ALL_BALLS = [
     description:"Quantum Pearl on Ellipse A.I. — Origin's pearl companion with angular backend and same dual-precession power."
   },
   {
-    id:172, brand:"900 Global", name:"Rev Matrix",
+    id:149, brand:"900 Global", name:"Rev Matrix",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Matrix",
     finish:"Power Edge", condition:"Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-rev-matrix", coreSlug:"900-global-matrix-core",
@@ -2164,7 +1861,7 @@ const ALL_BALLS = [
     description:"S86R Pearl on Matrix flip-block asymmetric core — overseas, designed by PWBA pro Daria Payonk for medium oil."
   },
   {
-    id:173, brand:"900 Global", name:"Duty Majesty",
+    id:150, brand:"900 Global", name:"Duty Majesty",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Duty",
     finish:"1500 Polished", condition:"Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-duty-majesty", coreSlug:"900-global-duty-core",
@@ -2173,7 +1870,7 @@ const ALL_BALLS = [
     description:"Reserve Blend 902 Hybrid on Duty symmetric core — overseas controlled motion for medium lane conditions."
   },
   {
-    id:174, brand:"900 Global", name:"Honey Badger Blameless",
+    id:151, brand:"900 Global", name:"Honey Badger Blameless",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Grapnel 2.0",
     finish:"3000 Abralon", condition:"Light-Medium Oil", accent:"#1565c0",
     ballSlug:"900-global-honey-badger-blameless", coreSlug:"900-global-grapnel-20-core",
@@ -2184,7 +1881,7 @@ const ALL_BALLS = [
 
   // ── Motiv ─────────────────────────────────────────────────────
   {
-    id:175, brand:"Motiv", name:"Jackal ExJ",
+    id:152, brand:"Motiv", name:"Jackal ExJ",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Predator V2",
     finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-jackal-exj", coreSlug:"motiv-predator-v2-core",
@@ -2193,7 +1890,7 @@ const ALL_BALLS = [
     description:"Propulsion HVH Hybrid on Predator V2 — first hybrid Jackal in 3+ years, slots between Jackal Ghost and Crimson Jackal."
   },
   {
-    id:176, brand:"Motiv", name:"Subzero Forge",
+    id:153, brand:"Motiv", name:"Subzero Forge",
     cover:"Solid", coreType:"Symmetric", coreName:"Detonator",
     finish:"2000 LSS", condition:"Heavy Oil", accent:"#6a1b9a",
     ballSlug:"motiv-subzero-forge", coreSlug:"motiv-detonator-core",
@@ -2202,7 +1899,7 @@ const ALL_BALLS = [
     description:"Leverage MXC Solid + Duramax on Detonator symmetric — ice-cold heavy oil force, strong early read with continuous motion."
   },
   {
-    id:177, brand:"Motiv", name:"Max Thrill Pearl",
+    id:154, brand:"Motiv", name:"Max Thrill Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Halogen V2",
     finish:"5500 LSP", condition:"Light-Medium Oil", accent:"#6a1b9a",
     ballSlug:"motiv-max-thrill-pearl", coreSlug:"motiv-halogen-v2-core",
@@ -2213,7 +1910,7 @@ const ALL_BALLS = [
 
   // ── SWAG ──────────────────────────────────────────────────────
   {
-    id:178, brand:"SWAG", name:"Craze Tour Solid",
+    id:155, brand:"SWAG", name:"Craze Tour Solid",
     cover:"Solid", coreType:"Symmetric", coreName:"Craze",
     finish:"3000 Abralon", condition:"Medium-Heavy Oil", accent:"#1a237e",
     ballSlug:"swag-craze-tour-solid", coreSlug:"swag-craze-core",
@@ -2228,7 +1925,7 @@ const ALL_BALLS = [
 
   // ── Storm 추가 누락분 (bowwwl p1~2 대조) ──────────────────────
   {
-    id:179, brand:"Storm", name:"Hy-Road 40",
+    id:156, brand:"Storm", name:"Hy-Road 40",
     cover:"Pearl", coreType:"Symmetric", coreName:"Inverted Fe2",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-hy-road-40", coreSlug:"storm-inverted-fe2-core",
@@ -2237,7 +1934,7 @@ const ALL_BALLS = [
     description:"A1S Pearl on Inverted Fe2 — 40th anniversary HyRoad, clean through the fronts with predictable angular backend."
   },
   {
-    id:180, brand:"Storm", name:"!Q Spear",
+    id:157, brand:"Storm", name:"!Q Spear",
     cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-iq-spear", coreSlug:"storm-c3-centripetal-ai-core",
@@ -2246,7 +1943,7 @@ const ALL_BALLS = [
     description:"R2S Solid on C3 Centripetal A.I. — ultimate control and workability at the breakpoint, A.I. enhanced energy transfer."
   },
   {
-    id:181, brand:"Storm", name:"Motor 30",
+    id:158, brand:"Storm", name:"Motor 30",
     cover:"Pearl", coreType:"Symmetric", coreName:"Torsion A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-motor-30", coreSlug:"storm-torsion-ai-core",
@@ -2255,7 +1952,7 @@ const ALL_BALLS = [
     description:"RX Pro Pearl on Torsion A.I. — Motor line's 30th anniversary limited edition with explosive rev-up motion."
   },
   {
-    id:182, brand:"Storm", name:"IDentity B-C-P",
+    id:159, brand:"Storm", name:"IDentity B-C-P",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Ignition A.I.",
     finish:"3000 Abralon", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-identity-bcp", coreSlug:"storm-ignition-ai-core",
@@ -2264,7 +1961,7 @@ const ALL_BALLS = [
     description:"Hybrid cover on Ignition A.I. — B-C-P (Blue/Crimson/Purple) colorway IDentity, versatile medium oil performer."
   },
   {
-    id:183, brand:"Storm", name:"Grand Gate",
+    id:160, brand:"Storm", name:"Grand Gate",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ignition A.I.",
     finish:"Power Edge", condition:"Medium Oil", accent:"#00897b",
     ballSlug:"storm-grand-gate", coreSlug:"storm-ignition-ai-core",
@@ -2273,7 +1970,7 @@ const ALL_BALLS = [
     description:"A1S Pearl on Ignition A.I. — Gate series' premium pearl for clean skid with sharp angular backend reaction."
   },
   {
-    id:184, brand:"Storm", name:"Star Gate",
+    id:161, brand:"Storm", name:"Star Gate",
     cover:"Solid", coreType:"Symmetric", coreName:"Ignition A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-star-gate", coreSlug:"storm-ignition-ai-core",
@@ -2282,7 +1979,7 @@ const ALL_BALLS = [
     description:"Hybrid cover on Ignition A.I. — Star Gate's blueberry-scented aggressive solid Gate series entry."
   },
   {
-    id:185, brand:"Storm", name:"Marvel Flame",
+    id:162, brand:"Storm", name:"Marvel Flame",
     cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-marvel-flame", coreSlug:"storm-centripetal-hd-ai-core",
@@ -2291,7 +1988,7 @@ const ALL_BALLS = [
     description:"EXO Solid on Centripetal HD A.I. — 3rd Marvel A.I. series, stable arc with high scoreability on medium-heavy."
   },
   {
-    id:186, brand:"Storm", name:"Code Impact",
+    id:163, brand:"Storm", name:"Code Impact",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"RAD4",
     finish:"3000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-code-impact", coreSlug:"storm-rad4-core",
@@ -2300,7 +1997,7 @@ const ALL_BALLS = [
     description:"NeX Hybrid on RAD4 — the Code series' heaviest hitter, highest diff in the Premier line for maximum heavy oil."
   },
   {
-    id:187, brand:"Storm", name:"Summit World",
+    id:164, brand:"Storm", name:"Summit World",
     cover:"Solid", coreType:"Symmetric", coreName:"Centripetal HD A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-summit-world", coreSlug:"storm-centripetal-hd-ai-core",
@@ -2309,7 +2006,7 @@ const ALL_BALLS = [
     description:"R2S Solid on Centripetal HD A.I. — overseas Summit World, strong continuous roll on medium-heavy oil."
   },
   {
-    id:188, brand:"Storm", name:"Wild Absolute",
+    id:165, brand:"Storm", name:"Wild Absolute",
     cover:"Solid", coreType:"Asymmetric", coreName:"Sentinel",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-wild-absolute", coreSlug:"storm-sentinel-core",
@@ -2318,7 +2015,7 @@ const ALL_BALLS = [
     description:"NeX Solid on Sentinel — overseas Wild Absolute, stable power axis movement for continuous heavy oil dominance."
   },
   {
-    id:189, brand:"Storm", name:"DNA Strand",
+    id:166, brand:"Storm", name:"DNA Strand",
     cover:"Solid", coreType:"Asymmetric", coreName:"G2",
     finish:"4000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-dna-strand", coreSlug:"storm-g2-core",
@@ -2327,7 +2024,7 @@ const ALL_BALLS = [
     description:"NeX Solid on G2 asymmetric — stronger midlane read than DNA Coil II, 11% more entry angle vs NRG cover."
   },
   {
-    id:190, brand:"Storm", name:"Bite Panic A.I.",
+    id:167, brand:"Storm", name:"Bite Panic A.I.",
     cover:"Pearl", coreType:"Asymmetric", coreName:"G2 A.I.",
     finish:"Power Edge", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-bite-panic-ai", coreSlug:"storm-g2-ai-core",
@@ -2336,7 +2033,7 @@ const ALL_BALLS = [
     description:"EXO Pearl on G2 A.I. — overseas Bite Panic A.I., improved oil-resistance front and boosted backend power."
   },
   {
-    id:191, brand:"Storm", name:"Bite Panic X",
+    id:168, brand:"Storm", name:"Bite Panic X",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"G2",
     finish:"3000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-bite-panic-x", coreSlug:"storm-g2-core",
@@ -2345,7 +2042,7 @@ const ALL_BALLS = [
     description:"EXO Hybrid on G2 — overseas Bite Panic X, fine flare pattern with astonishing pin action on heavy oil."
   },
   {
-    id:192, brand:"Storm", name:"PhysiX Power Elite IV",
+    id:169, brand:"Storm", name:"PhysiX Power Elite IV",
     cover:"Solid", coreType:"Asymmetric", coreName:"Atomic A.I.",
     finish:"2000 Abralon", condition:"Heavy Oil", accent:"#00897b",
     ballSlug:"storm-physix-power-elite-iv", coreSlug:"storm-atomic-ai-core",
@@ -2354,7 +2051,7 @@ const ALL_BALLS = [
     description:"R2S Solid on Atomic A.I. — PhysiX Power Elite IV, overseas limited release for maximum heavy oil performance."
   },
   {
-    id:193, brand:"Storm", name:"Blue !Q",
+    id:170, brand:"Storm", name:"Blue !Q",
     cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal A.I.",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-blue-iq", coreSlug:"storm-c3-centripetal-ai-core",
@@ -2363,7 +2060,7 @@ const ALL_BALLS = [
     description:"R2S Solid on C3 A.I. — Blue !Q celebrating the iconic IQ lineage with A.I. enhanced control motion."
   },
   {
-    id:194, brand:"Storm", name:"!Q Super G",
+    id:171, brand:"Storm", name:"!Q Super G",
     cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal",
     finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
     ballSlug:"storm-iq-super-g", coreSlug:"storm-c3-centripetal-core",
@@ -2374,7 +2071,7 @@ const ALL_BALLS = [
 
   // ── Brunswick 추가 누락분 ──────────────────────────────────────
   {
-    id:195, brand:"Brunswick", name:"Danger Zone Purple Ice",
+    id:172, brand:"Brunswick", name:"Danger Zone Purple Ice",
     cover:"Solid", coreType:"Symmetric", coreName:"Twist",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
     ballSlug:"brunswick-danger-zone-purple-ice", coreSlug:"brunswick-twist-core",
@@ -2383,7 +2080,7 @@ const ALL_BALLS = [
     description:"QR-12 Solid on Twist symmetric — Danger Zone Purple Ice colorway, same spec as the black version."
   },
   {
-    id:196, brand:"Brunswick", name:"Melee Jab Void Black",
+    id:173, brand:"Brunswick", name:"Melee Jab Void Black",
     cover:"Solid", coreType:"Symmetric", coreName:"Melee",
     finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#e65100",
     ballSlug:"brunswick-melee-jab-void-black", coreSlug:"brunswick-melee-core",
@@ -2392,13 +2089,44 @@ const ALL_BALLS = [
     description:"Reactive Solid on Melee symmetric — Void Black colorway Melee Jab, entry-level medium oil performance."
   },
   {
-    id:197, brand:"Brunswick", name:"Vapor Zone Red",
+    id:174, brand:"Brunswick", name:"Vapor Zone Red",
     cover:"Pearl", coreType:"Symmetric", coreName:"Vapor",
     finish:"Factory Compound", condition:"Medium Oil", accent:"#e65100",
     ballSlug:"brunswick-vapor-zone-red", coreSlug:"brunswick-vapor-core",
     weightData:{16:{rg:2.560,diff:0.032},15:{rg:2.560,diff:0.034},14:{rg:2.580,diff:0.032},13:{rg:2.640,diff:0.027},12:{rg:2.700,diff:0.022}},
     releaseDate:"Dec 2025",
     description:"Pearl cover on Vapor symmetric core — Vapor Zone Red, polished entry-level ball for medium oil conditions."
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // v7.3 — 5차 전수검증: 중복 22개 제거 + 실제 누락 3개 추가
+  // ══════════════════════════════════════════════════════════════
+  {
+    id:175, brand:"Hammer", name:"Special Effect",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Huntsman",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#d84315",
+    ballSlug:"hammer-special-effect", coreSlug:"hammer-huntsman-core",
+    weightData:{16:{rg:2.483,diff:0.043,moi:0.015},15:{rg:2.470,diff:0.050,moi:0.017},14:{rg:2.495,diff:0.050,moi:0.016},13:{rg:2.597,diff:0.041,moi:0.014},12:{rg:2.593,diff:0.041,moi:0.014}},
+    releaseDate:"Mar 2025",
+    description:"HK22C Cohesion Solid on Huntsman asymmetric — follow-up to the Effect, slightly earlier read for medium-heavy oil with the same signature Huntsman power."
+  },
+  {
+    id:176, brand:"Hammer", name:"Black Widow Mania",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Gas Mask",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#d84315",
+    ballSlug:"hammer-black-widow-mania", coreSlug:"hammer-gas-mask-core",
+    weightData:{16:{rg:2.510,diff:0.048,moi:0.015},15:{rg:2.500,diff:0.058,moi:0.016},14:{rg:2.500,diff:0.056,moi:0.016},13:{rg:2.589,diff:0.043,moi:0.011},12:{rg:2.612,diff:0.043,moi:0.011}},
+    releaseDate:"Jan 2025",
+    description:"HK22C Cohesion Pearl on Gas Mask — longer and sharper than BW 2.0 Hybrid, perfect medium oil follow-up in the legendary Black Widow lineage."
+  },
+  {
+    id:177, brand:"Motiv", name:"Primal Ghost",
+    cover:"Solid", coreType:"Symmetric", coreName:"Impulse V2",
+    finish:"3000 LSS", condition:"Medium Oil", accent:"#e65100",
+    ballSlug:"motiv-primal-ghost", coreSlug:"motiv-impulse-v2-core",
+    weightData:{16:{rg:2.540,diff:0.049},15:{rg:2.550,diff:0.050},14:{rg:2.560,diff:0.054},13:{rg:2.600,diff:0.055},12:{rg:2.670,diff:0.040}},
+    releaseDate:"Sep 2025",
+    description:"Coercion HFS Solid on Impulse V2 symmetric — fusion of Jackal Ghost's legendary cover with Primal Rage's proven core, smooth and strong medium oil performer."
   },
 ];
 

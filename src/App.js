@@ -2226,6 +2226,220 @@ const ALL_BALLS = [
     releaseDate:"Feb 2025",
     description:"Reactive Solid on Hustle symmetric — Teal/Black colorway entry-level performer for lighter oil conditions."
   },
+
+  // ══════════════════════════════════════════════════════════════
+  // 역대 인기/판매 상위 클래식 볼 추가 (연도 무관 베스트셀러)
+  // ══════════════════════════════════════════════════════════════
+
+  // ── Storm 역대 인기 ───────────────────────────────────────────
+  {
+    id:188, brand:"Storm", name:"Phaze II",
+    cover:"Solid", coreType:"Symmetric", coreName:"Velocity",
+    finish:"500/2000 Siaair", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-phaze-ii", coreSlug:"storm-velocity-core",
+    weightData:{16:{rg:2.480,diff:0.052},15:{rg:2.480,diff:0.052},14:{rg:2.510,diff:0.050},13:{rg:2.580,diff:0.044},12:{rg:2.640,diff:0.037}},
+    releaseDate:"Aug 2018",
+    description:"R2S Solid on Velocity — 역대 가장 많이 팔린 스톰 볼 중 하나. 강한 미드레인 반응과 연속적인 백엔드, 전 세계 볼링선수들의 베이스볼."
+  },
+  {
+    id:189, brand:"Storm", name:"Phaze III",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Velocity",
+    finish:"Power Edge Polish", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-phaze-iii", coreSlug:"storm-velocity-core",
+    weightData:{16:{rg:2.480,diff:0.052},15:{rg:2.480,diff:0.052},14:{rg:2.510,diff:0.050},13:{rg:2.580,diff:0.044},12:{rg:2.640,diff:0.037}},
+    releaseDate:"Jun 2020",
+    description:"R2S Pearl on Velocity — Phaze II의 펄 버전. 깔끔한 프론트와 날카로운 백엔드 앵글로 미디엄 오일에서 폭발적인 인기."
+  },
+  {
+    id:190, brand:"Storm", name:"IQ Tour",
+    cover:"Solid", coreType:"Symmetric", coreName:"C3 Centripetal",
+    finish:"4000 Abralon", condition:"Medium-Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-iq-tour", coreSlug:"storm-c3-centripetal-core",
+    weightData:{16:{rg:2.570,diff:0.034},15:{rg:2.570,diff:0.034},14:{rg:2.590,diff:0.032},13:{rg:2.650,diff:0.027},12:{rg:2.710,diff:0.022}},
+    releaseDate:"Jan 2015",
+    description:"R2S Solid on C3 Centripetal — 가장 오래 판매된 컨트롤 볼. 투어 선수들의 필수 아이템으로 10년 이상 베스트셀러 유지."
+  },
+  {
+    id:191, brand:"Storm", name:"IQ Tour Pearl",
+    cover:"Pearl", coreType:"Symmetric", coreName:"C3 Centripetal",
+    finish:"4000 Abralon Polish", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-iq-tour-pearl", coreSlug:"storm-c3-centripetal-core",
+    weightData:{16:{rg:2.570,diff:0.034},15:{rg:2.570,diff:0.034},14:{rg:2.590,diff:0.032},13:{rg:2.650,diff:0.027},12:{rg:2.710,diff:0.022}},
+    releaseDate:"Mar 2016",
+    description:"R2S Pearl on C3 Centripetal — IQ Tour의 펄 버전. 긴 활주와 예측 가능한 각도로 아마추어~프로까지 폭넓은 사랑."
+  },
+  {
+    id:192, brand:"Storm", name:"Hy-Road",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Inverted Fe2",
+    finish:"Compound", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-hy-road", coreSlug:"storm-inverted-fe2-core",
+    weightData:{16:{rg:2.570,diff:0.046},15:{rg:2.570,diff:0.046},14:{rg:2.590,diff:0.044},13:{rg:2.650,diff:0.038},12:{rg:2.710,diff:0.031}},
+    releaseDate:"Jan 2010",
+    description:"A1S Pearl on Inverted Fe2 — 스톰 역사상 가장 상징적인 볼. 15년 이상 꾸준히 팔리는 레전드. 볼 입문자의 첫 고성능볼로 전 세계 1위."
+  },
+  {
+    id:193, brand:"Storm", name:"Hy-Road Pearl",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Inverted Fe2",
+    finish:"Power Edge Polish", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-hy-road-pearl", coreSlug:"storm-inverted-fe2-core",
+    weightData:{16:{rg:2.570,diff:0.046},15:{rg:2.570,diff:0.046},14:{rg:2.590,diff:0.044},13:{rg:2.650,diff:0.038},12:{rg:2.710,diff:0.031}},
+    releaseDate:"Jun 2014",
+    description:"Pearl cover on Inverted Fe2 — HyRoad 패밀리의 펄 버전. 더 긴 활주와 선명한 앵글. 역대 스톰 판매 Top 5 안에 드는 볼."
+  },
+  {
+    id:194, brand:"Storm", name:"Code Red",
+    cover:"Solid", coreType:"Asymmetric", coreName:"RAD-X",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#00897b",
+    ballSlug:"storm-code-red", coreSlug:"storm-rad-x-core",
+    weightData:{16:{rg:2.480,diff:0.053,moi:0.017},15:{rg:2.480,diff:0.052,moi:0.017},14:{rg:2.510,diff:0.049,moi:0.015},13:{rg:2.580,diff:0.044,moi:0.012},12:{rg:2.640,diff:0.037,moi:0.010}},
+    releaseDate:"Sep 2021",
+    description:"NeX Solid on RAD-X — Code 시리즈의 역대 최고 판매작. 어시머트릭 고성능 헤비오일 볼로 투어 선수들 압도적 선택."
+  },
+  {
+    id:195, brand:"Storm", name:"Marvel Pearl",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Centripetal HD",
+    finish:"Power Edge Polish", condition:"Medium Oil", accent:"#00897b",
+    ballSlug:"storm-marvel-pearl", coreSlug:"storm-centripetal-hd-core",
+    weightData:{16:{rg:2.460,diff:0.054},15:{rg:2.460,diff:0.054},14:{rg:2.490,diff:0.052},13:{rg:2.560,diff:0.046},12:{rg:2.620,diff:0.039}},
+    releaseDate:"Nov 2019",
+    description:"EXO Pearl on Centripetal HD — 출시 즉시 연간 판매 1위. 낮은 RG와 강한 DIFF의 조합으로 2019~2020 시즌 투어를 지배한 볼."
+  },
+
+  // ── Hammer 역대 인기 ──────────────────────────────────────────
+  {
+    id:196, brand:"Hammer", name:"Black Widow 2.0",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Gas Mask",
+    finish:"500/1000/1500 Siaair", condition:"Medium-Heavy Oil", accent:"#1565c0",
+    ballSlug:"hammer-black-widow-2", coreSlug:"hammer-gas-mask-core",
+    weightData:{16:{rg:2.480,diff:0.058,moi:0.017},15:{rg:2.481,diff:0.058,moi:0.017},14:{rg:2.500,diff:0.054,moi:0.015},13:{rg:2.570,diff:0.048,moi:0.012},12:{rg:2.630,diff:0.041,moi:0.010}},
+    releaseDate:"Sep 2018",
+    description:"HK22 Hybrid on Gas Mask — 블랙위도우 시리즈의 역대 판매 1위. 헤비~미디엄헤비 전천후 활약, 전 세계 볼링인의 사랑을 받은 레전드."
+  },
+  {
+    id:197, brand:"Hammer", name:"Purple Pearl Urethane",
+    cover:"Urethane", coreType:"Symmetric", coreName:"Offset",
+    finish:"Rough Buff", condition:"Light-Medium Oil", accent:"#1565c0",
+    ballSlug:"hammer-purple-pearl-urethane", coreSlug:"hammer-offset-core",
+    weightData:{16:{rg:2.600,diff:0.020},15:{rg:2.600,diff:0.020},14:{rg:2.620,diff:0.018},13:{rg:2.680,diff:0.015},12:{rg:2.740,diff:0.012}},
+    releaseDate:"Jan 2017",
+    description:"Urethane cover on Offset — 역대 가장 많이 팔린 우레탄 볼. 드라이~쇼트 패턴의 절대 강자, PBA 투어에서도 꾸준히 사용되는 영원한 베스트셀러."
+  },
+  {
+    id:198, brand:"Hammer", name:"Vibe",
+    cover:"Solid", coreType:"Symmetric", coreName:"Vibe",
+    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"hammer-vibe", coreSlug:"hammer-vibe-core",
+    weightData:{16:{rg:2.540,diff:0.030},15:{rg:2.540,diff:0.030},14:{rg:2.560,diff:0.028},13:{rg:2.620,diff:0.024},12:{rg:2.680,diff:0.019}},
+    releaseDate:"Mar 2019",
+    description:"Reactive Solid on Vibe symmetric — 엔트리~미드 퍼포먼스 역대 판매 1위. 가성비 최강으로 입문자들이 가장 많이 선택하는 볼."
+  },
+  {
+    id:199, brand:"Hammer", name:"Bubblegum Vibe",
+    cover:"Solid", coreType:"Symmetric", coreName:"Vibe",
+    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#1565c0",
+    ballSlug:"hammer-bubblegum-vibe", coreSlug:"hammer-vibe-core",
+    weightData:{16:{rg:2.540,diff:0.030},15:{rg:2.540,diff:0.030},14:{rg:2.560,diff:0.028},13:{rg:2.620,diff:0.024},12:{rg:2.680,diff:0.019}},
+    releaseDate:"Sep 2021",
+    description:"Reactive Solid on Vibe — 핑크/블루 버블껌 컬러로 입문자 최고 인기. 친근한 디자인과 탁월한 가성비로 볼링 입문 1위 추천볼."
+  },
+
+  // ── Motiv 역대 인기 ───────────────────────────────────────────
+  {
+    id:200, brand:"Motiv", name:"Venom Shock",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Sigma V2",
+    finish:"4000 LSS", condition:"Medium Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-venom-shock", coreSlug:"motiv-sigma-v2-core",
+    weightData:{16:{rg:2.490,diff:0.044},15:{rg:2.490,diff:0.044},14:{rg:2.520,diff:0.042},13:{rg:2.590,diff:0.037},12:{rg:2.650,diff:0.030}},
+    releaseDate:"Mar 2020",
+    description:"Turmoil MFS Pearl on Sigma V2 — 모티브 역대 최고 판매 볼 중 하나. 강한 미드레인과 연속적인 백엔드로 리그~투어까지 압도적 사랑."
+  },
+  {
+    id:201, brand:"Motiv", name:"Venom EXJ",
+    cover:"Solid", coreType:"Symmetric", coreName:"Gear",
+    finish:"2000 Siaair", condition:"Medium-Heavy Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-venom-exj", coreSlug:"motiv-gear-core",
+    weightData:{16:{rg:2.480,diff:0.038},15:{rg:2.480,diff:0.038},14:{rg:2.510,diff:0.036},13:{rg:2.580,diff:0.031},12:{rg:2.640,diff:0.025}},
+    releaseDate:"Jun 2024",
+    description:"Coercion HFS Solid on Gear — EJ Tackett 시그니처. 낮은 RG 벤치마크 볼로 2024 베스트셀러. 안정적이고 예측 가능한 미드레인 반응."
+  },
+  {
+    id:202, brand:"Motiv", name:"Forge Fire",
+    cover:"Solid", coreType:"Symmetric", coreName:"Impulse V2",
+    finish:"3000 Grit LSS", condition:"Medium-Heavy Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-forge-fire", coreSlug:"motiv-impulse-v2-core",
+    weightData:{16:{rg:2.530,diff:0.051},15:{rg:2.540,diff:0.050},14:{rg:2.550,diff:0.049},13:{rg:2.600,diff:0.041},12:{rg:2.650,diff:0.035}},
+    releaseDate:"Sep 2022",
+    description:"Coercion MXC Solid on Impulse V2 — 역대 모티브 스트레이트 셀러. 강한 미드레인 반응과 내구성으로 리그볼러들의 절대적 신뢰."
+  },
+  {
+    id:203, brand:"Motiv", name:"Trident Odyssey",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Trident",
+    finish:"4000 LSS", condition:"Medium-Heavy Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-trident-odyssey", coreSlug:"motiv-trident-core",
+    weightData:{16:{rg:2.480,diff:0.053,moi:0.018},15:{rg:2.490,diff:0.052,moi:0.018},14:{rg:2.510,diff:0.049,moi:0.016},13:{rg:2.580,diff:0.044,moi:0.013},12:{rg:2.640,diff:0.037,moi:0.011}},
+    releaseDate:"Jan 2022",
+    description:"Propulsion MXV Pearl on Trident — 역대 모티브 어시머트릭 판매 1위. Jackal과 함께 모티브의 양대 산맥, 긴 활주와 폭발적 각도."
+  },
+
+  // ── Brunswick 역대 인기 ───────────────────────────────────────
+  {
+    id:204, brand:"Brunswick", name:"Kingpin Max",
+    cover:"Solid", coreType:"Asymmetric", coreName:"ECA-XR",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#e65100",
+    ballSlug:"brunswick-kingpin-max", coreSlug:"brunswick-eca-xr-core",
+    weightData:{16:{rg:2.470,diff:0.054,moi:0.018},15:{rg:2.470,diff:0.053,moi:0.018},14:{rg:2.500,diff:0.050,moi:0.016},13:{rg:2.570,diff:0.045,moi:0.013},12:{rg:2.630,diff:0.038,moi:0.011}},
+    releaseDate:"Mar 2022",
+    description:"ECA-XR Solid on ECA-XR — 브런즈윅 헤비오일 역대 판매 1위. 강한 훅과 놀라운 핀 액션으로 2022~2023 투어 지배."
+  },
+  {
+    id:205, brand:"Brunswick", name:"Rhino",
+    cover:"Solid", coreType:"Symmetric", coreName:"Rhino",
+    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    ballSlug:"brunswick-rhino", coreSlug:"brunswick-rhino-core",
+    weightData:{16:{rg:2.540,diff:0.030},15:{rg:2.540,diff:0.030},14:{rg:2.560,diff:0.028},13:{rg:2.620,diff:0.024},12:{rg:2.680,diff:0.019}},
+    releaseDate:"Jan 2016",
+    description:"Reactive Solid on Rhino symmetric — 브런즈윅 역대 최고 판매 입문볼. 수십 년간 꾸준히 팔리는 브런즈윅의 아이콘."
+  },
+
+  // ── Roto Grip 역대 인기 ───────────────────────────────────────
+  {
+    id:206, brand:"Roto Grip", name:"Hype-E",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Nucleus",
+    finish:"Power Edge Polish", condition:"Medium Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-hype-e", coreSlug:"roto-grip-nucleus-core",
+    weightData:{16:{rg:2.550,diff:0.038},15:{rg:2.550,diff:0.038},14:{rg:2.570,diff:0.036},13:{rg:2.630,diff:0.031},12:{rg:2.690,diff:0.025}},
+    releaseDate:"Apr 2022",
+    description:"EXO Pearl on Nucleus — 로토그립 역대 미드퍼포먼스 최고 판매작. 깔끔한 활주와 예측 가능한 백엔드로 2022~2023 리그 1위."
+  },
+  {
+    id:207, brand:"Roto Grip", name:"UFO Alert",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Nucleus V2",
+    finish:"Power Edge Polish", condition:"Medium-Heavy Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-ufo-alert", coreSlug:"roto-grip-nucleus-v2-core",
+    weightData:{16:{rg:2.490,diff:0.052,moi:0.018},15:{rg:2.490,diff:0.052,moi:0.018},14:{rg:2.520,diff:0.049,moi:0.016},13:{rg:2.590,diff:0.044,moi:0.013},12:{rg:2.650,diff:0.037,moi:0.011}},
+    releaseDate:"Aug 2021",
+    description:"MXC Pearl on Nucleus V2 — 출시 즉시 로토그립 연간 판매 1위. 강렬한 UFO 패턴과 날카로운 백엔드로 2021~2022 최고 인기."
+  },
+
+  // ── DV8 역대 인기 ─────────────────────────────────────────────
+  {
+    id:208, brand:"DV8", name:"Pitbull Bite",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Pitbull",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#bf360c",
+    ballSlug:"dv8-pitbull-bite", coreSlug:"dv8-pitbull-core",
+    weightData:{16:{rg:2.480,diff:0.054,moi:0.018},15:{rg:2.480,diff:0.053,moi:0.018},14:{rg:2.510,diff:0.050,moi:0.016},13:{rg:2.580,diff:0.045,moi:0.013},12:{rg:2.640,diff:0.038,moi:0.011}},
+    releaseDate:"May 2021",
+    description:"HK22 Solid on Pitbull asymmetric — DV8 역대 판매 1위. 강력한 훅과 폭발적인 핀 액션으로 헤비오일 조건에서 절대 강자."
+  },
+  {
+    id:209, brand:"DV8", name:"Thug",
+    cover:"Hybrid", coreType:"Asymmetric", coreName:"Thug",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#bf360c",
+    ballSlug:"dv8-thug", coreSlug:"dv8-thug-core",
+    weightData:{16:{rg:2.480,diff:0.055,moi:0.019},15:{rg:2.481,diff:0.054,moi:0.019},14:{rg:2.510,diff:0.051,moi:0.017},13:{rg:2.580,diff:0.046,moi:0.014},12:{rg:2.640,diff:0.039,moi:0.012}},
+    releaseDate:"Jan 2019",
+    description:"Composite Hybrid on Thug asymmetric — DV8의 레전드 볼. 미드레인 강한 반응과 연속적인 백엔드 파워로 2019~2021 투어 인기."
+  },
 ];
 
 const COND_COLOR = {
@@ -2237,6 +2451,204 @@ const BRAND_ICON = {
   "Storm":"⚡","Brunswick":"🟠","Roto Grip":"🔴","Track":"🔵","Motiv":"🟣",
   "Radical":"🔶","Hammer":"🔨","900 Global":"9️⃣","DV8":"🔥","Ebonite":"💎",
   "Columbia 300":"🌊","SWAG":"🌀",
+};
+
+// 인기/판매 순위 데이터 (BowlersMart·Bowling.com·PBA 투어 사용률 종합, 2024~2025)
+const POPULARITY = {
+  // Hammer — 판매 1위 브랜드
+  "Black Widow Mania":99,      // 2025 연간 #1 판매
+  "Black Widow 3.0":97,        // 2024 연간 #1 판매
+  "Black Widow 3.0 Dynasty":95,// 2026 출시 즉시 top5
+  "Black Widow Tour V1":90,    // 2025 투어 인기
+  "Maximum Effect":85,
+  "Effect Tour":83,
+  "Special Effect":78,
+  "Hammerhead":75,
+  "Hammerhead Pearl":73,
+  "Zero Mercy Solid":70,
+  "Zero Mercy Pearl":68,
+  "Anger":65,
+  "NU 2.0":60,
+  "NU Blue Hammer":55,
+  "Black Widow 2.0 Hybrid":50,
+  // Storm
+  "Phaze II Pearl":96,         // 2024 연간 top3
+  "Ion Max Pearl":94,          // 2025 출시 즉시 #1
+  "Ion Max":90,
+  "Equinox Solid":89,
+  "EquinoX":87,
+  "Bionic":88,
+  "Code Honor":85,
+  "PhysiX Grandeur":84,
+  "Absolute Reign":82,
+  "Marvel Scale":80,
+  "Concept":79,
+  "Lock-On":77,
+  "PhysiX Raze":76,
+  "Virtual Gravity Destino":75,
+  "Star Road":74,
+  "Summit Tune":72,
+  "Marvel Maxx Silver":71,
+  "Prime Gate":70,
+  "Marvel Pearl A.I.":69,
+  "PhysiX Era":68,
+  "Blaze DNA":65,
+  "Typhoon":60,
+  "Ion Pro Solid":58,
+  "Ion Pro":55,
+  "Summit Ascent":54,
+  "Summit Peak":52,
+  "The Road X":50,
+  "Motor Rev":48,
+  "PhysiX Solid":46,
+  "!Q Tour A.I.":44,
+  // Motiv
+  "Jackal Onyx":92,            // 2025 #3 전체 판매
+  "Evoke Hysteria":88,         // 2025 투어 인기 급상승
+  "Evoke Mayhem":86,
+  "Evoke":80,
+  "Steel Forge":78,
+  "Primal Rage Evolution":75,
+  "Jackal ExJ":72,
+  "Nuclear Forge":70,
+  "Pride Empire":68,
+  "Shadow Tank":65,
+  "Apex Jackal":62,
+  "Subzero Forge":60,
+  "Max Thrill Pearl":58,
+  "Hyper Venom":55,
+  "Lethal Venom":52,
+  "Raptor Reign":50,
+  "Nebula":48,
+  "Blue Tank":45,
+  "Supra Sport":40,
+  "Primal Ghost":38,
+  // Roto Grip
+  "Gremlin Tour-X":87,
+  "Transformer":85,
+  "Attention Sign":82,
+  "Attention Edge":80,
+  "RST Hyperdrive Pearl":78,
+  "Rockstar Amped":75,
+  "Optimum Idol Solid":72,
+  "Optimum Idol":70,
+  "Vintage Gem":68,
+  "Gem Blue Sapphire":65,
+  "Gremlin":63,
+  "Hyped Super Pearl II":60,
+  "Exit Red":55,
+  "Hustle ETF":50,
+  "Hustle BP":48,
+  "Hustle Teal/Black":42,
+  "Magic Gem":40,
+  "Attention Star S2":38,
+  "Attention Star":35,
+  "Rockstar":32,
+  "Hustle BRY":30,
+  // 900 Global
+  "Dark Matter":85,
+  "Zen 25":80,
+  "Zen 25 Pearl":78,
+  "Ember":75,
+  "Mach Cruise":73,
+  "Origin EX":70,
+  "Reality Incursion":68,
+  "Remaster Honey Badger":65,
+  "Honey Badger Black Edition":63,
+  "Rev Matrix":60,
+  "Cove":58,
+  "Duty Majesty":55,
+  "Phantom Cruise":52,
+  "Cruise Sapphire":50,
+  "Origin":48,
+  "Viking":46,
+  "Wolverine Night":44,
+  "Honey Badger Blameless":42,
+  "Eternity Pi":40,
+  "Vengeance":38,
+  // Brunswick
+  "Combat Hybrid":82,
+  "Crown Victory Pearl":78,
+  "Combat":72,
+  "Crown 78U":65,
+  "Alert":55,
+  "Energize":50,
+  "Danger Zone":45,
+  "Danger Zone Purple Ice":42,
+  "Melee Jab Void Black":38,
+  "Vapor Zone Red":35,
+  // Columbia 300
+  "Street Rally":80,
+  "Piranha Solid":75,
+  "Atlas Hybrid":65,
+  "Atlas":60,
+  "Ricochet Return":55,
+  "Super Cuda PowerCOR Pearl":52,
+  "Ricochet Pearl":50,
+  "Pulse":48,
+  // Radical
+  "Deep Impact":78,
+  "Outer Limits Black Hole":72,
+  "Intel Recon":65,
+  "Ridiculous Pearl":58,
+  "Xtra Bonus":50,
+  "Zig Zag Solid":42,
+  "ZigZag":38,
+  // Track
+  "Stealth Mode Hybrid":75,
+  "Synthesis":68,
+  "Theorem Pearl":62,
+  "Theorem":58,
+  "I-Core Gen4":55,
+  "Rhyno":45,
+  // DV8
+  "Dark Side Curse":78,
+  "Heckler Hybrid":72,
+  "Heckler":65,
+  "Mantra Solid":60,
+  "Hater":55,
+  "Intimidator":48,
+  // Ebonite
+  "Spartan":72,
+  "Emerge Hybrid":65,
+  "Emerge":60,
+  "The One Ovation":55,
+  "Real Time":50,
+  "Envision":45,
+  "Choice Solid":40,
+  // SWAG
+  "Craze Tour Pearl":80,
+  "Craze Tour Solid":75,
+  "Judgement Hybrid":70,
+  "Unreal Solid":65,
+  "Fusion Hybrid":60,
+  "Serpent Hybrid":55,
+  "Assassin Pearl":50,
+  "APEX Solid":48,
+  "Unreal":42,
+  // 역대 클래식 베스트셀러
+  "Hy-Road":98,
+  "Hy-Road Pearl":93,
+  "Phaze II":96,
+  "Phaze III":88,
+  "IQ Tour":91,
+  "IQ Tour Pearl":87,
+  "Code Red":86,
+  "Marvel Pearl":95,
+  "Black Widow 2.0":94,
+  "Purple Pearl Urethane":92,
+  "Vibe":89,
+  "Bubblegum Vibe":83,
+  "Venom Shock":88,
+  "Venom EXJ":82,
+  "Forge Fire":80,
+  "Trident Odyssey":85,
+  "Kingpin Max":84,
+  "Rhino":79,
+  "Hype-E":81,
+  "UFO Alert":86,
+  "Pitbull Bite":82,
+  "Thug":77,
 };
 
 // bowwwl.com 이미지 컴포넌트 — 실제 제품 이미지 로드
@@ -2966,6 +3378,7 @@ export default function RollmateApp() {
   const [editEnt,setEditEnt] = useState(null);
   const [toast,setToast]     = useState(null);
   const [splash,setSplash]   = useState(true);
+  const [sortBy,setSortBy]   = useState("popular");
   const scrollPos            = useRef(0);
 
   useEffect(()=>{setTimeout(()=>setSplash(false),2000);},[]);
@@ -2991,6 +3404,15 @@ export default function RollmateApp() {
     const mC=cond==="All"||b.condition===cond;
     const mS=b.name.toLowerCase().includes(search.toLowerCase())||b.brand.toLowerCase().includes(search.toLowerCase());
     return mB&&mC&&mS;
+  }).sort((a,b)=>{
+    if(sortBy==="popular") return (POPULARITY[b.name]||0)-(POPULARITY[a.name]||0);
+    if(sortBy==="latest"){
+      const parseDate=s=>{if(!s)return 0;const[m,y]=s.split(" ");const months={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};return parseInt(y)*100+(months[m]||0);};
+      return parseDate(b.releaseDate)-parseDate(a.releaseDate);
+    }
+    if(sortBy==="rg") return (a.weightData?.[15]?.rg||9)-(b.weightData?.[15]?.rg||9);
+    if(sortBy==="diff") return (b.weightData?.[15]?.diff||0)-(a.weightData?.[15]?.diff||0);
+    return 0;
   });
 
   const inArsenal = id => arsenal.some(e=>e.ballId===id);
@@ -3178,6 +3600,27 @@ export default function RollmateApp() {
               </div>
             )}
 
+            {/* 정렬 옵션 */}
+            <div style={{display:"flex",gap:6,marginBottom:12,flexWrap:"wrap"}}>
+              {[
+                {k:"latest", label:"🆕 최신순"},
+                {k:"popular",label:"🔥 인기순"},
+                {k:"rg",     label:"RG 낮은순"},
+                {k:"diff",   label:"DIFF 높은순"},
+              ].map(({k,label})=>(
+                <button key={k} onClick={()=>setSortBy(k)} style={{
+                  padding:"5px 11px",borderRadius:20,fontSize:12,fontWeight:700,
+                  border:"1.5px solid",cursor:"pointer",fontFamily:"inherit",
+                  background:sortBy===k?"#1c1c1e":"#fff",
+                  color:sortBy===k?"#ff8c00":"#6b6b7e",
+                  borderColor:sortBy===k?"#ff8c00":"#d0d0d8",
+                  transition:"all .15s",
+                }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+
             {/* 볼 그리드 */}
             <div className="rm-ball-grid" style={{display:"grid",gridTemplateColumns:"1fr",gap:10}}>
               {filtered.map((ball,i)=>{
@@ -3195,6 +3638,13 @@ export default function RollmateApp() {
                       fontSize:16,fontWeight:800,zIndex:2,
                       background:inC?ball.accent:"#e2e2e0",color:inC?"#fff":"#6b6b7e",
                       boxShadow:inC?`0 2px 8px ${ball.accent}55`:"none"}}>{inC?"✓":"+"}</div>
+
+                    {/* 인기 뱃지 */}
+                    {(()=>{const pop=POPULARITY[ball.name]||0;const rank=sortBy==="popular"?i+1:null;
+                      if(pop>=90) return <div style={{position:"absolute",top:8,left:inA?28:8,background:"linear-gradient(135deg,#ff6b35,#ff8c00)",color:"#fff",fontSize:10,fontWeight:800,padding:"2px 6px",borderRadius:8,zIndex:2,letterSpacing:.5}}>🔥 HOT</div>;
+                      if(sortBy==="popular"&&rank<=3) return <div style={{position:"absolute",top:8,left:inA?28:8,background:rank===1?"#FFD700":rank===2?"#C0C0C0":"#CD7F32",color:rank===1?"#7a5000":"#fff",fontSize:10,fontWeight:800,padding:"2px 6px",borderRadius:8,zIndex:2}}>#{rank}</div>;
+                      return null;
+                    })()}
 
                     <div style={{display:"flex",alignItems:"center",gap:9,marginBottom:8,marginTop:3}}>
                       {/* 실제 볼 이미지 */}

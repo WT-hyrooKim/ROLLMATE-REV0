@@ -3101,18 +3101,18 @@ export default function RollmateApp() {
       <div style={{background:"rgba(28,28,30,.97)",backdropFilter:"blur(16px)",
         borderBottom:"1px solid rgba(255,140,0,.2)",padding:"0 12px",position:"sticky",top:0,zIndex:100,overflow:"hidden",width:"100%",boxSizing:"border-box"}}>
         <div style={{width:"100%",display:"flex",alignItems:"center",height:52,gap:8}}>
-          <div style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto"}}>
+          <div onClick={()=>{setSel(null);setView("home");setBrand("전체");setSearch("");}}
+            style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto",cursor:"pointer"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontWeight:800,fontSize:28,letterSpacing:1,color:"#ffffff",fontFamily:"'Inter',sans-serif"}}>
               ROLL<span style={{color:"#ff8c00"}}>MATE</span>
             </span>
-            <span style={{fontSize:9,color:"rgba(255,140,0,.6)",fontWeight:700,letterSpacing:1,alignSelf:"flex-end",marginBottom:6}}>v7.2</span>
           </div>
-          <div style={{position:"relative"}}>
+          <div style={{position:"relative",flex:1,minWidth:0}}>
             <span style={{position:"absolute",left:9,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#ff8c00"}}>🔍</span>
             <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="볼 검색..."
               style={{background:"rgba(255,255,255,.1)",border:"1.5px solid rgba(255,140,0,.3)",borderRadius:20,color:"#fff",
-                padding:"6px 12px 6px 26px",fontSize:13,fontWeight:600,outline:"none",width:"min(160px,38vw)",fontFamily:"inherit"}}/>
+                padding:"6px 12px 6px 26px",fontSize:13,fontWeight:600,outline:"none",width:"100%",boxSizing:"border-box",fontFamily:"inherit"}}/>
           </div>
         </div>
       </div>

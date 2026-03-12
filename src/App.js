@@ -2128,6 +2128,104 @@ const ALL_BALLS = [
     releaseDate:"Sep 2025",
     description:"Coercion HFS Solid on Impulse V2 symmetric — fusion of Jackal Ghost's legendary cover with Primal Rage's proven core, smooth and strong medium oil performer."
   },
+
+  // ── Motiv 누락 ────────────────────────────────────────────────
+  {
+    id:178, brand:"Motiv", name:"Evoke",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Overload",
+    finish:"2000 Siaair", condition:"Medium-Heavy Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-evoke", coreSlug:"motiv-overload-core",
+    weightData:{16:{rg:2.480,diff:0.050,moi:0.017},15:{rg:2.480,diff:0.050,moi:0.017},14:{rg:2.510,diff:0.047,moi:0.015},13:{rg:2.580,diff:0.042,moi:0.012},12:{rg:2.640,diff:0.035,moi:0.010}},
+    releaseDate:"Feb 2024",
+    description:"Leverage MXC Solid on Overload asymmetric — tunable differential, smooth heavy oil benchmark control."
+  },
+  {
+    id:179, brand:"Motiv", name:"Evoke Hysteria",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Overload",
+    finish:"4000 LSS", condition:"Medium-Heavy Oil", accent:"#7b1fa2",
+    ballSlug:"motiv-evoke-hysteria", coreSlug:"motiv-overload-core",
+    weightData:{16:{rg:2.480,diff:0.050,moi:0.017},15:{rg:2.480,diff:0.050,moi:0.017},14:{rg:2.510,diff:0.047,moi:0.015},13:{rg:2.580,diff:0.042,moi:0.012},12:{rg:2.640,diff:0.035,moi:0.010}},
+    releaseDate:"Mar 2025",
+    description:"Propulsion MXV Pearl on Overload — angular backend with tunable differential, devastatingly controllable entry angle."
+  },
+
+  // ── Columbia 300 누락 ─────────────────────────────────────────
+  {
+    id:180, brand:"Columbia 300", name:"Ricochet Return",
+    cover:"Hybrid", coreType:"Symmetric", coreName:"Ricochet",
+    finish:"Factory Polish", condition:"Medium Oil", accent:"#0277bd",
+    ballSlug:"columbia-300-ricochet-return", coreSlug:"columbia-300-ricochet-core",
+    weightData:{16:{rg:2.502,diff:0.047},15:{rg:2.488,diff:0.054},14:{rg:2.535,diff:0.054},13:{rg:2.600,diff:0.048},12:{rg:2.660,diff:0.040}},
+    releaseDate:"Jan 2025",
+    description:"HK22C Micro Flex Hybrid on Ricochet core — skid/flip hybrid companion to the original pearl, versatile medium oil option."
+  },
+  {
+    id:181, brand:"Columbia 300", name:"Pulse",
+    cover:"Solid", coreType:"Symmetric", coreName:"Pulse PowerCOR",
+    finish:"500/1500 Siaair", condition:"Medium-Heavy Oil", accent:"#c62828",
+    ballSlug:"columbia-300-pulse", coreSlug:"columbia-300-pulse-powercor-core",
+    weightData:{16:{rg:2.481,diff:0.039},15:{rg:2.468,diff:0.045},14:{rg:2.481,diff:0.039},13:{rg:2.550,diff:0.034},12:{rg:2.610,diff:0.028}},
+    releaseDate:"Aug 2025",
+    description:"HK22 Hyperflex Solid on Pulse PowerCOR — ultra-low RG with predictable continuous roll, the classic Pulse reimagined."
+  },
+
+  // ── Radical 누락 ──────────────────────────────────────────────
+  {
+    id:182, brand:"Radical", name:"Intel Recon",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Intel Recon",
+    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#d32f2f",
+    ballSlug:"radical-intel-recon", coreSlug:"radical-intel-recon-core",
+    weightData:{16:{rg:2.483,diff:0.032},15:{rg:2.483,diff:0.032},14:{rg:2.500,diff:0.030},13:{rg:2.570,diff:0.026},12:{rg:2.630,diff:0.022}},
+    releaseDate:"Oct 2025",
+    description:"HK22 Pearl on Intel Recon core — replicates the beloved original Intel motion with modern chemistry."
+  },
+
+  // ── Roto Grip 누락 ────────────────────────────────────────────
+  {
+    id:183, brand:"Roto Grip", name:"Attention Edge",
+    cover:"Solid", coreType:"Asymmetric", coreName:"Attention",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-attention-edge", coreSlug:"roto-grip-attention-core",
+    weightData:{16:{rg:2.470,diff:0.052,moi:0.018},15:{rg:2.470,diff:0.052,moi:0.018},14:{rg:2.500,diff:0.049,moi:0.016},13:{rg:2.570,diff:0.044,moi:0.013},12:{rg:2.630,diff:0.037,moi:0.011}},
+    releaseDate:"Aug 2025",
+    description:"MXC Solid on Attention asymmetric — heavy oil workhorse with strong midlane read and predictable continuation."
+  },
+  {
+    id:184, brand:"Roto Grip", name:"Hyped Super Pearl II",
+    cover:"Pearl", coreType:"Symmetric", coreName:"Hyped",
+    finish:"Power Edge", condition:"Medium Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-hyped-super-pearl-ii", coreSlug:"roto-grip-hyped-core",
+    weightData:{16:{rg:2.560,diff:0.036},15:{rg:2.560,diff:0.036},14:{rg:2.580,diff:0.034},13:{rg:2.640,diff:0.029},12:{rg:2.700,diff:0.024}},
+    releaseDate:"Nov 2025",
+    description:"HK22 Pearl on Hyped symmetric — clean through the fronts with angular backend flip, ideal for medium and sport patterns."
+  },
+  {
+    id:185, brand:"Roto Grip", name:"Gremlin",
+    cover:"Pearl", coreType:"Asymmetric", coreName:"Gremlin",
+    finish:"Power Edge", condition:"Heavy Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-gremlin", coreSlug:"roto-grip-gremlin-core",
+    weightData:{16:{rg:2.500,diff:0.058,moi:0.019},15:{rg:2.500,diff:0.058,moi:0.019},14:{rg:2.530,diff:0.055,moi:0.017},13:{rg:2.600,diff:0.049,moi:0.014},12:{rg:2.660,diff:0.042,moi:0.012}},
+    releaseDate:"Jul 2025",
+    description:"EXO Pearl on Gremlin asymmetric — high differential mischief maker with explosive backend motion on heavier conditions."
+  },
+  {
+    id:186, brand:"Roto Grip", name:"Exit Red",
+    cover:"Solid", coreType:"Symmetric", coreName:"Exit",
+    finish:"500/1500 Siaair", condition:"Medium-Heavy Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-exit-red", coreSlug:"roto-grip-exit-core",
+    weightData:{16:{rg:2.510,diff:0.040},15:{rg:2.510,diff:0.040},14:{rg:2.540,diff:0.038},13:{rg:2.610,diff:0.033},12:{rg:2.670,diff:0.027}},
+    releaseDate:"Apr 2025",
+    description:"R2S Solid on Exit symmetric — red colorway Exit, strong continuous arc for medium-heavy conditions."
+  },
+  {
+    id:187, brand:"Roto Grip", name:"Hustle Teal/Black",
+    cover:"Solid", coreType:"Symmetric", coreName:"Hustle",
+    finish:"Crown Factory Compound", condition:"Light-Medium Oil", accent:"#b71c1c",
+    ballSlug:"roto-grip-hustle-tealblack", coreSlug:"roto-grip-hustle-core",
+    weightData:{16:{rg:2.580,diff:0.028},15:{rg:2.580,diff:0.028},14:{rg:2.600,diff:0.026},13:{rg:2.660,diff:0.022},12:{rg:2.720,diff:0.018}},
+    releaseDate:"Feb 2025",
+    description:"Reactive Solid on Hustle symmetric — Teal/Black colorway entry-level performer for lighter oil conditions."
+  },
 ];
 
 const COND_COLOR = {

@@ -3140,6 +3140,11 @@ function AdminView({ nickname, onLogout, showToast }) {
                           padding:"1px 6px",borderRadius:8,fontWeight:800}}>관리자</span>}
                       </div>
                       <div style={{fontSize:11,color:"#aaa",marginTop:2}}>
+                        {u.real_name&&<span style={{color:"#888",fontWeight:600,marginRight:5}}>{u.real_name}</span>}
+                        {u.gender&&<span style={{marginRight:5}}>{u.gender}</span>}
+                        {u.birth_date&&<span>{u.birth_date}</span>}
+                      </div>
+                      <div style={{fontSize:11,color:"#ccc",marginTop:1}}>
                         가입 {new Date(u.created_at).toLocaleDateString("ko-KR")}
                       </div>
                     </div>
@@ -3175,6 +3180,26 @@ function AdminView({ nickname, onLogout, showToast }) {
                 <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:2}}>
                   가입일 {new Date(selUser.created_at).toLocaleDateString("ko-KR")}
                 </div>
+                {selUser.real_name&&<div style={{fontSize:12,color:"rgba(255,140,0,0.7)",marginTop:1,fontWeight:600}}>{selUser.real_name}</div>}
+              </div>
+            </div>
+
+            {/* 개인 정보 카드 */}
+            <div style={{background:"#fff",borderRadius:16,padding:"16px",marginBottom:12,
+              boxShadow:"0 1px 8px rgba(0,0,0,0.06)"}}>
+              <div style={{fontWeight:800,fontSize:14,color:"#111",marginBottom:12}}>👤 회원 정보</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+                {[
+                  {l:"실명", v:selUser.real_name||"-"},
+                  {l:"성별", v:selUser.gender||"-"},
+                  {l:"생년월일", v:selUser.birth_date||"-"},
+                  {l:"닉네임", v:selUser.nickname},
+                ].map(({l,v})=>(
+                  <div key={l} style={{background:"#f7f7fc",borderRadius:10,padding:"10px 12px"}}>
+                    <div style={{fontSize:10,color:"#aaa",fontWeight:700,letterSpacing:1,marginBottom:2}}>{l.toUpperCase()}</div>
+                    <div style={{fontSize:13,fontWeight:700,color:"#111"}}>{v}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -3287,14 +3312,18 @@ function AdminView({ nickname, onLogout, showToast }) {
   );
 }
 
-// 닉네임 + 비밀번호 로그인
-function NicknameLogin({ onLogin }) {  // onLogin(nickname, data, isAdmin)
+// 닉네임 + 비밀번호 로그인  // onLogin(nickname, data, isAdmin)
+function NicknameLogin({ onLogin }) {
   const [mode, setMode] = useState("login"); // "login" | "register"
   const [name, setName] = useState("");
   const [pw, setPw] = useState("");
   const [pw2, setPw2] = useState("");
+  const [realName, setRealName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [gender, setGender] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  const [step, setStep] = useState(1); // 회원가입 1단계(계정) / 2단계(개인정보)
 
   const handleLogin = async () => {
     const n = name.trim();
@@ -3302,100 +3331,172 @@ function NicknameLogin({ onLogin }) {  // onLogin(nickname, data, isAdmin)
     if (!pw) { setErr("비밀번호를 입력해주세요"); return; }
     setLoading(true); setErr("");
     try {
-      // 유저 확인
       const users = await sbGet("users", `nickname=eq.${encodeURIComponent(n)}&select=*`);
-      if (users.length === 0) {
-        setErr("존재하지 않는 닉네임이에요. 회원가입을 해주세요.");
-        setLoading(false); return;
-      }
-      if (users[0].password !== pw) {
-        setErr("비밀번호가 틀렸어요.");
-        setLoading(false); return;
-      }
-      // 관리자 여부 저장
+      if (users.length === 0) { setErr("존재하지 않는 닉네임이에요. 회원가입을 해주세요."); setLoading(false); return; }
+      if (users[0].password !== pw) { setErr("비밀번호가 틀렸어요."); setLoading(false); return; }
       const isAdmin = users[0].is_admin === true;
       localStorage.setItem("rm_nickname", n);
       localStorage.setItem("rm_pw", pw);
       localStorage.setItem("rm_admin", isAdmin ? "1" : "0");
-      // 장비 불러오기
       const data = await sbGet("equipment", `nickname=eq.${encodeURIComponent(n)}&order=created_at.asc`);
       onLogin(n, data, isAdmin);
-    } catch(e) {
-      setErr("연결 오류. 잠시 후 다시 시도해주세요.");
-    }
+    } catch(e) { setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
     setLoading(false);
   };
 
-  const handleRegister = async () => {
+  const handleNextStep = () => {
     const n = name.trim();
     if (!n || n.length < 2) { setErr("닉네임을 2글자 이상 입력해주세요"); return; }
     if (!pw || pw.length < 4) { setErr("비밀번호를 4자리 이상 입력해주세요"); return; }
     if (pw !== pw2) { setErr("비밀번호가 일치하지 않아요"); return; }
+    setErr(""); setStep(2);
+  };
+
+  const handleRegister = async () => {
+    if (!realName.trim()) { setErr("실명을 입력해주세요"); return; }
+    if (!birthDate) { setErr("생년월일을 입력해주세요"); return; }
+    if (!gender) { setErr("성별을 선택해주세요"); return; }
     setLoading(true); setErr("");
     try {
-      // 닉네임 중복 확인
-      const existing = await sbGet("users", `nickname=eq.${encodeURIComponent(n)}&select=id`);
-      if (existing.length > 0) {
-        setErr("이미 사용 중인 닉네임이에요."); setLoading(false); return;
-      }
-      // 회원가입
-      await sbInsert("users", { nickname: n, password: pw });
-      localStorage.setItem("rm_nickname", n);
+      const existing = await sbGet("users", `nickname=eq.${encodeURIComponent(name.trim())}&select=id`);
+      if (existing.length > 0) { setErr("이미 사용 중인 닉네임이에요."); setStep(1); setLoading(false); return; }
+      await sbInsert("users", {
+        nickname: name.trim(),
+        password: pw,
+        real_name: realName.trim(),
+        birth_date: birthDate,
+        gender: gender,
+        is_admin: false,
+      });
+      localStorage.setItem("rm_nickname", name.trim());
       localStorage.setItem("rm_pw", pw);
-      onLogin(n, []);
-    } catch(e) {
-      setErr("연결 오류. 잠시 후 다시 시도해주세요.");
-    }
+      localStorage.setItem("rm_admin", "0");
+      onLogin(name.trim(), [], false);
+    } catch(e) { setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
     setLoading(false);
   };
 
   const inputStyle = {
     width:"100%", background:"rgba(255,255,255,0.1)", border:"1.5px solid rgba(255,255,255,0.2)",
     borderRadius:12, color:"#fff", padding:"12px 14px", fontSize:14, outline:"none",
-    fontFamily:"inherit", boxSizing:"border-box", marginBottom:8
+    fontFamily:"inherit", boxSizing:"border-box", marginBottom:8,
   };
+  const labelStyle = {fontSize:11,color:"rgba(255,255,255,0.45)",fontWeight:700,
+    letterSpacing:1.2,display:"block",marginBottom:5,marginTop:4};
 
   return (
-    <div style={{position:"fixed",inset:0,zIndex:3000,background:"linear-gradient(160deg,#1c1c1e 0%,#2d2014 100%)",
+    <div style={{position:"fixed",inset:0,zIndex:3000,
+      background:"linear-gradient(160deg,#1c1c1e 0%,#2d2014 100%)",
       display:"flex",alignItems:"center",justifyContent:"center",padding:24,overflowY:"auto"}}>
-      <div style={{width:"100%",maxWidth:340,textAlign:"center"}}>
-        <div style={{fontSize:60,marginBottom:6}}>🎳</div>
-        <div style={{fontSize:28,fontWeight:900,color:"#fff",letterSpacing:-0.5,marginBottom:2}}>ROLLMATE</div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginBottom:28,fontWeight:600}}>나만의 장비 관리 앱</div>
+      <div style={{width:"100%",maxWidth:340,textAlign:"center",paddingTop:20,paddingBottom:20}}>
+        <div style={{fontSize:56,marginBottom:4}}>🎳</div>
+        <div style={{fontSize:26,fontWeight:900,color:"#fff",letterSpacing:-0.5,marginBottom:2}}>ROLLMATE</div>
+        <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginBottom:24,fontWeight:600}}>나만의 장비 관리 앱</div>
 
-        {/* 탭 */}
+        {/* 로그인/회원가입 탭 */}
         <div style={{display:"flex",background:"rgba(255,255,255,0.08)",borderRadius:12,padding:4,marginBottom:20}}>
           {[{k:"login",l:"로그인"},{k:"register",l:"회원가입"}].map(t=>(
-            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");}} style={{flex:1,padding:"9px",borderRadius:9,
-              border:"none",fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",
+            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");setStep(1);}} style={{flex:1,padding:"9px",
+              borderRadius:9,border:"none",fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",
               background:mode===t.k?"#ff8c00":"transparent",
-              color:mode===t.k?"#fff":"rgba(255,255,255,0.4)",
-              transition:"all .15s"}}>{t.l}</button>
+              color:mode===t.k?"#fff":"rgba(255,255,255,0.4)",transition:"all .15s"}}>{t.l}</button>
           ))}
         </div>
 
-        <div style={{background:"rgba(255,255,255,0.06)",borderRadius:20,padding:"24px 20px",border:"1px solid rgba(255,255,255,0.1)"}}>
-          <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
-            onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
-            placeholder="닉네임" maxLength={20} autoFocus style={inputStyle}/>
-          <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
-            onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
-            placeholder="비밀번호" maxLength={30} style={inputStyle}/>
-          {mode==="register" && (
+        <div style={{background:"rgba(255,255,255,0.06)",borderRadius:20,padding:"24px 20px",
+          border:"1px solid rgba(255,255,255,0.1)",textAlign:"left"}}>
+
+          {/* 로그인 */}
+          {mode==="login" && (<>
+            <label style={labelStyle}>닉네임</label>
+            <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+              onKeyDown={e=>e.key==="Enter"&&handleLogin()}
+              placeholder="닉네임 입력" maxLength={20} autoFocus style={inputStyle}/>
+            <label style={labelStyle}>비밀번호</label>
+            <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+              onKeyDown={e=>e.key==="Enter"&&handleLogin()}
+              placeholder="비밀번호 입력" maxLength={30} style={inputStyle}/>
+            {err&&<div style={{fontSize:12,color:"#ff6b6b",marginBottom:8,fontWeight:600}}>{err}</div>}
+            <button onClick={handleLogin} disabled={loading} style={{width:"100%",padding:"13px",marginTop:4,
+              background:loading?"#555":"#ff8c00",border:"none",borderRadius:12,color:"#fff",
+              fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+              boxShadow:"0 6px 20px rgba(255,140,0,0.4)"}}>
+              {loading?"확인 중...":"로그인 →"}
+            </button>
+          </>)}
+
+          {/* 회원가입 1단계: 계정 정보 */}
+          {mode==="register" && step===1 && (<>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
+              <div style={{width:24,height:24,borderRadius:"50%",background:"#ff8c00",
+                display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:900,color:"#fff"}}>1</div>
+              <div style={{fontSize:13,fontWeight:700,color:"rgba(255,255,255,0.7)"}}>계정 정보</div>
+              <div style={{flex:1,height:1,background:"rgba(255,255,255,0.1)"}}/>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.3)"}}>2단계 중 1</div>
+            </div>
+            <label style={labelStyle}>닉네임 (로그인 ID)</label>
+            <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+              placeholder="2글자 이상" maxLength={20} autoFocus style={inputStyle}/>
+            <label style={labelStyle}>비밀번호</label>
+            <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+              placeholder="4자리 이상" maxLength={30} style={inputStyle}/>
+            <label style={labelStyle}>비밀번호 확인</label>
             <input type="password" value={pw2} onChange={e=>{setPw2(e.target.value);setErr("");}}
-              onKeyDown={e=>e.key==="Enter"&&handleRegister()}
-              placeholder="비밀번호 확인" maxLength={30} style={inputStyle}/>
-          )}
-          {err && <div style={{fontSize:12,color:"#ff6b6b",marginBottom:8,fontWeight:600,textAlign:"left"}}>{err}</div>}
-          <button onClick={mode==="login"?handleLogin:handleRegister} disabled={loading} style={{
-            width:"100%",padding:"13px",background:loading?"#555":"#ff8c00",border:"none",borderRadius:12,
-            color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,
-            cursor:loading?"not-allowed":"pointer",boxShadow:"0 6px 20px rgba(255,140,0,0.4)",marginTop:4}}>
-            {loading ? "확인 중..." : mode==="login" ? "로그인 →" : "회원가입 →"}
-          </button>
+              onKeyDown={e=>e.key==="Enter"&&handleNextStep()}
+              placeholder="비밀번호 재입력" maxLength={30} style={inputStyle}/>
+            {err&&<div style={{fontSize:12,color:"#ff6b6b",marginBottom:8,fontWeight:600}}>{err}</div>}
+            <button onClick={handleNextStep} style={{width:"100%",padding:"13px",marginTop:4,
+              background:"#ff8c00",border:"none",borderRadius:12,color:"#fff",
+              fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer",
+              boxShadow:"0 6px 20px rgba(255,140,0,0.4)"}}>
+              다음 →
+            </button>
+          </>)}
+
+          {/* 회원가입 2단계: 개인 정보 */}
+          {mode==="register" && step===2 && (<>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
+              <div style={{width:24,height:24,borderRadius:"50%",background:"#ff8c00",
+                display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:900,color:"#fff"}}>2</div>
+              <div style={{fontSize:13,fontWeight:700,color:"rgba(255,255,255,0.7)"}}>개인 정보</div>
+              <div style={{flex:1,height:1,background:"rgba(255,255,255,0.1)"}}/>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.3)"}}>2단계 중 2</div>
+            </div>
+            <label style={labelStyle}>실명</label>
+            <input value={realName} onChange={e=>{setRealName(e.target.value);setErr("");}}
+              placeholder="홍길동" maxLength={20} autoFocus style={inputStyle}/>
+            <label style={labelStyle}>생년월일</label>
+            <input type="date" value={birthDate} onChange={e=>{setBirthDate(e.target.value);setErr("");}}
+              style={{...inputStyle, colorScheme:"dark"}}/>
+            <label style={labelStyle}>성별</label>
+            <div style={{display:"flex",gap:6,marginBottom:8}}>
+              {["남성","여성","기타"].map(g=>(
+                <button key={g} onClick={()=>setGender(g)} style={{flex:1,padding:"11px 4px",
+                  borderRadius:10,border:`1.5px solid ${gender===g?"#ff8c00":"rgba(255,255,255,0.15)"}`,
+                  background:gender===g?"#ff8c00":"transparent",
+                  color:gender===g?"#fff":"rgba(255,255,255,0.5)",
+                  fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",transition:"all .15s"}}>{g}</button>
+              ))}
+            </div>
+            {err&&<div style={{fontSize:12,color:"#ff6b6b",marginBottom:8,fontWeight:600}}>{err}</div>}
+            <div style={{display:"flex",gap:6,marginTop:4}}>
+              <button onClick={()=>{setStep(1);setErr("");}} style={{flex:1,padding:"13px",
+                background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.15)",
+                borderRadius:12,color:"rgba(255,255,255,0.6)",fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer"}}>
+                ← 이전
+              </button>
+              <button onClick={handleRegister} disabled={loading} style={{flex:2,padding:"13px",
+                background:loading?"#555":"#ff8c00",border:"none",borderRadius:12,color:"#fff",
+                fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+                boxShadow:"0 6px 20px rgba(255,140,0,0.4)"}}>
+                {loading?"가입 중...":"가입 완료 →"}
+              </button>
+            </div>
+          </>)}
         </div>
-        <div style={{fontSize:11,color:"rgba(255,255,255,0.2)",marginTop:14,lineHeight:1.7}}>
-          비밀번호는 암호화 없이 저장돼요<br/>소중한 비밀번호는 사용하지 마세요
+
+        <div style={{fontSize:11,color:"rgba(255,255,255,0.2)",marginTop:14,lineHeight:1.7,textAlign:"center"}}>
+          개인정보는 서비스 운영 목적으로만 사용돼요<br/>소중한 비밀번호는 사용하지 마세요
         </div>
       </div>
     </div>

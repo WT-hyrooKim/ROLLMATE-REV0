@@ -2801,6 +2801,173 @@ function WeightTable({ ball, sel, onSel }) {
   );
 }
 
+// 설정 화면
+function SettingsView({ nickname, arsenal, onPasswordChange, onNicknameChange, onDeleteAll, onLogout, showToast }) {
+  const [section, setSection] = useState(null); // null | "pw" | "nick" | "delete"
+  const [form, setForm] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+  const f = (k,v) => setForm(p=>({...p,[k]:v}));
+
+  const openSection = (s) => { setSection(s); setForm({}); setMsg(""); };
+
+  const inputStyle = {width:"100%",background:"#f7f7fc",border:"1.5px solid #e2e2e0",borderRadius:10,
+    color:"#333",padding:"10px 13px",fontSize:13,outline:"none",fontFamily:"inherit",boxSizing:"border-box",marginBottom:8};
+
+  const handlePwChange = async () => {
+    if(!form.old || !form.new1 || !form.new2) { setMsg("모든 항목을 입력해주세요"); return; }
+    if(form.new1.length < 4) { setMsg("새 비밀번호는 4자리 이상이어야 해요"); return; }
+    if(form.new1 !== form.new2) { setMsg("새 비밀번호가 일치하지 않아요"); return; }
+    setLoading(true);
+    const res = await onPasswordChange(form.old, form.new1);
+    setLoading(false);
+    if(res === "ok") { showToast("✅ 비밀번호 변경 완료"); setSection(null); }
+    else setMsg(res);
+  };
+
+  const handleNickChange = async () => {
+    if(!form.newNick || form.newNick.trim().length < 2) { setMsg("닉네임을 2글자 이상 입력해주세요"); return; }
+    if(!form.pw) { setMsg("비밀번호를 입력해주세요"); return; }
+    setLoading(true);
+    const res = await onNicknameChange(form.newNick.trim(), form.pw);
+    setLoading(false);
+    if(res === "ok") { showToast("✅ 닉네임 변경 완료"); setSection(null); }
+    else setMsg(res);
+  };
+
+  const handleDelete = async () => {
+    if(!form.pw) { setMsg("비밀번호를 입력해주세요"); return; }
+    if(!form.confirm || form.confirm !== "탈퇴") { setMsg("'탈퇴'를 정확히 입력해주세요"); return; }
+    setLoading(true);
+    const res = await onDeleteAll(form.pw);
+    setLoading(false);
+    if(res !== "ok") setMsg(res);
+  };
+
+  const Card = ({children, style={}}) => (
+    <div style={{background:"#fff",borderRadius:16,overflow:"hidden",boxShadow:"0 1px 8px rgba(0,0,0,0.06)",...style}}>
+      {children}
+    </div>
+  );
+  const Row = ({icon, label, sub, onClick, color="#111", danger=false}) => (
+    <button onClick={onClick} style={{width:"100%",display:"flex",alignItems:"center",gap:12,padding:"14px 16px",
+      background:"none",border:"none",cursor:onClick?"pointer":"default",fontFamily:"inherit",
+      borderBottom:"1px solid #f5f5f8",textAlign:"left"}}>
+      <span style={{fontSize:22,width:32,textAlign:"center"}}>{icon}</span>
+      <div style={{flex:1}}>
+        <div style={{fontSize:14,fontWeight:700,color:danger?"#ef5350":color}}>{label}</div>
+        {sub&&<div style={{fontSize:11,color:"#aaa",marginTop:1}}>{sub}</div>}
+      </div>
+      {onClick&&<span style={{color:"#ddd",fontSize:16}}>›</span>}
+    </button>
+  );
+
+  // 섹션 모달
+  const SectionModal = ({title, children}) => (
+    <div onClick={()=>setSection(null)} style={{position:"fixed",inset:0,zIndex:2500,
+      background:"rgba(10,10,30,0.55)",backdropFilter:"blur(10px)",
+      display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:"#fff",borderRadius:22,padding:"22px 20px",
+        width:"100%",maxWidth:360,boxShadow:"0 24px 60px rgba(0,0,0,0.2)",
+        animation:"modalIn .25s cubic-bezier(.34,1.56,.64,1)"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:18}}>
+          <div style={{fontSize:17,fontWeight:800,color:"#111"}}>{title}</div>
+          <button onClick={()=>setSection(null)} style={{background:"none",border:"none",color:"#ccc",fontSize:22,cursor:"pointer"}}>✕</button>
+        </div>
+        {children}
+        {msg&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginTop:8}}>{msg}</div>}
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{animation:"fadeUp .3s ease both",paddingBottom:20}}>
+      {/* 헤더 프로필 */}
+      <div style={{background:"linear-gradient(135deg,#1c1c1e,#2d2014)",borderRadius:20,padding:"22px 20px",
+        marginBottom:20,display:"flex",alignItems:"center",gap:16,boxShadow:"0 4px 20px rgba(0,0,0,0.15)"}}>
+        <div style={{width:54,height:54,borderRadius:"50%",background:"#ff8c00",
+          display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,fontWeight:900,color:"#fff",
+          boxShadow:"0 4px 14px rgba(255,140,0,0.4)"}}>
+          {nickname.charAt(0).toUpperCase()}
+        </div>
+        <div>
+          <div style={{fontSize:18,fontWeight:900,color:"#fff"}}>{nickname}</div>
+          <div style={{fontSize:12,color:"rgba(255,255,255,0.45)",marginTop:2}}>
+            볼링공 {arsenal.length}개 등록됨
+          </div>
+        </div>
+      </div>
+
+      {/* 계정 관리 */}
+      <div style={{fontSize:11,color:"#aaa",fontWeight:700,letterSpacing:1.5,marginBottom:6,paddingLeft:4}}>계정 관리</div>
+      <Card style={{marginBottom:16}}>
+        <Row icon="🔑" label="비밀번호 변경" sub="현재 비밀번호 확인 후 변경" onClick={()=>openSection("pw")}/>
+        <Row icon="✏️" label="닉네임 변경" sub="변경 시 장비 데이터도 이동" onClick={()=>openSection("nick")}/>
+        <Row icon="🚪" label="로그아웃" sub="데이터는 클라우드에 유지됨" onClick={()=>{if(window.confirm("로그아웃 하시겠어요?")) onLogout();}} style={{borderBottom:"none"}}/>
+      </Card>
+
+      {/* 데이터 관리 */}
+      <div style={{fontSize:11,color:"#aaa",fontWeight:700,letterSpacing:1.5,marginBottom:6,paddingLeft:4}}>데이터 관리</div>
+      <Card style={{marginBottom:16}}>
+        <Row icon="📊" label="내 장비 현황" sub={`총 ${arsenal.length}개 · 클라우드 저장 중`}/>
+        <Row icon="🗑️" label="계정 및 데이터 삭제" sub="탈퇴 시 모든 데이터가 삭제돼요" onClick={()=>openSection("delete")} danger style={{borderBottom:"none"}}/>
+      </Card>
+
+      {/* 앱 정보 */}
+      <div style={{fontSize:11,color:"#aaa",fontWeight:700,letterSpacing:1.5,marginBottom:6,paddingLeft:4}}>앱 정보</div>
+      <Card>
+        <Row icon="🎳" label="ROLLMATE" sub="볼링 장비 관리 앱"/>
+        <Row icon="🔢" label="버전" sub="v7.6"/>
+        <Row icon="👨‍💻" label="만든이" sub="완태콩 & Claude" style={{borderBottom:"none"}}/>
+      </Card>
+
+      {/* 비밀번호 변경 모달 */}
+      {section==="pw" && (
+        <SectionModal title="🔑 비밀번호 변경">
+          <input type="password" placeholder="현재 비밀번호" value={form.old||""} onChange={e=>f("old",e.target.value)} style={inputStyle}/>
+          <input type="password" placeholder="새 비밀번호 (4자 이상)" value={form.new1||""} onChange={e=>f("new1",e.target.value)} style={inputStyle}/>
+          <input type="password" placeholder="새 비밀번호 확인" value={form.new2||""} onChange={e=>f("new2",e.target.value)} style={inputStyle}/>
+          <button onClick={handlePwChange} disabled={loading} style={{width:"100%",padding:"12px",background:loading?"#aaa":"#1c1c1e",
+            border:"none",borderRadius:11,color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer",marginTop:4}}>
+            {loading?"변경 중...":"변경하기"}
+          </button>
+        </SectionModal>
+      )}
+
+      {/* 닉네임 변경 모달 */}
+      {section==="nick" && (
+        <SectionModal title="✏️ 닉네임 변경">
+          <div style={{fontSize:12,color:"#888",marginBottom:12,lineHeight:1.6}}>
+            현재: <b style={{color:"#ff8c00"}}>{nickname}</b>
+          </div>
+          <input placeholder="새 닉네임 (2글자 이상)" value={form.newNick||""} onChange={e=>f("newNick",e.target.value)} style={inputStyle}/>
+          <input type="password" placeholder="비밀번호 확인" value={form.pw||""} onChange={e=>f("pw",e.target.value)} style={inputStyle}/>
+          <button onClick={handleNickChange} disabled={loading} style={{width:"100%",padding:"12px",background:loading?"#aaa":"#1c1c1e",
+            border:"none",borderRadius:11,color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer",marginTop:4}}>
+            {loading?"변경 중...":"변경하기"}
+          </button>
+        </SectionModal>
+      )}
+
+      {/* 계정 삭제 모달 */}
+      {section==="delete" && (
+        <SectionModal title="🗑️ 계정 삭제">
+          <div style={{background:"#fff5f5",border:"1.5px solid #ffcdd2",borderRadius:10,
+            padding:"10px 12px",marginBottom:14,fontSize:12,color:"#c62828",lineHeight:1.7,fontWeight:600}}>
+            ⚠️ 삭제 시 모든 장비 데이터가 영구적으로 삭제돼요. 복구가 불가능해요.
+          </div>
+          <input type="password" placeholder="비밀번호 확인" value={form.pw||""} onChange={e=>f("pw",e.target.value)} style={inputStyle}/>
+          <input placeholder={"확인을 위해 '탈퇴' 입력"} value={form.confirm||""} onChange={e=>f("confirm",e.target.value)} style={inputStyle}/>
+          <button onClick={handleDelete} disabled={loading} style={{width:"100%",padding:"12px",background:loading?"#aaa":"#ef5350",
+            border:"none",borderRadius:11,color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer",marginTop:4}}>
+            {loading?"삭제 중...":"계정 영구 삭제"}
+          </button>
+        </SectionModal>
+      )}
+    </div>
+  );
+}
+
 // 닉네임 + 비밀번호 로그인
 function NicknameLogin({ onLogin }) {
   const [mode, setMode] = useState("login"); // "login" | "register"
@@ -3781,6 +3948,7 @@ export default function RollmateApp() {
     {k:"arsenal",l:"내 장비",i:"🎳",badge:arsenal.length||null},
     {k:"compare",l:"비교",i:"⚖️",badge:cmpList.length||null},
     {k:"scan",l:"볼 스캔",i:"📷"},
+    {k:"settings",l:"설정",i:"⚙️"},
   ];
 
   // SPLASH
@@ -4165,6 +4333,64 @@ export default function RollmateApp() {
         {/* COMPARE */}
         {view==="compare"&&(
           <CompareView cmpList={cmpList} toggleCmp={toggleCmp} setView={setView}/>
+        )}
+
+        {/* SETTINGS */}
+        {view==="settings"&&(
+          <SettingsView
+            nickname={nickname}
+            arsenal={arsenal}
+            onPasswordChange={async (oldPw, newPw)=>{
+              try {
+                const users = await sbGet("users", `nickname=eq.${encodeURIComponent(nickname)}&select=password`);
+                if(!users.length || users[0].password !== oldPw) return "현재 비밀번호가 틀렸어요.";
+                await sbFetch(`/users?nickname=eq.${encodeURIComponent(nickname)}`, {
+                  method:"PATCH", body:JSON.stringify({password:newPw}), prefer:"return=minimal"
+                });
+                localStorage.setItem("rm_pw", newPw);
+                return "ok";
+              } catch(e) { return "오류가 발생했어요."; }
+            }}
+            onNicknameChange={async (newNick, pw)=>{
+              try {
+                const users = await sbGet("users", `nickname=eq.${encodeURIComponent(nickname)}&select=password`);
+                if(!users.length || users[0].password !== pw) return "비밀번호가 틀렸어요.";
+                const dup = await sbGet("users", `nickname=eq.${encodeURIComponent(newNick)}&select=id`);
+                if(dup.length) return "이미 사용 중인 닉네임이에요.";
+                await sbFetch(`/users?nickname=eq.${encodeURIComponent(nickname)}`, {
+                  method:"PATCH", body:JSON.stringify({nickname:newNick}), prefer:"return=minimal"
+                });
+                await sbFetch(`/equipment?nickname=eq.${encodeURIComponent(nickname)}`, {
+                  method:"PATCH", body:JSON.stringify({nickname:newNick}), prefer:"return=minimal"
+                });
+                localStorage.setItem("rm_nickname", newNick);
+                setNickname(newNick);
+                return "ok";
+              } catch(e) { return "오류가 발생했어요."; }
+            }}
+            onDeleteAll={async (pw)=>{
+              try {
+                const users = await sbGet("users", `nickname=eq.${encodeURIComponent(nickname)}&select=password`);
+                if(!users.length || users[0].password !== pw) return "비밀번호가 틀렸어요.";
+                await sbFetch(`/equipment?nickname=eq.${encodeURIComponent(nickname)}`, {
+                  method:"DELETE", prefer:""
+                });
+                await sbFetch(`/users?nickname=eq.${encodeURIComponent(nickname)}`, {
+                  method:"DELETE", prefer:""
+                });
+                localStorage.removeItem("rm_nickname");
+                localStorage.removeItem("rm_pw");
+                setNickname(""); setArsenal([]);
+                return "ok";
+              } catch(e) { return "오류가 발생했어요."; }
+            }}
+            onLogout={()=>{
+              localStorage.removeItem("rm_nickname");
+              localStorage.removeItem("rm_pw");
+              setNickname(""); setArsenal([]);
+            }}
+            showToast={showToast}
+          />
         )}
       </div>
 

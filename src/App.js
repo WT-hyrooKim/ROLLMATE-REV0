@@ -4658,9 +4658,14 @@ export default function RollmateApp() {
             style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto",cursor:"pointer"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontFamily:"'Bebas Neue','Inter',sans-serif",fontWeight:400,
-              fontSize:32,color:"#fff",letterSpacing:7,
-              textShadow:"0 0 20px rgba(255,140,0,0.3)",lineHeight:1}}>
-              ROLL<span style={{color:"#ff8c00",textShadow:"0 0 18px rgba(255,140,0,0.7)"}}>MATE</span>
+              fontSize:34,color:"#fff",letterSpacing:7,
+              textShadow:"0 0 24px rgba(255,140,0,0.4)",lineHeight:1}}>
+              ROLL<span style={{
+                color:"#ff8c00",
+                textShadow:"0 0 18px rgba(255,140,0,0.75)",
+                borderBottom:"2px solid #ff8c00",
+                paddingBottom:1
+              }}>MATE</span>
             </span>
           </div>
           <div style={{position:"relative",flex:1,minWidth:0}}>
@@ -4787,9 +4792,9 @@ export default function RollmateApp() {
               ))}
               {/* RG 드롭다운 - 좁게 */}
               <div style={{position:"relative",flexShrink:0}}>
-                <select value={sortBy==="rg"?`rg_${rgOrder}`:""}
+                <select value={sortBy==="rg"?`rg_${rgOrder}`:"__none__"}
                   onChange={e=>{
-                    if(!e.target.value) return;
+                    if(e.target.value==="__none__"){ setSortBy("popular"); return; }
                     const [,ord]=e.target.value.split("_");
                     setRgOrder(ord); setSortBy("rg");
                   }}
@@ -4801,18 +4806,19 @@ export default function RollmateApp() {
                     color:sortBy==="rg"?"#ff8c00":"#6b6b7e",
                     outline:"none",whiteSpace:"nowrap",
                   }}>
-                  <option value="" disabled style={{background:"#fff",color:"#333"}}>⚙️ RG</option>
+                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>⚙️ RG</option>
                   <option value="rg_asc" style={{background:"#fff",color:"#333"}}>⚙️ RG 낮은순</option>
                   <option value="rg_desc" style={{background:"#fff",color:"#333"}}>⚙️ RG 높은순</option>
+                  {sortBy==="rg"&&<option value="__none__" style={{background:"#fff",color:"#ef5350"}}>✕ 해제</option>}
                 </select>
                 <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",
                   fontSize:8,color:sortBy==="rg"?"#ff8c00":"#bbb",pointerEvents:"none"}}>▼</span>
               </div>
               {/* DIFF 드롭다운 - 좁게 */}
               <div style={{position:"relative",flexShrink:0}}>
-                <select value={sortBy==="diff"?`diff_${diffOrder}`:""}
+                <select value={sortBy==="diff"?`diff_${diffOrder}`:"__none__"}
                   onChange={e=>{
-                    if(!e.target.value) return;
+                    if(e.target.value==="__none__"){ setSortBy("popular"); return; }
                     const [,ord]=e.target.value.split("_");
                     setDiffOrder(ord); setSortBy("diff");
                   }}
@@ -4824,9 +4830,10 @@ export default function RollmateApp() {
                     color:sortBy==="diff"?"#ff8c00":"#6b6b7e",
                     outline:"none",whiteSpace:"nowrap",
                   }}>
-                  <option value="" disabled style={{background:"#fff",color:"#333"}}>📐 DIFF</option>
+                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>📐 DIFF</option>
                   <option value="diff_desc" style={{background:"#fff",color:"#333"}}>📐 DIFF 높은순</option>
                   <option value="diff_asc" style={{background:"#fff",color:"#333"}}>📐 DIFF 낮은순</option>
+                  {sortBy==="diff"&&<option value="__none__" style={{background:"#fff",color:"#ef5350"}}>✕ 해제</option>}
                 </select>
                 <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",
                   fontSize:8,color:sortBy==="diff"?"#ff8c00":"#bbb",pointerEvents:"none"}}>▼</span>

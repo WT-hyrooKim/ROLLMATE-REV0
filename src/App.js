@@ -4687,20 +4687,31 @@ export default function RollmateApp() {
           <div style={{animation:"fadeUp .3s ease both"}}>
             {/* 공지사항 배너 */}
             {notices.length>0&&(
-              <div style={{marginBottom:14}}>
+              <div style={{marginBottom:16}}>
                 {notices.map(n=>(
-                  <div key={n.id} style={{background:"#111",
-                    borderRadius:14,padding:"12px 16px",marginBottom:6,
-                    boxShadow:"0 4px 14px rgba(0,0,0,0.3)",
-                    border:"1.5px solid #ff8c0044"}}>
-                    <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
-                      <span style={{fontSize:18,flexShrink:0}}>📢</span>
-                      <div>
-                        <div style={{fontSize:13,fontWeight:800,color:"#ff8c00",marginBottom:2}}>{n.title}</div>
-                        <div style={{fontSize:12,color:"rgba(255,140,0,0.75)",lineHeight:1.5}}>{n.content}</div>
-                        <div style={{fontSize:10,color:"rgba(255,140,0,0.4)",marginTop:4}}>
-                          {new Date(n.created_at).toLocaleDateString("ko-KR")}
+                  <div key={n.id} style={{
+                    background:"linear-gradient(135deg,#18181b 0%,#1c1917 100%)",
+                    borderRadius:16,marginBottom:8,overflow:"hidden",
+                    boxShadow:"0 2px 16px rgba(0,0,0,0.18)"}}>
+                    {/* 상단 오렌지 라인 */}
+                    <div style={{height:2,background:"linear-gradient(90deg,#ff8c00,#ff6b00,transparent)"}}/>
+                    <div style={{padding:"12px 16px",display:"flex",alignItems:"flex-start",gap:12}}>
+                      {/* 아이콘 뱃지 */}
+                      <div style={{flexShrink:0,width:32,height:32,borderRadius:8,
+                        background:"rgba(255,140,0,0.12)",border:"1px solid rgba(255,140,0,0.2)",
+                        display:"flex",alignItems:"center",justifyContent:"center",fontSize:15}}>📢</div>
+                      <div style={{flex:1,minWidth:0}}>
+                        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                          <span style={{fontSize:10,fontWeight:800,letterSpacing:1.5,
+                            color:"#ff8c00",textTransform:"uppercase"}}>NOTICE</span>
+                          <span style={{fontSize:10,color:"rgba(255,255,255,0.2)"}}>
+                            {new Date(n.created_at).toLocaleDateString("ko-KR")}
+                          </span>
                         </div>
+                        <div style={{fontSize:13,fontWeight:700,color:"#fff",
+                          marginBottom:4,lineHeight:1.3}}>{n.title}</div>
+                        <div style={{fontSize:12,color:"rgba(255,255,255,0.5)",
+                          lineHeight:1.6}}>{n.content}</div>
                       </div>
                     </div>
                   </div>
@@ -4763,72 +4774,57 @@ export default function RollmateApp() {
               </div>
             )}
 
-            {/* 정렬 옵션 */}
-            <div style={{display:"flex",gap:5,marginBottom:12,alignItems:"center",flexWrap:"wrap"}}>
-              {/* 기본 정렬 버튼 */}
+            {/* 정렬 옵션 - 한 줄 가로 스크롤 */}
+            <div style={{display:"flex",gap:5,marginBottom:12,overflowX:"auto",
+              msOverflowStyle:"none",scrollbarWidth:"none",paddingBottom:2}}>
+              {/* 최신순 / 인기순 버튼 */}
               {[
                 {k:"latest",  label:"🆕 최신순"},
                 {k:"popular", label:"🔥 인기순"},
               ].map(({k,label})=>(
                 <button key={k} onClick={()=>setSortBy(k)} style={{
-                  padding:"5px 11px",borderRadius:20,fontSize:12,fontWeight:700,
+                  padding:"5px 12px",borderRadius:20,fontSize:12,fontWeight:700,
                   border:"1.5px solid",cursor:"pointer",fontFamily:"inherit",flexShrink:0,
                   background:sortBy===k?"#1c1c1e":"#fff",
                   color:sortBy===k?"#ff8c00":"#6b6b7e",
                   borderColor:sortBy===k?"#ff8c00":"#d0d0d8",
-                  transition:"all .15s",
+                  whiteSpace:"nowrap",transition:"all .15s",
                 }}>
                   {label}
                 </button>
               ))}
-              {/* RG 드롭다운 */}
-              <div style={{position:"relative",flexShrink:0}}>
-                <select
-                  value={sortBy==="rg" ? `rg_${rgOrder}` : ""}
-                  onChange={e=>{
-                    if(!e.target.value) return;
-                    const [,ord] = e.target.value.split("_");
-                    setRgOrder(ord); setSortBy("rg");
-                  }}
-                  style={{
-                    padding:"5px 28px 5px 10px",borderRadius:20,fontSize:12,fontWeight:700,
-                    border:`1.5px solid ${sortBy==="rg"?"#ff8c00":"#d0d0d8"}`,
-                    cursor:"pointer",fontFamily:"inherit",appearance:"none",
-                    background:sortBy==="rg"?"#1c1c1e":"#fff",
-                    color:sortBy==="rg"?"#ff8c00":"#6b6b7e",
-                    outline:"none",
-                  }}>
-                  <option value="" disabled>⚙️ RG</option>
-                  <option value="rg_asc">⚙️ RG 낮은순</option>
-                  <option value="rg_desc">⚙️ RG 높은순</option>
-                </select>
-                <span style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",
-                  fontSize:9,color:sortBy==="rg"?"#ff8c00":"#aaa",pointerEvents:"none"}}>▼</span>
-              </div>
-              {/* DIFF 드롭다운 */}
-              <div style={{position:"relative",flexShrink:0}}>
-                <select
-                  value={sortBy==="diff" ? `diff_${diffOrder}` : ""}
-                  onChange={e=>{
-                    if(!e.target.value) return;
-                    const [,ord] = e.target.value.split("_");
-                    setDiffOrder(ord); setSortBy("diff");
-                  }}
-                  style={{
-                    padding:"5px 28px 5px 10px",borderRadius:20,fontSize:12,fontWeight:700,
-                    border:`1.5px solid ${sortBy==="diff"?"#ff8c00":"#d0d0d8"}`,
-                    cursor:"pointer",fontFamily:"inherit",appearance:"none",
-                    background:sortBy==="diff"?"#1c1c1e":"#fff",
-                    color:sortBy==="diff"?"#ff8c00":"#6b6b7e",
-                    outline:"none",
-                  }}>
-                  <option value="" disabled>📐 차이</option>
-                  <option value="diff_desc">📐 차이 높은순</option>
-                  <option value="diff_asc">📐 차이 낮은순</option>
-                </select>
-                <span style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",
-                  fontSize:9,color:sortBy==="diff"?"#ff8c00":"#aaa",pointerEvents:"none"}}>▼</span>
-              </div>
+              {/* RG 버튼 4개 (낮은순/높은순) */}
+              {[
+                {k:"rg", ord:"asc",  label:"⚙️ RG 낮은순"},
+                {k:"rg", ord:"desc", label:"⚙️ RG 높은순"},
+              ].map(({k,ord,label})=>(
+                <button key={k+ord} onClick={()=>{setSortBy(k);setRgOrder(ord);}} style={{
+                  padding:"5px 12px",borderRadius:20,fontSize:12,fontWeight:700,
+                  border:"1.5px solid",cursor:"pointer",fontFamily:"inherit",flexShrink:0,
+                  background:sortBy===k&&rgOrder===ord?"#1c1c1e":"#fff",
+                  color:sortBy===k&&rgOrder===ord?"#ff8c00":"#6b6b7e",
+                  borderColor:sortBy===k&&rgOrder===ord?"#ff8c00":"#d0d0d8",
+                  whiteSpace:"nowrap",transition:"all .15s",
+                }}>
+                  {label}
+                </button>
+              ))}
+              {/* DIFF 버튼 2개 */}
+              {[
+                {k:"diff", ord:"desc", label:"📐 차이 높은순"},
+                {k:"diff", ord:"asc",  label:"📐 차이 낮은순"},
+              ].map(({k,ord,label})=>(
+                <button key={k+ord} onClick={()=>{setSortBy(k);setDiffOrder(ord);}} style={{
+                  padding:"5px 12px",borderRadius:20,fontSize:12,fontWeight:700,
+                  border:"1.5px solid",cursor:"pointer",fontFamily:"inherit",flexShrink:0,
+                  background:sortBy===k&&diffOrder===ord?"#1c1c1e":"#fff",
+                  color:sortBy===k&&diffOrder===ord?"#ff8c00":"#6b6b7e",
+                  borderColor:sortBy===k&&diffOrder===ord?"#ff8c00":"#d0d0d8",
+                  whiteSpace:"nowrap",transition:"all .15s",
+                }}>
+                  {label}
+                </button>
+              ))}
             </div>
 
             {/* 볼 그리드 */}

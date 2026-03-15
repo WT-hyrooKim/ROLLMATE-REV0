@@ -4577,6 +4577,7 @@ export default function RollmateApp() {
   const [dbLoading,setDbLoading] = useState(false);
   const [showLoginModal,setShowLoginModal] = useState(false);
   const [showCmpToast,setShowCmpToast]   = useState(false);
+  const [arsenalFilter,setArsenalFilter] = useState(null); // null | 'Heavy' | 'Medium' | 'Light'
   const [notices,setNotices]   = useState([]);
   const scrollPos            = useRef(0);
 
@@ -5172,7 +5173,9 @@ export default function RollmateApp() {
                       padding:"2px 8px",borderRadius:20,letterSpacing:0.5}}>@{nickname}</div>
                   </div>
                   <div style={{fontSize:12,color:"#aaa",fontWeight:600}}>
-                    {dbLoading ? "☁️ 불러오는 중..." : arsenal.length>0?`${arsenal.length}개 등록 · 카드를 탭하면 뒤집혀요`:"아직 등록된 볼링공이 없어요"}
+                    {dbLoading ? "☁️ 불러오는 중..." : arsenalFilter
+                      ? `${arsenalFilter} Oil 필터 중 · 탭하면 해제`
+                      : arsenal.length>0?`${arsenal.length}개 등록 · 카드를 탭하면 뒤집혀요`:"아직 등록된 볼링공이 없어요"}
                   </div>
                 </div>
                 <div style={{display:"flex",gap:6}}>
@@ -5204,58 +5207,56 @@ export default function RollmateApp() {
                 {/* 오일별 통계 */}
                 <div style={{marginBottom:14}}>
                   {/* 전체 등록 볼 */}
-                  <div style={{background:"linear-gradient(135deg,#1c1c1e,#2d2d3d)",borderRadius:16,
-                    padding:"14px 18px",marginBottom:8,
-                    display:"flex",alignItems:"center",gap:14,
-                    boxShadow:"0 2px 12px rgba(0,0,0,0.12)"}}>
-                    <div style={{width:44,height:44,borderRadius:12,background:"rgba(255,140,0,0.15)",
-                      border:"1px solid rgba(255,140,0,0.25)",display:"flex",alignItems:"center",
-                      justifyContent:"center",fontSize:22,flexShrink:0}}>🎳</div>
-                    <div>
-                      <div style={{fontSize:11,color:"rgba(255,255,255,0.4)",fontWeight:700,letterSpacing:1.5,marginBottom:2}}>TOTAL BALLS</div>
-                      <div style={{display:"flex",alignItems:"baseline",gap:4}}>
-                        <span style={{fontSize:32,fontWeight:900,color:"#fff",lineHeight:1,fontFamily:"'Exo 2',sans-serif"}}>{arsenal.length}</span>
-                        <span style={{fontSize:14,color:"rgba(255,255,255,0.4)",fontWeight:600}}>개 등록됨</span>
+                  {/* 컴팩트 통계 + 오일 필터 */}
+                  <div style={{display:"flex",gap:6,marginBottom:0,alignItems:"stretch"}}>
+                    {/* TOTAL */}
+                    <div style={{background:"linear-gradient(135deg,#1c1c1e,#2a2a3a)",borderRadius:12,
+                      padding:"10px 12px",display:"flex",alignItems:"center",gap:8,flexShrink:0,
+                      boxShadow:"0 2px 8px rgba(0,0,0,0.15)"}}>
+                      <span style={{fontSize:16}}>🎳</span>
+                      <div>
+                        <div style={{fontSize:9,color:"rgba(255,255,255,0.4)",fontWeight:700,letterSpacing:1}}>TOTAL</div>
+                        <div style={{fontFamily:"'Exo 2',sans-serif",fontWeight:900,fontSize:20,color:"#fff",lineHeight:1}}>
+                          {arsenal.length}<span style={{fontSize:10,color:"rgba(255,255,255,0.4)",marginLeft:2}}>개</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {/* 오일 조건별 */}
-                  <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6}}>
+                    {/* 오일 3개 - 클릭 필터 */}
                     {[
-                      {l:"Heavy",sub:"Heavy Oil",full:"Heavy Oil",color:"#ef5350",bg:"rgba(239,83,80,0.08)"},
-                      {l:"Medium",sub:"Med Oil",full:["Medium-Heavy Oil","Medium Oil"],color:"#fb8c00",bg:"rgba(251,140,0,0.08)"},
-                      {l:"Light",sub:"Light Oil",full:["Light-Medium Oil","Light Oil"],color:"#42a5f5",bg:"rgba(66,165,245,0.08)"},
-                    ].map(({l,sub,full,color,bg})=>{
+                      {l:"Heavy",full:"Heavy Oil",color:"#ef5350",bg:"rgba(239,83,80,0.1)",activeBg:"#ef5350"},
+                      {l:"Medium",full:["Medium-Heavy Oil","Medium Oil"],color:"#fb8c00",bg:"rgba(251,140,0,0.1)",activeBg:"#fb8c00"},
+                      {l:"Light",full:["Light-Medium Oil","Light Oil"],color:"#42a5f5",bg:"rgba(66,165,245,0.1)",activeBg:"#42a5f5"},
+                    ].map(({l,full,color,bg,activeBg})=>{
                       const cnt = arsenal.filter(e=>{
-                        const b = ALL_BALLS.find(x=>x.id===e.ballId);
+                        const b=ALL_BALLS.find(x=>x.id===e.ballId);
                         return Array.isArray(full)?full.includes(b?.condition):b?.condition===full;
                       }).length;
-                      const pct = arsenal.length>0?Math.round((cnt/arsenal.length)*100):0;
+                      const isActive = arsenalFilter===l;
                       return (
-                        <div key={l} style={{background:"#fff",borderRadius:14,padding:"12px 10px",
-                          boxShadow:"0 1px 8px rgba(0,0,0,.06)",overflow:"hidden",position:"relative"}}>
-                          {/* 배경 바 */}
-                          <div style={{position:"absolute",bottom:0,left:0,right:0,height:`${pct}%`,
-                            background:bg,transition:"height .4s ease",zIndex:0}}/>
-                          <div style={{position:"relative",zIndex:1}}>
-                            <div style={{fontSize:9,color:"#bbb",fontWeight:700,letterSpacing:1.2,marginBottom:4}}>{sub.toUpperCase()}</div>
-                            <div style={{fontFamily:"'Exo 2',sans-serif",fontWeight:900,fontSize:26,color,lineHeight:1,marginBottom:2}}>{cnt}</div>
-                            <div style={{fontSize:9,color:"#ccc",fontWeight:600}}>{pct}%</div>
-                            {/* 컬러 도트 인디케이터 */}
-                            <div style={{display:"flex",gap:2,marginTop:6}}>
-                              {Array.from({length:Math.min(cnt,5)}).map((_,i)=>(
-                                <div key={i} style={{width:5,height:5,borderRadius:"50%",background:color,opacity:0.7}}/>
-                              ))}
-                              {cnt>5&&<div style={{fontSize:8,color,fontWeight:700,lineHeight:"5px"}}>+{cnt-5}</div>}
-                            </div>
-                          </div>
+                        <div key={l} onClick={()=>setArsenalFilter(isActive?null:l)}
+                          style={{flex:1,background:isActive?activeBg:bg,borderRadius:12,
+                            padding:"10px 8px",cursor:"pointer",
+                            border:`1.5px solid ${isActive?activeBg:color+"33"}`,
+                            transition:"all .2s",textAlign:"center",
+                            boxShadow:isActive?`0 4px 14px ${color}44`:"none"}}>
+                          <div style={{fontFamily:"'Exo 2',sans-serif",fontWeight:900,fontSize:20,
+                            color:isActive?"#fff":color,lineHeight:1,marginBottom:1}}>{cnt}</div>
+                          <div style={{fontSize:9,fontWeight:700,letterSpacing:0.5,
+                            color:isActive?"rgba(255,255,255,0.8)":color}}>{l.toUpperCase()}</div>
                         </div>
                       );
                     })}
                   </div>
                 </div>
                 <div className="rm-arsenal-grid" style={{display:"grid",gridTemplateColumns:"1fr",gap:10}}>
-                  {arsenal.map(entry=>{
+                  {arsenal.filter(entry=>{
+                    if(!arsenalFilter) return true;
+                    const b=ALL_BALLS.find(x=>x.id===entry.ballId);
+                    if(arsenalFilter==="Heavy") return b?.condition==="Heavy Oil";
+                    if(arsenalFilter==="Medium") return ["Medium-Heavy Oil","Medium Oil"].includes(b?.condition);
+                    if(arsenalFilter==="Light") return ["Light-Medium Oil","Light Oil"].includes(b?.condition);
+                    return true;
+                  }).map(entry=>{
                     const ball=ALL_BALLS.find(b=>b.id===entry.ballId);
                     if(!ball) return null;
                     return <MyCard key={entry.addedAt} entry={entry} ball={ball}

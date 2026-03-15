@@ -3932,7 +3932,7 @@ function RegModal({ ball, existing, onSave, onClose }) {
               <div style={{display:"flex",flexDirection:"column",gap:6}}>
                 <input type="date" value={newLog.date} onChange={e=>setNewLog(l=>({...l,date:e.target.value}))} style={inputStyle}/>
                 <div style={{display:"flex",gap:4}}>
-                  {["샌딩","폴리싱","리서피싱","세척"].map(m=>(
+                  {["샌딩","폴리싱","플러깅","디톡스"].map(m=>(
                     <button key={m} onClick={()=>setNewLog(l=>({...l,method:m}))} style={{flex:1,padding:"6px 4px",
                       borderRadius:7,border:"none",fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer",
                       background:newLog.method===m?ball.accent:"#e8ecf5",color:newLog.method===m?"#fff":"#2d2d3d"}}>{m}</button>
@@ -5205,39 +5205,50 @@ export default function RollmateApp() {
                 <div style={{marginBottom:14}}>
                   {/* 전체 등록 볼 */}
                   <div style={{background:"linear-gradient(135deg,#1c1c1e,#2d2d3d)",borderRadius:16,
-                    padding:"12px 16px",marginBottom:8,
-                    display:"flex",alignItems:"center",justifyContent:"space-between",
+                    padding:"14px 18px",marginBottom:8,
+                    display:"flex",alignItems:"center",gap:14,
                     boxShadow:"0 2px 12px rgba(0,0,0,0.12)"}}>
-                    <div style={{display:"flex",alignItems:"center",gap:10}}>
-                      <span style={{fontSize:24}}>🎳</span>
-                      <div>
-                        <div style={{fontSize:11,color:"rgba(255,255,255,0.45)",fontWeight:700,letterSpacing:1}}>TOTAL</div>
-                        <div style={{fontSize:22,fontWeight:900,color:"#fff",lineHeight:1}}>{arsenal.length}<span style={{fontSize:13,color:"rgba(255,255,255,0.5)",marginLeft:3}}>개</span></div>
+                    <div style={{width:44,height:44,borderRadius:12,background:"rgba(255,140,0,0.15)",
+                      border:"1px solid rgba(255,140,0,0.25)",display:"flex",alignItems:"center",
+                      justifyContent:"center",fontSize:22,flexShrink:0}}>🎳</div>
+                    <div>
+                      <div style={{fontSize:11,color:"rgba(255,255,255,0.4)",fontWeight:700,letterSpacing:1.5,marginBottom:2}}>TOTAL BALLS</div>
+                      <div style={{display:"flex",alignItems:"baseline",gap:4}}>
+                        <span style={{fontSize:32,fontWeight:900,color:"#fff",lineHeight:1,fontFamily:"'Exo 2',sans-serif"}}>{arsenal.length}</span>
+                        <span style={{fontSize:14,color:"rgba(255,255,255,0.4)",fontWeight:600}}>개 등록됨</span>
                       </div>
-                    </div>
-                    <div style={{textAlign:"right"}}>
-                      <div style={{fontSize:11,color:"rgba(255,255,255,0.45)",fontWeight:700,letterSpacing:1}}>AVG WEIGHT</div>
-                      <div style={{fontSize:18,fontWeight:900,color:"#ff8c00"}}>{(arsenal.reduce((a,e)=>a+e.weight,0)/arsenal.length).toFixed(1)}<span style={{fontSize:12,color:"rgba(255,140,0,0.6)",marginLeft:2}}>lb</span></div>
                     </div>
                   </div>
                   {/* 오일 조건별 */}
                   <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6}}>
                     {[
-                      {l:"Heavy",full:"Heavy Oil",color:"#ef5350",emoji:"🔴"},
-                      {l:"Medium",full:["Medium-Heavy Oil","Medium Oil"],color:"#fb8c00",emoji:"🟡"},
-                      {l:"Light",full:["Light-Medium Oil","Light Oil"],color:"#42a5f5",emoji:"🔵"},
-                    ].map(({l,full,color,emoji})=>{
+                      {l:"Heavy",sub:"Heavy Oil",full:"Heavy Oil",color:"#ef5350",bg:"rgba(239,83,80,0.08)"},
+                      {l:"Medium",sub:"Med Oil",full:["Medium-Heavy Oil","Medium Oil"],color:"#fb8c00",bg:"rgba(251,140,0,0.08)"},
+                      {l:"Light",sub:"Light Oil",full:["Light-Medium Oil","Light Oil"],color:"#42a5f5",bg:"rgba(66,165,245,0.08)"},
+                    ].map(({l,sub,full,color,bg})=>{
                       const cnt = arsenal.filter(e=>{
                         const b = ALL_BALLS.find(x=>x.id===e.ballId);
                         return Array.isArray(full)?full.includes(b?.condition):b?.condition===full;
                       }).length;
+                      const pct = arsenal.length>0?Math.round((cnt/arsenal.length)*100):0;
                       return (
-                        <div key={l} style={{background:"#fff",borderRadius:13,padding:"10px 8px",
-                          boxShadow:"0 1px 8px rgba(0,0,0,.06)",textAlign:"center",
-                          borderTop:`3px solid ${color}`}}>
-                          <div style={{fontSize:16,marginBottom:2}}>{emoji}</div>
-                          <div style={{fontWeight:900,fontSize:20,color,lineHeight:1}}>{cnt}</div>
-                          <div style={{fontSize:10,color:"#999",fontWeight:700,letterSpacing:.5,marginTop:2}}>{l.toUpperCase()}</div>
+                        <div key={l} style={{background:"#fff",borderRadius:14,padding:"12px 10px",
+                          boxShadow:"0 1px 8px rgba(0,0,0,.06)",overflow:"hidden",position:"relative"}}>
+                          {/* 배경 바 */}
+                          <div style={{position:"absolute",bottom:0,left:0,right:0,height:`${pct}%`,
+                            background:bg,transition:"height .4s ease",zIndex:0}}/>
+                          <div style={{position:"relative",zIndex:1}}>
+                            <div style={{fontSize:9,color:"#bbb",fontWeight:700,letterSpacing:1.2,marginBottom:4}}>{sub.toUpperCase()}</div>
+                            <div style={{fontFamily:"'Exo 2',sans-serif",fontWeight:900,fontSize:26,color,lineHeight:1,marginBottom:2}}>{cnt}</div>
+                            <div style={{fontSize:9,color:"#ccc",fontWeight:600}}>{pct}%</div>
+                            {/* 컬러 도트 인디케이터 */}
+                            <div style={{display:"flex",gap:2,marginTop:6}}>
+                              {Array.from({length:Math.min(cnt,5)}).map((_,i)=>(
+                                <div key={i} style={{width:5,height:5,borderRadius:"50%",background:color,opacity:0.7}}/>
+                              ))}
+                              {cnt>5&&<div style={{fontSize:8,color,fontWeight:700,lineHeight:"5px"}}>+{cnt-5}</div>}
+                            </div>
+                          </div>
                         </div>
                       );
                     })}

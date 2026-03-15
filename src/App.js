@@ -2854,9 +2854,12 @@ function LoginPopup({ onLogin, onClose }) {
   };
 
   return (
-    <div onClick={onClose} style={{position:"fixed",inset:0,zIndex:4000,
-      background:"rgba(0,0,0,0.6)",backdropFilter:"blur(8px)",
-      display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+    <div onClick={onClose}
+      onTouchMove={e=>e.preventDefault()}
+      style={{position:"fixed",inset:0,zIndex:4000,
+        background:"rgba(0,0,0,0.6)",backdropFilter:"blur(8px)",
+        display:"flex",alignItems:"flex-end",justifyContent:"center",
+        overscrollBehavior:"none"}}>
       <div onClick={e=>e.stopPropagation()} style={{
         background:"#fff",borderRadius:"24px 24px 0 0",
         padding:"24px 20px 36px",width:"100%",maxWidth:480,
@@ -2920,33 +2923,37 @@ function CmpToast({ cmpList, onGo, onDismiss }) {
   return (
     <div style={{position:"fixed",bottom:76,left:"50%",transform:"translateX(-50%)",
       zIndex:3000,animation:"slideUp .3s cubic-bezier(.34,1.1,.64,1)"}}>
-      <div style={{background:"#1c1c1e",borderRadius:20,padding:"10px 8px 10px 16px",
-        display:"flex",alignItems:"center",gap:10,
-        boxShadow:"0 8px 32px rgba(0,0,0,0.35)",
-        border:"1px solid rgba(255,140,0,0.3)"}}>
-        <div style={{display:"flex",gap:-6}}>
+      <div style={{background:"#1c1c1e",borderRadius:50,padding:"8px 8px 8px 14px",
+        display:"flex",alignItems:"center",gap:8,
+        boxShadow:"0 8px 32px rgba(0,0,0,0.4)",
+        border:"1px solid rgba(255,140,0,0.25)"}}>
+        {/* 아바타들 */}
+        <div style={{display:"flex",alignItems:"center"}}>
           {cmpList.map((b,i)=>(
-            <div key={b.id} style={{width:28,height:28,borderRadius:"50%",
-              background:b.accent,marginLeft:i>0?-8:0,
-              border:"2px solid #1c1c1e",
+            <div key={b.id} style={{width:24,height:24,borderRadius:"50%",
+              background:b.accent,marginLeft:i>0?-6:0,
+              border:"2px solid #1c1c1e",flexShrink:0,
               display:"flex",alignItems:"center",justifyContent:"center",
-              fontSize:11,fontWeight:900,color:"#fff",flexShrink:0}}>
+              fontSize:10,fontWeight:900,color:"#fff"}}>
               {b.name.charAt(0)}
             </div>
           ))}
         </div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,0.7)",fontWeight:600}}>
-          {cmpList.length}개 선택됨
-        </div>
-        <button onClick={onGo} style={{padding:"7px 14px",background:"#ff8c00",
-          border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
-          fontSize:13,fontWeight:800,cursor:"pointer",
-          boxShadow:"0 3px 10px rgba(255,140,0,0.4)"}}>
+        <span style={{fontSize:12,color:"rgba(255,255,255,0.6)",fontWeight:600,whiteSpace:"nowrap"}}>
+          {cmpList.length}개 선택
+        </span>
+        <button onClick={onGo} style={{
+          padding:"8px 16px",background:"#ff8c00",
+          border:"none",borderRadius:50,color:"#fff",fontFamily:"inherit",
+          fontSize:13,fontWeight:800,cursor:"pointer",whiteSpace:"nowrap",
+          boxShadow:"0 3px 12px rgba(255,140,0,0.45)"}}>
           비교하기 ⚖️
         </button>
-        <button onClick={onDismiss} style={{padding:"7px 8px",background:"rgba(255,255,255,0.08)",
-          border:"none",borderRadius:10,color:"rgba(255,255,255,0.5)",
-          fontFamily:"inherit",fontSize:12,cursor:"pointer"}}>✕</button>
+        <button onClick={onDismiss} style={{
+          width:28,height:28,background:"rgba(255,255,255,0.1)",
+          border:"none",borderRadius:"50%",color:"rgba(255,255,255,0.5)",
+          fontFamily:"inherit",fontSize:13,cursor:"pointer",
+          display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>✕</button>
       </div>
     </div>
   );
@@ -4177,7 +4184,7 @@ function CompareView({ cmpList, toggleCmp, setView }) {
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:2}}>
         <div style={{fontWeight:800,fontSize:22,color:"#111"}}>볼링공 비교</div>
         {cmpList.length>0&&(
-          <button onClick={()=>cmpList.forEach(b=>toggleCmp(b))} style={{
+          <button onClick={()=>setCmpList([])} style={{
             padding:"6px 14px",borderRadius:18,border:"1.5px solid #ef5350",
             background:"#fff",color:"#ef5350",fontFamily:"inherit",
             fontSize:12,fontWeight:700,cursor:"pointer"}}>
@@ -4832,10 +4839,8 @@ export default function RollmateApp() {
             style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto",cursor:"pointer"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontFamily:"'Bebas Neue','Inter',sans-serif",fontWeight:400,
-              fontSize:36,color:"#fff",letterSpacing:10,
-              textShadow:"0 0 24px rgba(255,140,0,0.4)",lineHeight:1,
-              display:"inline-block"}}>
-              ROLL<span style={{
+              fontSize:38,color:"#fff",letterSpacing:"0.18em",
+              textShadow:"0 0 24px rgba(255,140,0,0.4)",lineHeight:1}}>ROLL<span style={{
                 color:"#ff8c00",
                 textShadow:"0 0 18px rgba(255,140,0,0.75)",
               }}>MATE</span>

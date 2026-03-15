@@ -2801,6 +2801,157 @@ function WeightTable({ ball, sel, onSel }) {
   );
 }
 
+// 간단 로그인 팝업 (비로그인 탭 접근 시)
+function LoginPopup({ onLogin, onClose }) {
+  const [mode, setMode] = useState("login");
+  const [name, setName] = useState("");
+  const [pw, setPw] = useState("");
+  const [pw2, setPw2] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+
+  const inputStyle = {
+    width:"100%",background:"#f7f7fc",border:"1.5px solid #e2e2e0",borderRadius:10,
+    color:"#333",padding:"10px 13px",fontSize:14,outline:"none",
+    fontFamily:"inherit",boxSizing:"border-box",marginBottom:8,
+  };
+
+  const handleLogin = async () => {
+    if(!name.trim()||!pw){setErr("닉네임과 비밀번호를 입력해주세요");return;}
+    setLoading(true);setErr("");
+    try{
+      const users=await sbGet("users",`nickname=eq.${encodeURIComponent(name.trim())}&select=*`);
+      if(!users.length){setErr("존재하지 않는 닉네임이에요");setLoading(false);return;}
+      if(users[0].password!==pw){setErr("비밀번호가 틀렸어요");setLoading(false);return;}
+      const isAdmin=users[0].is_admin===true;
+      localStorage.setItem("rm_nickname",name.trim());
+      localStorage.setItem("rm_pw",pw);
+      localStorage.setItem("rm_admin",isAdmin?"1":"0");
+      const [data,noticeData]=await Promise.all([
+        sbGet("equipment",`nickname=eq.${encodeURIComponent(name.trim())}&order=created_at.asc`),
+        sbGet("notices","is_active=eq.true&order=created_at.desc"),
+      ]);
+      onLogin(name.trim(),data,isAdmin,noticeData);
+    }catch(e){setErr("연결 오류. 잠시 후 다시 시도해주세요.");}
+    setLoading(false);
+  };
+
+  const handleRegister = async () => {
+    if(!name.trim()||name.trim().length<2){setErr("닉네임을 2글자 이상 입력해주세요");return;}
+    if(!pw||pw.length<4){setErr("비밀번호를 4자리 이상 입력해주세요");return;}
+    if(pw!==pw2){setErr("비밀번호가 일치하지 않아요");return;}
+    setLoading(true);setErr("");
+    try{
+      const existing=await sbGet("users",`nickname=eq.${encodeURIComponent(name.trim())}&select=id`);
+      if(existing.length){setErr("이미 사용 중인 닉네임이에요");setLoading(false);return;}
+      await sbInsert("users",{nickname:name.trim(),password:pw,is_admin:false});
+      localStorage.setItem("rm_nickname",name.trim());
+      localStorage.setItem("rm_pw",pw);
+      localStorage.setItem("rm_admin","0");
+      onLogin(name.trim(),[],false,[]);
+    }catch(e){setErr("연결 오류. 잠시 후 다시 시도해주세요.");}
+    setLoading(false);
+  };
+
+  return (
+    <div onClick={onClose} style={{position:"fixed",inset:0,zIndex:4000,
+      background:"rgba(0,0,0,0.6)",backdropFilter:"blur(8px)",
+      display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+      <div onClick={e=>e.stopPropagation()} style={{
+        background:"#fff",borderRadius:"24px 24px 0 0",
+        padding:"24px 20px 36px",width:"100%",maxWidth:480,
+        boxShadow:"0 -8px 40px rgba(0,0,0,0.2)",
+        animation:"slideUp .3s cubic-bezier(.34,1.1,.64,1)"}}>
+        <style>{`@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}`}</style>
+        {/* 핸들 바 */}
+        <div style={{width:40,height:4,background:"#e2e2e0",borderRadius:2,margin:"0 auto 18px"}}/>
+        {/* 헤더 */}
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+          <div style={{fontSize:18,fontWeight:900,color:"#111"}}>
+            {mode==="login"?"로그인":"회원가입"}
+          </div>
+          <button onClick={onClose} style={{background:"none",border:"none",
+            fontSize:20,color:"#ccc",cursor:"pointer"}}>✕</button>
+        </div>
+        {/* 탭 */}
+        <div style={{display:"flex",background:"#f5f5f7",borderRadius:10,padding:3,marginBottom:16}}>
+          {[{k:"login",l:"로그인"},{k:"register",l:"회원가입"}].map(t=>(
+            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");}}
+              style={{flex:1,padding:"8px",borderRadius:8,border:"none",
+                fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",
+                background:mode===t.k?"#fff":"transparent",
+                color:mode===t.k?"#111":"#999",
+                boxShadow:mode===t.k?"0 1px 4px rgba(0,0,0,0.1)":"none",
+                transition:"all .15s"}}>{t.l}</button>
+          ))}
+        </div>
+        {/* 입력 */}
+        <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
+          placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
+        <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
+          placeholder="비밀번호" maxLength={30} style={inputStyle}/>
+        {mode==="register"&&(
+          <input type="password" value={pw2} onChange={e=>{setPw2(e.target.value);setErr("");}}
+            placeholder="비밀번호 확인" maxLength={30} style={inputStyle}/>
+        )}
+        {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
+        <button onClick={mode==="login"?handleLogin:handleRegister} disabled={loading}
+          style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
+            border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+            fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+            boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
+          {loading?"확인 중...":(mode==="login"?"로그인 →":"가입하기 →")}
+        </button>
+        {mode==="register"&&(
+          <div style={{fontSize:11,color:"#aaa",textAlign:"center",marginTop:10,lineHeight:1.6}}>
+            간편 가입 · 추가 정보는 설정에서 입력 가능해요
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// 비교 팝업 (볼 2개 이상 선택 시)
+function CmpToast({ cmpList, onGo, onDismiss }) {
+  if(cmpList.length < 2) return null;
+  return (
+    <div style={{position:"fixed",bottom:76,left:"50%",transform:"translateX(-50%)",
+      zIndex:3000,animation:"slideUp .3s cubic-bezier(.34,1.1,.64,1)"}}>
+      <div style={{background:"#1c1c1e",borderRadius:20,padding:"10px 8px 10px 16px",
+        display:"flex",alignItems:"center",gap:10,
+        boxShadow:"0 8px 32px rgba(0,0,0,0.35)",
+        border:"1px solid rgba(255,140,0,0.3)"}}>
+        <div style={{display:"flex",gap:-6}}>
+          {cmpList.map((b,i)=>(
+            <div key={b.id} style={{width:28,height:28,borderRadius:"50%",
+              background:b.accent,marginLeft:i>0?-8:0,
+              border:"2px solid #1c1c1e",
+              display:"flex",alignItems:"center",justifyContent:"center",
+              fontSize:11,fontWeight:900,color:"#fff",flexShrink:0}}>
+              {b.name.charAt(0)}
+            </div>
+          ))}
+        </div>
+        <div style={{fontSize:12,color:"rgba(255,255,255,0.7)",fontWeight:600}}>
+          {cmpList.length}개 선택됨
+        </div>
+        <button onClick={onGo} style={{padding:"7px 14px",background:"#ff8c00",
+          border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+          fontSize:13,fontWeight:800,cursor:"pointer",
+          boxShadow:"0 3px 10px rgba(255,140,0,0.4)"}}>
+          비교하기 ⚖️
+        </button>
+        <button onClick={onDismiss} style={{padding:"7px 8px",background:"rgba(255,255,255,0.08)",
+          border:"none",borderRadius:10,color:"rgba(255,255,255,0.5)",
+          fontFamily:"inherit",fontSize:12,cursor:"pointer"}}>✕</button>
+      </div>
+    </div>
+  );
+}
+
 // 관리자 화면
 function AdminView({ nickname, onLogout, showToast }) {
   const [tab, setTab] = useState("users");
@@ -4023,7 +4174,17 @@ function CompareView({ cmpList, toggleCmp, setView }) {
 
   return (
     <div style={{animation:"fadeUp .3s ease both"}}>
-      <div style={{fontWeight:800,fontSize:22,color:"#111",marginBottom:2}}>볼링공 비교</div>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:2}}>
+        <div style={{fontWeight:800,fontSize:22,color:"#111"}}>볼링공 비교</div>
+        {cmpList.length>0&&(
+          <button onClick={()=>cmpList.forEach(b=>toggleCmp(b))} style={{
+            padding:"6px 14px",borderRadius:18,border:"1.5px solid #ef5350",
+            background:"#fff",color:"#ef5350",fontFamily:"inherit",
+            fontSize:12,fontWeight:700,cursor:"pointer"}}>
+            🗑️ 초기화
+          </button>
+        )}
+      </div>
       <p style={{fontSize:13,color:"#1c1c1e",marginBottom:14}}>
         {cmpList.length===0?"홈에서 + 버튼으로 최대 3개 선택":`${cmpList.length}개 비교 중`}
       </p>
@@ -4064,36 +4225,36 @@ function CompareView({ cmpList, toggleCmp, setView }) {
                 <div key={ball.id} style={{background:"#ffffff",borderRadius:16,overflow:"hidden",
                   boxShadow:"0 2px 12px rgba(0,0,0,.07)"}}>
                   <div style={{height:4,background:ball.accent}}/>
-                  <div style={{padding:"10px 8px",textAlign:"center",borderBottom:"1px solid #f5f5f8"}}>
-                    <div style={{display:"flex",justifyContent:"center",marginBottom:6}}>
-                      <div style={{width:56,height:56,borderRadius:"50%",overflow:"hidden",
-                        boxShadow:`0 4px 14px ${ball.accent}44`,border:`2px solid ${ball.accent}33`}}>
-                        <BowwwlImg src={BOWWWL_BALL(ball.ballSlug)} alt={ball.name} size={56} radius="50%"/>
+                  <div style={{padding:"7px 6px 6px",textAlign:"center",borderBottom:"1px solid #f5f5f8"}}>
+                    <div style={{display:"flex",justifyContent:"center",marginBottom:4}}>
+                      <div style={{width:44,height:44,borderRadius:"50%",overflow:"hidden",
+                        boxShadow:`0 3px 10px ${ball.accent}44`,border:`2px solid ${ball.accent}33`}}>
+                        <BowwwlImg src={BOWWWL_BALL(ball.ballSlug)} alt={ball.name} size={44} radius="50%"/>
                       </div>
                     </div>
-                    <div style={{fontSize:10,color:"#4a4a5a",fontWeight:700,letterSpacing:1.2}}>{ball.brand.toUpperCase()}</div>
-                    <div style={{fontWeight:800,fontSize:11,color:"#111",lineHeight:1.2,marginBottom:4,
+                    <div style={{fontSize:9,color:"#4a4a5a",fontWeight:700,letterSpacing:1}}>{ball.brand.toUpperCase()}</div>
+                    <div style={{fontWeight:800,fontSize:10,color:"#111",lineHeight:1.2,marginBottom:3,
                       overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:"100%"}}>{ball.name}</div>
-                    <button onClick={()=>toggleCmp(ball)} style={{padding:"2px 8px",
+                    <button onClick={()=>toggleCmp(ball)} style={{padding:"1px 7px",
                       background:"#f3f4f6",border:"none",color:"#1c1c1e",borderRadius:5,cursor:"pointer",
-                      fontWeight:700,fontSize:11,fontFamily:"inherit"}}>제거</button>
+                      fontWeight:700,fontSize:10,fontFamily:"inherit"}}>제거</button>
                   </div>
                   {/* 코어 이미지 */}
-                  <div style={{padding:"8px",borderBottom:"1px solid #f8f8fc",display:"flex",justifyContent:"center"}}>
-                    <div style={{width:48,height:48,borderRadius:9,overflow:"hidden",
+                  <div style={{padding:"5px",borderBottom:"1px solid #f8f8fc",display:"flex",justifyContent:"center"}}>
+                    <div style={{width:38,height:38,borderRadius:7,overflow:"hidden",
                       background:"#f5f5f8",border:"1px solid #e2e2e0"}}>
-                      <BowwwlImg src={BOWWWL_CORE(ball.coreSlug)} alt="Core" size={48} radius="9px"/>
+                      <BowwwlImg src={BOWWWL_CORE(ball.coreSlug)} alt="Core" size={38} radius="7px"/>
                     </div>
                   </div>
-                  <div style={{padding:"8px"}}>
+                  <div style={{padding:"5px 6px"}}>
                     {[
                       {k:"RG",v:d?.rg||"-"},
                       {k:"Diff",v:d?.diff||"-"},
                       {k:"Cover",v:ball.cover},
                       {k:"Core",v:ball.coreType}
                     ].map(r=>(
-                      <div key={r.k} style={{display:"flex",justifyContent:"space-between",padding:"3px 0",
-                        borderBottom:"1px solid #f8f8fc",fontSize:11}}>
+                      <div key={r.k} style={{display:"flex",justifyContent:"space-between",padding:"2px 0",
+                        borderBottom:"1px solid #f8f8fc",fontSize:10}}>
                         <span style={{color:"#6b6b7e",fontWeight:700}}>{r.k}</span>
                         <span style={{color:"#111",fontWeight:700,textAlign:"right",
                           maxWidth:"60%",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{r.v}</span>
@@ -4356,6 +4517,7 @@ export default function RollmateApp() {
   const [isAdmin,setIsAdmin]   = useState(()=>localStorage.getItem("rm_admin")==="1");
   const [dbLoading,setDbLoading] = useState(false);
   const [showLoginModal,setShowLoginModal] = useState(false);
+  const [showCmpToast,setShowCmpToast]   = useState(false);
   const [notices,setNotices]   = useState([]);
   const scrollPos            = useRef(0);
 
@@ -4455,8 +4617,15 @@ export default function RollmateApp() {
 
   const inArsenal = id => arsenal.some(e=>e.ballId===id);
   const toggleCmp = ball => {
-    if(cmpList.find(b=>b.id===ball.id)) setCmpList(cmpList.filter(b=>b.id!==ball.id));
-    else if(cmpList.length<3) setCmpList([...cmpList,ball]);
+    if(cmpList.find(b=>b.id===ball.id)){
+      const next = cmpList.filter(b=>b.id!==ball.id);
+      setCmpList(next);
+      if(next.length < 2) setShowCmpToast(false);
+    } else if(cmpList.length<3){
+      const next = [...cmpList, ball];
+      setCmpList(next);
+      if(next.length >= 2) setShowCmpToast(true);
+    }
   };
   const handleSave = async form => {
     const dbRow = {
@@ -4638,16 +4807,21 @@ export default function RollmateApp() {
       {modal&&<RegModal ball={modal} existing={editEnt} onSave={handleSave}
         onClose={()=>{setModal(null);setEditEnt(null);}}/>}
 
-      {/* 로그인 모달 (비로그인 탭 접근 시) */}
+      {/* 비교 팝업 토스트 */}
+      {showCmpToast&&view==="home"&&(
+        <CmpToast
+          cmpList={cmpList}
+          onGo={()=>{setShowCmpToast(false);setView("compare");setSel(null);}}
+          onDismiss={()=>setShowCmpToast(false)}
+        />
+      )}
+
+      {/* 로그인 팝업 (비로그인 탭 접근 시) */}
       {showLoginModal&&(
-        <div style={{position:"fixed",inset:0,zIndex:4000}}>
-          <NicknameLogin onLogin={handleLogin}/>
-          <button onClick={()=>setShowLoginModal(false)}
-            style={{position:"fixed",top:16,right:16,zIndex:4001,
-              background:"rgba(255,255,255,0.15)",border:"none",borderRadius:"50%",
-              width:36,height:36,fontSize:18,color:"#fff",cursor:"pointer",
-              display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
-        </div>
+        <LoginPopup
+          onLogin={handleLogin}
+          onClose={()=>setShowLoginModal(false)}
+        />
       )}
 
       {/* TOP BAR */}
@@ -4658,13 +4832,12 @@ export default function RollmateApp() {
             style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto",cursor:"pointer"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontFamily:"'Bebas Neue','Inter',sans-serif",fontWeight:400,
-              fontSize:34,color:"#fff",letterSpacing:7,
-              textShadow:"0 0 24px rgba(255,140,0,0.4)",lineHeight:1}}>
+              fontSize:36,color:"#fff",letterSpacing:10,
+              textShadow:"0 0 24px rgba(255,140,0,0.4)",lineHeight:1,
+              display:"inline-block"}}>
               ROLL<span style={{
                 color:"#ff8c00",
                 textShadow:"0 0 18px rgba(255,140,0,0.75)",
-                borderBottom:"2px solid #ff8c00",
-                paddingBottom:1
               }}>MATE</span>
             </span>
           </div>

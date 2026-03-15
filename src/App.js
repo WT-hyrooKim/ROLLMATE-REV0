@@ -191,7 +191,7 @@ const ALL_BALLS = [
     id:13, brand:"DV8", name:"Dark Side Curse",
     cover:"Solid", coreType:"Symmetric", coreName:"Duality",
     finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#4e342e",
-    ballSlug:"ev8-dark-side-curse", coreSlug:"dv8-duality-core",
+    ballSlug:"dv8-dark-side-curse", coreSlug:"dv8-duality-core",
     weightData:{
       16:{rg:2.494,diff:0.031}, 15:{rg:2.480,diff:0.036},
       14:{rg:2.503,diff:0.035}, 13:{rg:2.577,diff:0.043}, 12:{rg:2.599,diff:0.043}
@@ -4658,16 +4658,9 @@ export default function RollmateApp() {
             style={{display:"flex",alignItems:"center",gap:7,marginRight:"auto",cursor:"pointer"}}>
             <span style={{fontSize:22}}>🎳</span>
             <span style={{fontFamily:"'Bebas Neue','Inter',sans-serif",fontWeight:400,
-              fontSize:28,color:"#ffffff",lineHeight:1,letterSpacing:2}}>
-              <span style={{
-                color:"#fff",
-                textShadow:"0 2px 12px rgba(255,255,255,0.15)",
-                letterSpacing:4}}>ROLL</span>
-              <span style={{color:"rgba(255,140,0,0.4)",fontSize:20,margin:"0 1px"}}>/</span>
-              <span style={{
-                color:"#ff8c00",
-                textShadow:"0 0 14px rgba(255,140,0,0.6)",
-                letterSpacing:4}}>MATE</span>
+              fontSize:32,color:"#fff",letterSpacing:7,
+              textShadow:"0 0 20px rgba(255,140,0,0.3)",lineHeight:1}}>
+              ROLL<span style={{color:"#ff8c00",textShadow:"0 0 18px rgba(255,140,0,0.7)"}}>MATE</span>
             </span>
           </div>
           <div style={{position:"relative",flex:1,minWidth:0}}>
@@ -4831,9 +4824,9 @@ export default function RollmateApp() {
                     color:sortBy==="diff"?"#ff8c00":"#6b6b7e",
                     outline:"none",whiteSpace:"nowrap",
                   }}>
-                  <option value="" disabled style={{background:"#fff",color:"#333"}}>📐 차이</option>
-                  <option value="diff_desc" style={{background:"#fff",color:"#333"}}>📐 차이 높은순</option>
-                  <option value="diff_asc" style={{background:"#fff",color:"#333"}}>📐 차이 낮은순</option>
+                  <option value="" disabled style={{background:"#fff",color:"#333"}}>📐 DIFF</option>
+                  <option value="diff_desc" style={{background:"#fff",color:"#333"}}>📐 DIFF 높은순</option>
+                  <option value="diff_asc" style={{background:"#fff",color:"#333"}}>📐 DIFF 낮은순</option>
                 </select>
                 <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",
                   fontSize:8,color:sortBy==="diff"?"#ff8c00":"#bbb",pointerEvents:"none"}}>▼</span>

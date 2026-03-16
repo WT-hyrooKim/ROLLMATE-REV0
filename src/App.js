@@ -2803,18 +2803,35 @@ function WeightTable({ ball, sel, onSel }) {
 
 // 간단 로그인 팝업 (비로그인 탭 접근 시)
 function LoginPopup({ onLogin, onClose }) {
-  const [mode, setMode] = useState("login");
+  const [mode, setMode] = useState("login"); // login | register | find
   const [name, setName] = useState("");
   const [pw, setPw] = useState("");
   const [pw2, setPw2] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  // 아이디/비번 찾기
+  const [findNick, setFindNick] = useState("");
+  const [findName, setFindName] = useState("");
+  const [findBirth, setFindBirth] = useState({y:"",m:"",d:""});
+  const [findResult, setFindResult] = useState(null); // null | {pw, nickname} | "fail"
 
   const inputStyle = {
-    width:"100%",background:"#f7f7fc",border:"1.5px solid #e2e2e0",borderRadius:10,
-    color:"#333",padding:"10px 13px",fontSize:14,outline:"none",
-    fontFamily:"inherit",boxSizing:"border-box",marginBottom:8,
+    width:"100%", background:"#f7f7fc", border:"1.5px solid #e2e2e0", borderRadius:10,
+    color:"#333", padding:"10px 13px", fontSize:14, outline:"none",
+    fontFamily:"inherit", boxSizing:"border-box", marginBottom:8,
   };
+
+  useEffect(()=>{
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    return ()=>{
+      document.body.style.overflow = prev;
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  },[]);
 
   const handleLogin = async () => {
     if(!name.trim()||!pw){setErr("닉네임과 비밀번호를 입력해주세요");return;}
@@ -2853,17 +2870,30 @@ function LoginPopup({ onLogin, onClose }) {
     setLoading(false);
   };
 
-  useEffect(()=>{
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.width = "100%";
-    return ()=>{
-      document.body.style.overflow = prev;
-      document.body.style.position = "";
-      document.body.style.width = "";
-    };
-  },[]);
+  const handleFind = async () => {
+    if(!findNick.trim()||!findName.trim()||!findBirth.y||!findBirth.m||!findBirth.d){
+      setErr("모든 항목을 입력해주세요"); return;
+    }
+    setLoading(true); setErr(""); setFindResult(null);
+    try{
+      const users = await sbGet("users", `nickname=eq.${encodeURIComponent(findNick.trim())}&select=*`);
+      if(!users.length){ setFindResult("fail"); setLoading(false); return; }
+      const u = users[0];
+      const birthStr = `${findBirth.y}-${String(findBirth.m).padStart(2,"0")}-${String(findBirth.d).padStart(2,"0")}`;
+      if(u.real_name===findName.trim() && u.birth_date===birthStr){
+        setFindResult({nickname: u.nickname, pw: u.password});
+      } else {
+        setFindResult("fail");
+      }
+    }catch(e){ setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
+    setLoading(false);
+  };
+
+  const tabs = [
+    {k:"login", l:"로그인"},
+    {k:"register", l:"회원가입"},
+    {k:"find", l:"계정 찾기"},
+  ];
 
   return (
     <div onClick={onClose}
@@ -2872,56 +2902,147 @@ function LoginPopup({ onLogin, onClose }) {
         display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
       <div onClick={e=>e.stopPropagation()} style={{
         background:"#fff",borderRadius:"24px 24px 0 0",
-        padding:"24px 20px 36px",width:"100%",maxWidth:480,
+        padding:"20px 20px 36px",width:"100%",maxWidth:480,
         boxShadow:"0 -8px 40px rgba(0,0,0,0.2)",
         animation:"slideUp .3s cubic-bezier(.34,1.1,.64,1)"}}>
         <style>{`@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}`}</style>
-        {/* 핸들 바 */}
-        <div style={{width:40,height:4,background:"#e2e2e0",borderRadius:2,margin:"0 auto 18px"}}/>
-        {/* 헤더 */}
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-          <div style={{fontSize:18,fontWeight:900,color:"#111"}}>
-            {mode==="login"?"로그인":"회원가입"}
-          </div>
-          <button onClick={onClose} style={{background:"none",border:"none",
-            fontSize:20,color:"#ccc",cursor:"pointer"}}>✕</button>
+        <div style={{width:40,height:4,background:"#e2e2e0",borderRadius:2,margin:"0 auto 16px"}}/>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+          <div style={{fontSize:17,fontWeight:900,color:"#111",fontFamily:"'Exo 2',sans-serif"}}>ROLLMATE</div>
+          <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,color:"#ccc",cursor:"pointer"}}>✕</button>
         </div>
         {/* 탭 */}
-        <div style={{display:"flex",background:"#f5f5f7",borderRadius:10,padding:3,marginBottom:16}}>
-          {[{k:"login",l:"로그인"},{k:"register",l:"회원가입"}].map(t=>(
-            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");}}
-              style={{flex:1,padding:"8px",borderRadius:8,border:"none",
-                fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",
+        <div style={{display:"flex",background:"#f5f5f7",borderRadius:12,padding:3,marginBottom:16,gap:2}}>
+          {tabs.map(t=>(
+            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");setFindResult(null);}}
+              style={{flex:1,padding:"8px 4px",borderRadius:9,border:"none",
+                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer",
                 background:mode===t.k?"#fff":"transparent",
                 color:mode===t.k?"#111":"#999",
                 boxShadow:mode===t.k?"0 1px 4px rgba(0,0,0,0.1)":"none",
                 transition:"all .15s"}}>{t.l}</button>
           ))}
         </div>
-        {/* 입력 */}
-        <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
-          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
-          placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
-        <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
-          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
-          placeholder="비밀번호" maxLength={30} style={inputStyle}/>
-        {mode==="register"&&(
+
+        {/* 로그인 */}
+        {mode==="login"&&(<>
+          <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+            onKeyDown={e=>e.key==="Enter"&&handleLogin()}
+            placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
+          <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+            onKeyDown={e=>e.key==="Enter"&&handleLogin()}
+            placeholder="비밀번호" maxLength={30} style={inputStyle}/>
+          {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
+          <button onClick={handleLogin} disabled={loading}
+            style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
+              border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+              fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+              boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
+            {loading?"확인 중...":"로그인 →"}
+          </button>
+          <button onClick={()=>{setMode("find");setErr("");}} style={{
+            width:"100%",padding:"10px",background:"none",border:"none",
+            color:"#aaa",fontFamily:"inherit",fontSize:12,cursor:"pointer",marginTop:6}}>
+            아이디 / 비밀번호를 잊으셨나요?
+          </button>
+        </>)}
+
+        {/* 회원가입 */}
+        {mode==="register"&&(<>
+          <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+            placeholder="닉네임 (2글자 이상)" maxLength={20} style={inputStyle} autoFocus/>
+          <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+            placeholder="비밀번호 (4자리 이상)" maxLength={30} style={inputStyle}/>
           <input type="password" value={pw2} onChange={e=>{setPw2(e.target.value);setErr("");}}
+            onKeyDown={e=>e.key==="Enter"&&handleRegister()}
             placeholder="비밀번호 확인" maxLength={30} style={inputStyle}/>
-        )}
-        {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
-        <button onClick={mode==="login"?handleLogin:handleRegister} disabled={loading}
-          style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
-            border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
-            fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
-            boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
-          {loading?"확인 중...":(mode==="login"?"로그인 →":"가입하기 →")}
-        </button>
-        {mode==="register"&&(
-          <div style={{fontSize:11,color:"#aaa",textAlign:"center",marginTop:10,lineHeight:1.6}}>
-            간편 가입 · 추가 정보는 설정에서 입력 가능해요
+          {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
+          <button onClick={handleRegister} disabled={loading}
+            style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
+              border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+              fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+              boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
+            {loading?"가입 중...":"가입하기 →"}
+          </button>
+          <div style={{fontSize:11,color:"#aaa",textAlign:"center",marginTop:10}}>
+            추가 정보(실명·생년월일)는 설정에서 입력 가능해요
           </div>
-        )}
+        </>)}
+
+        {/* 계정 찾기 */}
+        {mode==="find"&&(<>
+          {!findResult&&(<>
+            <div style={{fontSize:12,color:"#888",marginBottom:12,lineHeight:1.6,
+              background:"#f7f7fc",borderRadius:10,padding:"10px 12px"}}>
+              💡 가입 시 입력한 <b>닉네임 · 성명 · 생년월일</b>이 모두 일치하면 비밀번호를 확인할 수 있어요.
+            </div>
+            <input value={findNick} onChange={e=>{setFindNick(e.target.value);setErr("");}}
+              placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
+            <input value={findName} onChange={e=>{setFindName(e.target.value);setErr("");}}
+              placeholder="성명 (실명)" maxLength={20} style={inputStyle}/>
+            {/* 생년월일 드롭다운 */}
+            <div style={{display:"flex",gap:6,marginBottom:8}}>
+              <select value={findBirth.y} onChange={e=>setFindBirth(b=>({...b,y:e.target.value}))}
+                style={{flex:2,...inputStyle,marginBottom:0,color:findBirth.y?"#333":"#aaa"}}>
+                <option value="" disabled>연도</option>
+                {Array.from({length:70},(_,i)=>new Date().getFullYear()-i).map(y=>(
+                  <option key={y} value={y}>{y}년</option>
+                ))}
+              </select>
+              <select value={findBirth.m} onChange={e=>setFindBirth(b=>({...b,m:e.target.value}))}
+                style={{flex:1,...inputStyle,marginBottom:0,color:findBirth.m?"#333":"#aaa"}}>
+                <option value="" disabled>월</option>
+                {Array.from({length:12},(_,i)=>i+1).map(m=>(
+                  <option key={m} value={m}>{m}월</option>
+                ))}
+              </select>
+              <select value={findBirth.d} onChange={e=>setFindBirth(b=>({...b,d:e.target.value}))}
+                style={{flex:1,...inputStyle,marginBottom:0,color:findBirth.d?"#333":"#aaa"}}>
+                <option value="" disabled>일</option>
+                {Array.from({length:31},(_,i)=>i+1).map(d=>(
+                  <option key={d} value={d}>{d}일</option>
+                ))}
+              </select>
+            </div>
+            {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
+            <button onClick={handleFind} disabled={loading}
+              style={{width:"100%",padding:"14px",background:loading?"#aaa":"#1c1c1e",
+                border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+                fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",marginTop:4}}>
+              {loading?"확인 중...":"계정 찾기 →"}
+            </button>
+          </>)}
+
+          {/* 결과 */}
+          {findResult==="fail"&&(
+            <div style={{textAlign:"center",padding:"20px 0"}}>
+              <div style={{fontSize:32,marginBottom:10}}>😕</div>
+              <div style={{fontWeight:700,fontSize:15,color:"#111",marginBottom:6}}>일치하는 계정을 찾지 못했어요</div>
+              <div style={{fontSize:13,color:"#aaa",marginBottom:20,lineHeight:1.6}}>입력한 정보를 다시 확인해주세요</div>
+              <button onClick={()=>setFindResult(null)} style={{padding:"10px 24px",
+                background:"#f5f5f7",border:"none",borderRadius:10,fontFamily:"inherit",
+                fontSize:13,fontWeight:700,cursor:"pointer",color:"#555"}}>다시 시도</button>
+            </div>
+          )}
+          {findResult&&findResult!=="fail"&&(
+            <div style={{textAlign:"center",padding:"16px 0"}}>
+              <div style={{fontSize:32,marginBottom:10}}>🎉</div>
+              <div style={{fontWeight:700,fontSize:15,color:"#111",marginBottom:16}}>계정을 찾았어요!</div>
+              <div style={{background:"#f7f7fc",borderRadius:14,padding:"16px",marginBottom:16,textAlign:"left"}}>
+                <div style={{fontSize:11,color:"#aaa",fontWeight:700,marginBottom:4}}>닉네임</div>
+                <div style={{fontSize:16,fontWeight:800,color:"#111",marginBottom:12}}>{findResult.nickname}</div>
+                <div style={{fontSize:11,color:"#aaa",fontWeight:700,marginBottom:4}}>비밀번호</div>
+                <div style={{fontSize:20,fontWeight:900,color:"#ff8c00",letterSpacing:2}}>{findResult.pw}</div>
+              </div>
+              <button onClick={()=>{setMode("login");setName(findResult.nickname);setFindResult(null);setErr("");}}
+                style={{width:"100%",padding:"13px",background:"#ff8c00",border:"none",
+                  borderRadius:12,color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,
+                  cursor:"pointer",boxShadow:"0 4px 14px rgba(255,140,0,0.35)"}}>
+                로그인하러 가기 →
+              </button>
+            </div>
+          )}
+        </>)}
       </div>
     </div>
   );
@@ -4597,6 +4718,7 @@ export default function RollmateApp() {
             localStorage.removeItem("rm_nickname");
             localStorage.removeItem("rm_pw");
             setNickname("");
+            setView("home");
             return;
           }
           return sbGet("equipment", `nickname=eq.${encodeURIComponent(saved)}&order=created_at.asc`);
@@ -4812,6 +4934,7 @@ export default function RollmateApp() {
         localStorage.removeItem("rm_pw");
         localStorage.removeItem("rm_admin");
         setNickname(""); setArsenal([]); setIsAdmin(false);
+        setView("home");
       }}
       showToast={showToast}
     />
@@ -5038,9 +5161,9 @@ export default function RollmateApp() {
                     color:sortBy==="rg"?"#ff8c00":"#6b6b7e",
                     outline:"none",whiteSpace:"nowrap",
                   }}>
-                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>⚙️ RG</option>
-                  <option value="rg_asc" style={{background:"#fff",color:"#333"}}>⚙️ RG 낮은순</option>
-                  <option value="rg_desc" style={{background:"#fff",color:"#333"}}>⚙️ RG 높은순</option>
+                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>RG</option>
+                  <option value="rg_asc" style={{background:"#fff",color:"#333"}}>RG 낮은순</option>
+                  <option value="rg_desc" style={{background:"#fff",color:"#333"}}>RG 높은순</option>
                   {sortBy==="rg"&&<option value="__none__" style={{background:"#fff",color:"#ef5350"}}>✕ 해제</option>}
                 </select>
                 <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",
@@ -5062,9 +5185,9 @@ export default function RollmateApp() {
                     color:sortBy==="diff"?"#ff8c00":"#6b6b7e",
                     outline:"none",whiteSpace:"nowrap",
                   }}>
-                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>📐 DIFF</option>
-                  <option value="diff_desc" style={{background:"#fff",color:"#333"}}>📐 DIFF 높은순</option>
-                  <option value="diff_asc" style={{background:"#fff",color:"#333"}}>📐 DIFF 낮은순</option>
+                  <option value="__none__" style={{background:"#fff",color:"#aaa"}}>DIFF</option>
+                  <option value="diff_desc" style={{background:"#fff",color:"#333"}}>DIFF 높은순</option>
+                  <option value="diff_asc" style={{background:"#fff",color:"#333"}}>DIFF 낮은순</option>
                   {sortBy==="diff"&&<option value="__none__" style={{background:"#fff",color:"#ef5350"}}>✕ 해제</option>}
                 </select>
                 <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",
@@ -5188,6 +5311,7 @@ export default function RollmateApp() {
                       localStorage.removeItem("rm_pw");
                       localStorage.removeItem("rm_admin");
                       setNickname(""); setArsenal([]); setIsAdmin(false);
+                      setView("home");
                     }
                   }} style={{padding:"8px 12px",borderRadius:20,border:"1.5px solid #e2e2e0",
                     background:"#fff",color:"#888",cursor:"pointer",fontWeight:700,fontSize:12,fontFamily:"inherit"}}>로그아웃</button>
@@ -5348,6 +5472,7 @@ export default function RollmateApp() {
               localStorage.removeItem("rm_pw");
               localStorage.removeItem("rm_admin");
               setNickname(""); setArsenal([]); setIsAdmin(false);
+              setView("home");
             }}
             showToast={showToast}
           />

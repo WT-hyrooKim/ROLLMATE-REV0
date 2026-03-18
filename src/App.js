@@ -2680,7 +2680,7 @@ function BallImg({ slug, name, size=64 }) {
   const [err, setErr] = useState(false);
   if (err || !slug) return (
     <div style={{width:size,height:size,borderRadius:"50%",background:"rgba(255,255,255,0.08)",
-      display:"flex",alignItems:"center",justifyContent:"center",fontSize:size*0.3}}>🎳</div>
+      display:"flex",alignItems:"center",justifyContent:"center",fontSize:size*0.3}}>{"🎳"}</div>
   );
   return <img src={BOWWWL_BALL(slug)} alt={name} onError={()=>setErr(true)}
     style={{width:size,height:size,borderRadius:"50%",objectFit:"cover"}}/>;
@@ -2754,7 +2754,7 @@ function LoginPopup({ onLogin, onClose }) {
         <div style={{width:40,height:4,background:"#e2e2e0",borderRadius:2,margin:"0 auto 16px"}}/>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
           <div style={{fontSize:17,fontWeight:900,color:"#111"}}>ROLLMATE</div>
-          <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,color:"#ccc",cursor:"pointer"}}>✕</button>
+          <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,color:"#ccc",cursor:"pointer"}}>{"✕"}</button>
         </div>
         <div style={{display:"flex",background:"#f5f5f7",borderRadius:12,padding:3,marginBottom:16,gap:2}}>
           {[{k:"login",l:"로그인"},{k:"register",l:"회원가입"}].map(t=>(
@@ -2844,7 +2844,7 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
           <button onClick={onClose} style={{width:32,height:32,borderRadius:"50%",border:"none",
             background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.5)",
             fontSize:16,cursor:"pointer",flexShrink:0,display:"flex",
-            alignItems:"center",justifyContent:"center"}}>✕</button>
+            alignItems:"center",justifyContent:"center"}}>{"✕"}</button>
         </div>
 
         {/* 무게 */}
@@ -2928,16 +2928,16 @@ function SearchPanel({ onClose, onSelect, brand, setBrand }) {
         <div style={{flex:1,display:"flex",alignItems:"center",gap:10,
           background:"rgba(255,255,255,0.07)",borderRadius:14,padding:"10px 14px",
           border:"1px solid rgba(255,255,255,0.1)"}}>
-          <span style={{color:"rgba(255,255,255,0.3)",fontSize:14}}>🔍</span>
+          <span style={{color:"rgba(255,255,255,0.3)",fontSize:14}}>{"🔍"}</span>
           <input ref={inputRef} value={q} onChange={e=>setQ(e.target.value)}
             placeholder="볼 이름, 브랜드..."
             style={{flex:1,background:"none",border:"none",outline:"none",
               color:"#fff",fontSize:14,fontFamily:"inherit"}}/>
-          {q && <button onClick={()=>setQ("")} style={{background:"none",border:"none",color:"rgba(255,255,255,0.3)",cursor:"pointer",fontSize:16}}>✕</button>}
+          {q && <button onClick={()=>setQ("")} style={{background:"none",border:"none",color:"rgba(255,255,255,0.3)",cursor:"pointer",fontSize:16}}>{"✕"}</button>}
         </div>
         <button onClick={onClose} style={{padding:"10px 14px",borderRadius:12,border:"none",
           background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.6)",
-          fontFamily:"inherit",fontSize:13,fontWeight:600,cursor:"pointer"}}>닫기</button>
+          fontFamily:"inherit",fontSize:13,fontWeight:600,cursor:"pointer"}}>{"닫기"}</button>
       </div>
 
       {/* 브랜드 */}
@@ -3154,7 +3154,7 @@ export default function App() {
           <button className="r0-btn" onClick={()=>setSearchOpen(true)} style={{
             width:34,height:34,borderRadius:"50%",border:"none",
             background:"rgba(0,212,255,0.12)",color:"#00d4ff",
-            fontSize:15,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}>🔍</button>
+            fontSize:15,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>{" 🔍"}</button>
           {nickname ? (
             <div onClick={()=>setView("settings")} style={{
               width:30,height:30,borderRadius:"50%",
@@ -3167,7 +3167,7 @@ export default function App() {
             <button onClick={()=>setShowLogin(true)} style={{
               padding:"6px 12px",borderRadius:20,border:"1px solid rgba(0,212,255,0.12)",
               background:"rgba(0,212,255,0.06)",color:"#00d4ff",
-              fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer"}}>로그인</button>
+              fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer"}}>{"로그인"}</button>
           )}
         </div>
       </div>
@@ -3186,7 +3186,7 @@ export default function App() {
                 background:"rgba(0,212,255,0.04)",borderRadius:14,padding:"10px 14px",
                 border:"1px solid rgba(0,212,255,0.1)",display:"flex",gap:10,alignItems:"flex-start"}}>
                 <div style={{width:26,height:26,borderRadius:8,background:"rgba(0,212,255,0.1)",
-                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,flexShrink:0}}>📢</div>
+                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,flexShrink:0}}>{"📢"}</div>
                 <div>
                   <div style={{fontSize:9,color:"#00d4ff",fontWeight:800,letterSpacing:1.2,marginBottom:2}}>NOTICE</div>
                   <div style={{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.8)"}}>{n.title}</div>
@@ -3316,11 +3316,11 @@ export default function App() {
                 <button onClick={()=>setView("compare")} className="r0-btn" style={{
                   padding:"7px 14px",background:"#00d4ff",border:"none",borderRadius:50,
                   color:"#050a18",fontFamily:"inherit",fontSize:12,fontWeight:800,cursor:"pointer",
-                  whiteSpace:"nowrap",boxShadow:"0 0 16px rgba(0,212,255,0.45)"}}>비교하기 ⚖</button>
+                  whiteSpace:"nowrap",boxShadow:"0 0 16px rgba(0,212,255,0.45)"}}>{"비교하기 ⚖"}</button>
                 <button onClick={()=>setCmpList([])} className="r0-btn" style={{
                   width:26,height:26,background:"rgba(255,255,255,0.08)",border:"none",
                   borderRadius:"50%",color:"rgba(255,255,255,0.35)",fontSize:11,cursor:"pointer",
-                  display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>✕</button>
+                  display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{"✕"}</button>
               </div>
             )}
           </div>
@@ -3331,7 +3331,7 @@ export default function App() {
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
             <div style={{marginBottom:16,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <div>
-                <div style={{fontSize:20,fontWeight:800}}>내 장비함</div>
+                <div style={{fontSize:20,fontWeight:800}}>{"내 장비함"}</div>
                 <div style={{fontSize:11,color:"rgba(255,255,255,0.3)",marginTop:2}}>@{nickname} · {arsenal.length}개</div>
               </div>
               <button onClick={()=>setView("home")} className="r0-btn" style={{
@@ -3341,9 +3341,9 @@ export default function App() {
             </div>
             {arsenal.length === 0 ? (
               <div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.2)"}}>
-                <div style={{fontSize:48,marginBottom:12}}>🎳</div>
-                <div style={{fontSize:15,fontWeight:700}}>장비함이 비어있어요</div>
-                <div style={{fontSize:12,marginTop:6}}>홈에서 볼을 탭해 추가하세요</div>
+                <div style={{fontSize:48,marginBottom:12}}>{"🎳"}</div>
+                <div style={{fontSize:15,fontWeight:700}}>{"장비함이 비어있어요"}</div>
+                <div style={{fontSize:12,marginTop:6}}>{"홈에서 볼을 탭해 추가하세요"}</div>
               </div>
             ) : (
               <div style={{display:"flex",flexDirection:"column",gap:8}}>
@@ -3384,18 +3384,18 @@ export default function App() {
         {view==="compare" && (
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
-              <div style={{fontSize:20,fontWeight:800}}>볼 비교</div>
+              <div style={{fontSize:20,fontWeight:800}}>{"볼 비교"}</div>
               {cmpList.length > 0 && (
                 <button onClick={()=>setCmpList([])} className="r0-btn" style={{
                   padding:"5px 12px",borderRadius:12,border:"1px solid rgba(239,83,80,0.3)",
                   background:"transparent",color:"#ef5350",fontFamily:"inherit",
-                  fontSize:11,fontWeight:700,cursor:"pointer"}}>초기화</button>
+                  fontSize:11,fontWeight:700,cursor:"pointer"}}>{"초기화"}</button>
               )}
             </div>
             {cmpList.length === 0 ? (
               <div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.2)"}}>
-                <div style={{fontSize:48,marginBottom:12}}>⚖</div>
-                <div style={{fontSize:15,fontWeight:700}}>홈에서 볼을 선택하세요</div>
+                <div style={{fontSize:48,marginBottom:12}}>{"⚖"}</div>
+                <div style={{fontSize:15,fontWeight:700}}>{"홈에서 볼을 선택하세요"}</div>
               </div>
             ) : (
               <div style={{display:"grid",gridTemplateColumns:`repeat(${cmpList.length},1fr)`,gap:8}}>
@@ -3426,7 +3426,7 @@ export default function App() {
                           width:"100%",padding:"5px",borderRadius:8,
                           border:"1px solid rgba(239,83,80,0.25)",background:"transparent",
                           color:"#ef5350",fontFamily:"inherit",fontSize:10,fontWeight:700,
-                          cursor:"pointer",marginTop:4}}>제거</button>
+                          cursor:"pointer",marginTop:4}}>{"제거"}</button>
                       </div>
                     </div>
                   );
@@ -3441,10 +3441,10 @@ export default function App() {
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
             {!nickname ? (
               <div style={{textAlign:"center",padding:"40px 20px"}}>
-                <div style={{fontSize:16,fontWeight:700,marginBottom:16}}>로그인이 필요해요</div>
+                <div style={{fontSize:16,fontWeight:700,marginBottom:16}}>{"로그인이 필요해요"}</div>
                 <button onClick={()=>setShowLogin(true)} style={{
                   padding:"12px 28px",background:"#00d4ff",border:"none",borderRadius:14,
-                  color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer"}}>로그인</button>
+                  color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer"}}>{"로그인"}</button>
               </div>
             ) : (
               <div>
@@ -3467,7 +3467,7 @@ export default function App() {
                   background:"rgba(255,255,255,0.04)",color:"rgba(255,255,255,0.6)",
                   fontFamily:"inherit",fontSize:14,fontWeight:700,cursor:"pointer",
                   display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-                  <span>🚪</span> 로그아웃
+                  <span>{"🚪"}</span> 로그아웃
                 </button>
                 <div style={{marginTop:16,padding:"12px 16px",background:"rgba(255,255,255,0.02)",
                   borderRadius:14,border:"1px solid rgba(255,255,255,0.05)",

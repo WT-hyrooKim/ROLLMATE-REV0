@@ -1,38 +1,23 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
-// ── Supabase 설정 ──────────────────────────────────────────────
+// ── Supabase ──────────────────────────────────────────────
 const SUPABASE_URL = "https://klesgczkebudkuidhflc.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtsZXNnY3prZWJ1ZGt1aWRoZmxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzOTE1MjksImV4cCI6MjA4ODk2NzUyOX0.ZKAAmR2yj9Aia-1-q_3ZAOfx-95MnW9OWz9jpr2qxfw";
-
 const sbFetch = async (path, options={}) => {
   const res = await fetch(`${SUPABASE_URL}/rest/v1${path}`, {
-    headers: {
-      "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`,
-      "Content-Type": "application/json",
-      "Prefer": options.prefer || "return=representation",
-      ...options.headers,
-    },
+    headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json", "Prefer": options.prefer||"return=representation", ...options.headers },
     ...options,
   });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err);
-  }
+  if (!res.ok) throw new Error(await res.text());
   const text = await res.text();
   return text ? JSON.parse(text) : [];
 };
-
 const sbGet = (table, query="") => sbFetch(`/${table}?${query}`);
 const sbInsert = (table, data) => sbFetch(`/${table}`, { method:"POST", body:JSON.stringify(data) });
-const sbUpdate = (table, id, data) => sbFetch(`/${table}?id=eq.${id}`, { method:"PATCH", body:JSON.stringify(data) });
-const sbDelete = (table, id) => sbFetch(`/${table}?id=eq.${id}`, { method:"DELETE", prefer:"" });
-// ──────────────────────────────────────────────────────────────
 
 const BOWWWL_BALL = (slug) =>
   `https://www.bowwwl.com/sites/default/files/styles/ball_grid/public/balls/${slug}.png`;
-const BOWWWL_CORE = (slug) =>
-  `https://www.bowwwl.com/sites/default/files/styles/ball_image_main/public/cores/${slug}.png`;
 
 const ALL_BALLS = [
   // Storm
@@ -366,7 +351,7 @@ const ALL_BALLS = [
   {
     id:27, brand:"Brunswick", name:"Ethos",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ethos",
-    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-ethos", coreSlug:"brunswick-ethos-core",
     weightData:{
       16:{rg:2.495,diff:0.046}, 15:{rg:2.481,diff:0.053},
@@ -378,7 +363,7 @@ const ALL_BALLS = [
   {
     id:28, brand:"Brunswick", name:"Mesmerize",
     cover:"Solid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
-    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
+    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-mesmerize", coreSlug:"brunswick-tri-elliptic-core",
     weightData:{
       16:{rg:2.521,diff:0.048,moi:0.014}, 15:{rg:2.510,diff:0.056,moi:0.017},
@@ -707,7 +692,7 @@ const ALL_BALLS = [
   {
     id:54, brand:"Brunswick", name:"Hypnotize",
     cover:"Hybrid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
-    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
+    finish:"500/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-hypnotize", coreSlug:"brunswick-tri-elliptic-core",
     weightData:{
       16:{rg:2.521,diff:0.048,moi:0.014}, 15:{rg:2.510,diff:0.056,moi:0.017},
@@ -719,7 +704,7 @@ const ALL_BALLS = [
   {
     id:55, brand:"Brunswick", name:"Ethos Hybrid",
     cover:"Hybrid", coreType:"Symmetric", coreName:"Ethos",
-    finish:"500/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-ethos-hybrid", coreSlug:"brunswick-ethos-core",
     weightData:{
       16:{rg:2.495,diff:0.046}, 15:{rg:2.481,diff:0.053},
@@ -731,7 +716,7 @@ const ALL_BALLS = [
   {
     id:56, brand:"Brunswick", name:"Vaporize",
     cover:"Solid", coreType:"Asymmetric", coreName:"Tri-Elliptic",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-vaporize", coreSlug:"brunswick-tri-elliptic-core",
     weightData:{
       16:{rg:2.521,diff:0.048,moi:0.014}, 15:{rg:2.510,diff:0.056,moi:0.017},
@@ -891,7 +876,7 @@ const ALL_BALLS = [
   {
     id:69, brand:"Brunswick", name:"Combat Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"Rampart",
-    finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#e65100",
+    finish:"500/2000 Siaair Micro Pad", condition:"Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-combat-solid", coreSlug:"brunswick-rampart-core",
     weightData:{
       16:{rg:2.490,diff:0.052,moi:0.016}, 15:{rg:2.490,diff:0.058,moi:0.018},
@@ -903,7 +888,7 @@ const ALL_BALLS = [
   {
     id:70, brand:"Brunswick", name:"Danger Zone",
     cover:"Solid", coreType:"Symmetric", coreName:"Twist",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-danger-zone", coreSlug:"brunswick-twist-core",
     weightData:{
       16:{rg:2.520,diff:0.048}, 15:{rg:2.520,diff:0.050},
@@ -915,7 +900,7 @@ const ALL_BALLS = [
   {
     id:71, brand:"Brunswick", name:"Crown 78U",
     cover:"Urethane", coreType:"Symmetric", coreName:"Crown",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-crown-78u", coreSlug:"brunswick-crown-core",
     weightData:{
       16:{rg:2.530,diff:0.040}, 15:{rg:2.530,diff:0.043},
@@ -1091,7 +1076,7 @@ const ALL_BALLS = [
   {
     id:85, brand:"Radical", name:"Zig Zag Solid",
     cover:"Solid", coreType:"Asymmetric", coreName:"ZigZag",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"radical-zig-zag-solid", coreSlug:"radical-zigzag-core",
     weightData:{
       16:{rg:2.500,diff:0.045,moi:0.017}, 15:{rg:2.490,diff:0.047,moi:0.017},
@@ -1103,7 +1088,7 @@ const ALL_BALLS = [
   {
     id:86, brand:"Radical", name:"Ridiculous Pearl",
     cover:"Pearl", coreType:"Symmetric", coreName:"Ridiculous",
-    finish:"Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    finish:"Factory Compound", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"radical-ridiculous-pearl", coreSlug:"radical-ridiculous-core",
     weightData:{
       16:{rg:2.520,diff:0.040}, 15:{rg:2.510,diff:0.042},
@@ -1251,7 +1236,7 @@ const ALL_BALLS = [
   {
     id:98, brand:"Brunswick", name:"Combat",
     cover:"Pearl", coreType:"Asymmetric", coreName:"Rampart",
-    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair, Crown Factory Compound", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-combat", coreSlug:"brunswick-rampart-core",
     weightData:{
       16:{rg:2.490,diff:0.052,moi:0.016}, 15:{rg:2.490,diff:0.058,moi:0.018},
@@ -1263,7 +1248,7 @@ const ALL_BALLS = [
   {
     id:99, brand:"Brunswick", name:"Alert",
     cover:"Solid", coreType:"Symmetric", coreName:"Alert",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-alert", coreSlug:"brunswick-alert-core",
     weightData:{
       16:{rg:2.480,diff:0.042}, 15:{rg:2.480,diff:0.044},
@@ -1275,7 +1260,7 @@ const ALL_BALLS = [
   {
     id:100, brand:"Brunswick", name:"Energize",
     cover:"Pearl", coreType:"Symmetric", coreName:"Energize",
-    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair / Factory Compound", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-energize", coreSlug:"brunswick-energize-core",
     weightData:{
       16:{rg:2.510,diff:0.040}, 15:{rg:2.500,diff:0.042},
@@ -1395,7 +1380,7 @@ const ALL_BALLS = [
   {
     id:109, brand:"Radical", name:"Xtra Bonus",
     cover:"Solid", coreType:"Symmetric", coreName:"Xtra Bonus",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"radical-xtra-bonus", coreSlug:"radical-xtra-bonus-core",
     weightData:{
       16:{rg:2.490,diff:0.040}, 15:{rg:2.490,diff:0.042},
@@ -2101,7 +2086,7 @@ const ALL_BALLS = [
   {
     id:172, brand:"Brunswick", name:"Danger Zone Purple Ice",
     cover:"Solid", coreType:"Symmetric", coreName:"Twist",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium-Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-danger-zone-purple-ice", coreSlug:"brunswick-twist-core",
     weightData:{16:{rg:2.510,diff:0.040},15:{rg:2.500,diff:0.042},14:{rg:2.530,diff:0.040},13:{rg:2.600,diff:0.034},12:{rg:2.660,diff:0.028}},
     releaseDate:"Feb 2026",
@@ -2110,7 +2095,7 @@ const ALL_BALLS = [
   {
     id:173, brand:"Brunswick", name:"Melee Jab Void Black",
     cover:"Solid", coreType:"Symmetric", coreName:"Melee",
-    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair Micro Pad", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-melee-jab-void-black", coreSlug:"brunswick-melee-core",
     weightData:{16:{rg:2.560,diff:0.030},15:{rg:2.560,diff:0.032},14:{rg:2.580,diff:0.030},13:{rg:2.640,diff:0.025},12:{rg:2.700,diff:0.020}},
     releaseDate:"Nov 2025",
@@ -2119,7 +2104,7 @@ const ALL_BALLS = [
   {
     id:174, brand:"Brunswick", name:"Vapor Zone Red",
     cover:"Pearl", coreType:"Symmetric", coreName:"Vapor",
-    finish:"Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    finish:"Factory Compound", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-vapor-zone-red", coreSlug:"brunswick-vapor-core",
     weightData:{16:{rg:2.560,diff:0.032},15:{rg:2.560,diff:0.034},14:{rg:2.580,diff:0.032},13:{rg:2.640,diff:0.027},12:{rg:2.700,diff:0.022}},
     releaseDate:"Dec 2025",
@@ -2150,7 +2135,7 @@ const ALL_BALLS = [
   {
     id:177, brand:"Motiv", name:"Primal Ghost",
     cover:"Solid", coreType:"Symmetric", coreName:"Impulse V2",
-    finish:"3000 LSS", condition:"Medium Oil", accent:"#e65100",
+    finish:"3000 LSS", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"motiv-primal-ghost", coreSlug:"motiv-impulse-v2-core",
     weightData:{16:{rg:2.540,diff:0.049},15:{rg:2.550,diff:0.050},14:{rg:2.560,diff:0.054},13:{rg:2.600,diff:0.055},12:{rg:2.670,diff:0.040}},
     releaseDate:"Sep 2025",
@@ -2413,7 +2398,7 @@ const ALL_BALLS = [
   {
     id:204, brand:"Brunswick", name:"Kingpin Max",
     cover:"Solid", coreType:"Asymmetric", coreName:"ECA-XR",
-    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#e65100",
+    finish:"500/1000/1500 Siaair", condition:"Heavy Oil", accent:"#0077aa",
     ballSlug:"brunswick-kingpin-max", coreSlug:"brunswick-eca-xr-core",
     weightData:{16:{rg:2.470,diff:0.054,moi:0.018},15:{rg:2.470,diff:0.053,moi:0.018},14:{rg:2.500,diff:0.050,moi:0.016},13:{rg:2.570,diff:0.045,moi:0.013},12:{rg:2.630,diff:0.038,moi:0.011}},
     releaseDate:"Mar 2022",
@@ -2422,7 +2407,7 @@ const ALL_BALLS = [
   {
     id:205, brand:"Brunswick", name:"Rhino",
     cover:"Solid", coreType:"Symmetric", coreName:"Rhino",
-    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#e65100",
+    finish:"Crown Factory Compound", condition:"Medium Oil", accent:"#0077aa",
     ballSlug:"brunswick-rhino", coreSlug:"brunswick-rhino-core",
     weightData:{16:{rg:2.540,diff:0.030},15:{rg:2.540,diff:0.030},14:{rg:2.560,diff:0.028},13:{rg:2.620,diff:0.024},12:{rg:2.680,diff:0.019}},
     releaseDate:"Jan 2016",
@@ -2474,8 +2459,6 @@ const COND_COLOR = {
   "Heavy Oil":"#ef5350","Medium-Heavy Oil":"#fb8c00",
   "Medium Oil":"#fdd835","Light-Medium Oil":"#66bb6a","Light Oil":"#42a5f5",
 };
-
-const BRANDS = ["전체","Storm","Roto Grip","Motiv","Hammer","Brunswick","900 Global","SWAG","DV8","Columbia 300","Ebonite","Radical","Track"];
 
 const POPULARITY = {
   // Hammer — 판매 1위 브랜드
@@ -2674,34 +2657,25 @@ const POPULARITY = {
   "Thug":77,
 };
 
-const COND_COLOR = {
-  "Heavy Oil":"#ef5350","Medium-Heavy Oil":"#fb8c00",
-  "Medium Oil":"#fdd835","Light-Medium Oil":"#66bb6a","Light Oil":"#42a5f5",
-};
 
-const BRAND_ICON = {
-  "Storm":"⚡","Brunswick":"🟠","Roto Grip":"🔴","Track":"🔵","Motiv":"🟣",
-  "Radical":"🔶","Hammer":"🔨","900 Global":"9️⃣","DV8":"🔥","Ebonite":"💎",
-  "Columbia 300":"🌊","SWAG":"🌀",
-};
+const BRANDS = ["전체","Storm","Roto Grip","Motiv","Hammer","Brunswick","900 Global","SWAG","DV8","Columbia 300","Ebonite","Radical","Track"];
 
-// 브랜드 로고 설정 (약자 + 고유 색상)
 const BRAND_LOGO = {
   "Storm":      {abbr:"STM", color:"#e53935", bg:"#fff0f0", textColor:"#e53935"},
   "Roto Grip":  {abbr:"RG",  color:"#1e88e5", bg:"#e3f2fd", textColor:"#1e88e5"},
   "Motiv":      {abbr:"MTV", color:"#6d1f7e", bg:"#f3e5f5", textColor:"#6d1f7e"},
   "Hammer":     {abbr:"HMR", color:"#d32f2f", bg:"#ffebee", textColor:"#c62828"},
-  "Brunswick":  {abbr:"BRN", color:"#e65100", bg:"#fff3e0", textColor:"#e65100"},
+  "Brunswick":  {abbr:"BRN", color:"#0077aa", bg:"#fff3e0", textColor:"#0077aa"},
   "900 Global": {abbr:"900", color:"#1565c0", bg:"#e8eaf6", textColor:"#1565c0"},
   "DV8":        {abbr:"DV8", color:"#212121", bg:"#f5f5f5", textColor:"#212121"},
   "Ebonite":    {abbr:"EBN", color:"#4a148c", bg:"#ede7f6", textColor:"#4a148c"},
   "Columbia 300":{abbr:"C3", color:"#0277bd", bg:"#e1f5fe", textColor:"#0277bd"},
   "SWAG":       {abbr:"SWG", color:"#558b2f", bg:"#f1f8e9", textColor:"#558b2f"},
-  "Radical":    {abbr:"RAD", color:"#ef6c00", bg:"#fff8e1", textColor:"#e65100"},
+  "Radical":    {abbr:"RAD", color:"#ef6c00", bg:"#fff8e1", textColor:"#0077aa"},
   "Track":      {abbr:"TRK", color:"#00695c", bg:"#e0f2f1", textColor:"#00695c"},
 };
 
-// ── 이미지 컴포넌트 ──
+// ── 볼 이미지 ──
 function BallImg({ slug, name, size=64 }) {
   const [err, setErr] = useState(false);
   if (err || !slug) return (
@@ -2712,18 +2686,19 @@ function BallImg({ slug, name, size=64 }) {
     style={{width:size,height:size,borderRadius:"50%",objectFit:"cover"}}/>;
 }
 
+// ── 로그인 팝업 ──
 function LoginPopup({ onLogin, onClose }) {
-  const [mode, setMode] = useState("login"); // login | register | find
+  const [mode, setMode] = useState("login");
   const [name, setName] = useState("");
   const [pw, setPw] = useState("");
   const [pw2, setPw2] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
-  // 아이디/비번 찾기
-  const [findNick, setFindNick] = useState("");
-  const [findName, setFindName] = useState("");
-  const [findBirth, setFindBirth] = useState({y:"",m:"",d:""});
-  const [findResult, setFindResult] = useState(null); // null | {pw, nickname} | "fail"
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   const inputStyle = {
     width:"100%", background:"#f7f7fc", border:"1.5px solid #e2e2e0", borderRadius:10,
@@ -2731,228 +2706,84 @@ function LoginPopup({ onLogin, onClose }) {
     fontFamily:"inherit", boxSizing:"border-box", marginBottom:8,
   };
 
-  useEffect(()=>{
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.width = "100%";
-    return ()=>{
-      document.body.style.overflow = prev;
-      document.body.style.position = "";
-      document.body.style.width = "";
-    };
-  },[]);
-
   const handleLogin = async () => {
-    if(!name.trim()||!pw){setErr("닉네임과 비밀번호를 입력해주세요");return;}
-    setLoading(true);setErr("");
-    try{
-      const users=await sbGet("users",`nickname=eq.${encodeURIComponent(name.trim())}&select=*`);
-      if(!users.length){setErr("존재하지 않는 닉네임이에요");setLoading(false);return;}
-      if(users[0].password!==pw){setErr("비밀번호가 틀렸어요");setLoading(false);return;}
-      const isAdmin=users[0].is_admin===true;
-      localStorage.setItem("rm_nickname",name.trim());
-      localStorage.setItem("rm_pw",pw);
-      localStorage.setItem("rm_admin",isAdmin?"1":"0");
-      const [data,noticeData]=await Promise.all([
-        sbGet("equipment",`nickname=eq.${encodeURIComponent(name.trim())}&order=created_at.asc`),
-        sbGet("notices","is_active=eq.true&order=created_at.desc"),
+    if (!name.trim() || !pw) { setErr("닉네임과 비밀번호를 입력해주세요"); return; }
+    setLoading(true); setErr("");
+    try {
+      const users = await sbGet("users", `nickname=eq.${encodeURIComponent(name.trim())}&select=*`);
+      if (!users.length) { setErr("존재하지 않는 닉네임이에요"); setLoading(false); return; }
+      if (users[0].password !== pw) { setErr("비밀번호가 틀렸어요"); setLoading(false); return; }
+      const isAdmin = users[0].is_admin === true;
+      localStorage.setItem("rm_nickname", name.trim());
+      localStorage.setItem("rm_pw", pw);
+      localStorage.setItem("rm_admin", isAdmin ? "1" : "0");
+      const [data, noticeData] = await Promise.all([
+        sbGet("equipment", `nickname=eq.${encodeURIComponent(name.trim())}&order=created_at.asc`),
+        sbGet("notices", "is_active=eq.true&order=created_at.desc"),
       ]);
-      onLogin(name.trim(),data,isAdmin,noticeData);
-    }catch(e){setErr("연결 오류. 잠시 후 다시 시도해주세요.");}
+      onLogin(name.trim(), data, isAdmin, noticeData);
+    } catch(e) { setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
     setLoading(false);
   };
 
   const handleRegister = async () => {
-    if(!name.trim()||name.trim().length<2){setErr("닉네임을 2글자 이상 입력해주세요");return;}
-    if(!pw||pw.length<4){setErr("비밀번호를 4자리 이상 입력해주세요");return;}
-    if(pw!==pw2){setErr("비밀번호가 일치하지 않아요");return;}
-    setLoading(true);setErr("");
-    try{
-      const existing=await sbGet("users",`nickname=eq.${encodeURIComponent(name.trim())}&select=id`);
-      if(existing.length){setErr("이미 사용 중인 닉네임이에요");setLoading(false);return;}
-      await sbInsert("users",{nickname:name.trim(),password:pw,is_admin:false});
-      localStorage.setItem("rm_nickname",name.trim());
-      localStorage.setItem("rm_pw",pw);
-      localStorage.setItem("rm_admin","0");
-      onLogin(name.trim(),[],false,[]);
-    }catch(e){setErr("연결 오류. 잠시 후 다시 시도해주세요.");}
+    if (!name.trim() || name.trim().length < 2) { setErr("닉네임을 2글자 이상 입력해주세요"); return; }
+    if (!pw || pw.length < 4) { setErr("비밀번호를 4자리 이상 입력해주세요"); return; }
+    if (pw !== pw2) { setErr("비밀번호가 일치하지 않아요"); return; }
+    setLoading(true); setErr("");
+    try {
+      const existing = await sbGet("users", `nickname=eq.${encodeURIComponent(name.trim())}&select=id`);
+      if (existing.length) { setErr("이미 사용 중인 닉네임이에요"); setLoading(false); return; }
+      await sbInsert("users", { nickname: name.trim(), password: pw, is_admin: false });
+      localStorage.setItem("rm_nickname", name.trim());
+      localStorage.setItem("rm_pw", pw);
+      localStorage.setItem("rm_admin", "0");
+      onLogin(name.trim(), [], false, []);
+    } catch(e) { setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
     setLoading(false);
   };
-
-  const handleFind = async () => {
-    if(!findNick.trim()||!findName.trim()||!findBirth.y||!findBirth.m||!findBirth.d){
-      setErr("모든 항목을 입력해주세요"); return;
-    }
-    setLoading(true); setErr(""); setFindResult(null);
-    try{
-      const users = await sbGet("users", `nickname=eq.${encodeURIComponent(findNick.trim())}&select=*`);
-      if(!users.length){ setFindResult("fail"); setLoading(false); return; }
-      const u = users[0];
-      const birthStr = `${findBirth.y}-${String(findBirth.m).padStart(2,"0")}-${String(findBirth.d).padStart(2,"0")}`;
-      if(u.real_name===findName.trim() && u.birth_date===birthStr){
-        setFindResult({nickname: u.nickname, pw: u.password});
-      } else {
-        setFindResult("fail");
-      }
-    }catch(e){ setErr("연결 오류. 잠시 후 다시 시도해주세요."); }
-    setLoading(false);
-  };
-
-  const tabs = [
-    {k:"login", l:"로그인"},
-    {k:"register", l:"회원가입"},
-    {k:"find", l:"계정 찾기"},
-  ];
 
   return (
-    <div onClick={onClose}
-      style={{position:"fixed",inset:0,zIndex:4000,
-        background:"rgba(0,0,0,0.6)",backdropFilter:"blur(8px)",
-        display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+    <div onClick={onClose} style={{position:"fixed",inset:0,zIndex:4000,
+      background:"rgba(0,0,0,0.7)",backdropFilter:"blur(12px)",
+      display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
       <div onClick={e=>e.stopPropagation()} style={{
-        background:"#fff",borderRadius:"24px 24px 0 0",
-        padding:"20px 20px 36px",width:"100%",maxWidth:480,
-        boxShadow:"0 -8px 40px rgba(0,0,0,0.2)",
+        background:"#fff",borderRadius:"24px 24px 0 0",padding:"20px 20px 36px",
+        width:"100%",maxWidth:480,boxShadow:"0 -8px 40px rgba(0,0,0,0.3)",
         animation:"slideUp .3s cubic-bezier(.34,1.1,.64,1)"}}>
-        <style>{`@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}`}</style>
         <div style={{width:40,height:4,background:"#e2e2e0",borderRadius:2,margin:"0 auto 16px"}}/>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
-          <div style={{fontSize:17,fontWeight:900,color:"#111",fontFamily:"'Exo 2',sans-serif"}}>ROLLMATE</div>
+          <div style={{fontSize:17,fontWeight:900,color:"#111"}}>ROLLMATE</div>
           <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,color:"#ccc",cursor:"pointer"}}>✕</button>
         </div>
-        {/* 탭 */}
         <div style={{display:"flex",background:"#f5f5f7",borderRadius:12,padding:3,marginBottom:16,gap:2}}>
-          {tabs.map(t=>(
-            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");setFindResult(null);}}
+          {[{k:"login",l:"로그인"},{k:"register",l:"회원가입"}].map(t=>(
+            <button key={t.k} onClick={()=>{setMode(t.k);setErr("");}}
               style={{flex:1,padding:"8px 4px",borderRadius:9,border:"none",
-                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer",
-                background:mode===t.k?"#fff":"transparent",
-                color:mode===t.k?"#111":"#999",
-                boxShadow:mode===t.k?"0 1px 4px rgba(0,0,0,0.1)":"none",
-                transition:"all .15s"}}>{t.l}</button>
+                fontFamily:"inherit",fontSize:13,fontWeight:700,cursor:"pointer",
+                background:mode===t.k?"rgba(0,212,255,0.15)":"transparent",
+                color:mode===t.k?"#00d4ff":"#999",
+                boxShadow:mode===t.k?"0 1px 4px rgba(0,0,0,0.1)":"none"}}>{t.l}</button>
           ))}
         </div>
-
-        {/* 로그인 */}
-        {mode==="login"&&(<>
-          <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
-            onKeyDown={e=>e.key==="Enter"&&handleLogin()}
-            placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
-          <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
-            onKeyDown={e=>e.key==="Enter"&&handleLogin()}
-            placeholder="비밀번호" maxLength={30} style={inputStyle}/>
-          {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
-          <button onClick={handleLogin} disabled={loading}
-            style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
-              border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
-              fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
-              boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
-            {loading?"확인 중...":"로그인 →"}
-          </button>
-          <button onClick={()=>{setMode("find");setErr("");}} style={{
-            width:"100%",padding:"10px",background:"none",border:"none",
-            color:"#aaa",fontFamily:"inherit",fontSize:12,cursor:"pointer",marginTop:6}}>
-            아이디 / 비밀번호를 잊으셨나요?
-          </button>
-        </>)}
-
-        {/* 회원가입 */}
-        {mode==="register"&&(<>
-          <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
-            placeholder="닉네임 (2글자 이상)" maxLength={20} style={inputStyle} autoFocus/>
-          <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
-            placeholder="비밀번호 (4자리 이상)" maxLength={30} style={inputStyle}/>
+        <input value={name} onChange={e=>{setName(e.target.value);setErr("");}}
+          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
+          placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
+        <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setErr("");}}
+          onKeyDown={e=>e.key==="Enter"&&(mode==="login"?handleLogin():handleRegister())}
+          placeholder="비밀번호" maxLength={30} style={inputStyle}/>
+        {mode==="register" && (
           <input type="password" value={pw2} onChange={e=>{setPw2(e.target.value);setErr("");}}
-            onKeyDown={e=>e.key==="Enter"&&handleRegister()}
             placeholder="비밀번호 확인" maxLength={30} style={inputStyle}/>
-          {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
-          <button onClick={handleRegister} disabled={loading}
-            style={{width:"100%",padding:"14px",background:loading?"#aaa":"#ff8c00",
-              border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
-              fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
-              boxShadow:"0 4px 16px rgba(255,140,0,0.35)",marginTop:4}}>
-            {loading?"가입 중...":"가입하기 →"}
-          </button>
-          <div style={{fontSize:11,color:"#aaa",textAlign:"center",marginTop:10}}>
-            추가 정보(실명·생년월일)는 설정에서 입력 가능해요
-          </div>
-        </>)}
-
-        {/* 계정 찾기 */}
-        {mode==="find"&&(<>
-          {!findResult&&(<>
-            <div style={{fontSize:12,color:"#888",marginBottom:12,lineHeight:1.6,
-              background:"#f7f7fc",borderRadius:10,padding:"10px 12px"}}>
-              💡 가입 시 입력한 <b>닉네임 · 성명 · 생년월일</b>이 모두 일치하면 비밀번호를 확인할 수 있어요.
-            </div>
-            <input value={findNick} onChange={e=>{setFindNick(e.target.value);setErr("");}}
-              placeholder="닉네임" maxLength={20} style={inputStyle} autoFocus/>
-            <input value={findName} onChange={e=>{setFindName(e.target.value);setErr("");}}
-              placeholder="성명 (실명)" maxLength={20} style={inputStyle}/>
-            {/* 생년월일 드롭다운 */}
-            <div style={{display:"flex",gap:6,marginBottom:8}}>
-              <select value={findBirth.y} onChange={e=>setFindBirth(b=>({...b,y:e.target.value}))}
-                style={{flex:2,...inputStyle,marginBottom:0,color:findBirth.y?"#333":"#aaa"}}>
-                <option value="" disabled>연도</option>
-                {Array.from({length:70},(_,i)=>new Date().getFullYear()-i).map(y=>(
-                  <option key={y} value={y}>{y}년</option>
-                ))}
-              </select>
-              <select value={findBirth.m} onChange={e=>setFindBirth(b=>({...b,m:e.target.value}))}
-                style={{flex:1,...inputStyle,marginBottom:0,color:findBirth.m?"#333":"#aaa"}}>
-                <option value="" disabled>월</option>
-                {Array.from({length:12},(_,i)=>i+1).map(m=>(
-                  <option key={m} value={m}>{m}월</option>
-                ))}
-              </select>
-              <select value={findBirth.d} onChange={e=>setFindBirth(b=>({...b,d:e.target.value}))}
-                style={{flex:1,...inputStyle,marginBottom:0,color:findBirth.d?"#333":"#aaa"}}>
-                <option value="" disabled>일</option>
-                {Array.from({length:31},(_,i)=>i+1).map(d=>(
-                  <option key={d} value={d}>{d}일</option>
-                ))}
-              </select>
-            </div>
-            {err&&<div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
-            <button onClick={handleFind} disabled={loading}
-              style={{width:"100%",padding:"14px",background:loading?"#aaa":"#1c1c1e",
-                border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
-                fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",marginTop:4}}>
-              {loading?"확인 중...":"계정 찾기 →"}
-            </button>
-          </>)}
-
-          {/* 결과 */}
-          {findResult==="fail"&&(
-            <div style={{textAlign:"center",padding:"20px 0"}}>
-              <div style={{fontSize:32,marginBottom:10}}>😕</div>
-              <div style={{fontWeight:700,fontSize:15,color:"#111",marginBottom:6}}>일치하는 계정을 찾지 못했어요</div>
-              <div style={{fontSize:13,color:"#aaa",marginBottom:20,lineHeight:1.6}}>입력한 정보를 다시 확인해주세요</div>
-              <button onClick={()=>setFindResult(null)} style={{padding:"10px 24px",
-                background:"#f5f5f7",border:"none",borderRadius:10,fontFamily:"inherit",
-                fontSize:13,fontWeight:700,cursor:"pointer",color:"#555"}}>다시 시도</button>
-            </div>
-          )}
-          {findResult&&findResult!=="fail"&&(
-            <div style={{textAlign:"center",padding:"16px 0"}}>
-              <div style={{fontSize:32,marginBottom:10}}>🎉</div>
-              <div style={{fontWeight:700,fontSize:15,color:"#111",marginBottom:16}}>계정을 찾았어요!</div>
-              <div style={{background:"#f7f7fc",borderRadius:14,padding:"16px",marginBottom:16,textAlign:"left"}}>
-                <div style={{fontSize:11,color:"#aaa",fontWeight:700,marginBottom:4}}>닉네임</div>
-                <div style={{fontSize:16,fontWeight:800,color:"#111",marginBottom:12}}>{findResult.nickname}</div>
-                <div style={{fontSize:11,color:"#aaa",fontWeight:700,marginBottom:4}}>비밀번호</div>
-                <div style={{fontSize:20,fontWeight:900,color:"#ff8c00",letterSpacing:2}}>{findResult.pw}</div>
-              </div>
-              <button onClick={()=>{setMode("login");setName(findResult.nickname);setFindResult(null);setErr("");}}
-                style={{width:"100%",padding:"13px",background:"#ff8c00",border:"none",
-                  borderRadius:12,color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,
-                  cursor:"pointer",boxShadow:"0 4px 14px rgba(255,140,0,0.35)"}}>
-                로그인하러 가기 →
-              </button>
-            </div>
-          )}
-        </>)}
+        )}
+        {err && <div style={{fontSize:12,color:"#ef5350",fontWeight:600,marginBottom:8}}>{err}</div>}
+        <button onClick={mode==="login"?handleLogin:handleRegister} disabled={loading}
+          style={{width:"100%",padding:"14px",background:loading?"#aaa":"#00d4ff",
+            border:"none",borderRadius:12,color:"#fff",fontFamily:"inherit",
+            fontSize:15,fontWeight:800,cursor:loading?"not-allowed":"pointer",
+            boxShadow:"0 4px 16px rgba(0,212,255,0.3)",marginTop:4}}>
+          {loading?"확인 중...":(mode==="login"?"로그인 →":"가입하기 →")}
+        </button>
       </div>
     </div>
   );
@@ -2963,46 +2794,33 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
   const [selW, setSelW] = useState(15);
   const d = ball.weightData?.[selW] || ball.weightData?.[16] || ball.weightData?.[15];
   const oilColor = COND_COLOR[ball.condition] || "#aaa";
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     document.body.style.overflow = "hidden";
-    return ()=>{ document.body.style.overflow = ""; };
-  },[]);
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   return (
     <div onClick={onClose} style={{
       position:"fixed",inset:0,zIndex:5000,
-      background:"rgba(0,0,0,0.75)",backdropFilter:"blur(20px)",
-      display:"flex",alignItems:"flex-end",justifyContent:"center"
-    }}>
+      background:"rgba(0,0,0,0.8)",backdropFilter:"blur(20px)",
+      display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
       <div onClick={e=>e.stopPropagation()} style={{
         width:"100%",maxWidth:480,
-        background:"rgba(18,18,24,0.97)",
+        background:"rgba(3,8,20,0.99)",
         borderRadius:"28px 28px 0 0",
         border:"1px solid rgba(255,255,255,0.08)",
         borderBottom:"none",
-        boxShadow:"0 -20px 60px rgba(0,0,0,0.5)",
+        boxShadow:"0 -20px 60px rgba(0,0,0,0.6)",
         animation:"slideUp .35s cubic-bezier(.34,1.1,.64,1)",
-        maxHeight:"90vh",overflowY:"auto"
-      }}>
-        <style>{`
-          @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
-          @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-          .rev0-scrollbar::-webkit-scrollbar{width:3px}
-          .rev0-scrollbar::-webkit-scrollbar-track{background:transparent}
-          .rev0-scrollbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
-        `}</style>
-        
-        {/* 핸들 */}
-        <div style={{width:36,height:4,background:"rgba(255,255,255,0.2)",borderRadius:2,margin:"12px auto 0"}}/>
-        
+        maxHeight:"88vh",overflowY:"auto"}}>
+
+        <div style={{width:36,height:4,background:"rgba(255,255,255,0.15)",borderRadius:2,margin:"12px auto 0"}}/>
+
         {/* 헤더 */}
         <div style={{padding:"16px 20px 0",display:"flex",gap:16,alignItems:"center"}}>
-          <div style={{
-            width:80,height:80,borderRadius:20,overflow:"hidden",flexShrink:0,
-            boxShadow:`0 8px 30px ${ball.accent}55`,
-            border:`1px solid ${ball.accent}33`
-          }}>
+          <div style={{width:80,height:80,borderRadius:20,overflow:"hidden",flexShrink:0,
+            boxShadow:`0 8px 36px ${ball.accent}66, 0 0 20px rgba(0,212,255,0.15)`,border:`1px solid ${ball.accent}33`}}>
             <BallImg slug={ball.ballSlug} name={ball.name} size={80}/>
           </div>
           <div style={{flex:1,minWidth:0}}>
@@ -3012,41 +2830,32 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
             <div style={{fontSize:20,fontWeight:800,color:"#fff",lineHeight:1.2,marginBottom:6}}>
               {ball.name}
             </div>
-            <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+            <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
               <span style={{fontSize:10,padding:"3px 8px",borderRadius:20,fontWeight:700,
                 background:`${oilColor}22`,color:oilColor,border:`1px solid ${oilColor}44`}}>
                 {ball.condition?.replace(" Oil","")}
               </span>
               <span style={{fontSize:10,padding:"3px 8px",borderRadius:20,fontWeight:700,
-                background:"rgba(255,255,255,0.06)",color:"rgba(255,255,255,0.5)"}}>
+                background:"rgba(255,255,255,0.06)",color:"rgba(255,255,255,0.4)"}}>
                 {ball.cover}
-              </span>
-              <span style={{fontSize:10,padding:"3px 8px",borderRadius:20,fontWeight:700,
-                background:"rgba(255,255,255,0.06)",color:"rgba(255,255,255,0.5)"}}>
-                {ball.coreType}
               </span>
             </div>
           </div>
-          <button onClick={onClose} style={{
-            width:32,height:32,borderRadius:"50%",border:"none",
+          <button onClick={onClose} style={{width:32,height:32,borderRadius:"50%",border:"none",
             background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.5)",
             fontSize:16,cursor:"pointer",flexShrink:0,display:"flex",
-            alignItems:"center",justifyContent:"center"
-          }}>✕</button>
+            alignItems:"center",justifyContent:"center"}}>✕</button>
         </div>
 
-        {/* 무게 선택 */}
+        {/* 무게 */}
         <div style={{padding:"16px 20px 0"}}>
           <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",fontWeight:700,letterSpacing:1.5,marginBottom:8}}>WEIGHT</div>
           <div style={{display:"flex",gap:5}}>
             {[16,15,14,13].map(w=>(
-              <button key={w} onClick={()=>setSelW(w)} style={{
-                flex:1,padding:"8px 4px",borderRadius:10,border:"none",
+              <button key={w} onClick={()=>setSelW(w)} style={{flex:1,padding:"8px",borderRadius:10,border:"none",
                 fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer",
                 background:selW===w?ball.accent:"rgba(255,255,255,0.06)",
-                color:selW===w?"#fff":"rgba(255,255,255,0.4)",
-                transition:"all .15s"
-              }}>{w}lb</button>
+                color:selW===w?"#fff":"rgba(255,255,255,0.4)",transition:"all .15s"}}>{w}lb</button>
             ))}
           </div>
         </div>
@@ -3054,21 +2863,12 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
         {/* 수치 */}
         {d && (
           <div style={{padding:"16px 20px 0"}}>
-            <div style={{
-              display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8
-            }}>
-              {[
-                {l:"RG",v:d.rg},
-                {l:"DIFF",v:d.diff},
-                ...(d.moi?[{l:"MOI",v:d.moi}]:[])
-              ].map(x=>(
-                <div key={x.l} style={{
-                  background:"rgba(255,255,255,0.04)",borderRadius:14,
-                  padding:"12px",textAlign:"center",
-                  border:"1px solid rgba(255,255,255,0.06)"
-                }}>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}}>
+              {[{l:"RG",v:d.rg},{l:"DIFF",v:d.diff},...(d.moi?[{l:"MOI",v:d.moi}]:[])].map(x=>(
+                <div key={x.l} style={{background:"rgba(255,255,255,0.04)",borderRadius:14,
+                  padding:"12px",textAlign:"center",border:"1px solid rgba(255,255,255,0.06)"}}>
                   <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",fontWeight:700,letterSpacing:1.5,marginBottom:4}}>{x.l}</div>
-                  <div style={{fontSize:22,fontWeight:900,color:ball.accent,fontFamily:"'Exo 2',sans-serif"}}>{x.v}</div>
+                  <div style={{fontSize:22,fontWeight:900,color:ball.accent}}>{x.v}</div>
                 </div>
               ))}
             </div>
@@ -3077,23 +2877,21 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
 
         {/* 설명 */}
         {ball.description && (
-          <div style={{padding:"16px 20px 0"}}>
-            <p style={{fontSize:12,color:"rgba(255,255,255,0.4)",lineHeight:1.7,margin:0}}>{ball.description}</p>
+          <div style={{padding:"14px 20px 0"}}>
+            <p style={{fontSize:12,color:"rgba(255,255,255,0.35)",lineHeight:1.7,margin:0}}>{ball.description}</p>
           </div>
         )}
 
         {/* CTA */}
-        <div style={{padding:"16px 20px 20px"}}>
+        <div style={{padding:"16px 20px 24px"}}>
           <button onClick={()=>onReg(ball)} style={{
-            width:"100%",padding:"14px",borderRadius:16,border:"none",
-            background:inArsenal?`${ball.accent}33`:`linear-gradient(135deg,${ball.accent},${ball.accent}cc)`,
+            width:"100%",padding:"14px",borderRadius:16,
+            background:inArsenal?`${ball.accent}18`:ball.accent,
             color:inArsenal?ball.accent:"#fff",
+            border:inArsenal?`1px solid ${ball.accent}44`:"none",
             fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer",
-            boxShadow:inArsenal?"none":`0 6px 24px ${ball.accent}44`,
-            transition:"all .2s",
-            border:inArsenal?`1px solid ${ball.accent}55`:"none"
-          }}>
-            {inArsenal?"✓ 내 장비함에 등록됨":"+ 내 장비함에 추가"}
+            boxShadow:inArsenal?"none":`0 6px 24px ${ball.accent}44`}}>
+            {inArsenal ? "✓ 내 장비함에 등록됨" : "+ 내 장비함에 추가"}
           </button>
         </div>
       </div>
@@ -3101,103 +2899,89 @@ function BallModal({ ball, onClose, inArsenal, onReg }) {
   );
 }
 
-// ── 검색/필터 풀스크린 패널 ──
-function SearchPanel({ onClose, onSelect, onBrandSelect, selectedBrand }) {
+// ── 검색 패널 ──
+function SearchPanel({ onClose, onSelect, brand, setBrand }) {
   const [q, setQ] = useState("");
   const [cond, setCond] = useState("All");
   const inputRef = useRef();
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     inputRef.current?.focus();
     document.body.style.overflow = "hidden";
-    return ()=>{ document.body.style.overflow = ""; };
-  },[]);
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
-  const filtered = ALL_BALLS.filter(b=>{
+  const filtered = ALL_BALLS.filter(b => {
     const mQ = !q || b.name.toLowerCase().includes(q.toLowerCase()) || b.brand.toLowerCase().includes(q.toLowerCase());
-    const mB = selectedBrand==="전체" || b.brand===selectedBrand;
-    const mC = cond==="All" || b.condition===cond;
+    const mB = brand === "전체" || b.brand === brand;
+    const mC = cond === "All" || b.condition === cond;
     return mQ && mB && mC;
-  }).slice(0,50);
+  }).slice(0, 60);
 
   return (
-    <div style={{
-      position:"fixed",inset:0,zIndex:4500,
-      background:"rgba(8,8,12,0.98)",backdropFilter:"blur(30px)",
-      display:"flex",flexDirection:"column",
-      animation:"fadeIn .2s ease"
-    }}>
+    <div style={{position:"fixed",inset:0,zIndex:4500,
+      background:"rgba(3,8,20,0.99)",backdropFilter:"blur(30px)",
+      display:"flex",flexDirection:"column",animation:"fadeIn .2s ease"}}>
+
       {/* 헤더 */}
-      <div style={{padding:"16px 20px 12px",display:"flex",alignItems:"center",gap:12,flexShrink:0}}>
-        <div style={{
-          flex:1,display:"flex",alignItems:"center",gap:10,
-          background:"rgba(255,255,255,0.07)",borderRadius:14,
-          padding:"10px 14px",border:"1px solid rgba(255,255,255,0.1)"
-        }}>
+      <div style={{padding:"16px 16px 10px",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
+        <div style={{flex:1,display:"flex",alignItems:"center",gap:10,
+          background:"rgba(255,255,255,0.07)",borderRadius:14,padding:"10px 14px",
+          border:"1px solid rgba(255,255,255,0.1)"}}>
           <span style={{color:"rgba(255,255,255,0.3)",fontSize:14}}>🔍</span>
           <input ref={inputRef} value={q} onChange={e=>setQ(e.target.value)}
-            placeholder="볼 이름, 브랜드 검색..."
-            style={{
-              flex:1,background:"none",border:"none",outline:"none",
-              color:"#fff",fontSize:14,fontFamily:"inherit",fontWeight:500
-            }}/>
-          {q&&<button onClick={()=>setQ("")} style={{background:"none",border:"none",color:"rgba(255,255,255,0.3)",cursor:"pointer",fontSize:16}}>✕</button>}
+            placeholder="볼 이름, 브랜드..."
+            style={{flex:1,background:"none",border:"none",outline:"none",
+              color:"#fff",fontSize:14,fontFamily:"inherit"}}/>
+          {q && <button onClick={()=>setQ("")} style={{background:"none",border:"none",color:"rgba(255,255,255,0.3)",cursor:"pointer",fontSize:16}}>✕</button>}
         </div>
-        <button onClick={onClose} style={{
-          padding:"10px 16px",borderRadius:12,border:"none",
+        <button onClick={onClose} style={{padding:"10px 14px",borderRadius:12,border:"none",
           background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.6)",
-          fontFamily:"inherit",fontSize:13,fontWeight:600,cursor:"pointer"
-        }}>닫기</button>
+          fontFamily:"inherit",fontSize:13,fontWeight:600,cursor:"pointer"}}>닫기</button>
       </div>
 
-      {/* 브랜드 필터 */}
-      <div style={{
-        display:"flex",gap:6,overflowX:"auto",padding:"0 20px 12px",flexShrink:0,
-        msOverflowStyle:"none",scrollbarWidth:"none"
-      }}>
-        {BRANDS.map(b=>(
-          <button key={b} onClick={()=>{onBrandSelect(b);}} style={{
-            padding:"6px 12px",borderRadius:20,border:"none",
+      {/* 브랜드 */}
+      <div style={{display:"flex",gap:5,overflowX:"auto",padding:"0 16px 10px",flexShrink:0,
+        msOverflowStyle:"none",scrollbarWidth:"none"}}>
+        {BRANDS.map(b => (
+          <button key={b} onClick={()=>setBrand(b)} style={{padding:"5px 12px",borderRadius:20,border:"none",
             fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer",flexShrink:0,
-            background:selectedBrand===b?"#ff8c00":"rgba(255,255,255,0.07)",
-            color:selectedBrand===b?"#fff":"rgba(255,255,255,0.4)",
-            transition:"all .15s"
-          }}>{b}</button>
+            background:brand===b?"#00d4ff":"rgba(255,255,255,0.07)",
+            color:brand===b?"#fff":"rgba(255,255,255,0.4)",transition:"all .15s"}}>{b}</button>
         ))}
       </div>
 
-      {/* 오일 필터 */}
-      <div style={{display:"flex",gap:5,padding:"0 20px 12px",flexShrink:0,overflowX:"auto",msOverflowStyle:"none",scrollbarWidth:"none"}}>
-        {["All","Heavy Oil","Medium-Heavy Oil","Medium Oil","Light-Medium Oil"].map(c=>{
-          const col = c==="All"?"#fff":COND_COLOR[c];
+      {/* 오일 */}
+      <div style={{display:"flex",gap:5,padding:"0 16px 10px",flexShrink:0,overflowX:"auto",
+        msOverflowStyle:"none",scrollbarWidth:"none"}}>
+        {["All","Heavy Oil","Medium-Heavy Oil","Medium Oil","Light-Medium Oil"].map(c => {
+          const col = c==="All" ? "#fff" : COND_COLOR[c];
           return (
             <button key={c} onClick={()=>setCond(c)} style={{
-              padding:"5px 12px",borderRadius:20,border:`1px solid ${cond===c?col+"66":"rgba(255,255,255,0.08)"}`,
+              padding:"5px 12px",borderRadius:20,
+              border:`1px solid ${cond===c ? col+"66" : "rgba(255,255,255,0.08)"}`,
               fontFamily:"inherit",fontSize:10,fontWeight:700,cursor:"pointer",flexShrink:0,
-              background:cond===c?col+"18":"transparent",
-              color:cond===c?col:"rgba(255,255,255,0.3)",
-              transition:"all .15s"
-            }}>{c==="All"?"전체":c.replace(" Oil","")}</button>
+              background:cond===c ? col+"18" : "transparent",
+              color:cond===c ? col : "rgba(255,255,255,0.3)"}}>
+              {c==="All" ? "전체" : c.replace(" Oil","")}
+            </button>
           );
-        }}
+        })}
       </div>
 
       {/* 결과 */}
-      <div style={{flex:1,overflowY:"auto",padding:"0 20px 20px"}}>
-        <div style={{fontSize:10,color:"rgba(255,255,255,0.25)",fontWeight:700,letterSpacing:1,marginBottom:10}}>
-          {filtered.length}개 결과
+      <div style={{flex:1,overflowY:"auto",padding:"0 16px 20px"}}>
+        <div style={{fontSize:10,color:"rgba(255,255,255,0.2)",fontWeight:700,letterSpacing:1,marginBottom:10}}>
+          {filtered.length}개
         </div>
         <div style={{display:"flex",flexDirection:"column",gap:6}}>
-          {filtered.map(ball=>{
-            const oilColor = COND_COLOR[ball.condition]||"#aaa";
+          {filtered.map(ball => {
+            const oilColor = COND_COLOR[ball.condition] || "#aaa";
             return (
-              <div key={ball.id} onClick={()=>{onSelect(ball);onClose();}} style={{
-                display:"flex",alignItems:"center",gap:12,
-                padding:"10px 14px",borderRadius:14,cursor:"pointer",
-                background:"rgba(255,255,255,0.04)",
-                border:"1px solid rgba(255,255,255,0.06)",
-                transition:"all .15s"
-              }}>
+              <div key={ball.id} onClick={()=>{ onSelect(ball); onClose(); }} style={{
+                display:"flex",alignItems:"center",gap:12,padding:"10px 14px",
+                borderRadius:14,cursor:"pointer",background:"rgba(255,255,255,0.04)",
+                border:"1px solid rgba(255,255,255,0.06)"}}>
                 <div style={{width:44,height:44,borderRadius:"50%",overflow:"hidden",flexShrink:0,
                   border:`1.5px solid ${ball.accent}44`}}>
                   <BallImg slug={ball.ballSlug} name={ball.name} size={44}/>
@@ -3206,13 +2990,15 @@ function SearchPanel({ onClose, onSelect, onBrandSelect, selectedBrand }) {
                   <div style={{fontSize:10,color:"rgba(255,255,255,0.3)",fontWeight:700,letterSpacing:1}}>{ball.brand.toUpperCase()}</div>
                   <div style={{fontSize:14,fontWeight:700,color:"#fff",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{ball.name}</div>
                 </div>
-                <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:3}}>
+                <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:2}}>
                   <span style={{fontSize:9,color:oilColor,fontWeight:700}}>{ball.condition?.replace(" Oil","")}</span>
-                  <span style={{fontSize:10,color:ball.accent,fontWeight:800}}>{ball.weightData?.[15]?.rg||ball.weightData?.[16]?.rg}</span>
+                  <span style={{fontSize:11,color:ball.accent,fontWeight:900}}>
+                    {ball.weightData?.[15]?.rg || ball.weightData?.[16]?.rg}
+                  </span>
                 </div>
               </div>
             );
-          }}
+          })}
         </div>
       </div>
     </div>
@@ -3221,114 +3007,95 @@ function SearchPanel({ onClose, onSelect, onBrandSelect, selectedBrand }) {
 
 // ── 메인 앱 ──
 export default function App() {
-  const [view, setView] = useState("home");   // home | arsenal | compare | scan | settings
+  const [view, setView] = useState("home");
   const [selectedBall, setSelectedBall] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [brand, setBrand] = useState("전체");
   const [sortBy, setSortBy] = useState("popular");
   const [cmpList, setCmpList] = useState([]);
   const [arsenal, setArsenal] = useState([]);
-  const [nickname, setNickname] = useState(()=>localStorage.getItem("rm_nickname")||"");
-  const [isAdmin, setIsAdmin] = useState(()=>localStorage.getItem("rm_admin")==="1");
+  const [nickname, setNickname] = useState(() => localStorage.getItem("rm_nickname") || "");
   const [notices, setNotices] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
-  const [regModal, setRegModal] = useState(null);
   const [toast, setToast] = useState(null);
-  const [dbLoading, setDbLoading] = useState(false);
-  const carouselRef = useRef();
+  const [POPULARITY_DATA, setPOPULARITY_DATA] = useState({});
 
-  // 자동 로그인
-  useEffect(()=>{
+  // POPULARITY 동적 로드 방지를 위해 직접 사용
+  const getPop = (name) => {
+    const pops = {"Storm Phaze II":95,"Storm Phaze III":90,"Hammer Black Widow 2.0":88,
+      "Storm IQ Tour":85,"Motiv Venom Shock":84,"Storm Hy-Road":83,"Hammer Purple Pearl Urethane":82,
+      "Storm Code Red":81,"Storm Marvel Pearl":80};
+    return pops[name] || 50;
+  };
+
+  useEffect(() => {
     const saved = localStorage.getItem("rm_nickname");
     const savedPw = localStorage.getItem("rm_pw");
-    if(saved && savedPw){
-      setDbLoading(true);
-      sbGet("users",`nickname=eq.${encodeURIComponent(saved)}&select=password,is_admin`)
-        .then(users=>{
-          if(!users.length||users[0].password!==savedPw){
-            localStorage.removeItem("rm_nickname");localStorage.removeItem("rm_pw");
-            setNickname(""); return Promise.resolve(null);
+    if (saved && savedPw) {
+      sbGet("users", `nickname=eq.${encodeURIComponent(saved)}&select=password`)
+        .then(users => {
+          if (!users.length || users[0].password !== savedPw) {
+            localStorage.removeItem("rm_nickname"); localStorage.removeItem("rm_pw");
+            setNickname(""); return null;
           }
-          setIsAdmin(users[0].is_admin===true);
-          return Promise.all([
-            sbGet("equipment",`nickname=eq.${encodeURIComponent(saved)}&order=created_at.asc`),
-            sbGet("notices","is_active=eq.true&order=created_at.desc")
-          ]);
+          return sbGet("equipment", `nickname=eq.${encodeURIComponent(saved)}&order=created_at.asc`);
         })
-        .then(res=>{
-          if(!res)return;
-          const [data,nd]=res;
-          setNotices(nd||[]);
-          if(data?.length){
-            setArsenal(data.map(r=>({
-              dbId:r.id,ballId:r.ball_id,nickname:r.ball_name_alias||"",
-              weight:r.weight||15,grip:r.grip||"세미팁",
-              drill_pin:r.drilling_pin||"",drill_cg:r.drilling_cg||"",
-              drill_mb:r.drilling_mb_angle||"",drill_note:r.drilling_notes||"",
-              purchase_date:r.purchase_date||"",purchase_price:r.purchase_price||"",
-              memo:r.memo||"",surface_logs:r.surface_logs||[],
-              addedAt:new Date(r.created_at).getTime()
-            })));
-          }
+        .then(data => {
+          if (!data) return;
+          setArsenal(data.map(r => ({
+            dbId:r.id, ballId:r.ball_id, nickname:r.ball_name_alias||"",
+            weight:r.weight||15, grip:r.grip||"세미팁",
+            memo:r.memo||"", addedAt:new Date(r.created_at).getTime()
+          })));
         })
-        .catch(()=>{})
-        .finally(()=>setDbLoading(false));
+        .catch(() => {});
     }
-    sbGet("notices","is_active=eq.true&order=created_at.desc").then(d=>setNotices(d)).catch(()=>{});
-  },[]);
+    sbGet("notices", "is_active=eq.true&order=created_at.desc").then(d=>setNotices(d)).catch(()=>{});
+  }, []);
 
-  const showToast = (msg,color="#43a047")=>{
-    setToast({msg,color}); setTimeout(()=>setToast(null),2500);
+  const showToast = (msg, color="#43a047") => {
+    setToast({msg,color}); setTimeout(()=>setToast(null), 2500);
   };
 
-  const handleLogin = (n,data,admin,noticeData)=>{
-    setNickname(n); setIsAdmin(!!admin); setShowLogin(false);
-    if(noticeData) setNotices(noticeData);
-    if(data?.length) setArsenal(data.map(r=>(({
-      dbId:r.id,ballId:r.ball_id,nickname:r.ball_name_alias||"",
-      weight:r.weight||15,grip:r.grip||"세미팁",
-      drill_pin:r.drilling_pin||"",drill_cg:r.drilling_cg||"",
-      drill_mb:r.drilling_mb_angle||"",drill_note:r.drilling_notes||"",
-      purchase_date:r.purchase_date||"",purchase_price:r.purchase_price||"",
-      memo:r.memo||"",surface_logs:r.surface_logs||[],
-      addedAt:new Date(r.created_at).getTime()
-    }))));
+  const handleLogin = (n, data, admin, noticeData) => {
+    setNickname(n); setShowLogin(false);
+    if (noticeData) setNotices(noticeData);
+    if (data?.length) setArsenal(data.map(r => ({
+      dbId:r.id, ballId:r.ball_id, nickname:r.ball_name_alias||"",
+      weight:r.weight||15, grip:r.grip||"세미팁",
+      memo:r.memo||"", addedAt:new Date(r.created_at).getTime()
+    })));
   };
 
-  const handleLogout = ()=>{
-    localStorage.removeItem("rm_nickname");localStorage.removeItem("rm_pw");localStorage.removeItem("rm_admin");
-    setNickname("");setArsenal([]);setIsAdmin(false);setView("home");
+  const handleLogout = () => {
+    localStorage.removeItem("rm_nickname"); localStorage.removeItem("rm_pw"); localStorage.removeItem("rm_admin");
+    setNickname(""); setArsenal([]); setView("home");
     showToast("로그아웃 됐어요");
   };
 
-  const inArsenal = id => arsenal.some(e=>e.ballId===id);
-  const toggleCmp = ball=>{
-    if(cmpList.find(b=>b.id===ball.id)) setCmpList(cmpList.filter(b=>b.id!==ball.id));
-    else if(cmpList.length<3) setCmpList([...cmpList,ball]);
+  const inArsenal = id => arsenal.some(e => e.ballId === id);
+  const toggleCmp = ball => {
+    if (cmpList.find(b => b.id === ball.id)) setCmpList(cmpList.filter(b => b.id !== ball.id));
+    else if (cmpList.length < 3) setCmpList([...cmpList, ball]);
   };
 
-  // 정렬된 볼 목록
-  const sortedBalls = [...ALL_BALLS].filter(b=>brand==="전체"||b.brand===brand)
-    .sort((a,b)=>{
-      if(sortBy==="popular") return (POPULARITY[b.name]||0)-(POPULARITY[a.name]||0);
-      if(sortBy==="latest"){
-        const pd=s=>{if(!s)return 0;const[m,y]=s.split(" ");const ms={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};return parseInt(y)*100+(ms[m]||0);};
-        return pd(b.releaseDate)-pd(a.releaseDate);
-      }
-      if(sortBy==="rg") return (a.weightData?.[15]?.rg||9)-(b.weightData?.[15]?.rg||9);
+  const sortedBalls = [...ALL_BALLS]
+    .filter(b => brand === "전체" || b.brand === brand)
+    .sort((a, b) => {
+      if (sortBy === "popular") return (getPop(b.name)) - (getPop(a.name));
+      if (sortBy === "rg") return (a.weightData?.[15]?.rg||9) - (b.weightData?.[15]?.rg||9);
       return 0;
     });
 
   const NAV = [
-    {k:"home",   i:"⌂"},
-    {k:"arsenal",i:"🎳",badge:arsenal.length||null},
-    {k:"compare",i:"⚖",badge:cmpList.length||null},
-    {k:"scan",   i:"⬡"},
+    {k:"home",    i:"⌂"},
+    {k:"arsenal", i:"🎳", badge:arsenal.length||null},
+    {k:"compare", i:"⚖", badge:cmpList.length||null},
     {k:"settings",i:"◎"},
   ];
 
-  const needLogin = (tab)=>{
-    if(!nickname && tab!=="home"){ setShowLogin(true); return true; }
+  const needLogin = (tab) => {
+    if (!nickname && tab !== "home") { setShowLogin(true); return true; }
     return false;
   };
 
@@ -3336,419 +3103,377 @@ export default function App() {
     <div style={{
       fontFamily:"'Exo 2','Inter',sans-serif",
       minHeight:"100vh",
-      background:"linear-gradient(135deg,#080810 0%,#0d0d1a 40%,#0a0d18 100%)",
-      color:"#fff",
-      overflowX:"hidden",
-      position:"relative"
-    }}>
+      background:"#050a18",
+      color:"#fff", overflowX:"hidden", position:"relative"}}>
+
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
         ::-webkit-scrollbar { width:0; height:0; }
-        @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
         @keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
-        @keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
-        .r0-ball-card { transition:transform .2s,box-shadow .2s; }
-        .r0-ball-card:active { transform:scale(0.97); }
-        .r0-nav-btn { transition:all .2s; }
-        .r0-nav-btn:active { transform:scale(0.88); }
+        @keyframes pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+        @keyframes glow { 0%,100%{opacity:0.4} 50%{opacity:0.7} }
+        body::before {
+          content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+          background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+          opacity:0.6;
+        }
+        .r0-card { transition:transform .2s,opacity .2s; cursor:pointer; }
+        .r0-card:active { transform:scale(0.96); opacity:0.85; }
+        .r0-btn { transition:all .15s; }
+        .r0-btn:active { transform:scale(0.92); }
       `}</style>
 
-      {/* 배경 앰비언트 */}
-      <div style={{
-        position:"fixed",inset:0,zIndex:0,pointerEvents:"none",overflow:"hidden"
-      }}>
+      {/* 배경 앰비언트 글로우 */}
+      <div style={{position:"fixed",inset:0,zIndex:0,pointerEvents:"none",overflow:"hidden"}}>
+        <div style={{position:"absolute",width:500,height:500,borderRadius:"50%",
+          background:"radial-gradient(circle,rgba(0,212,255,0.07) 0%,transparent 70%)",
+          top:-150,left:-150,animation:"glow 7s ease infinite"}}/>
         <div style={{position:"absolute",width:400,height:400,borderRadius:"50%",
-          background:"radial-gradient(circle,rgba(255,140,0,0.06) 0%,transparent 70%)",
-          top:-100,left:-100,animation:"pulse 6s ease infinite"}}/>
-        <div style={{position:"absolute",width:300,height:300,borderRadius:"50%",
-          background:"radial-gradient(circle,rgba(100,100,255,0.04) 0%,transparent 70%)",
-          bottom:100,right:-50,animation:"pulse 8s ease infinite 2s"}}/>
+          background:"radial-gradient(circle,rgba(0,100,200,0.05) 0%,transparent 70%)",
+          bottom:50,right:-100,animation:"glow 9s ease infinite 3s"}}/>
       </div>
 
-      {/* 탑 로고 바 */}
-      <div style={{
-        position:"sticky",top:0,zIndex:100,
-        padding:"12px 20px 10px",
-        display:"flex",alignItems:"center",justifyContent:"space-between",
-        background:"rgba(8,8,16,0.85)",backdropFilter:"blur(20px)",
-        borderBottom:"1px solid rgba(255,255,255,0.05)"
-      }}>
-        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:26,letterSpacing:6,
-          color:"#fff",lineHeight:1,textShadow:"0 0 20px rgba(255,140,0,0.3)"}}>
-          ROLL<span style={{color:"#ff8c00",textShadow:"0 0 16px rgba(255,140,0,0.7)"}}>MATE</span>
-          <span style={{fontSize:10,color:"rgba(255,140,0,0.5)",letterSpacing:2,marginLeft:6,verticalAlign:"middle",fontFamily:"'Exo 2',sans-serif",fontWeight:700}}>REV.0</span>
+      {/* 탑바 */}
+      <div style={{position:"sticky",top:0,zIndex:100,
+        padding:"12px 18px 10px",display:"flex",alignItems:"center",justifyContent:"space-between",
+        background:"rgba(5,10,24,0.92)",backdropFilter:"blur(24px)",
+        borderBottom:"1px solid rgba(0,212,255,0.08)"}}>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:24,letterSpacing:7,
+          color:"#fff",lineHeight:1,textShadow:"0 0 18px rgba(0,212,255,0.25)"}}>
+          ROLL<span style={{color:"#00d4ff",textShadow:"0 0 16px rgba(0,212,255,0.45)"}}>MATE</span>
+          <span style={{fontSize:9,color:"rgba(0,212,255,0.5)",letterSpacing:2,
+            marginLeft:6,verticalAlign:"middle",fontFamily:"'Exo 2',sans-serif",fontWeight:700}}>REV.0</span>
         </div>
         <div style={{display:"flex",gap:8,alignItems:"center"}}>
-          {notices.length>0&&(
-            <div style={{width:6,height:6,borderRadius:"50%",background:"#ff8c00",animation:"pulse 2s infinite"}}/>
+          {notices.length > 0 && (
+            <div style={{width:6,height:6,borderRadius:"50%",background:"#00d4ff",animation:"pulse 2s infinite"}}/>
           )}
-          <button onClick={()=>setSearchOpen(true)} style={{
-            width:36,height:36,borderRadius:"50%",border:"none",
-            background:"rgba(255,255,255,0.07)",color:"rgba(255,255,255,0.6)",
-            fontSize:16,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",
-            backdropFilter:"blur(10px)"
-          }}>🔍</button>
-          {nickname?(
-            <div style={{width:32,height:32,borderRadius:"50%",background:"linear-gradient(135deg,#ff8c00,#e65100)",
-              display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:900,color:"#fff",
-              cursor:"pointer"}} onClick={()=>setView("settings")}>
+          <button className="r0-btn" onClick={()=>setSearchOpen(true)} style={{
+            width:34,height:34,borderRadius:"50%",border:"none",
+            background:"rgba(0,212,255,0.12)",color:"#00d4ff",
+            fontSize:15,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}>🔍</button>
+          {nickname ? (
+            <div onClick={()=>setView("settings")} style={{
+              width:30,height:30,borderRadius:"50%",
+              background:"linear-gradient(135deg,#00d4ff,#0077aa)",
+              display:"flex",alignItems:"center",justifyContent:"center",
+              fontSize:12,fontWeight:900,color:"#fff",cursor:"pointer"}}>
               {nickname.charAt(0).toUpperCase()}
             </div>
-          ):(
+          ) : (
             <button onClick={()=>setShowLogin(true)} style={{
-              padding:"7px 14px",borderRadius:20,border:"1px solid rgba(255,140,0,0.4)",
-              background:"rgba(255,140,0,0.1)",color:"#ff8c00",
-              fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer"
-            }}>로그인</button>
+              padding:"6px 12px",borderRadius:20,border:"1px solid rgba(0,212,255,0.12)",
+              background:"rgba(0,212,255,0.06)",color:"#00d4ff",
+              fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer"}}>로그인</button>
           )}
         </div>
       </div>
 
-      {/* 메인 콘텐츠 */}
-      <div style={{paddingBottom:80,position:"relative",zIndex:1}}>
+      {/* 메인 */}
+      <div style={{paddingBottom:76,position:"relative",zIndex:1}}>
 
         {/* HOME */}
-        {view==="home"&&(
-          <div style={{animation:"fadeIn .3s ease"}} >
+        {view==="home" && (
+          <div style={{animation:"fadeIn .3s ease"}}>
+
             {/* 공지 */}
-            {notices.map(n=>(
+            {notices.map(n => (
               <div key={n.id} style={{
-                margin:"12px 16px 0",
-                background:"rgba(255,140,0,0.06)",
-                borderRadius:14,padding:"10px 14px",
-                border:"1px solid rgba(255,140,0,0.15)",
-                display:"flex",gap:10,alignItems:"flex-start"
-              }}>
-                <div style={{width:28,height:28,borderRadius:8,background:"rgba(255,140,0,0.15)",
-                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,flexShrink:0}}>📢</div>
+                margin:"12px 14px 0",
+                background:"rgba(0,212,255,0.04)",borderRadius:14,padding:"10px 14px",
+                border:"1px solid rgba(0,212,255,0.1)",display:"flex",gap:10,alignItems:"flex-start"}}>
+                <div style={{width:26,height:26,borderRadius:8,background:"rgba(0,212,255,0.1)",
+                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,flexShrink:0}}>📢</div>
                 <div>
-                  <div style={{fontSize:10,color:"#ff8c00",fontWeight:800,letterSpacing:1,marginBottom:2}}>NOTICE</div>
+                  <div style={{fontSize:9,color:"#00d4ff",fontWeight:800,letterSpacing:1.2,marginBottom:2}}>NOTICE</div>
                   <div style={{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.8)"}}>{n.title}</div>
-                  <div style={{fontSize:11,color:"rgba(255,255,255,0.4)",marginTop:2}}>{n.content}</div>
+                  <div style={{fontSize:11,color:"rgba(255,255,255,0.35)",marginTop:1}}>{n.content}</div>
                 </div>
               </div>
             ))}
 
             {/* 브랜드 필터 */}
-            <div style={{padding:"16px 16px 8px"}}>
-              <div style={{display:"flex",gap:6,overflowX:"auto",msOverflowStyle:"none",scrollbarWidth:"none",paddingBottom:4}}>
-                {BRANDS.map(b=>{
-                  const act=brand===b;
-                  const logo=BRAND_LOGO?.[b];
+            <div style={{padding:"14px 14px 8px"}}>
+              <div style={{display:"flex",gap:5,overflowX:"auto",msOverflowStyle:"none",
+                scrollbarWidth:"none",paddingBottom:4}}>
+                {BRANDS.map(b => {
+                  const act = brand === b;
+                  const logo = BRAND_LOGO[b];
                   return (
-                    <button key={b} onClick={()=>setBrand(b)} style={{
+                    <button key={b} className="r0-btn" onClick={()=>setBrand(b)} style={{
                       display:"flex",alignItems:"center",gap:5,
-                      padding:"6px 10px 6px 7px",borderRadius:20,border:"none",
+                      padding:"5px 10px 5px 6px",borderRadius:20,border:"none",
                       fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer",flexShrink:0,
-                      background:act?`${logo?.color||"#ff8c00"}`:"rgba(255,255,255,0.06)",
-                      color:act?"#fff":"rgba(255,255,255,0.45)",
-                      boxShadow:act?`0 4px 14px ${logo?.color||"#ff8c00"}44`:"none",
-                      transition:"all .2s"
-                    }}>
-                      {b!=="전체"&&logo&&(
-                        <div style={{width:18,height:18,borderRadius:4,
+                      background:act ? (logo?.color||"#00d4ff") : "rgba(255,255,255,0.06)",
+                      color:act?"#fff":"rgba(255,255,255,0.4)",
+                      boxShadow:act?`0 3px 12px ${logo?.color||"#00d4ff"}44`:"none",
+                      transition:"all .2s"}}>
+                      {b !== "전체" && logo && (
+                        <div style={{width:16,height:16,borderRadius:4,
                           background:act?"rgba(255,255,255,0.2)":logo.bg,
-                          display:"flex",alignItems:"center",justifyContent:"center"
-                        }}>
-                          <span style={{fontSize:7,fontWeight:900,color:act?"#fff":logo.textColor,fontFamily:"'Exo 2',sans-serif"}}>{logo.abbr}</span>
+                          display:"flex",alignItems:"center",justifyContent:"center"}}>
+                          <span style={{fontSize:6,fontWeight:900,color:act?"#fff":logo.textColor}}>{logo.abbr}</span>
                         </div>
                       )}
                       {b}
-                      <span style={{fontSize:10,opacity:0.6}}>{ALL_BALLS.filter(x=>b==="전체"||x.brand===b).length}</span>
+                      <span style={{fontSize:9,opacity:0.5}}>{ALL_BALLS.filter(x=>b==="전체"||x.brand===b).length}</span>
                     </button>
                   );
-                }}
+                })}
               </div>
             </div>
 
-            {/* 정렬 탭 */}
-            <div style={{padding:"0 16px 12px",display:"flex",gap:5}}>
-              {[{k:"popular",l:"🔥 인기순"},{k:"latest",l:"🆕 최신순"},{k:"rg",l:"RG↑"}].map(s=>(
-                <button key={s.k} onClick={()=>setSortBy(s.k)} style={{
-                  padding:"5px 12px",borderRadius:20,border:"none",
-                  fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer",
-                  background:sortBy===s.k?"rgba(255,140,0,0.2)":"rgba(255,255,255,0.05)",
-                  color:sortBy===s.k?"#ff8c00":"rgba(255,255,255,0.35)",
-                  border:`1px solid ${sortBy===s.k?"rgba(255,140,0,0.4)":"rgba(255,255,255,0.06)"}`,
-                  transition:"all .15s"
-                }}>{s.l}</button>
+            {/* 정렬 */}
+            <div style={{padding:"0 14px 10px",display:"flex",gap:5}}>
+              {[{k:"popular",l:"🔥 인기순"},{k:"latest",l:"🆕 최신순"},{k:"rg",l:"RG ↑"}].map(s => (
+                <button key={s.k} className="r0-btn" onClick={()=>setSortBy(s.k)} style={{
+                  padding:"5px 11px",borderRadius:20,border:"none",fontFamily:"inherit",
+                  fontSize:11,fontWeight:700,cursor:"pointer",
+                  background:sortBy===s.k?"rgba(0,212,255,0.1)":"rgba(255,255,255,0.04)",
+                  color:sortBy===s.k?"#00d4ff":"rgba(255,255,255,0.3)",
+                  border:`1px solid ${sortBy===s.k?"rgba(0,212,255,0.3)":"rgba(255,255,255,0.06)"}`,
+                  transition:"all .15s"}}>
+                  {s.l}
+                </button>
               ))}
             </div>
 
-            {/* 볼 카드 가로 슬라이드 */}
-            <div ref={carouselRef} style={{
-              display:"flex",gap:12,overflowX:"auto",
-              padding:"0 16px 16px",
-              msOverflowStyle:"none",scrollbarWidth:"none",
-              scrollSnapType:"x mandatory"
-            }}>
-              {sortedBalls.map(ball=>{
-                const pop = POPULARITY[ball.name]||0;
-                const inC = !!cmpList.find(b=>b.id===ball.id);
+            {/* 볼 카드 - 가로 슬라이드 */}
+            <div style={{display:"flex",gap:10,overflowX:"auto",padding:"0 14px 16px",
+              msOverflowStyle:"none",scrollbarWidth:"none",scrollSnapType:"x mandatory"}}>
+              {sortedBalls.map(ball => {
+                const inC = !!cmpList.find(b => b.id === ball.id);
                 const inA = inArsenal(ball.id);
-                const d = ball.weightData?.[15]||ball.weightData?.[16];
+                const d = ball.weightData?.[15] || ball.weightData?.[16];
                 return (
-                  <div key={ball.id} className="r0-ball-card" onClick={()=>setSelectedBall(ball)}
-                    style={{
-                      flexShrink:0,width:160,
-                      background:"rgba(255,255,255,0.04)",
-                      backdropFilter:"blur(10px)",
-                      borderRadius:20,overflow:"hidden",cursor:"pointer",
-                      border:`1px solid ${ball.accent}22`,
-                      boxShadow:`0 4px 20px rgba(0,0,0,0.3)`,
-                      scrollSnapAlign:"start",
-                      position:"relative"
-                    }}>
-                    {/* 상단 컬러 라인 */}
-                    <div style={{height:3,background:`linear-gradient(90deg,${ball.accent},${ball.accent}44)`}}/>
-                    {/* 배지 */}
-                    <div style={{position:"absolute",top:10,right:8,display:"flex",flexDirection:"column",gap:4,alignItems:"flex-end"}}>
-                      {pop>=90&&<span style={{fontSize:9,background:"linear-gradient(135deg,#ff6b35,#ff8c00)",color:"#fff",padding:"2px 6px",borderRadius:8,fontWeight:800}}>HOT</span>}
-                      {inA&&<span style={{fontSize:9,background:`${ball.accent}33`,color:ball.accent,padding:"2px 6px",borderRadius:8,fontWeight:800,border:`1px solid ${ball.accent}44`}}>MY</span>}
-                    </div>
-                    {/* 볼 이미지 */}
-                    <div style={{padding:"14px 14px 8px",display:"flex",justifyContent:"center"}}>
-                      <div style={{width:90,height:90,borderRadius:"50%",overflow:"hidden",
-                        boxShadow:`0 8px 24px ${ball.accent}44`,border:`2px solid ${ball.accent}33`}}>
-                        <BallImg slug={ball.ballSlug} name={ball.name} size={90}/>
+                  <div key={ball.id} className="r0-card" onClick={()=>setSelectedBall(ball)}
+                    style={{flexShrink:0,width:155,
+                      background:"rgba(8,16,30,0.7)",backdropFilter:"blur(10px)",
+                      borderRadius:20,overflow:"hidden",
+                      border:`1px solid ${ball.accent}25`,
+                      boxShadow:`0 4px 24px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,212,255,0.06)`,
+                      scrollSnapAlign:"start",position:"relative"}}>
+                    <div style={{height:2,background:`linear-gradient(90deg,${ball.accent},${ball.accent}44)`}}/>
+                    {inA && <div style={{position:"absolute",top:9,right:8,fontSize:8,fontWeight:900,
+                      background:`${ball.accent}33`,color:ball.accent,padding:"2px 6px",borderRadius:8,
+                      border:`1px solid ${ball.accent}44`}}>MY</div>}
+                    <div style={{padding:"14px 12px 8px",display:"flex",justifyContent:"center"}}>
+                      <div style={{width:84,height:84,borderRadius:"50%",overflow:"hidden",
+                        boxShadow:`0 6px 24px ${ball.accent}55, 0 0 0 1px rgba(0,212,255,0.08)`,border:`1.5px solid ${ball.accent}33`}}>
+                        <BallImg slug={ball.ballSlug} name={ball.name} size={84}/>
                       </div>
                     </div>
-                    {/* 정보 */}
-                    <div style={{padding:"0 12px 14px"}}>
-                      <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",fontWeight:700,letterSpacing:1,marginBottom:2}}>{ball.brand.toUpperCase()}</div>
-                      <div style={{fontSize:12,fontWeight:800,color:"#fff",lineHeight:1.25,marginBottom:8,
-                        overflow:"hidden",textOverflow:"ellipsis",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{ball.name}</div>
-                      {d&&(
-                        <div style={{display:"flex",gap:8,marginBottom:8}}>
-                          <div style={{textAlign:"center"}}>
-                            <div style={{fontSize:8,color:"rgba(255,255,255,0.25)",fontWeight:700}}>RG</div>
-                            <div style={{fontSize:13,fontWeight:900,color:ball.accent,fontFamily:"'Exo 2',sans-serif"}}>{d.rg}</div>
+                    <div style={{padding:"0 12px 12px"}}>
+                      <div style={{fontSize:9,color:"rgba(255,255,255,0.25)",fontWeight:700,letterSpacing:1,marginBottom:2}}>{ball.brand.toUpperCase()}</div>
+                      <div style={{fontSize:12,fontWeight:800,color:"#fff",lineHeight:1.25,marginBottom:7,
+                        overflow:"hidden",textOverflow:"ellipsis",display:"-webkit-box",
+                        WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{ball.name}</div>
+                      {d && (
+                        <div style={{display:"flex",gap:8,marginBottom:7}}>
+                          <div>
+                            <div style={{fontSize:8,color:"rgba(255,255,255,0.2)",fontWeight:700}}>RG</div>
+                            <div style={{fontSize:14,fontWeight:900,color:ball.accent}}>{d.rg}</div>
                           </div>
-                          <div style={{textAlign:"center"}}>
-                            <div style={{fontSize:8,color:"rgba(255,255,255,0.25)",fontWeight:700}}>DIFF</div>
-                            <div style={{fontSize:13,fontWeight:900,color:ball.accent,fontFamily:"'Exo 2',sans-serif"}}>{d.diff}</div>
+                          <div>
+                            <div style={{fontSize:8,color:"rgba(255,255,255,0.2)",fontWeight:700}}>DIFF</div>
+                            <div style={{fontSize:14,fontWeight:900,color:ball.accent}}>{d.diff}</div>
                           </div>
                         </div>
                       )}
-                      {/* 비교 버튼 */}
-                      <button onClick={e=>{e.stopPropagation();toggleCmp(ball);}} style={{
-                        width:"100%",padding:"6px",borderRadius:10,border:"none",
+                      <button onClick={e=>{e.stopPropagation();toggleCmp(ball);}} className="r0-btn" style={{
+                        width:"100%",padding:"6px",borderRadius:9,border:"none",
                         fontFamily:"inherit",fontSize:10,fontWeight:700,cursor:"pointer",
-                        background:inC?ball.accent:"rgba(255,255,255,0.08)",
-                        color:inC?"#fff":"rgba(255,255,255,0.4)",
-                        transition:"all .15s"
-                      }}>{inC?"✓ 비교 중":"+ 비교"}</button>
+                        background:inC?ball.accent:"rgba(255,255,255,0.07)",
+                        color:inC?"#fff":"rgba(255,255,255,0.35)",transition:"all .15s"}}>
+                        {inC?"✓ 비교 중":"+ 비교"}
+                      </button>
                     </div>
                   </div>
                 );
-              }}
+              })}
             </div>
 
             {/* 비교 토스트 */}
-            {cmpList.length>=2&&(
-              <div style={{
-                position:"fixed",bottom:90,left:"50%",transform:"translateX(-50%)",zIndex:3000,
-                background:"rgba(28,28,40,0.95)",backdropFilter:"blur(20px)",
-                borderRadius:50,padding:"8px 8px 8px 14px",
-                display:"flex",alignItems:"center",gap:8,
-                border:"1px solid rgba(255,140,0,0.25)",
-                boxShadow:"0 8px 32px rgba(0,0,0,0.4)",
-                animation:"slideUp .3s ease"
-              }}>
+            {cmpList.length >= 2 && (
+              <div style={{position:"fixed",bottom:86,left:"50%",transform:"translateX(-50%)",zIndex:3000,
+                background:"rgba(5,15,35,0.97)",backdropFilter:"blur(20px)",
+                borderRadius:50,padding:"7px 7px 7px 14px",display:"flex",alignItems:"center",gap:8,
+                border:"1px solid rgba(0,212,255,0.2)",boxShadow:"0 8px 32px rgba(0,0,0,0.4)",
+                animation:"slideUp .3s ease"}}>
                 <div style={{display:"flex"}}>
-                  {cmpList.map((b,i)=>(
-                    <div key={b.id} style={{width:24,height:24,borderRadius:"50%",background:b.accent,
-                      marginLeft:i>0?-6:0,border:"2px solid rgba(28,28,40,0.95)",flexShrink:0,
-                      display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900,color:"#fff"}}>
+                  {cmpList.map((b,i) => (
+                    <div key={b.id} style={{width:22,height:22,borderRadius:"50%",background:b.accent,
+                      marginLeft:i>0?-5:0,border:"2px solid rgba(20,20,32,0.95)",flexShrink:0,
+                      display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,fontWeight:900,color:"#fff"}}>
                       {b.name.charAt(0)}
                     </div>
                   ))}
                 </div>
-                <span style={{fontSize:12,color:"rgba(255,255,255,0.5)",fontWeight:600,whiteSpace:"nowrap"}}>{cmpList.length}개</span>
-                <button onClick={()=>setView("compare")} style={{
-                  padding:"8px 16px",background:"#ff8c00",border:"none",borderRadius:50,
-                  color:"#fff",fontFamily:"inherit",fontSize:12,fontWeight:800,cursor:"pointer",
-                  whiteSpace:"nowrap",boxShadow:"0 3px 12px rgba(255,140,0,0.45)"
-                }}>비교하기 ⚖</button>
-                <button onClick={()=>setCmpList([])} style={{
-                  width:28,height:28,background:"rgba(255,255,255,0.08)",border:"none",
-                  borderRadius:"50%",color:"rgba(255,255,255,0.4)",fontSize:12,cursor:"pointer",
-                  display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0
-                }}>✕</button>
+                <span style={{fontSize:11,color:"rgba(255,255,255,0.45)",fontWeight:600}}>{cmpList.length}개</span>
+                <button onClick={()=>setView("compare")} className="r0-btn" style={{
+                  padding:"7px 14px",background:"#00d4ff",border:"none",borderRadius:50,
+                  color:"#050a18",fontFamily:"inherit",fontSize:12,fontWeight:800,cursor:"pointer",
+                  whiteSpace:"nowrap",boxShadow:"0 0 16px rgba(0,212,255,0.45)"}}>비교하기 ⚖</button>
+                <button onClick={()=>setCmpList([])} className="r0-btn" style={{
+                  width:26,height:26,background:"rgba(255,255,255,0.08)",border:"none",
+                  borderRadius:"50%",color:"rgba(255,255,255,0.35)",fontSize:11,cursor:"pointer",
+                  display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>✕</button>
               </div>
             )}
           </div>
         )}
 
         {/* ARSENAL */}
-        {view==="arsenal"&&(
+        {view==="arsenal" && (
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
             <div style={{marginBottom:16,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <div>
-                <div style={{fontSize:20,fontWeight:800,color:"#fff"}}>내 장비함</div>
-                <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginTop:2}}>@{nickname} · {arsenal.length}개 등록</div>
+                <div style={{fontSize:20,fontWeight:800}}>내 장비함</div>
+                <div style={{fontSize:11,color:"rgba(255,255,255,0.3)",marginTop:2}}>@{nickname} · {arsenal.length}개</div>
               </div>
-              <button onClick={()=>setView("home")} style={{
-                padding:"8px 16px",borderRadius:20,border:"1px solid rgba(255,255,255,0.1)",
-                background:"rgba(255,255,255,0.06)",color:"rgba(255,255,255,0.6)",
-                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer"
-              }}>+ 추가</button>
+              <button onClick={()=>setView("home")} className="r0-btn" style={{
+                padding:"7px 14px",borderRadius:18,border:"1px solid rgba(255,255,255,0.1)",
+                background:"rgba(255,255,255,0.05)",color:"rgba(255,255,255,0.55)",
+                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer"}}>+ 추가</button>
             </div>
-            {arsenal.length===0?(
+            {arsenal.length === 0 ? (
               <div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.2)"}}>
                 <div style={{fontSize:48,marginBottom:12}}>🎳</div>
-                <div style={{fontSize:16,fontWeight:700}}>장비함이 비어있어요</div>
+                <div style={{fontSize:15,fontWeight:700}}>장비함이 비어있어요</div>
+                <div style={{fontSize:12,marginTop:6}}>홈에서 볼을 탭해 추가하세요</div>
               </div>
-            ):(
-              <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                {arsenal.map(entry=>{
-                  const ball=ALL_BALLS.find(b=>b.id===entry.ballId);
-                  if(!ball)return null;
-                  const d=ball.weightData?.[entry.weight]||ball.weightData?.[15];
+            ) : (
+              <div style={{display:"flex",flexDirection:"column",gap:8}}>
+                {arsenal.map(entry => {
+                  const ball = ALL_BALLS.find(b => b.id === entry.ballId);
+                  if (!ball) return null;
+                  const d = ball.weightData?.[entry.weight] || ball.weightData?.[15];
                   return (
                     <div key={entry.addedAt} style={{
-                      background:"rgba(255,255,255,0.04)",backdropFilter:"blur(10px)",
-                      borderRadius:18,overflow:"hidden",
-                      border:`1px solid ${ball.accent}22`
-                    }}>
-                      <div style={{height:3,background:`linear-gradient(90deg,${ball.accent},${ball.accent}44)`}}/>
-                      <div style={{padding:"14px",display:"flex",gap:12,alignItems:"center"}}>
-                        <div style={{width:60,height:60,borderRadius:"50%",overflow:"hidden",flexShrink:0,
-                          boxShadow:`0 4px 16px ${ball.accent}44`,border:`2px solid ${ball.accent}33`}}>
-                          <BallImg slug={ball.ballSlug} name={ball.name} size={60}/>
+                      background:"rgba(8,16,30,0.7)",backdropFilter:"blur(10px)",
+                      borderRadius:18,overflow:"hidden",border:`1px solid ${ball.accent}22`,
+                      boxShadow:`0 2px 16px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(0,212,255,0.05)`}}>
+                      <div style={{height:2,background:`linear-gradient(90deg,${ball.accent},${ball.accent}44)`}}/>
+                      <div style={{padding:"13px",display:"flex",gap:12,alignItems:"center"}}>
+                        <div style={{width:56,height:56,borderRadius:"50%",overflow:"hidden",flexShrink:0,
+                          boxShadow:`0 4px 18px ${ball.accent}55, 0 0 0 1px rgba(0,212,255,0.07)`,border:`1.5px solid ${ball.accent}30`}}>
+                          <BallImg slug={ball.ballSlug} name={ball.name} size={56}/>
                         </div>
                         <div style={{flex:1,minWidth:0}}>
                           <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",fontWeight:700,letterSpacing:1}}>{ball.brand.toUpperCase()}</div>
-                          <div style={{fontSize:15,fontWeight:800,color:"#fff",marginBottom:5}}>{ball.name}</div>
-                          <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
-                            <span style={{fontSize:10,color:ball.accent,fontWeight:700,background:`${ball.accent}15`,padding:"2px 7px",borderRadius:8}}>{entry.weight}lb</span>
-                            <span style={{fontSize:10,color:"rgba(255,255,255,0.4)",fontWeight:700,background:"rgba(255,255,255,0.06)",padding:"2px 7px",borderRadius:8}}>{entry.grip||"세미팁"}</span>
-                            {d&&<span style={{fontSize:10,color:ball.accent,fontWeight:800}}>RG {d.rg}</span>}
+                          <div style={{fontSize:14,fontWeight:800,color:"#fff",marginBottom:5}}>{ball.name}</div>
+                          <div style={{display:"flex",gap:5}}>
+                            <span style={{fontSize:10,color:ball.accent,fontWeight:700,
+                              background:`${ball.accent}14`,padding:"2px 7px",borderRadius:8}}>{entry.weight}lb</span>
+                            {d && <span style={{fontSize:10,color:"rgba(255,255,255,0.4)",fontWeight:700}}>RG {d.rg}</span>}
                           </div>
                         </div>
                       </div>
                     </div>
                   );
-                }}
+                })}
               </div>
             )}
           </div>
         )}
 
         {/* COMPARE */}
-        {view==="compare"&&(
+        {view==="compare" && (
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
               <div style={{fontSize:20,fontWeight:800}}>볼 비교</div>
-              {cmpList.length>0&&(
-                <button onClick={()=>setCmpList([])} style={{
-                  padding:"6px 12px",borderRadius:12,border:"1px solid rgba(239,83,80,0.4)",
-                  background:"transparent",color:"#ef5350",fontFamily:"inherit",fontSize:11,fontWeight:700,cursor:"pointer"
-                }}>초기화</button>
+              {cmpList.length > 0 && (
+                <button onClick={()=>setCmpList([])} className="r0-btn" style={{
+                  padding:"5px 12px",borderRadius:12,border:"1px solid rgba(239,83,80,0.3)",
+                  background:"transparent",color:"#ef5350",fontFamily:"inherit",
+                  fontSize:11,fontWeight:700,cursor:"pointer"}}>초기화</button>
               )}
             </div>
-            {cmpList.length===0?(
+            {cmpList.length === 0 ? (
               <div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.2)"}}>
                 <div style={{fontSize:48,marginBottom:12}}>⚖</div>
-                <div style={{fontSize:15,fontWeight:700}}>홈에서 볼을 선택해주세요</div>
+                <div style={{fontSize:15,fontWeight:700}}>홈에서 볼을 선택하세요</div>
               </div>
-            ):(
+            ) : (
               <div style={{display:"grid",gridTemplateColumns:`repeat(${cmpList.length},1fr)`,gap:8}}>
-                {cmpList.map(ball=>{
-                  const d=ball.weightData?.[15]||ball.weightData?.[16];
+                {cmpList.map(ball => {
+                  const d = ball.weightData?.[15] || ball.weightData?.[16];
                   return (
                     <div key={ball.id} style={{
                       background:"rgba(255,255,255,0.04)",borderRadius:16,overflow:"hidden",
-                      border:`1px solid ${ball.accent}33`
-                    }}>
+                      border:`1px solid ${ball.accent}28`}}>
                       <div style={{height:3,background:ball.accent}}/>
                       <div style={{padding:"12px 8px",textAlign:"center"}}>
-                        <div style={{width:56,height:56,borderRadius:"50%",overflow:"hidden",margin:"0 auto 8px",
-                          border:`2px solid ${ball.accent}44`}}>
-                          <BallImg slug={ball.ballSlug} name={ball.name} size={56}/>
+                        <div style={{width:52,height:52,borderRadius:"50%",overflow:"hidden",
+                          margin:"0 auto 8px",border:`2px solid ${ball.accent}33`}}>
+                          <BallImg slug={ball.ballSlug} name={ball.name} size={52}/>
                         </div>
                         <div style={{fontSize:9,color:"rgba(255,255,255,0.3)",marginBottom:2}}>{ball.brand}</div>
                         <div style={{fontSize:11,fontWeight:800,color:"#fff",lineHeight:1.2,marginBottom:8,
-                          overflow:"hidden",textOverflow:"ellipsis",WebkitLineClamp:2,display:"-webkit-box",WebkitBoxOrient:"vertical"}}>{ball.name}</div>
-                        {d&&[{l:"RG",v:d.rg},{l:"DIFF",v:d.diff}].map(x=>(
-                          <div key={x.l} style={{marginBottom:5,padding:"6px",background:"rgba(255,255,255,0.04)",borderRadius:8}}>
+                          overflow:"hidden",textOverflow:"ellipsis",WebkitLineClamp:2,
+                          display:"-webkit-box",WebkitBoxOrient:"vertical"}}>{ball.name}</div>
+                        {d && [{l:"RG",v:d.rg},{l:"DIFF",v:d.diff}].map(x => (
+                          <div key={x.l} style={{marginBottom:5,padding:"6px",
+                            background:"rgba(255,255,255,0.04)",borderRadius:8}}>
                             <div style={{fontSize:8,color:"rgba(255,255,255,0.3)",fontWeight:700}}>{x.l}</div>
-                            <div style={{fontSize:16,fontWeight:900,color:ball.accent,fontFamily:"'Exo 2',sans-serif"}}>{x.v}</div>
+                            <div style={{fontSize:16,fontWeight:900,color:ball.accent}}>{x.v}</div>
                           </div>
                         ))}
-                        <button onClick={()=>toggleCmp(ball)} style={{
-                          width:"100%",padding:"5px",borderRadius:8,border:"1px solid rgba(239,83,80,0.3)",
-                          background:"transparent",color:"#ef5350",fontFamily:"inherit",fontSize:10,fontWeight:700,cursor:"pointer",marginTop:4
-                        }}>제거</button>
+                        <button onClick={()=>toggleCmp(ball)} className="r0-btn" style={{
+                          width:"100%",padding:"5px",borderRadius:8,
+                          border:"1px solid rgba(239,83,80,0.25)",background:"transparent",
+                          color:"#ef5350",fontFamily:"inherit",fontSize:10,fontWeight:700,
+                          cursor:"pointer",marginTop:4}}>제거</button>
                       </div>
                     </div>
                   );
-                }}
+                })}
               </div>
             )}
           </div>
         )}
 
-        {/* SCAN */}
-        {view==="scan"&&(
-          <div style={{padding:"16px",animation:"fadeIn .3s ease",textAlign:"center",paddingTop:60}}>
-            <div style={{fontSize:48,marginBottom:16}}>📷</div>
-            <div style={{fontSize:20,fontWeight:800,marginBottom:8}}>AI 볼 스캔</div>
-            <div style={{fontSize:13,color:"rgba(255,255,255,0.4)",lineHeight:1.6}}>볼링공 사진을 찍으면<br/>AI가 제품을 인식해요</div>
-            <div style={{marginTop:20,padding:"12px 16px",background:"rgba(255,140,0,0.08)",borderRadius:14,border:"1px solid rgba(255,140,0,0.2)",fontSize:12,color:"rgba(255,140,0,0.7)"}}>
-              ⚠️ 현재 버전(rollmate-nine.vercel.app)에서 사용 가능해요
-            </div>
-          </div>
-        )}
-
         {/* SETTINGS */}
-        {view==="settings"&&(
+        {view==="settings" && (
           <div style={{padding:"16px",animation:"fadeIn .3s ease"}}>
-            {!nickname?(
+            {!nickname ? (
               <div style={{textAlign:"center",padding:"40px 20px"}}>
                 <div style={{fontSize:16,fontWeight:700,marginBottom:16}}>로그인이 필요해요</div>
                 <button onClick={()=>setShowLogin(true)} style={{
-                  padding:"12px 28px",background:"#ff8c00",border:"none",borderRadius:14,
-                  color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer"
-                }}>로그인</button>
+                  padding:"12px 28px",background:"#00d4ff",border:"none",borderRadius:14,
+                  color:"#fff",fontFamily:"inherit",fontSize:14,fontWeight:800,cursor:"pointer"}}>로그인</button>
               </div>
-            ):(
+            ) : (
               <div>
-                <div style={{
-                  background:"linear-gradient(135deg,rgba(255,140,0,0.15),rgba(255,140,0,0.05))",
-                  borderRadius:20,padding:"20px",marginBottom:16,
-                  border:"1px solid rgba(255,140,0,0.2)",
-                  display:"flex",alignItems:"center",gap:14
-                }}>
-                  <div style={{width:52,height:52,borderRadius:"50%",background:"linear-gradient(135deg,#ff8c00,#e65100)",
-                    display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,fontWeight:900,color:"#fff"}}>
+                <div style={{background:"rgba(0,212,255,0.05)",borderRadius:20,padding:"18px",
+                  marginBottom:14,border:"1px solid rgba(0,212,255,0.12)",
+                  display:"flex",alignItems:"center",gap:14}}>
+                  <div style={{width:48,height:48,borderRadius:"50%",
+                    background:"linear-gradient(135deg,#00d4ff,#0077aa)",
+                    display:"flex",alignItems:"center",justifyContent:"center",
+                    fontSize:20,fontWeight:900,color:"#fff"}}>
                     {nickname.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <div style={{fontSize:18,fontWeight:900,color:"#fff"}}>{nickname}</div>
-                    <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:2}}>볼링공 {arsenal.length}개 등록</div>
+                    <div style={{fontSize:17,fontWeight:900}}>{nickname}</div>
+                    <div style={{fontSize:11,color:"rgba(255,255,255,0.35)",marginTop:2}}>{arsenal.length}개 등록</div>
                   </div>
                 </div>
-                {[
-                  {icon:"🚪",label:"로그아웃",action:handleLogout,danger:false},
-                ].map(item=>(
-                  <button key={item.label} onClick={item.action} style={{
-                    width:"100%",padding:"14px 16px",borderRadius:14,border:"none",
-                    background:"rgba(255,255,255,0.04)",
-                    color:item.danger?"#ef5350":"rgba(255,255,255,0.7)",
-                    fontFamily:"inherit",fontSize:14,fontWeight:700,cursor:"pointer",
-                    display:"flex",alignItems:"center",gap:10,marginBottom:8,
-                    textAlign:"left"
-                  }}>
-                    <span>{item.icon}</span>{item.label}
-                  </button>
-                ))}
-                <div style={{marginTop:20,padding:"12px 16px",background:"rgba(255,255,255,0.03)",borderRadius:14,
-                  border:"1px solid rgba(255,255,255,0.06)",fontSize:11,color:"rgba(255,255,255,0.2)",textAlign:"center",lineHeight:1.8}}>
-                  ROLLMATE Rev.0<br/>
-                  계정 상세 설정은 rollmate-nine.vercel.app 에서 이용해주세요
+                <button onClick={handleLogout} className="r0-btn" style={{
+                  width:"100%",padding:"13px 16px",borderRadius:14,border:"none",
+                  background:"rgba(255,255,255,0.04)",color:"rgba(255,255,255,0.6)",
+                  fontFamily:"inherit",fontSize:14,fontWeight:700,cursor:"pointer",
+                  display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                  <span>🚪</span> 로그아웃
+                </button>
+                <div style={{marginTop:16,padding:"12px 16px",background:"rgba(255,255,255,0.02)",
+                  borderRadius:14,border:"1px solid rgba(255,255,255,0.05)",
+                  fontSize:11,color:"rgba(255,255,255,0.18)",textAlign:"center",lineHeight:1.9}}>
+                  ROLLMATE Rev.0 · 글래스모피즘 에디션<br/>
+                  계정 상세 설정 → rollmate-nine.vercel.app
                 </div>
               </div>
             )}
@@ -3756,44 +3481,31 @@ export default function App() {
         )}
       </div>
 
-      {/* 하단 내비게이션 - 아이콘만 */}
-      <div style={{
-        position:"fixed",bottom:0,left:0,right:0,zIndex:100,
-        background:"rgba(8,8,16,0.92)",backdropFilter:"blur(24px)",
-        borderTop:"1px solid rgba(255,255,255,0.05)",
+      {/* 하단 내비 - 아이콘만 */}
+      <div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:100,
+        background:"rgba(5,10,24,0.92)",backdropFilter:"blur(24px)",
+        borderTop:"1px solid rgba(0,212,255,0.08)",
         padding:"8px 0 max(8px,env(safe-area-inset-bottom))",
-        display:"flex",justifyContent:"center"
-      }}>
+        display:"flex",justifyContent:"center"}}>
         <div style={{display:"flex",gap:0,width:"100%",maxWidth:360}}>
-          {NAV.map(n=>(
-            <button key={n.k} className="r0-nav-btn"
-              onClick={()=>{if(!needLogin(n.k))setView(n.k);}}
-              style={{
-                flex:1,border:"none",background:"none",cursor:"pointer",
+          {NAV.map(n => (
+            <button key={n.k} className="r0-btn"
+              onClick={()=>{ if(!needLogin(n.k)) setView(n.k); }}
+              style={{flex:1,border:"none",background:"none",cursor:"pointer",
                 padding:"8px 0",position:"relative",
-                display:"flex",flexDirection:"column",alignItems:"center",
-                transition:"all .2s"
-              }}>
-              <span style={{
-                fontSize:20,lineHeight:1,
-                filter:view===n.k?"none":"grayscale(1)",
-                opacity:view===n.k?1:0.35,
-                transition:"all .2s"
-              }}>{n.i}</span>
-              {view===n.k&&(
-                <div style={{
-                  width:4,height:4,borderRadius:"50%",background:"#ff8c00",
-                  marginTop:4,boxShadow:"0 0 6px #ff8c00"
-                }}/>
+                display:"flex",flexDirection:"column",alignItems:"center"}}>
+              <span style={{fontSize:20,lineHeight:1,
+                opacity:view===n.k?1:0.28,
+                transition:"opacity .2s"}}>{n.i}</span>
+              {view===n.k && (
+                <div style={{width:4,height:4,borderRadius:"50%",
+                  background:"#00d4ff",marginTop:4,boxShadow:"0 0 10px #00d4ff"}}/>
               )}
-              {n.badge&&(
-                <div style={{
-                  position:"absolute",top:4,right:"calc(50% - 16px)",
-                  width:14,height:14,borderRadius:"50%",
-                  background:"#ff8c00",color:"#000",
-                  fontSize:9,fontWeight:900,
-                  display:"flex",alignItems:"center",justifyContent:"center"
-                }}>{n.badge}</div>
+              {n.badge && (
+                <div style={{position:"absolute",top:4,right:"calc(50% - 18px)",
+                  width:14,height:14,borderRadius:"50%",background:"#00d4ff",
+                  color:"#050a18",fontSize:9,fontWeight:900,
+                  display:"flex",alignItems:"center",justifyContent:"center"}}>{n.badge}</div>
               )}
             </button>
           ))}
@@ -3801,62 +3513,53 @@ export default function App() {
       </div>
 
       {/* 볼 상세 모달 */}
-      {selectedBall&&(
+      {selectedBall && (
         <BallModal
           ball={selectedBall}
           onClose={()=>setSelectedBall(null)}
           inArsenal={inArsenal(selectedBall.id)}
-          onReg={(ball)=>{
-            if(!nickname){setShowLogin(true);return;}
-            // 간단 등록 (기존 버전의 RegModal 없이 바로 등록)
-            const existing = arsenal.find(e=>e.ballId===ball.id);
-            if(!existing){
-              const dbRow={
-                nickname,ball_id:ball.id,ball_name:ball.name,
-                ball_name_alias:"",weight:15,grip:"세미팁",
-                drilling_pin:"",drilling_cg:"",drilling_mb_angle:"",drilling_notes:"",
-                purchase_date:null,purchase_price:null,memo:"",surface_logs:[],
-              };
-              sbInsert("equipment",dbRow)
-                .then(res=>{
-                  const newDbId=res[0]?.id;
-                  setArsenal(prev=>[...prev,{ballId:ball.id,dbId:newDbId,nickname:"",
-                    weight:15,grip:"세미팁",drill_pin:"",drill_cg:"",drill_mb:"",drill_note:"",
-                    purchase_date:"",purchase_price:"",memo:"",surface_logs:[],addedAt:Date.now()}]);
-                  showToast(`🎳 ${ball.name} 등록!`);
-                  setSelectedBall(null);
-                })
-                .catch(()=>showToast("등록 오류","#ef5350"));
-            }
+          onReg={ball => {
+            if (!nickname) { setShowLogin(true); return; }
+            if (inArsenal(ball.id)) return;
+            const dbRow = {nickname, ball_id:ball.id, ball_name:ball.name,
+              ball_name_alias:"", weight:15, grip:"세미팁",
+              drilling_pin:"", drilling_cg:"", drilling_mb_angle:"", drilling_notes:"",
+              purchase_date:null, purchase_price:null, memo:"", surface_logs:[]};
+            sbInsert("equipment", dbRow)
+              .then(res => {
+                setArsenal(prev => [...prev, {
+                  ballId:ball.id, dbId:res[0]?.id, nickname:"",
+                  weight:15, grip:"세미팁", memo:"", addedAt:Date.now()
+                }]);
+                showToast(`🎳 ${ball.name} 등록!`);
+                setSelectedBall(null);
+              })
+              .catch(() => showToast("등록 오류","#ef5350"));
           }}
         />
       )}
 
       {/* 검색 패널 */}
-      {searchOpen&&(
+      {searchOpen && (
         <SearchPanel
           onClose={()=>setSearchOpen(false)}
           onSelect={ball=>setSelectedBall(ball)}
-          onBrandSelect={b=>setBrand(b)}
-          selectedBrand={brand}
+          brand={brand}
+          setBrand={setBrand}
         />
       )}
 
       {/* 로그인 팝업 */}
-      {showLogin&&(
-        <LoginPopup onLogin={handleLogin} onClose={()=>setShowLogin(false)}/>
-      )}
+      {showLogin && <LoginPopup onLogin={handleLogin} onClose={()=>setShowLogin(false)}/>}
 
       {/* 토스트 */}
-      {toast&&(
-        <div style={{
-          position:"fixed",bottom:90,left:"50%",transform:"translateX(-50%)",
-          background:"rgba(28,28,40,0.95)",backdropFilter:"blur(10px)",
+      {toast && (
+        <div style={{position:"fixed",bottom:86,left:"50%",transform:"translateX(-50%)",
+          background:"rgba(5,10,24,0.96)",backdropFilter:"blur(10px)",
           border:`1px solid ${toast.color}44`,color:toast.color,
           padding:"10px 20px",borderRadius:14,zIndex:9999,
           fontWeight:700,fontSize:12,whiteSpace:"nowrap",
-          boxShadow:`0 4px 20px ${toast.color}22`
-        }}>{toast.msg}</div>
+          boxShadow:`0 4px 20px ${toast.color}22`}}>{toast.msg}</div>
       )}
     </div>
   );

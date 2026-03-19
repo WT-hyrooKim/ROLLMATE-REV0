@@ -3154,7 +3154,7 @@ export default function App() {
           <button className="r0-btn" onClick={()=>setSearchOpen(true)} style={{
             width:34,height:34,borderRadius:"50%",border:"none",
             background:"rgba(0,212,255,0.12)",color:"#00d4ff",
-            fontSize:15,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>{" 🔍"}</button>
+            fontSize:15,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>{"🔍"}</button>
           {nickname ? (
             <div onClick={()=>setView("settings")} style={{
               width:30,height:30,borderRadius:"50%",
@@ -3173,7 +3173,7 @@ export default function App() {
       </div>
 
       {/* 메인 */}
-      <div style={{paddingBottom:76,position:"relative",zIndex:1}}>
+      <div style={{paddingBottom:90,position:"relative",zIndex:1}}>
 
         {/* HOME */}
         {view==="home" && (
@@ -3233,7 +3233,7 @@ export default function App() {
                   padding:"5px 11px",borderRadius:20,border:"none",fontFamily:"inherit",
                   fontSize:11,fontWeight:700,cursor:"pointer",
                   background:sortBy===s.k?"rgba(0,212,255,0.1)":"rgba(255,255,255,0.04)",
-                  color:sortBy===s.k?"#00d4ff":"rgba(255,255,255,0.3)",
+                  color:sortBy===s.k?"#00d4ff":"rgba(255,255,255,0.55)",
                   border:`1px solid ${sortBy===s.k?"rgba(0,212,255,0.3)":"rgba(255,255,255,0.06)"}`,
                   transition:"all .15s"}}>
                   {s.l}
@@ -3267,19 +3267,19 @@ export default function App() {
                       </div>
                     </div>
                     <div style={{padding:"0 12px 12px"}}>
-                      <div style={{fontSize:9,color:"rgba(255,255,255,0.25)",fontWeight:700,letterSpacing:1,marginBottom:2}}>{ball.brand.toUpperCase()}</div>
-                      <div style={{fontSize:12,fontWeight:800,color:"#fff",lineHeight:1.25,marginBottom:7,
+                      <div style={{fontSize:9,color:"rgba(0,212,255,0.6)",fontWeight:700,letterSpacing:1.5,marginBottom:2}}>{ball.brand.toUpperCase()}</div>
+                      <div style={{fontSize:12,fontWeight:800,color:"rgba(255,255,255,0.92)",lineHeight:1.25,marginBottom:7,
                         overflow:"hidden",textOverflow:"ellipsis",display:"-webkit-box",
                         WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{ball.name}</div>
                       {d && (
                         <div style={{display:"flex",gap:8,marginBottom:7}}>
                           <div>
-                            <div style={{fontSize:8,color:"rgba(255,255,255,0.2)",fontWeight:700}}>RG</div>
-                            <div style={{fontSize:14,fontWeight:900,color:ball.accent}}>{d.rg}</div>
+                            <div style={{fontSize:8,color:"rgba(0,212,255,0.5)",fontWeight:700,letterSpacing:0.5}}>RG</div>
+                            <div style={{fontSize:15,fontWeight:900,color:ball.accent}}>{d.rg}</div>
                           </div>
                           <div>
-                            <div style={{fontSize:8,color:"rgba(255,255,255,0.2)",fontWeight:700}}>DIFF</div>
-                            <div style={{fontSize:14,fontWeight:900,color:ball.accent}}>{d.diff}</div>
+                            <div style={{fontSize:8,color:"rgba(0,212,255,0.5)",fontWeight:700,letterSpacing:0.5}}>DIFF</div>
+                            <div style={{fontSize:15,fontWeight:900,color:ball.accent}}>{d.diff}</div>
                           </div>
                         </div>
                       )}
@@ -3287,13 +3287,76 @@ export default function App() {
                         width:"100%",padding:"6px",borderRadius:9,border:"none",
                         fontFamily:"inherit",fontSize:10,fontWeight:700,cursor:"pointer",
                         background:inC?ball.accent:"rgba(255,255,255,0.07)",
-                        color:inC?"#fff":"rgba(255,255,255,0.35)",transition:"all .15s"}}>
+                        color:inC?"#050a18":"rgba(255,255,255,0.55)",transition:"all .15s"}}>
                         {inC?"✓ 비교 중":"+ 비교"}
                       </button>
                     </div>
                   </div>
                 );
               })}
+            </div>
+
+            {/* 오일 조건별 빠른 필터 섹션 */}
+            <div style={{padding:"0 14px 12px"}}>
+              <div style={{fontSize:10,color:"rgba(0,212,255,0.5)",fontWeight:700,
+                letterSpacing:1.5,marginBottom:10}}>OIL CONDITIONS</div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}}>
+                {[
+                  {l:"Heavy",color:"#ef5350",cnt:sortedBalls.filter(b=>b.condition==="Heavy Oil").length},
+                  {l:"Medium",color:"#fb8c00",cnt:sortedBalls.filter(b=>["Medium-Heavy Oil","Medium Oil"].includes(b.condition)).length},
+                  {l:"Light",color:"#42a5f5",cnt:sortedBalls.filter(b=>["Light-Medium Oil","Light Oil"].includes(b.condition)).length},
+                ].map(({l,color,cnt})=>(
+                  <div key={l} style={{
+                    background:"rgba(255,255,255,0.03)",borderRadius:14,padding:"12px 10px",
+                    border:`1px solid ${color}22`,textAlign:"center",
+                    position:"relative",overflow:"hidden"}}>
+                    <div style={{position:"absolute",top:0,left:0,right:0,height:2,
+                      background:`linear-gradient(90deg,${color},${color}44)`}}/>
+                    <div style={{fontSize:22,fontWeight:900,color,
+                      fontFamily:"'Exo 2',sans-serif",lineHeight:1}}>{cnt}</div>
+                    <div style={{fontSize:9,color:"rgba(255,255,255,0.4)",fontWeight:700,
+                      letterSpacing:1,marginTop:3}}>{l.toUpperCase()}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 인기 TOP 5 */}
+            <div style={{padding:"0 14px 16px"}}>
+              <div style={{fontSize:10,color:"rgba(0,212,255,0.5)",fontWeight:700,
+                letterSpacing:1.5,marginBottom:10}}>POPULAR</div>
+              <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                {sortedBalls.slice(0,5).map((ball,i)=>{
+                  const d = ball.weightData?.[15]||ball.weightData?.[16];
+                  const oilColor = COND_COLOR[ball.condition]||"#aaa";
+                  return (
+                    <div key={ball.id} onClick={()=>setSelectedBall(ball)} style={{
+                      display:"flex",alignItems:"center",gap:12,padding:"10px 12px",
+                      background:"rgba(255,255,255,0.03)",borderRadius:14,cursor:"pointer",
+                      border:`1px solid ${ball.accent}15`,
+                      transition:"all .15s"}}>
+                      <div style={{width:28,height:28,borderRadius:"50%",flexShrink:0,
+                        background:`linear-gradient(135deg,${ball.accent}44,${ball.accent}22)`,
+                        display:"flex",alignItems:"center",justifyContent:"center",
+                        fontSize:11,fontWeight:900,color:ball.accent,
+                        border:`1px solid ${ball.accent}33`}}>{i+1}</div>
+                      <div style={{width:40,height:40,borderRadius:"50%",overflow:"hidden",flexShrink:0,
+                        boxShadow:`0 2px 12px ${ball.accent}44`,border:`1px solid ${ball.accent}28`}}>
+                        <BallImg slug={ball.ballSlug} name={ball.name} size={40}/>
+                      </div>
+                      <div style={{flex:1,minWidth:0}}>
+                        <div style={{fontSize:9,color:"rgba(0,212,255,0.5)",fontWeight:700,letterSpacing:1}}>{ball.brand.toUpperCase()}</div>
+                        <div style={{fontSize:13,fontWeight:800,color:"rgba(255,255,255,0.9)",
+                          overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{ball.name}</div>
+                      </div>
+                      <div style={{textAlign:"right",flexShrink:0}}>
+                        <div style={{fontSize:9,color:oilColor,fontWeight:700}}>{ball.condition?.replace(" Oil","")}</div>
+                        {d&&<div style={{fontSize:13,fontWeight:900,color:ball.accent}}>RG {d.rg}</div>}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* 비교 토스트 */}
@@ -3337,7 +3400,7 @@ export default function App() {
               <button onClick={()=>setView("home")} className="r0-btn" style={{
                 padding:"7px 14px",borderRadius:18,border:"1px solid rgba(255,255,255,0.1)",
                 background:"rgba(255,255,255,0.05)",color:"rgba(255,255,255,0.55)",
-                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer"}}>+ 추가</button>
+                fontFamily:"inherit",fontSize:12,fontWeight:700,cursor:"pointer"}}>{"+ 추가"}</button>
             </div>
             {arsenal.length === 0 ? (
               <div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.2)"}}>
@@ -3483,32 +3546,41 @@ export default function App() {
 
       {/* 하단 내비 - 아이콘만 */}
       <div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:100,
-        background:"rgba(5,10,24,0.92)",backdropFilter:"blur(24px)",
-        borderTop:"1px solid rgba(0,212,255,0.08)",
-        padding:"8px 0 max(8px,env(safe-area-inset-bottom))",
+        background:"rgba(4,8,20,0.97)",backdropFilter:"blur(24px)",
+        borderTop:"1px solid rgba(0,212,255,0.18)",
+        padding:"6px 0 max(10px,env(safe-area-inset-bottom))",
         display:"flex",justifyContent:"center"}}>
-        <div style={{display:"flex",gap:0,width:"100%",maxWidth:360}}>
-          {NAV.map(n => (
-            <button key={n.k} className="r0-btn"
-              onClick={()=>{ if(!needLogin(n.k)) setView(n.k); }}
-              style={{flex:1,border:"none",background:"none",cursor:"pointer",
-                padding:"8px 0",position:"relative",
-                display:"flex",flexDirection:"column",alignItems:"center"}}>
-              <span style={{fontSize:20,lineHeight:1,
-                opacity:view===n.k?1:0.28,
-                transition:"opacity .2s"}}>{n.i}</span>
-              {view===n.k && (
-                <div style={{width:4,height:4,borderRadius:"50%",
-                  background:"#00d4ff",marginTop:4,boxShadow:"0 0 10px #00d4ff"}}/>
-              )}
-              {n.badge && (
-                <div style={{position:"absolute",top:4,right:"calc(50% - 18px)",
-                  width:14,height:14,borderRadius:"50%",background:"#00d4ff",
-                  color:"#050a18",fontSize:9,fontWeight:900,
-                  display:"flex",alignItems:"center",justifyContent:"center"}}>{n.badge}</div>
-              )}
-            </button>
-          ))}
+        <div style={{display:"flex",gap:0,width:"100%",maxWidth:480}}>
+          {NAV.map(n => {
+            const isActive = view===n.k;
+            const labels = {home:"홈",arsenal:"내장비",compare:"비교",settings:"설정"};
+            return (
+              <button key={n.k} className="r0-btn"
+                onClick={()=>{ if(!needLogin(n.k)) setView(n.k); }}
+                style={{flex:1,border:"none",background:"none",cursor:"pointer",
+                  padding:"6px 0 2px",position:"relative",
+                  display:"flex",flexDirection:"column",alignItems:"center",gap:2}}>
+                <span style={{fontSize:22,lineHeight:1,
+                  filter:isActive?"drop-shadow(0 0 6px #00d4ff)":"none",
+                  opacity:isActive?1:0.5,
+                  transition:"all .2s"}}>{n.i}</span>
+                <span style={{fontSize:9,fontWeight:700,letterSpacing:0.5,
+                  color:isActive?"#00d4ff":"rgba(255,255,255,0.35)",
+                  transition:"color .2s"}}>{labels[n.k]}</span>
+                {isActive && (
+                  <div style={{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",
+                    width:20,height:2,borderRadius:1,background:"#00d4ff",
+                    boxShadow:"0 0 8px #00d4ff"}}/>
+                )}
+                {n.badge && (
+                  <div style={{position:"absolute",top:2,right:"calc(50% - 18px)",
+                    width:15,height:15,borderRadius:"50%",background:"#00d4ff",
+                    color:"#050a18",fontSize:9,fontWeight:900,
+                    display:"flex",alignItems:"center",justifyContent:"center"}}>{n.badge}</div>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
